@@ -1,0 +1,28 @@
+#login{
+    display: flex;
+    height: 90vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    >form{
+        border: 1px solid var(--bg-primary);
+        border-radius: 10px;
+        padding: 1rem 2rem;
+        width: 40%;
+    }
+}
+
+/* Responsive  */
+
+@media  screen and (max-width:773px) {
+
+#login{
+
+    >form{
+        padding:1rem;
+        width: 100%;
+        border: none;
+    }
+}
+}

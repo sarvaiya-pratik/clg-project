@@ -1,0 +1,64 @@
+:root{
+    --primary-color : #b34141;
+    --secondary-color:#fff;
+    --black-color:#000000;
+    --bg-primary:goldenrod;
+    } 
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+
+}
+/* theme dark   */
+
+
+.bg-dark{
+  background-color: #000000;
+}
+.text-dark{
+    color: black;
+  }
+ .bg-light{
+  background-color: #d8d8d8;
+ } 
+ .text-light{
+  color: #fff;
+ }
+
+ .bg-dark-2{
+  background-color: #1d1d1d;
+ }
+ .bg-light-2{
+  background-color: #e0e0e0;
+ }
+ 
+ 
+ .active{
+  border-bottom: 1px solid  ;
+  font-weight: 600;
+
+}
+
+
+/* dark for input  */
+.dark-input{
+  background-color: #f000;
+  color: #fff;
+  border-color: #fff !important;
+}
+
+
+
+.lblToggle{
+  color: #af9041;
+  text-decoration: none;
+}
+.lblToggle:hover{
+  color: var(--bg-primary);
+}
+

@@ -1,0 +1,8 @@
+#footer{
+    font-family: 'Ysabeau SC', sans-serif;
+    letter-spacing: 2px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
