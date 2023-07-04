@@ -13,7 +13,6 @@ app.use(bodyParser.json())
 const StudModel = require("./models/Student")
 mongoose.connect(process.env.URLATLAS);
 
-
 // api  
 app.post("/register", async (req, res) => {
 
@@ -28,23 +27,26 @@ app.post("/register", async (req, res) => {
     }
 })
 
-
 app.post("/login", async (req, res) => {
-    const {uname,password} = req.body;
-    try{
-        const data =await StudModel.findOne({uname:uname})
-        if(data.password === password){
-            res.send({message:"Welcome to my App"})
+    const { uname, password } = req.body;
+    try {
+        const data = await StudModel.findOne({ uname: uname })
+        if (data) {
+            if (password === data.password) {
+                res.send({ message: "Login successful", user: data })
+            }
+            else {
+                res.send({ message: "Password was incorrect!" })
+            }
         }
-        else{
-            res.send({message:"Please Sign up first !"})
+        else {
+            res.send({ message: "Please Register !" })
         }
 
-    }catch(err){
+    } catch (err) {
         console.log(err)
     }
 })
-
 
 app.listen(process.env.PORT, () => {
     console.log("You are running on PORT", process.env.PORT)

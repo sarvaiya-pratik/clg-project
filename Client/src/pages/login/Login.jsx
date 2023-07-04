@@ -5,25 +5,35 @@ import { NavLink } from "react-router-dom"
 import { useFormik } from "formik"
 import { loginSchema } from '../sign-up/Validate'
 import axios from 'axios'
+import {useNavigate} from "react-router-dom"
 
-const init ={
-  uname:"", password:""
+const init = {
+  uname: "", password: ""
 }
-const Login = () => {
+const Login = ({setLoginUser}) => {
   const theme = useThemeHook()
 
-  const {values,errors,handleBlur,handleChange,handleSubmit,touched}  =useFormik({
-    initialValues:init,
-    validationSchema:loginSchema,
-    onSubmit:()=>{
-      alert("Login Success")
+  const { values, errors, handleBlur, handleChange, handleSubmit, touched } = useFormik({
+    initialValues: init,
+    validationSchema: loginSchema,
+    onSubmit: (values, action) => {
+
+      
       console.log(values)
-      axios.post("http://localhost:4001/login",values)
-      .then(r=>console.log(r))
-      .catch(err=>console.log(err))
+      axios.post("http://localhost:4001/login", values)
+        .then((r)=>{
+          alert(r.data.message)
+          setLoginUser(r.data.user)
+          navigate("/")
+        })
+        .catch(err => console.log(err))
+
+      action.resetForm()
     }
 
   })
+
+  const navigate = useNavigate();
 
   return (
     <div id="login" className={theme ? "bg-dark-2 text-light" : ""}>
@@ -34,30 +44,30 @@ const Login = () => {
 
         <div className="form-con ">
           <input type="text"
-          value={values.uname}
+            value={values.uname}
             name='uname'
             onBlur={handleBlur}
             onChange={handleChange}
             className={`form-controls ${theme ? "dark-input" : "bg-light"}`}
             placeholder='Username'
             autoComplete='off' />
-            {errors.uname && touched.uname ? <p>{errors.uname}</p>:null}
+          {errors.uname && touched.uname ? <p>{errors.uname}</p> : null}
         </div>
 
         <div className="form-con">
           <input type="password"
-          value={values.password}
+            value={values.password}
             name='password'
             onBlur={handleBlur}
             onChange={handleChange}
             className={`form-controls ${theme ? "dark-input" : "bg-light"}`}
             placeholder='Password'
             autoComplete='off' />
-            {errors.password && touched.password ? <p>{errors.password}</p>:null}
+          {errors.password && touched.password ? <p>{errors.password}</p> : null}
         </div>
 
         <div className="form-con ">
-          <button className='lsbtn' type='submit'>Login</button>
+          <button className='lsbtn' type='submit' >Login</button>
         </div>
 
         <div className="form-con">
