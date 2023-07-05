@@ -5,12 +5,13 @@ import { NavLink } from "react-router-dom"
 import { useFormik } from "formik"
 import { loginSchema } from '../sign-up/Validate'
 import axios from 'axios'
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import toast from "react-hot-toast"
 
 const init = {
-  uname: "", password: ""
+  email: "", password: ""
 }
-const Login = ({setLoginUser}) => {
+const Login = ({ setLoginUser }) => {
   const theme = useThemeHook()
 
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } = useFormik({
@@ -18,11 +19,13 @@ const Login = ({setLoginUser}) => {
     validationSchema: loginSchema,
     onSubmit: (values, action) => {
 
-      
+
       console.log(values)
       axios.post("http://localhost:4001/login", values)
-        .then((r)=>{
-          alert(r.data.message)
+        .then((r) => {
+          console.log(r)
+          // alert (r.data.message)
+          
           setLoginUser(r.data.user)
           navigate("/")
         })
@@ -44,14 +47,14 @@ const Login = ({setLoginUser}) => {
 
         <div className="form-con ">
           <input type="text"
-            value={values.uname}
-            name='uname'
+            value={values.email}
+            name='email'
             onBlur={handleBlur}
             onChange={handleChange}
             className={`form-controls ${theme ? "dark-input" : "bg-light"}`}
-            placeholder='Username'
+            placeholder='E-mail'
             autoComplete='off' />
-          {errors.uname && touched.uname ? <p>{errors.uname}</p> : null}
+          {errors.email && touched.email ? <p>{errors.email}</p> : null}
         </div>
 
         <div className="form-con">
@@ -68,6 +71,8 @@ const Login = ({setLoginUser}) => {
 
         <div className="form-con ">
           <button className='lsbtn' type='submit' >Login</button>
+
+
         </div>
 
         <div className="form-con">

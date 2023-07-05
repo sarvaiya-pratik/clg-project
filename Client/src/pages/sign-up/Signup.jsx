@@ -12,7 +12,7 @@ const init = {
   email: "",
   password: "",
   cpassword: "",
-  uname: "",
+  phone: "",
 
 }
 const Signup = () => {
@@ -26,12 +26,12 @@ const Signup = () => {
       action.resetForm();
       alert("Successfully registered")
       axios.post("http://localhost:4001/register",values)
-      .then((r)=>console.log(r))
+      .then((r)=>{
+        alert(r.data.message)
+      })
       .catch((err)=>console.log("Axios bc",err))
     }
   })
-
-
 
   return (
     <>
@@ -83,15 +83,15 @@ const Signup = () => {
           </div>
 
           <div className="form-con ">
-            <input name='uname'
+            <input name='phone'
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.uname}
+              value={values.phone}
               type="text"
               className={`form-controls ${theme ? "dark-input" : "bg-light"}`}
-              placeholder='Set Username' />
-               {errors.uname && touched.uname ? 
-                  <p>{errors.uname}</p>:null}
+              placeholder='Phone No' />
+               {errors.phone && touched.phone ? 
+                  <p>{errors.phone}</p>:null}
           </div>
           <div className="form-con">
             <input name='password'

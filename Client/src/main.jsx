@@ -6,12 +6,15 @@ import { ThemeProvide } from './Global-Component/ThemeProvide.jsx'
 
 
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
  
 
 <ThemeProvide>
 
+
     <App />
+
 
 </ThemeProvide>
  
