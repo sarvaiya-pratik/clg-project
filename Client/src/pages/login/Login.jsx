@@ -6,7 +6,7 @@ import { useFormik } from "formik"
 import { loginSchema } from '../sign-up/Validate'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
-import toast from "react-hot-toast"
+import toast,{Toaster} from "react-hot-toast"
 
 const init = {
   email: "", password: ""
@@ -24,14 +24,24 @@ const Login = ({ setLoginUser }) => {
       axios.post("http://localhost:4001/login", values)
         .then((r) => {
           console.log(r)
-          // alert (r.data.message)
+          if(r.status === 201){
+           toast.success("Login succesfully")
+           action.resetForm()
+          }
+          else if(r.status ===203){
+            toast.error("Password not match !")
+            values.password = ""
+          }
+          else if(r.status === 204){
+            toast.error("User Not found !")
+          }
           
           setLoginUser(r.data.user)
           navigate("/")
         })
         .catch(err => console.log(err))
 
-      action.resetForm()
+      
     }
 
   })
@@ -79,6 +89,7 @@ const Login = ({ setLoginUser }) => {
           <label>New User ? <span> <NavLink to="/signup" className='lblToggle'>sign up</NavLink> </span></label>
         </div>
       </form>
+      <Toaster/>
     </div>
   )
 }

@@ -6,6 +6,7 @@ import { useThemeHook } from '../../Global-Component/ThemeProvide'
 import { useFormik } from "formik"
 import { signUpSchema } from './Validate'
 import axios from 'axios'
+import toast,{Toaster} from "react-hot-toast"
 const init = {
   fname: "",
   lname: "",
@@ -23,11 +24,22 @@ const Signup = () => {
     validationSchema: signUpSchema,
     onSubmit: (values,action) => {
       console.log(values)
-      action.resetForm();
-      alert("Successfully registered")
-      axios.post("http://localhost:4001/register",values)
+      
+     
+
+      axios.post("http://localhost:4001/signup",values)
       .then((r)=>{
-        alert(r.data.message)
+        if(r.status === 200){
+          toast.success("Register succesfully !")
+          action.resetForm();
+        }
+        else if(r.status === 201){
+          toast.error("Email already Exit !")
+          values.email = ""
+        }
+        else{
+          toast.error("Data not valid")
+        }
       })
       .catch((err)=>console.log("Axios bc",err))
     }
@@ -133,7 +145,7 @@ const Signup = () => {
               </span>
             </label>
           </div>
-
+                <Toaster/>
         </form>
       </div>
 

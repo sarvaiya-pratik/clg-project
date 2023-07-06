@@ -17,7 +17,7 @@ const {hashPassword,comparePassword} = require("./hepler/authHepler")
 mongoose.connect(process.env.URLATLAS);
 
 // api REGISTER || POST
-app.post("/register", async (req, res) => {
+app.post("/signup", async (req, res) => {
     const { fname, lname, email, phone, password } = req.body;
     const data = await StudModel.findOne({ email });
     if (data) {
@@ -26,7 +26,7 @@ app.post("/register", async (req, res) => {
     else {
         const hPassword =await hashPassword(password)
         const user =await  new StudModel({fname,lname,email,phone,password:hPassword}).save()
-       res.status(201).send({
+       res.status(200).send({
         success:true,
         message:"User register succesful"
        })
@@ -44,25 +44,21 @@ app.post("/login", async (req, res) => {
         const user = await StudModel.findOne({email}) 
         console.log(user)
         if(!user){
-            res.status(404).send({success:false,message:"User Not found !"});
+            res.status(204).send({success:false,message:"User Not found !"});
         }
 
 
         const match =await comparePassword(password,user.password)
         if(!match){
-           return res.status(200).send({success:false,message:"Invalid Password"})
+           return res.status(203).send({success:false,message:"Invalid Password"})
         }
         else{
         //token 
         const token = await Jwt.sign({_id:user._id},process.env.JWT_SECRET,{expiresIn:78})
-        res.status(200).send({
+        res.status(201).send({
             success:true,
             message:"login succesful",
-            user:{
-                name:user.name,
-                email:user.email,
-                phone:user.phone
-            },
+            user,
             token,
         })
     }

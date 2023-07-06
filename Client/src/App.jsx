@@ -17,7 +17,7 @@ const App = () => {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={user && user._id ? <Home /> : <Login setLoginUser={setLoginUser} />}></Route>
+          <Route path="/" element={user && user._id ? <Home setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser} />}></Route>
           <Route path="/about" element={user && user._id ? <About/> : <Login setLoginUser={setLoginUser}/> }> </Route>
           <Route path="/fature" element={user && user._id ? <Fature/> : <Login setLoginUser={setLoginUser}/> }></Route>
           <Route path="/login" element={<Login setLoginUser={setLoginUser} />}></Route>
