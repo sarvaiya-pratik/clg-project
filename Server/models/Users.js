@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const StudSchema = mongoose.Schema({
+const UserSchema = mongoose.Schema({
     fname:{
         type:String,
         required:true,
@@ -12,7 +12,6 @@ const StudSchema = mongoose.Schema({
     email:{
         type:String,
         required:true,
-       
     },
     phone:{
         type:String,
@@ -30,6 +29,6 @@ const StudSchema = mongoose.Schema({
 
 },{timestamps:true})
 
-const StudModel = mongoose.model("stud",StudSchema)
-module.exports=StudModel;
+const UserModel = mongoose.model("user",UserSchema)
+module.exports=UserModel;
 
