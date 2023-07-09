@@ -1,92 +1,91 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./style.css"
-import { ThemeContext } from '../../Global-Component/ThemeProvide'
-import { BiMoon, BiSun, BiMenu } from "react-icons/bi"
+// import { ThemeContext } from '../../Global-Component/ThemeProvide'
+import {  BiMenu } from "react-icons/bi"
 import { NavLink } from "react-router-dom"
 
-
 const Header = () => {
-    const { theme, setThemeMode } = useContext(ThemeContext);
-    const [darkMod, setDarkMod] = useState(theme)
+    // const { theme, setThemeMode } = useContext(ThemeContext);
+    // const [darkMod, setDarkMod] = useState(theme)
     const [menu, setMenu] = useState(false)
 
-
+console.log(menu)
     useEffect(() => {
-        setThemeMode(darkMod);
+        // setThemeMode(darkMod);
     })
     return (
         <>
-        
-                <header id='mynav' className={darkMod?"bg-dark text-light":"bg-light text-dark"}>
-                    <div className='left'>
-                        <h4>Logo</h4>
-                    </div>
 
-                    <div className="mobile-nav">
-                        <div onClick={() => setDarkMod(!darkMod)} style={{ cursor: "pointer" }}>
-                            {darkMod ? <BiSun fontSize={"2rem"} /> : <BiMoon fontSize={"2rem"} style={{ color: "Black" }} />}
-                        </div>
-                        <div className={`${!darkMod && "text-dark"}`}><BiMenu fontSize={'2rem'} onClick={() => setMenu(!menu)} /></div>
-                    </div>
+            <header id='mynav' className="bg-dark text-light">
+                <div className='left'>
+                    <h4>Logo</h4>
+                </div>
+
+                <div className="mobile-nav">
+                    {/* <div onClick={() => setDarkMod(!darkMod)} style={{ cursor: "pointer" }}>
+                        {darkMod ? <BiSun fontSize={"2rem"} /> : <BiMoon fontSize={"2rem"} style={{ color: "Black" }} />}
+                    </div> */}
+                    <div className=""><BiMenu fontSize={'2rem'} onClick={() => setMenu(!menu)} /></div>
+                </div>
 
 
-                    <div className="middle">
-                        <li>
-                            <NavLink className={darkMod && "text-light"} to="/">Home</NavLink>
-                        </li>
-                        <li>
-                            <NavLink className={darkMod && "text-light"} to="/about">About</NavLink>
-                        </li>
-                        <li>
-                            <NavLink className={darkMod && "text-light"} to="/fature" >Fature</NavLink>
-                        </li>
-                    </div>
+                <div className="middle">
+                    <li>
+                        <NavLink className="text-light" to="/">Home</NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="text-light" to="/about">About</NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="text-light" to="/fature" >Fature</NavLink>
+                    </li>
+                </div>
 
-                    <div className='right'>
-                        <li>
-                            <NavLink className={darkMod && "text-light"} to="/login" >Login</NavLink>
-                        </li>
+                <div className='right'>
+                    <li>
+                        <NavLink className="text-light" to="/login" >Login</NavLink>
+                    </li>
 
-                        <li>
-                            <NavLink className={darkMod && "text-light"} to="signup">Sign Up</NavLink>
-                        </li>
+                    <li>
+                        <NavLink className="text-light" to="signup">Sign Up</NavLink>
+                    </li>
 
-                        <li onClick={() => setDarkMod(!darkMod)} style={{ cursor: "pointer" }}>
+                    {/* <li onClick={() => setDarkMod(!darkMod)} style={{ cursor: "pointer" }}>
                             {darkMod ? <BiSun fontSize={"1.7rem"} /> : <BiMoon fontSize={"1.7rem"} style={{ color: "Black" }} />}
-                        </li>
-                    </div>
+                        </li> */}
+                </div>
 
-                </header>
-            
+            </header>
+
 
             {/* Sidebar for mobile   */}
 
-            <div className={`sidebar ${menu && "showsidebar"} ${darkMod?"bg-dark-2 text-light":"bg-light-2 text-dark"}`}>
+            <div className={`sidebar bg-dark-2 ${menu && "showsidebar"} `}>
                 <div className="middle">
                     <li>
-                        <NavLink onClick={()=>setMenu(!menu)} className={darkMod && "text-light"} to="/">Home</NavLink>
+                        <NavLink className="text-light" onClick={() => setMenu(!menu)}  to="/">Home</NavLink>
                     </li>
 
                     <li>
-                        <NavLink onClick={()=>setMenu(!menu)} className={darkMod && "text-light"}to="/about" >About</NavLink>
+                        <NavLink  className="text-light"  onClick={() => setMenu(!menu)}  to="/about" >About</NavLink>
                     </li>
 
                     <li>
-                        <NavLink onClick={()=>setMenu(!menu)}  className={darkMod && "text-light"} to="fature" >Fature</NavLink>
+                        <NavLink  className="text-light"  onClick={() => setMenu(!menu)}  to="fature" >Fature</NavLink>
                     </li>
                 </div>
 
                 <hr />
 
                 <div className='right'>
-                        <li>
-                        <NavLink onClick={()=>setMenu(!menu)}  className={darkMod && "text-light"} to="/login" >Login</NavLink>
-                        </li>
-                   
-                   <li>
-                        <NavLink onClick={()=>setMenu(!menu)} className={darkMod && "text-light"} to="signup">Sign Up</NavLink>
-                   </li>
-                   
+                    <li>
+                        <NavLink className="text-light"  onClick={() => setMenu(!menu)}  to="/login" >Login</NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink  className="text-light"  onClick={() => setMenu(!menu)}  to="signup">Sign Up</NavLink>
+                    </li>
+
                 </div>
 
             </div>
