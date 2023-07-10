@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     
-    <div id='footer'  className={`text-center bg-dark text-light `}>
+    <div id='footer'>
 
       <h6>Copyright &copy; 2023 All Rights Reserved</h6>
 

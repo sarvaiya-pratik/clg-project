@@ -63,7 +63,7 @@ const Login = ({ setLoginUser }) => {
             onChange={handleChange}
             className={`form-controls ${theme ? "dark-input" : "bg-light"}`}
             placeholder='E-mail'
-            autoComplete='off' />
+             />
           {errors.email && touched.email ? <p>{errors.email}</p> : null}
         </div>
 

@@ -1,8 +1,10 @@
 :root{
     --primary-color : #b34141;
-    --secondary-color:#fff;
     --black-color:#000000;
     --bg-primary:goldenrod;
+    --bg-secondary:#2f3037;
+    --secondary-color:#fff;
+   
     } 
 
 *{
@@ -14,11 +16,12 @@
 body{
 
 }
-/* theme dark   */
+
 
 
 .bg-dark{
-  background-color: #000000;
+  background-color: #2f3037 !important;
+  /* background-color: rebeccapurple; */
 }
 .text-dark{
     color: black;
