@@ -4,25 +4,38 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+    background: url("https://static.wixstatic.com/media/e1234f_f7714bf4f1fa4cde9ad026ef44a49030~mv2.gif") no-repeat ;
+    background-position: center;
+   background-size: cover;
+   filter: brightness(50%);
+   position: relative;
+   text-align: center;
 
-    >form{
-        border: 1px solid var(--bg-primary);
-        border-radius: 10px;
-        padding: 1rem 2rem;
-        width: 40%;
-    }
+   
 }
+#login-form{
+    position: absolute;
+   
+    top: 35%;
+  left: 30%;
+    border: 1px solid var(--bg-primary);
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    width: 40%;
 
+    color: white;
+  
+}
 /* Responsive  */
 
 @media  screen and (max-width:773px) {
 
 #login{
 
-    >form{
-        padding:1rem;
-        width: 100%;
-        border: none;
-    }
+   
+}
+#login-form{
+   width: 90%;
+   left: 5%;
 }
 }

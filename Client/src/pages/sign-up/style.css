@@ -1,19 +1,31 @@
 #signup{
-    height: 90vh;
+    height: 100vh;
     width: 100%;
     justify-content: center;
    align-items: center;
    flex-direction: column;
   display: flex;
+  background: url("https://static.wixstatic.com/media/e1234f_f7714bf4f1fa4cde9ad026ef44a49030~mv2.gif") no-repeat ;
+  background-position: center;
+ background-size: cover;
+ filter: brightness(50%);
+ position: relative;
+ text-align: center;
     
-  >form{
-    border: 1px solid var(--bg-primary);
-    border-radius: 10px;
-    padding: 1rem 2rem;
-    width: 40%;
-
-  }
+ 
    
+}
+#signup-form{
+  height: 86vh;
+  position: absolute;
+  top: 25%;
+left: 30%;
+  border: 1px solid var(--bg-primary);
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  width: 40%;
+  color: white;
+
 }
 .lsbtn{
     padding: 0.6rem 1rem;
@@ -32,6 +44,7 @@
   box-shadow: inset 400px 0 0 0 var(--bg-primary);
 }
 .form-con{
+  /* width: 90%; */
     display: flex;
     flex-direction: column;
    /* line-height: 4; */
@@ -63,10 +76,6 @@ input:focus{
     outline: none;
     border-color: goldenrod;
 }
-.flname{
-  display: flex;
-  gap: 20px;
-}
 
 /* Responsive */
 
@@ -74,20 +83,17 @@ input:focus{
 
   #signup{
   
-      >form{
-          width: 100%;
-          border: none;
-          padding: 1rem 2rem;
-
-          .flname{
-  
-            width: 100%;
-            flex-direction: column;
-            gap: 2rem;
-            
-          }
+      
        
   }
+
+  #signup-form{
+    width: 90%;
+    border: none;
+    left:5%;
+    padding: 1rem 2rem;
+
+ 
   }
 
 }

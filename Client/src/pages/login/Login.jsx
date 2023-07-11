@@ -12,7 +12,7 @@ const init = {
   email: "", password: ""
 }
 const Login = ({ setLoginUser }) => {
-  const theme = useThemeHook()
+
 
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } = useFormik({
     initialValues: init,
@@ -49,10 +49,19 @@ const Login = ({ setLoginUser }) => {
   const navigate = useNavigate();
 
   return (
-    <div id="login" className={theme ? "bg-dark-2 text-light" : ""}>
-      <form action=""
+    <>
+    
+    
+    <div id="login"  >
+     
+      <Toaster/>
+    </div>
+
+    <form action=""
         onSubmit={handleSubmit}
-        className={theme ? "bg-dark" : "bg-light"} >
+        className='bg-dark'
+        id='login-form'
+        >
         <h2 className='text-center'> Login Now</h2>
 
         <div className="form-con ">
@@ -61,7 +70,7 @@ const Login = ({ setLoginUser }) => {
             name='email'
             onBlur={handleBlur}
             onChange={handleChange}
-            className={`form-controls ${theme ? "dark-input" : "bg-light"}`}
+         
             placeholder='E-mail'
              />
           {errors.email && touched.email ? <p>{errors.email}</p> : null}
@@ -73,7 +82,7 @@ const Login = ({ setLoginUser }) => {
             name='password'
             onBlur={handleBlur}
             onChange={handleChange}
-            className={`form-controls ${theme ? "dark-input" : "bg-light"}`}
+           
             placeholder='Password'
             autoComplete='off' />
           {errors.password && touched.password ? <p>{errors.password}</p> : null}
@@ -89,8 +98,8 @@ const Login = ({ setLoginUser }) => {
           <label>New User ? <span> <NavLink to="/signup" className='lblToggle'>sign up</NavLink> </span></label>
         </div>
       </form>
-      <Toaster/>
-    </div>
+
+    </>
   )
 }
 
