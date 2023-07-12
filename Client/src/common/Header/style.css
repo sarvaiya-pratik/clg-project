@@ -6,9 +6,9 @@ header {
     color: aliceblue;
     position: sticky;
     top: 0;
-    z-index: 20;
+    z-index: 200;
+    background-color: var(--bg-secondary);
 }
-
 header .left {
     flex-basis: 20%;
     text-align: center;
@@ -65,15 +65,16 @@ header li a:hover {
 .sidebar {
     height: 90vh;
     z-index: 50;
-
     width: 100%;
     justify-content: center;
     display: flex;
-    position: absolute;
+    position: fixed;
     flex-direction: column;
-    transform: translateY(-200%);
+    transform: translateX(-200%);
     transition: all 0.4s;
     line-height: 0;
+    background-color: var(--bg-secondary);
+
 
 
     >.middle,
@@ -95,7 +96,8 @@ header li a:hover {
 }
 
 .showsidebar {
-    transform: translateY(0);
+    transform: translateX(0);
+    /* position: sticky; */
 }
 
 .mobile-nav {

@@ -1,22 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./style.css"
-// import { ThemeContext } from '../../Global-Component/ThemeProvide'
 import {  BiMenu } from "react-icons/bi"
 import { NavLink } from "react-router-dom"
 
 const Header = () => {
-    // const { theme, setThemeMode } = useContext(ThemeContext);
-    // const [darkMod, setDarkMod] = useState(theme)
+   
     const [menu, setMenu] = useState(false)
 
-console.log(menu)
-    useEffect(() => {
-        // setThemeMode(darkMod);
-    })
+  
     return (
         <>
 
-            <header id='mynav' className="bg-dark text-light">
+            <header id='mynav'>
                 <div className='left'>
                     <h4>Logo</h4>
                 </div>
@@ -60,7 +55,7 @@ console.log(menu)
 
             {/* Sidebar for mobile   */}
 
-            <div className={`sidebar bg-dark-2 ${menu && "showsidebar"} `}>
+            <div className={`sidebar  ${menu && "showsidebar"} `}>
                 <div className="middle">
                     <li>
                         <NavLink className="text-light" onClick={() => setMenu(!menu)}  to="/">Home</NavLink>

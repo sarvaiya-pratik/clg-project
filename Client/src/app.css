@@ -1,9 +1,9 @@
 :root{
-    --primary-color : #b34141;
-    --black-color:#000000;
+    /* --primary-color : #b34141; */
     --bg-primary:goldenrod;
     --bg-secondary:#2f3037;
-    --secondary-color:#fff;
+    --black-color:#000000;
+    --secondary-color:rgb(214, 225, 235);
    
     } 
 
@@ -20,8 +20,8 @@ body{
 
 
 .bg-dark{
-  background-color: #2f3037 !important;
-  /* background-color: rebeccapurple; */
+  background-color: var(--bg-secondary) !important;
+
 }
 .text-dark{
     color: black;
@@ -48,12 +48,25 @@ body{
 }
 
 
-/* dark for input  */
-.dark-input{
-  background-color: #f000;
-  color: #fff;
-  border-color: #fff !important;
+/* Login and Signup Button */
+.lsbtn{
+  padding: 0.6rem 1rem;
+  background-color: rgb(175, 144, 65); 
+  line-height: 1;
+  margin-top: 0.5rem;
+  box-shadow: inset 0 0 0 0 var(--bg-primary);
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: ease-out 0.8s;
+ border: none;
+outline: 1px solid white;
+
 }
+.lsbtn:hover{
+box-shadow: inset 400px 0 0 0 var(--bg-primary);
+}
+
+
 
 
 

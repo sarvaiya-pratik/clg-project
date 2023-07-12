@@ -15,9 +15,8 @@
 }
 #login-form{
     position: absolute;
-   
     top: 35%;
-  left: 30%;
+    left: 30%;
     border: 1px solid var(--bg-primary);
     border-radius: 10px;
     padding: 1rem 2rem;
