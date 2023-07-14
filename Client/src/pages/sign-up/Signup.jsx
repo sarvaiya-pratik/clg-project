@@ -18,7 +18,6 @@ const init = {
 }
 const Signup = () => {
 
-
   const { values, errors,touched, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: init,
     validationSchema: signUpSchema,

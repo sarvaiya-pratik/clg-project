@@ -6,7 +6,11 @@ const bodyParser = require("body-parser")
 const app = express()
 const cookieParser = require("cookie-parser")
 
-app.use(cors())
+app.use(cors({
+    origin:[""],
+    methods:["POST","GET"],
+    credentials:true
+}))
 app.use(bodyParser.json())
 app.use(cookieParser())
 const Router = require("./Routers/Users")
