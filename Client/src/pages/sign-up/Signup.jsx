@@ -25,7 +25,6 @@ const Signup = () => {
     onSubmit: (values,action) => {
       console.log(values)
       
-     
 
       axios.post("http://localhost:4001/signup",values)
       .then((r)=>{

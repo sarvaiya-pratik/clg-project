@@ -1,13 +1,12 @@
 import React from 'react'
 import "./style.css"
-import {BsArrowRight} from "react-icons/bs"
+import {BsArrowRight, BsTranslate} from "react-icons/bs"
+import {motion} from "framer-motion"
 
 const About = () => {
   return (
     <>
     
-    
-   
     <div id="about">
 
     <LeftAbout
@@ -42,33 +41,33 @@ const About = () => {
 }
 export const LeftAbout = ({title, subTitle, para, myimg,myclass}) => {
   return (
-    <main className={myclass}>
-      <div className="left">
+    <motion.main className={myclass}>
+      <motion.div className="left" initial={{x:-300}} whileInView={{x:0}}>
         <h4>{subTitle}</h4>
         <h2>{title}</h2>
         <p>{para}</p>
         <button className='commBtn'>EXPLORE <BsArrowRight/></button>
-      </div>
+      </motion.div>
       <div className="right">
         <img src={myimg} alt="" />
       </div>
-    </main>
+    </motion.main>
   )
 }
 export const RightAbout = ({title, subTitle, para, myimg}) => {
   return (
-    <main className='rightabout'>
+    <motion.main className='rightabout'>
       
       <div className="right">
         <img src={myimg} alt="" />
       </div>
-      <div className="left">
+      <motion.div className="left"  initial={{y:100}} whileInView={{y:0}}>
         <h4>{subTitle}</h4>
         <h2>{title}</h2>
         <p>{para}</p>
         <button className='commBtn'>EXPLORE <BsArrowRight/> </button>
-      </div>
-    </main>
+      </motion.div>
+    </motion.main>
   )
 }
 

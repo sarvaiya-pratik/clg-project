@@ -5,6 +5,7 @@ import { FaHandHoldingHeart, FaHandHoldingMedical, FaHandHoldingWater, FaHandHol
 import { motion } from "framer-motion"
 import { Cursor, Typewriter } from "react-simple-typewriter"
 import About from '../about/About'
+import Service from '../service/Service'
 
 const Home = ({ setLoginUser }) => {
 
@@ -92,6 +93,7 @@ const Home = ({ setLoginUser }) => {
 
     </div>
     <About/>
+    <Service/>
     </>
   )
 }

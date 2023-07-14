@@ -7,15 +7,12 @@ const Header = () => {
    
     const [menu, setMenu] = useState(false)
 
-  
     return (
         <>
-
             <header id='mynav'>
                 <div className='left'>
                     <h4>Logo</h4>
                 </div>
-
                 <div className="mobile-nav">
                     {/* <div onClick={() => setDarkMod(!darkMod)} style={{ cursor: "pointer" }}>
                         {darkMod ? <BiSun fontSize={"2rem"} /> : <BiMoon fontSize={"2rem"} style={{ color: "Black" }} />}
@@ -27,12 +24,15 @@ const Header = () => {
                 <div className="middle">
                     <li>
                         <NavLink className="text-light" to="/">Home</NavLink>
+                        {/* <a href="#home"className='text-light'>Home</a> */}
                     </li>
                     <li>
-                        <NavLink className="text-light" to="/about">About</NavLink>
+                        {/* <NavLink className="text-light"  to="#about">About</NavLink> */}
+                        <a href="#about" className='text-light'>About</a>
                     </li>
                     <li>
-                        <NavLink className="text-light" to="/fature" >Fature</NavLink>
+                        {/* <NavLink className="text-light" to="/fature" >Fature</NavLink> */}
+                        <a href="#service" className='text-light'>Service</a>
                     </li>
                 </div>
 
@@ -62,11 +62,13 @@ const Header = () => {
                     </li>
 
                     <li>
-                        <NavLink  className="text-light"  onClick={() => setMenu(!menu)}  to="/about" >About</NavLink>
+                        {/* <NavLink  className="text-light"  onClick={() => setMenu(!menu)}  to="/about" >About</NavLink> */}
+                        <a href="#about" onClick={() => setMenu(!menu)} className='text-light'>About</a>
                     </li>
 
                     <li>
-                        <NavLink  className="text-light"  onClick={() => setMenu(!menu)}  to="fature" >Fature</NavLink>
+                        {/* <NavLink  className="text-light"  onClick={() => setMenu(!menu)}  to="fature" >Fature</NavLink> */}
+                        <a href="#service" onClick={() => setMenu(!menu)} className='text-light'>Service</a>
                     </li>
                 </div>
 

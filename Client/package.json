@@ -20,10 +20,12 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.10.1",
+    "react-multi-carousel": "^2.8.4",
     "react-router-bootstrap": "^0.26.2",
     "react-router-dom": "^6.14.0",
     "react-simple-typewriter": "^5.0.1",
     "react-typewriter-effect": "^1.1.0",
+    "styled-components": "^6.0.4",
     "yup": "^1.2.0"
   },
   "devDependencies": {
