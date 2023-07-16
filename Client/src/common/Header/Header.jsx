@@ -1,17 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./style.css"
-import {  BiMenu } from "react-icons/bi"
+import { BiMenu, BiUserCircle } from "react-icons/bi"
 import { NavLink } from "react-router-dom"
 
+
 const Header = () => {
-   
+
     const [menu, setMenu] = useState(false)
 
     return (
         <>
             <header id='mynav'>
                 <div className='left'>
-                    <h4>Logo</h4>
+                    <img src="https://freepngimg.com/download/diamond/15-diamond-png-image.png" alt="" style={{ width: '60px', height: '60px' }} />
                 </div>
                 <div className="mobile-nav">
                     {/* <div onClick={() => setDarkMod(!darkMod)} style={{ cursor: "pointer" }}>
@@ -34,20 +35,36 @@ const Header = () => {
                         {/* <NavLink className="text-light" to="/fature" >Fature</NavLink> */}
                         <a href="#service" className='text-light'>Service</a>
                     </li>
+                    <li>
+                        <NavLink className="text-light" to="/stock" >Stock</NavLink>
+                        {/* <a href="#service" className='text-light'>Service</a> */}
+                    </li>
                 </div>
 
                 <div className='right'>
-                    <li>
+
+                <div className="drop">
+
+                
+                    <li class="menu-title"><BiUserCircle/> </li>
+                    <ul class="submenu">
+                        <li><NavLink className="text-light" to="/login" >Login</NavLink></li>
+                        <li>  <NavLink className="text-light" to="signup">Sign Up</NavLink></li>
+
+                    </ul>
+                    
+                    </div>
+                    {/* <li>
                         <NavLink className="text-light" to="/login" >Login</NavLink>
                     </li>
 
                     <li>
                         <NavLink className="text-light" to="signup">Sign Up</NavLink>
-                    </li>
+                    </li> */}
 
-                    {/* <li onClick={() => setDarkMod(!darkMod)} style={{ cursor: "pointer" }}>
-                            {darkMod ? <BiSun fontSize={"1.7rem"} /> : <BiMoon fontSize={"1.7rem"} style={{ color: "Black" }} />}
-                        </li> */}
+
+
+
                 </div>
 
             </header>
@@ -58,7 +75,7 @@ const Header = () => {
             <div className={`sidebar  ${menu && "showsidebar"} `}>
                 <div className="middle">
                     <li>
-                        <NavLink className="text-light" onClick={() => setMenu(!menu)}  to="/">Home</NavLink>
+                        <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/">Home</NavLink>
                     </li>
 
                     <li>
@@ -76,11 +93,11 @@ const Header = () => {
 
                 <div className='right'>
                     <li>
-                        <NavLink className="text-light"  onClick={() => setMenu(!menu)}  to="/login" >Login</NavLink>
+                        <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/login" >Login</NavLink>
                     </li>
 
                     <li>
-                        <NavLink  className="text-light"  onClick={() => setMenu(!menu)}  to="signup">Sign Up</NavLink>
+                        <NavLink className="text-light" onClick={() => setMenu(!menu)} to="signup">Sign Up</NavLink>
                     </li>
 
                 </div>
