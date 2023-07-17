@@ -49,7 +49,7 @@ const Header = () => {
                     <li class="menu-title"><BiUserCircle/> </li>
                     <ul class="submenu">
                         <li><NavLink className="text-light" to="/login" >Login</NavLink></li>
-                        <li>  <NavLink className="text-light" to="signup">Sign Up</NavLink></li>
+                        <li><NavLink className="text-light" to="signup">Sign Up</NavLink></li>
 
                     </ul>
                     
@@ -79,13 +79,17 @@ const Header = () => {
                     </li>
 
                     <li>
-                        {/* <NavLink  className="text-light"  onClick={() => setMenu(!menu)}  to="/about" >About</NavLink> */}
+                       
                         <a href="#about" onClick={() => setMenu(!menu)} className='text-light'>About</a>
+                    </li>
+                    <li>
+                       
+                        <a href="#service" onClick={() => setMenu(!menu)} className='text-light'>Service</a>
                     </li>
 
                     <li>
-                        {/* <NavLink  className="text-light"  onClick={() => setMenu(!menu)}  to="fature" >Fature</NavLink> */}
-                        <a href="#service" onClick={() => setMenu(!menu)} className='text-light'>Service</a>
+                       
+                    <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/stock">Stoke</NavLink>
                     </li>
                 </div>
 

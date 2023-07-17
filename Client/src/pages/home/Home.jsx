@@ -10,8 +10,8 @@ import Service from '../service/Service'
 const Home = ({ setLoginUser }) => {
 
   const mypara = "Lorem ipsum, Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, quisquam provident? Iure totam tempora beatae magnam. dolor sit amet Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam, eum! consectetur adipisicing elit. Voluptatibus consequatur quae nulla."
-  const words = mypara.split("")
-
+  const words = mypara.split("");
+  
   const container = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
@@ -37,7 +37,7 @@ const Home = ({ setLoginUser }) => {
 
       {/* backgroud with title   */}
       <div className="top-bg">
-        <video type="video/mp4" src={topbg} playsInline autoPlay loop ></video>
+        <video type="video/mp4"  muted autoPlay loop ><source src={topbg}></source></video>
       </div>
 
       <div className='heading-banner'>
@@ -78,11 +78,12 @@ const Home = ({ setLoginUser }) => {
               <h3>EXCELLENCE</h3>
             </div>
             <div className="box">
-              <FaHandHoldingHeart />
+              < FaHandHoldingUsd/>
               <h3>VALUE</h3>
             </div>
+            
             <div className="box">
-              <FaHandHoldingUsd />
+              <FaHandHoldingHeart />
               <h3>TRUST</h3>
             </div>
           </div>
@@ -97,6 +98,5 @@ const Home = ({ setLoginUser }) => {
     </>
   )
 }
-
 export default Home
 

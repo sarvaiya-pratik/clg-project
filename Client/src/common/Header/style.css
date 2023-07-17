@@ -164,11 +164,9 @@ header .left {
         align-items: center;
         justify-content: center;
         text-transform: uppercase;
-      
         >li{
             line-height: 0; 
         }
-
     }
 
     >.right {
