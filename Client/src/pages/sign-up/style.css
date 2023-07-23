@@ -140,7 +140,7 @@ input:focus{
       height: 100%;
       background: #eee;
       border-radius: 60% / 10%;
-      transform: translateY(5%);
+      transform: translateY(11%);
       -webkit-transition: .8s ease-in-out;
       transition: .8s ease-in-out;
   }
