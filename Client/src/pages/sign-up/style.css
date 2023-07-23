@@ -154,7 +154,7 @@ input:focus{
   
   #chk:checked~.register {
   
-      transform: translateY(112%) !important;
+      transform: translateY(-112%);
   }
   
   #chk:checked~.register label {
@@ -168,6 +168,7 @@ input:focus{
       transform: scale(.6);
       margin: 5% 0 5%;
   }
+ 
   
 }
 
@@ -179,6 +180,11 @@ input:focus{
 
   >.main{
     width: 90%;
+    max-height: 670px;
+
+   #chk:checked~.register {
+    transform: translateY(-113%);
+}
   }
  }
 }
