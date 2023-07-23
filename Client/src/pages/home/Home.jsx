@@ -31,7 +31,6 @@ const Home = ({ setLoginUser }) => {
   }
   return (
     <>
-    
 
     <div id="home">
 
@@ -53,7 +52,7 @@ const Home = ({ setLoginUser }) => {
 
       {/*Section : Facts of MRP  */}
 
-      <div className='second-banner'>
+      {/* <div className='second-banner'>
         <div className="main">
           <motion.div className="left">
             <motion.h2 initial={{ x: -200 }} whileInView={{ x: 0 }}>
@@ -88,7 +87,7 @@ const Home = ({ setLoginUser }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
     {/* End : facts of MRP  */}
 

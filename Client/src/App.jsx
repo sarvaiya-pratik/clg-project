@@ -5,11 +5,12 @@ import Footer from "./common/Footer/Footer"
 import Home from "./pages/home/Home"
 import About from "./pages/about/About"
 import Service from "./pages/service/Service"
-import Stoke from "./pages/stoke/Stoke"
+import Stones from "./pages/stones/Stones"
 import Login from "./pages/login/Login"
 import Signup from "./pages/sign-up/Signup"
 import { useState } from "react"
 import { Toaster } from "react-hot-toast"
+import StoneDetail from "./pages/stones/StoneDetail"
 
 const App = () => {
   const [user, setLoginUser] = useState({_id:12})
@@ -23,7 +24,8 @@ const App = () => {
           {/* <Route path="/about" element={user && user._id ? <About /> : <Login setLoginUser={setLoginUser} />}> </Route> */}
           <Route path="/login" element={<Login setLoginUser={setLoginUser} />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/stock" element={<Stoke />}></Route>
+          <Route path="/stones" element={<Stones />}></Route>
+          <Route path="/stones/:id" element={<StoneDetail />}></Route>
         </Routes>
         <Footer />
       </Router>

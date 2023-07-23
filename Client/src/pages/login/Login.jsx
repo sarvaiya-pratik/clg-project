@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./style.css"
-import { useThemeHook } from '../../Global-Component/ThemeProvide'
+
 import { NavLink } from "react-router-dom"
 import { useFormik } from "formik"
 import { loginSchema } from '../sign-up/Validate'
@@ -51,13 +51,74 @@ const Login = ({ setLoginUser }) => {
   return (
     <>
     
-    
-    <div id="login"  >
-     
-      <Toaster/>
-    </div>
+    <div className="mylogin">
 
-    <form action=""
+  
+    
+    <div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true"/>
+
+			<div class="login">
+				<form class="form">
+					<label for="chk" aria-hidden="true">Log in</label>
+					<input class="input" type="email" name="email" placeholder="Email" required=""/>
+					<input class="input" type="password" name="pswd" placeholder="Password" required=""/>
+					<button>Log in</button>
+				</form>
+			</div>
+
+      <div class="register">
+				<form class="form">
+					<label for="chk" aria-hidden="true">Register</label>
+					<input className='input' name='fname'
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.fname}
+             
+                type="text"
+                placeholder=' First Name' />  
+      <input className='input' name='email'
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.email}
+            type="text"
+          
+            placeholder=' Email' />
+             
+
+<input className='input' name='phone'
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.phone}
+            type="text"
+          
+            placeholder='Phone No' />
+             
+ <input className='input' name='password'
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.password}
+            autoComplete='off'
+            type="password"
+           
+            placeholder='Password' />
+             
+ <input className='input' name='cpassword'
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.cpassword}
+            autoComplete='off'
+            type="password"
+           
+            placeholder='confirm password' />
+					<button>Register</button>
+				</form>
+			</div>
+	</div>
+
+  </div>
+
+    {/* <form action=""
         onSubmit={handleSubmit}
         className='bg-dark'
         id='login-form'
@@ -97,7 +158,7 @@ const Login = ({ setLoginUser }) => {
         <div className="form-con">
           <label>New User ? <span> <NavLink to="/signup" className='lblToggle'>sign up</NavLink> </span></label>
         </div>
-      </form>
+      </form> */}
 
     </>
   )

@@ -1,4 +1,4 @@
-#signup{
+/* #signup{
     height: 130vh;
     width: 100%;
     justify-content: center;
@@ -12,11 +12,10 @@
  position: relative;
  text-align: center;
     
- 
-   
+
 }
 #signup-form{
-  /* height: 86vh; */
+  
   position: absolute;
   top: 25%;
 left: 30%;
@@ -60,6 +59,116 @@ input {
 input:focus{
     outline: none;
     border-color: goldenrod;
+} */
+
+.myregister{
+  padding: 5rem 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-color);
+  >.main {
+      width: 40%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      /* background-color: #240046; */
+    background-color: black;
+      max-height: 680px;
+      overflow: hidden;
+      border-radius: 12px;
+      
+      box-shadow: 7px 7px 10px 3px #24004628;
+  }
+  
+  .form {
+     
+      display: flex;
+     
+    
+      flex-direction: column;
+      gap: 14px;
+      padding: 24px;
+  }
+  
+  /*checkbox to switch from sign up to log*/
+  #chk {
+      display: none;
+  }
+  
+  /*log*/
+  .log {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+
+  }
+  
+  .log label {
+      margin: 25% 0 5%;
+  }
+  
+  label {
+      color: #fff;
+      font-size: 2rem;
+      text-align: center;
+      justify-content: center;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      font-weight: bold;
+      cursor: pointer;
+  
+      transition: .5s ease-in-out;
+  }
+  
+  .input {
+      width: 100%;
+      height: 40px;
+      background: #e0dede;
+      padding: 10px;
+      border: none;
+      outline: none;
+      border-radius: 4px;
+  }
+  
+  /*Register*/
+  .register {
+      height: 100%;
+      background: #eee;
+      border-radius: 60% / 10%;
+      transform: translateY(5%);
+      -webkit-transition: .8s ease-in-out;
+      transition: .8s ease-in-out;
+  }
+  
+  .register label {
+      /* color: #573b8a; */
+  color: black;
+      text-align: center;
+      transform: scale(.6);
+  }
+  
+  #chk:checked~.register {
+  
+      transform: translateY(112%) !important;
+  }
+  
+  #chk:checked~.register label {
+  
+      transform: scale(1);
+      margin: 10% 0 5%;
+  }
+  
+  #chk:checked~.log label {
+  
+      transform: scale(.6);
+      margin: 5% 0 5%;
+  }
+  
 }
 
 /* Responsive */

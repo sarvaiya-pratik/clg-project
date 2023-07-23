@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "./style.css"
 import { Col } from "react-bootstrap"
 import { NavLink } from "react-router-dom"
-import { useThemeHook } from '../../Global-Component/ThemeProvide'
+
 import { useFormik } from "formik"
 import { signUpSchema } from './Validate'
 import axios from 'axios'
@@ -45,11 +45,76 @@ const Signup = () => {
 
   return (
     <>
-      <div id="signup">
-       
-      </div>
+      <div className="myregister">
 
-      <form id='signup-form' action="" method='POST'
+  
+    
+<div class="main">  	
+<input type="checkbox" id="chk" aria-hidden="true"/>
+
+  <div class="log">
+    <form class="form">
+      <label for="chk" aria-hidden="true">Register</label>
+      <input className='input' name='fname'
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.fname}
+             
+                type="text"
+                placeholder=' First Name' />  
+      <input className='input' name='email'
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.email}
+            type="text"
+          
+            placeholder=' Email' />
+             
+
+<input className='input' name='phone'
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.phone}
+            type="text"
+          
+            placeholder='Phone No' />
+             
+ <input className='input' name='password'
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.password}
+            autoComplete='off'
+            type="password"
+           
+            placeholder='Password' />
+             
+ <input className='input' name='cpassword'
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.cpassword}
+            autoComplete='off'
+            type="password"
+           
+            placeholder='confirm password' />
+             
+      <button>Register</button>
+    </form>
+  </div>
+
+  <div class="register">
+    <form class="form">
+      <label for="chk" aria-hidden="true">Login</label>
+      <input class="input" type="email" name="email" placeholder="Email" required=""/>
+      <input class="input" type="password" name="pswd" placeholder="Password" required=""/>
+
+      <button>Log in</button>
+    </form>
+  </div>
+</div>
+
+</div>
+
+      {/* <form id='signup-form' action="" method='POST'
         className='bg-dark'
         onSubmit={handleSubmit} >
 
@@ -147,7 +212,7 @@ const Signup = () => {
           </label>
         </div>
               <Toaster/>
-      </form>
+      </form> */}
 
     </>
   )
