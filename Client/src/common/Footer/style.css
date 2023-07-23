@@ -1,22 +1,23 @@
 .wave-container {
   position: relative;
-  height: 70vh;
+  height: 100%;
+  padding-bottom: 6rem;
   width: 100%;
   background-color: var(--secondary-color);
   /* border-top: 1px solid black; */
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
   #footer {
-    padding: 2rem;
+   
+ 
     display: flex;
     width: 100%;
     height: 100%;
-
- 
+    justify-content: center;
 
     >.address {
     width: 30%;
-display: flex;
+    display: flex;
 
     }
 
@@ -320,7 +321,7 @@ display: flex;
 
 @media screen and (max-width:773px) {
   .wave-container {
-    height: 92vh;
+    height: 100%;
 
     #footer {
       padding: 1rem;

@@ -82,7 +82,7 @@ const Footer = () => {
 
 
 
-        <p style={{ textAlign: 'center', fontSize: '1.1 rem' }}>&copy; 2023 MRP DIAMONDS All right reserved</p>
+        <p style={{ textAlign: 'center', fontSize: '1.1 rem',marginTop:'3rem' }}>&copy; 2023 MRP DIAMONDS All right reserved</p>
 
 
         <div className="wave"></div>
