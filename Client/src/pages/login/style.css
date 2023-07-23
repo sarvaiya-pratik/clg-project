@@ -135,10 +135,8 @@ label {
 
 @media screen and (max-width:773px) {
 
-    #login {}
-
-    #login-form {
-        width: 90%;
-        left: 5%;
-    }
+ 
+   .main{
+    width: 90%;
+}
 }

@@ -175,19 +175,10 @@ input:focus{
 
 @media  screen and (max-width:773px) {
 
-  #signup{
-  
-      
-       
-  }
+ .myregister{
 
-  #signup-form{
+  >.main{
     width: 90%;
-    border: none;
-    left:5%;
-    padding: 1rem 2rem;
-
- 
   }
-
+ }
 }
