@@ -19,7 +19,7 @@ header .left {
 .middle {
     display: flex;
     flex-basis: 50%;
-    gap: 2rem;
+    gap:1rem;
 
     >li {
         display: block;
@@ -41,37 +41,7 @@ header .left {
        
     } 
 
-    >li:after,>li:before{
-        content: "";
-        position: absolute;
-        display: block;
-        border: 0px solid transparent;
-        width: 0%;
-        height: 0%;
-        transition: all 0.3s ease;
-    }
-    >li:after{
-        width: 0%;
-  height: 0%;
-  top: 0;
-  left: 0;
-  border-top: 2px solid transparent;
-  border-left: 2px solid transparent;
-    }
-    >li:before{
-        width: 0%;
-  height: 0%;
-  right: 0;
-  bottom: 0;
-  border-bottom: 2px solid transparent;
-  border-right: 2px solid transparent;
-    }
-    >li:hover::before, li:hover::after {
-        width: 10px;
-  height: 10px;
-  border-color: var(--bg-primary);
-    
-}
+   
 }
 
 .right {

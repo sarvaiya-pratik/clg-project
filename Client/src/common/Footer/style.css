@@ -18,7 +18,7 @@
     >.address {
     width: 30%;
     display: flex;
-
+    padding-left: 2rem;
     }
 
     .feedback{
@@ -26,12 +26,7 @@
      display: flex;
      flex-direction: column;
      align-items: center;
-      >h2{
-        border-bottom: 1px solid #0380a7;
-        width: fit-content;
-        color: #0380a7;
-        margin-bottom: 1rem;
-      }
+     
     >.subscribe {
       position: relative;
       height: 140px;
@@ -123,7 +118,7 @@
 
      
       .instagram,.twitter,.linkedin,.facebook{
-        font-size: 1.2rem;
+        font-size: 1.4rem;
       }
       
       .up {
@@ -243,12 +238,7 @@
 
 
       /* justify-content: center; */
-      >h2 {
-        border-bottom: 1px solid #0380a7;
-        width: fit-content;
-        color: #0380a7;
-        margin-bottom: 1rem;
-      }
+     
 
       .box {
         display: flex;

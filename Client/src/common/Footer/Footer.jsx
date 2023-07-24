@@ -15,7 +15,7 @@ const Footer = () => {
       <div className="wave-container">
         <div id="footer">
           <div className="address">
-            <h2>MRP DIAMONDS</h2>
+            <h2 className='heading'>MRP DIAMONDS</h2>
             <div className="box">
               <GrLocation />
               <p>NEAR GIRDHAR CIRCLE NEAR VED VESU SURAT - 395678</p>
@@ -35,7 +35,7 @@ const Footer = () => {
           </div>
 
           <div className="social">
-            <h2>FOLLOW US !</h2>
+            <h2 className='heading'>FOLLOW US !</h2>
             <div className="up">
               <a href="">
                 <button className="card1">
@@ -68,7 +68,7 @@ const Footer = () => {
           </div>
           <div className="feedback">
 
-            <h2>FEEDBACK !</h2>
+            <h2 className='heading'>FEEDBACK !</h2>
             <div className="subscribe">
               <p>Write here...</p>
               <input placeholder="Give your feedback !" className="subscribe-input" name="email" type="text" />

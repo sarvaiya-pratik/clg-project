@@ -8,7 +8,7 @@ const About = () => {
     <>
     
     <div id="about">
-
+    <h2 className='heading'>ABOUT US</h2>
     <LeftAbout
         title="LEGACY"
         subTitle="ELEGANCE | ETHICS | VISION"

@@ -8,9 +8,9 @@ const Stones = () => {
 
   return (
     <div id='stones'>
-      <div className="heading">
-        <h2>MRP STONES</h2>
-      </div>
+    
+        <h2 className='heading'>MRP STONES</h2>
+      
 
       <main>
         <div className="filter">
@@ -26,6 +26,7 @@ const Stones = () => {
                     <h5>{item.title}</h5>
                   </NavLink>
                   <hr />
+                  <p style={{textAlign:'center',fontWeight:'600',color:"goldenrod"}}>{item.price} $</p>
                   <div className="mid">
                     <p>T:{item.Table}</p>  <p>D:{item.Depth}</p>  <p>R:{item.Ratio}</p>
                   </div>

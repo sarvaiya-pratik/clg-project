@@ -12,7 +12,7 @@ const StoneDetail = () => {
   return (
     <div id='sotneDetail'>
 
-      <h2 className='text-center'>Diamond Details</h2>
+      <h2 className='heading'>Diamond Details</h2>
       <div className="details">
         <iframe src={dd[0][360]} width='320px' height='320px' ></iframe>
         <div className="right">

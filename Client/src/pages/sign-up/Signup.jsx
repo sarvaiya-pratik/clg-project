@@ -61,7 +61,7 @@ const Signup = () => {
                 value={values.fname}
              
                 type="text"
-                placeholder=' First Name' />  
+                placeholder='Full Name' />  
       <input className='input' name='email'
             onChange={handleChange}
             onBlur={handleBlur}

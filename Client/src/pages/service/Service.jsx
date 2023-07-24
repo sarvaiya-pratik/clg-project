@@ -27,8 +27,8 @@ const Service = () => {
   
   return (
     <div id='service'>
-      <h2>OUR SERVICES</h2>
-      <p>PASSION | COMPATIBILITY | CREATIVITY</p>
+      <h2 className='heading'>OUR SERVICES</h2>
+   
 
       <Carousel responsive={responsive} className='mycarousel'>
       <div className='box'>
