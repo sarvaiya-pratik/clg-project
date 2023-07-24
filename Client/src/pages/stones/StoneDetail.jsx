@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import data from "./data.json"
+import {BsCartPlus} from "react-icons/bs"
 
 const StoneDetail = () => {
   const param = useParams();
@@ -93,6 +94,8 @@ const StoneDetail = () => {
                   <p>{dd[0]['Culet']}</p>
                 </div>
             </div>
+
+            <button className='addToCart'><BsCartPlus/>Add To Cart</button>
         </div>
       </div>
 

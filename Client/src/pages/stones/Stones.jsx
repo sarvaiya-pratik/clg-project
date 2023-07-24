@@ -2,6 +2,7 @@ import React from 'react'
 import "./style.css"
 import ThreeSixty from "react-360-view";
 import data from "./data.json"
+import {BsCartPlus} from "react-icons/bs"
 
 import { NavLink } from "react-router-dom"
 const Stones = () => {
@@ -31,7 +32,7 @@ const Stones = () => {
                     <p>T:{item.Table}</p>  <p>D:{item.Depth}</p>  <p>R:{item.Ratio}</p>
                   </div>
                   <hr />
-                  <button className='addToCart'>Add To Cart</button>
+                  <button className='addToCart'><BsCartPlus/>Add To Cart</button>
                 </div>
 
 

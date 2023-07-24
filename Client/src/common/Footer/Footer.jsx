@@ -37,12 +37,12 @@ const Footer = () => {
           <div className="social">
             <h2 className='heading'>FOLLOW US !</h2>
             <div className="up">
-              <a href="">
+              <a href="https://www.facebook.com/pratik.saravaiya?mibextid=ZbWKwL" target='_blank'>
                 <button className="card1">
                   <FaFacebook className='facebook' style={{ color: " #3b5998" }} />
                 </button>
               </a>
-              <a href="">
+              <a href="https://pratik-sarvaiya.vercel.app/" target='_blank'>
                 <button className="card2">
                   <FaTwitter className='twitter' style={{ color: '#00acee' }} />
                 </button>
@@ -52,13 +52,13 @@ const Footer = () => {
             </div>
             <div className="down">
 
-              <a href="">
+              <a href="https://www.linkedin.com/in/pratik-sarvaiya-580370273" target='_blank'>
                 <button className="card3">
                   <FaLinkedin className='linkedin' style={{ color: '#0A66C2' }} />
                 </button>
               </a>
 
-              <a href="">
+            <a href="https://www.instagram.com/pratiksaravaiya/?igshid=YmMyMTA2M2Y%3D" target='_blank'>
                 <button className="card4">
                   <FaInstagram className='instagram' style={{ color: "#E1306C" }} />
                 </button>
