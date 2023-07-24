@@ -8,6 +8,8 @@ const Header = () => {
 
     const [menu, setMenu] = useState(false)
 
+
+
     return (
         <>
             <header id='mynav'>
@@ -15,12 +17,9 @@ const Header = () => {
                     <img src="https://freepngimg.com/download/diamond/15-diamond-png-image.png" alt="" style={{ width: '60px', height: '60px' }} />
                 </div>
                 <div className="mobile-nav">
-                    {/* <div onClick={() => setDarkMod(!darkMod)} style={{ cursor: "pointer" }}>
-                        {darkMod ? <BiSun fontSize={"2rem"} /> : <BiMoon fontSize={"2rem"} style={{ color: "Black" }} />}
-                    </div> */}
-                    {/* <div className=""><BiMenu fontSize={'2rem'} onClick={() => setMenu(!menu)} /></div> */}
+
                     <label class="hamburger">
-                        <input type="checkbox" />
+                        <input type="checkbox" checked={menu && true} />
                         <svg viewBox="0 0 32 32" onClick={() => setMenu(!menu)}>
                             <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
                             <path class="line" d="M7 16 27 16"></path>
@@ -32,31 +31,30 @@ const Header = () => {
 
                 <div className="middle">
                     <li>
-                       
-                        {/* <a href="#home"className='text-light'>Home</a> */}
+
+
                         <button class="button6 type1">
                             <span class="btn-txt"> <NavLink className="text-light" to="/">Home</NavLink></span>
                         </button>
                     </li>
                     <li>
-                        {/* <NavLink className="text-light"  to="#about">About</NavLink> */}
-                        
+
+
                         <button class="button6 type1">
                             <span class="btn-txt"><a href="#about" className='text-light'>About</a></span>
                         </button>
                     </li>
                     <li>
-                        {/* <NavLink className="text-light" to="/fature" >Fature</NavLink> */}
-                        
-                        
+
+
+
                         <button class="button6 type1">
                             <span class="btn-txt"><a href="#service" className='text-light'>Service</a></span>
                         </button>
                     </li>
                     <li>
-                        
-                       
-                        {/* <a href="#service" className='text-light'>Service</a> */}
+
+
 
                         <button class="button6 type1">
                             <span class="btn-txt"><NavLink className="text-light" to="/stones" >Stones</NavLink></span>
@@ -72,18 +70,12 @@ const Header = () => {
                         <li className="menu-title"><BiUserCircle /> </li>
                         <ul className="submenu">
                             <li><NavLink className="text-light" to="/login" >Login</NavLink></li>
-                            <li><NavLink className="text-light" to="signup">Sign Up</NavLink></li>
+                            <li><NavLink className="text-light" to="/signup">Sign Up</NavLink></li>
 
                         </ul>
 
                     </div>
-                    {/* <li>
-                        <NavLink className="text-light" to="/login" >Login</NavLink>
-                    </li>
 
-                    <li>
-                        <NavLink className="text-light" to="signup">Sign Up</NavLink>
-                    </li> */}
 
 
 
@@ -98,21 +90,43 @@ const Header = () => {
             <div className={`sidebar  ${menu && "showsidebar"} `}>
                 <div className="middle">
                     <li>
-                        <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/">Home</NavLink>
+                        <button class="button6 type1">
+                            <span class="btn-txt">
+                                <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/">Home</NavLink>
+                            </span>
+                        </button>
+
                     </li>
 
                     <li>
+                        <button class="button6 type1">
+                            <span class="btn-txt">
+                                <a href="#about" onClick={() => setMenu(!menu)} className='text-light'>About</a>
+                            </span>
+                        </button>
 
-                        <a href="#about" onClick={() => setMenu(!menu)} className='text-light'>About</a>
+
                     </li>
                     <li>
+                        <button class="button6 type1">
+                            <span class="btn-txt">
+                                <a href="#service" onClick={() => setMenu(!menu)} className='text-light'>Service</a>
 
-                        <a href="#service" onClick={() => setMenu(!menu)} className='text-light'>Service</a>
+                            </span>
+                        </button>
+
+
+
                     </li>
 
                     <li>
+                        <button class="button6 type1">
+                            <span class="btn-txt">
+                                <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/stones">Stones</NavLink>
 
-                        <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/stones">Stones</NavLink>
+                            </span>
+                        </button>
+
                     </li>
                 </div>
 
@@ -120,11 +134,24 @@ const Header = () => {
 
                 <div className='right'>
                     <li>
-                        <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/login" >Login</NavLink>
+                        <button class="button6 type1">
+                            <span class="btn-txt">
+                                <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/login" >Login</NavLink>
+
+                            </span>
+                        </button>
                     </li>
 
+
                     <li>
-                        <NavLink className="text-light" onClick={() => setMenu(!menu)} to="signup">Sign Up</NavLink>
+                        <button class="button6 type1">
+                            <span class="btn-txt">
+                                <NavLink className="text-light" onClick={() => setMenu(!menu)} to="signup">Sign Up</NavLink>
+
+                            </span>
+                        </button>
+
+
                     </li>
 
                 </div>
