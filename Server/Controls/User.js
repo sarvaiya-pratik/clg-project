@@ -2,53 +2,58 @@ const UserModel = require("../models/Users")
 const { hashPassword, comparePassword } = require("../hepler/authHepler")
 const Jwt = require("jsonwebtoken")
 
-// api SIGN UP || POST
-// app.post("/signup",(req,res)=>{})
-const SignUpControl = async (req, res) => {
-    const { fname, lname, email, phone, password } = req.body;
-    const data = await UserModel.findOne({ email:email });
-    if (data) {
-        res.status(201).send({ message: "Email alreay exist" })
+// api REGISTER || POST
+
+const RegisterControl = async (req, res) => {
+    const { name, email, phone, password, cpassword } = req.body;
+    if(name && email && phone & password && cpassword){
+        const user = await UserModel.findOne({ email })
+    if (user) {
+        res.send({ status: "failed", message: "Email already registered" })
     }
     else {
-        const hPassword = await hashPassword(password)
-        const user = await new UserModel({ fname, lname, email, phone, password: hPassword }).save()
-        res.status(200).send({
-            success: true,
-            message: "User register succesful"
-        })
+        //check password and cpassowrd are same or not
+        if (password === cpassword) {
+            const hpass = await hashPassword(password)
+            const doc = await new UserModel({ "name": name, "email": email, "phone": phone, "password": hpass })
+            doc.save();
+            res.send({ status: "succesfull", message: "Register sucessfully" })
+        }
+        else {
+            res.send({ status: "failed", message: "Password not same !" })
+        }
     }
+    }
+    else{
+        res.send({status:"failed",message:"All fields are required"})
+    }
+    
 }
 
 //api LOGIN || POST
 const LoginCotrol = async (req, res) => {
     const { email, password } = req.body;
-    try {
-        const user = await UserModel.findOne({ email })
-        // console.log(user)
-        if (!user) {
-            res.status(204).send({ success: false, message: "User Not found !" });
-        }
+if(email && password){
+    const user = await UserModel.findOne({ email })
 
-        const match = await comparePassword(password, user.password)
-        if (!match) {
-            return res.status(203).send({ success: false, message: "Invalid Password" })
+    if (user) {
+        // check password
+        const ischeck = await comparePassword(password, user.password)
+        if (ischeck) {
+            res.status(201).send({ status: "success", message: "Login succesfully" })
         }
         else {
-            //token 
-            const token = Jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: 78 })
-           res.cookie("token", token, { httpOnly: true })
-            .status(201).send({
-                success: true,
-                message: "login succesful",
-                user,
-                token,
-            })
+            res.status(401).send({ status: "failed", message: "Invalid Password!" })
         }
-
-    } catch (err) {
-        console.log(err)
+    }
+    else {
+        res.status(401).send({ status: "failed", message: "Please Register First" })
     }
 }
+else{
+    res.status(204).send({status:"failed",message:"All fields are reauire"})
+}
+    
+}
 
-module.exports = { SignUpControl, LoginCotrol }
+module.exports = { RegisterControl, LoginCotrol }

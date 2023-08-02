@@ -18,11 +18,11 @@ const Header = () => {
                 </div>
                 <div className="mobile-nav">
 
-                    <label class="hamburger">
-                        <input type="checkbox" checked={menu && true} />
+                    <label className="hamburger">
+                        <input type="checkbox"  />
                         <svg viewBox="0 0 32 32" onClick={() => setMenu(!menu)}>
-                            <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
-                            <path class="line" d="M7 16 27 16"></path>
+                            <path className="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                            <path className="line" d="M7 16 27 16"></path>
                         </svg>
                     </label>
 
@@ -33,31 +33,31 @@ const Header = () => {
                     <li>
 
 
-                        <button class="button6 type1">
-                            <span class="btn-txt"> <NavLink className="text-light" to="/">Home</NavLink></span>
+                        <button className="button6 type1">
+                            <span className="btn-txt"> <NavLink className="text-light" to="/">Home</NavLink></span>
                         </button>
                     </li>
                     <li>
 
 
-                        <button class="button6 type1">
-                            <span class="btn-txt"><a href="#about" className='text-light'>About</a></span>
-                        </button>
-                    </li>
-                    <li>
-
-
-
-                        <button class="button6 type1">
-                            <span class="btn-txt"><a href="#service" className='text-light'>Service</a></span>
+                        <button className="button6 type1">
+                            <span className="btn-txt"><a href="#about" className='text-light'>About</a></span>
                         </button>
                     </li>
                     <li>
 
 
 
-                        <button class="button6 type1">
-                            <span class="btn-txt"><NavLink className="text-light" to="/stones" >Stones</NavLink></span>
+                        <button className="button6 type1">
+                            <span className="btn-txt"><a href="#service" className='text-light'>Service</a></span>
+                        </button>
+                    </li>
+                    <li>
+
+
+
+                        <button className="button6 type1">
+                            <span className="btn-txt"><NavLink className="text-light" to="/stones" >Stones</NavLink></span>
                         </button>
                     </li>
                 </div>
@@ -90,8 +90,8 @@ const Header = () => {
             <div className={`sidebar  ${menu && "showsidebar"} `}>
                 <div className="middle">
                     <li>
-                        <button class="button6 type1">
-                            <span class="btn-txt">
+                        <button className="button6 type1">
+                            <span className="btn-txt">
                                 <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/">Home</NavLink>
                             </span>
                         </button>
@@ -99,8 +99,8 @@ const Header = () => {
                     </li>
 
                     <li>
-                        <button class="button6 type1">
-                            <span class="btn-txt">
+                        <button className="button6 type1">
+                            <span className="btn-txt">
                                 <a href="#about" onClick={() => setMenu(!menu)} className='text-light'>About</a>
                             </span>
                         </button>
@@ -108,8 +108,8 @@ const Header = () => {
 
                     </li>
                     <li>
-                        <button class="button6 type1">
-                            <span class="btn-txt">
+                        <button className="button6 type1">
+                            <span className="btn-txt">
                                 <a href="#service" onClick={() => setMenu(!menu)} className='text-light'>Service</a>
 
                             </span>
@@ -120,8 +120,8 @@ const Header = () => {
                     </li>
 
                     <li>
-                        <button class="button6 type1">
-                            <span class="btn-txt">
+                        <button className="button6 type1">
+                            <span className="btn-txt">
                                 <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/stones">Stones</NavLink>
 
                             </span>
@@ -134,8 +134,8 @@ const Header = () => {
 
                 <div className='right'>
                     <li>
-                        <button class="button6 type1">
-                            <span class="btn-txt">
+                        <button className="button6 type1">
+                            <span className="btn-txt">
                                 <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/login" >Login</NavLink>
 
                             </span>
@@ -144,8 +144,8 @@ const Header = () => {
 
 
                     <li>
-                        <button class="button6 type1">
-                            <span class="btn-txt">
+                        <button className="button6 type1">
+                            <span className="btn-txt">
                                 <NavLink className="text-light" onClick={() => setMenu(!menu)} to="signup">Sign Up</NavLink>
 
                             </span>

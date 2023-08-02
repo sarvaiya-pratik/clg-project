@@ -8,12 +8,28 @@ import Service from "./pages/service/Service"
 import Stones from "./pages/stones/Stones"
 import Login from "./pages/login/Login"
 import Signup from "./pages/sign-up/Signup"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Toaster } from "react-hot-toast"
 import StoneDetail from "./pages/stones/StoneDetail"
+import axios from "axios"
 
 const App = () => {
   const [user, setLoginUser] = useState({_id:12})
+  const [jdata,setJdata] = useState([])
+console.log(jdata)
+  useEffect(()=>{
+    
+    callapi()
+  },[])
+
+  const callapi = async() =>{
+    await axios.get("http://localhost:4001/api/data")
+    .then((res)=>{
+     setJdata(res.data)
+    } )
+    .catch(err=> "Error in json data(Pratik)"+err)
+  }
+
   return (
     <>
       <Router>
@@ -22,10 +38,10 @@ const App = () => {
           {/* <Route path="/" element={user && user._id ? <Home setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser} />}></Route> */}
           <Route path="/" element={user && user._id ? <Home setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser} />}/>
           {/* <Route path="/about" element={user && user._id ? <About /> : <Login setLoginUser={setLoginUser} />}> </Route> */}
-          <Route path="/login" element={<Login setLoginUser={setLoginUser} />}></Route>
+          <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/stones" element={<Stones />}></Route>
-          <Route path="/stones/:id" element={<StoneDetail />}></Route>
+          <Route path="/stones" element={<Stones data ={jdata} />}></Route>
+          <Route path="/stones/:id" element={<StoneDetail data={jdata} />}></Route>
         </Routes>
         <Footer />
       </Router>

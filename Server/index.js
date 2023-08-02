@@ -5,19 +5,20 @@ const cors = require("cors")
 const bodyParser = require("body-parser")
 const app = express()
 const cookieParser = require("cookie-parser")
+const mydata = require("./data.json")
+app.use(cors())
 
-app.use(cors({
-    origin:[""],
-    methods:["POST","GET"],
-    credentials:true
-}))
 app.use(bodyParser.json())
 app.use(cookieParser())
 const Router = require("./Routers/Users")
 
+app.get('/api/data', (req, res) => {
+    res.json(mydata);
+})
+
 
 // mongo connect
-app.use("/",Router)
+app.use("/", Router)
 
 mongoose.connect(process.env.URLATLAS);
 

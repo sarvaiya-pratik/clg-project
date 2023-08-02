@@ -19,6 +19,12 @@
                 margin: 1rem;
                 background-color: #fff;
 
+                &:hover{
+                    box-shadow: rgba(50, 50, 93, 0);
+                    background-color: rgb(216, 213, 213);
+
+                }
+
                 >iframe {
                     border-radius: 10px;
 
@@ -26,8 +32,12 @@
 
                 >.card-body {
                     padding: 0 0.6rem;
-
-                    >a {
+                   
+                        >a{
+                        text-decoration: none;
+                        color: black;
+                        }
+                    >h2 {
                         color: black;
                         text-decoration: none;
                         /* padding:0 0.6rem; */
@@ -42,7 +52,7 @@
 
 
 
-                    >.mid {
+                    .mid {
                         display: flex;
                         justify-content: space-between;
                         padding: 0 0.6rem;
