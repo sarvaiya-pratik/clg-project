@@ -2,11 +2,6 @@ import React, { useState } from 'react'
 import "./style.css"
 import axios from 'axios'
 
-// import { NavLink } from "react-router-dom"
-
-// import { loginSchema } from '../sign-up/Validate'
-// import axios from 'axios'
-// import { useNavigate } from "react-router-dom"
 import toast, { Toaster } from "react-hot-toast"
 
 
@@ -29,10 +24,13 @@ function handleLoginSubmit(e){
   e.preventDefault();
   axios.post("http://localhost:4001/login",loginData)
   .then((r)=>{
-    if(r.status == 204){
+   if(r.data.status == "success"){
       toast.success(r.data.message)
     }
-   console.log("Pratik"+r.status)
+    else{
+     toast.error(r.data.message)
+    }
+   console.log("Pratik"+r.data.message)
   })
 }
 
@@ -40,10 +38,11 @@ function handleRegSubmit(e){
   e.preventDefault();
  axios.post("http://localhost:4001/register",regData)
   .then((r)=>{
-    if(r.status === "204"){
-      alert(r.data.message)
+    if(r.data.status == "success"){
+      toast.success(r.data.message)
     }
-    toast.success(r.data.message)
+    else{
+    toast.error(r.data.message)}
   })
 }
 

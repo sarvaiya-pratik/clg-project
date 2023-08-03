@@ -11,23 +11,24 @@ import Signup from "./pages/sign-up/Signup"
 import { useEffect, useState } from "react"
 import { Toaster } from "react-hot-toast"
 import StoneDetail from "./pages/stones/StoneDetail"
+import Admin from "./pages/admin/Admin"
 import axios from "axios"
 
 const App = () => {
-  const [user, setLoginUser] = useState({_id:12})
-  const [jdata,setJdata] = useState([])
-console.log(jdata)
-  useEffect(()=>{
-    
-    callapi()
-  },[])
+  // const [user, setLoginUser] = useState({ _id: 12 })
+  const [jdata, setJdata] = useState([])
+  console.log(jdata)
+  useEffect(() => {
 
-  const callapi = async() =>{
+    callapi()
+  }, [])
+
+  const callapi = async () => {
     await axios.get("http://localhost:4001/api/data")
-    .then((res)=>{
-     setJdata(res.data)
-    } )
-    .catch(err=> "Error in json data(Pratik)"+err)
+      .then((res) => {
+        setJdata(res.data)
+      })
+      .catch(err => "Error in json data(Pratik)" + err)
   }
 
   return (
@@ -36,17 +37,20 @@ console.log(jdata)
         <Header />
         <Routes>
           {/* <Route path="/" element={user && user._id ? <Home setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser} />}></Route> */}
-          <Route path="/" element={user && user._id ? <Home setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser} />}/>
+          <Route path="/" element={<Home/>} /> 
           {/* <Route path="/about" element={user && user._id ? <About /> : <Login setLoginUser={setLoginUser} />}> </Route> */}
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/stones" element={<Stones data ={jdata} />}></Route>
+          <Route path="/stones" element={<Stones data={jdata} />}></Route>
           <Route path="/stones/:id" element={<StoneDetail data={jdata} />}></Route>
+        {/* <Routes path="/admin" element={<Admin />} /> */}
         </Routes>
         <Footer />
+
+
       </Router>
       <Toaster />
-      
+
     </>
   )
 }
