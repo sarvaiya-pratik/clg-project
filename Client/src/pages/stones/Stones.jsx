@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import "./style.css"
+import Header from '../../common/Header/Header'
+import Footer from '../../common/Footer/Footer'
 import { useState } from 'react'
 import axios from 'axios'
 import { BsCartPlus } from "react-icons/bs"
@@ -8,6 +10,8 @@ import { NavLink } from "react-router-dom"
 const Stones = ({ data }) => {
 
   return (
+    <>
+    <Header/>
     <div id='stones'>
 
       <h2 className='heading'>MRP STONES</h2>
@@ -42,6 +46,8 @@ const Stones = ({ data }) => {
         </div>
       </main>
     </div>
+    <Footer/>
+    </>
   )
 }
 

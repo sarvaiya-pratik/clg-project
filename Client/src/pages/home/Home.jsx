@@ -6,6 +6,9 @@ import { motion } from "framer-motion"
 import { Cursor, Typewriter } from "react-simple-typewriter"
 import About from '../about/About'
 import Service from '../service/Service'
+import Header from "../../common/Header/Header"
+import Footer from "../../common/Footer/Footer"
+
 
 const Home = ({ setLoginUser }) => {
 
@@ -31,7 +34,7 @@ const Home = ({ setLoginUser }) => {
   }
   return (
     <>
-
+<Header/>
     <div id="home">
 
       {/* backgroud with title   */}
@@ -94,6 +97,7 @@ const Home = ({ setLoginUser }) => {
     </div>
     <About/>
     <Service/>
+    <Footer/>
     </>
   )
 }

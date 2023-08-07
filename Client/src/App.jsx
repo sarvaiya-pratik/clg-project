@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import "./app.css"
-import Header from "./common/Header/Header"
-import Footer from "./common/Footer/Footer"
+
 import Home from "./pages/home/Home"
 import About from "./pages/about/About"
 import Service from "./pages/service/Service"
@@ -13,6 +12,7 @@ import { Toaster } from "react-hot-toast"
 import StoneDetail from "./pages/stones/StoneDetail"
 import Admin from "./pages/admin/Admin"
 import axios from "axios"
+import Dashboard from "./pages/admin/Dashboard/Dashboard"
 
 const App = () => {
   // const [user, setLoginUser] = useState({ _id: 12 })
@@ -34,7 +34,7 @@ const App = () => {
   return (
     <>
       <Router>
-        <Header />
+      
         <Routes>
           {/* <Route path="/" element={user && user._id ? <Home setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser} />}></Route> */}
           <Route path="/" element={<Home/>} /> 
@@ -43,9 +43,10 @@ const App = () => {
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/stones" element={<Stones data={jdata} />}></Route>
           <Route path="/stones/:id" element={<StoneDetail data={jdata} />}></Route>
-        {/* <Routes path="/admin" element={<Admin />} /> */}
+        <Route path="/admin" element={<Admin />} />
+        {/* <Route path="/admin/dashboard" element={<Dashboard />} /> */}
         </Routes>
-        <Footer />
+
 
 
       </Router>
