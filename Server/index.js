@@ -22,7 +22,7 @@ app.get('/readmydata',async(req,res)=>{
     res.send(data)
 })
 app.post('/mydata', async (req, res) => {
-    const { stokeid,
+    const { 
         catagory,
         title,
         threesixty,

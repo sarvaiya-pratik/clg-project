@@ -1,0 +1,129 @@
+#admin {
+    >header {
+        background-color: rgb(99, 85, 49);
+        display: flex;
+        height: 60px;
+
+        /* position: sticky; */
+        >.left {
+            display: flex;
+            flex-basis: 50%;
+            gap: 1rem;
+            padding-left: 2rem;
+
+            >svg {
+                font-size: 1.6rem;
+                cursor: pointer;
+            }
+        }
+
+        >.right {
+            flex-basis: 50%;
+            gap: 1rem;
+            justify-content: flex-end;
+            padding-right: 2rem;
+
+            >input {
+                border: none;
+                outline: none;
+                border-radius: 20px;
+                width: max-content;
+                padding-left: 10px;
+            }
+
+            >svg {
+                font-size: 1.6rem;
+                cursor: pointer;
+            }
+
+            >img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+        }
+
+    }
+
+    >main {
+        display: flex;
+       
+
+        >.left-side {
+
+            background-color: rgb(151, 136, 99);
+            width: 28%;
+            height: 100vh;
+            transform: translateX(-100%);
+            margin-top: 60px;
+            position: absolute;
+
+
+
+
+            >ul {
+
+                >li {
+                    list-style: none;
+                    padding: 1rem;
+                    padding-left: unset;
+                    border-bottom: 1px solid white;
+
+                    >a {
+                        text-decoration: none;
+                        color: white;
+
+                        >svg {
+                            font-size: 1.2rem;
+                            margin-bottom: 0.3rem;
+                            margin-right: 0.5rem;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        >#showslide {
+            transform: unset;
+            position: fixed !important;
+            /* display: ; */
+          
+        }
+
+    }
+}
+
+/* Dashboard */
+.content-admin{
+    margin-top: 60px;
+    flex-wrap: wrap;
+    background-color: var(--secondary-color);
+    width: 100%;
+    padding: 2rem;
+    /* margin-left: 28%; */
+}
+#dashboard {
+    
+}
+
+
+#addDiamond {
+   
+   
+}
+
+/* Oerder */
+#order {
+    
+}
+
+/* FAQ */
+#faq {
+    
+}
+
+.active{
+    color: blue;
+}

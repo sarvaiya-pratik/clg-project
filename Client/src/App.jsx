@@ -12,7 +12,7 @@ import { Toaster } from "react-hot-toast"
 import StoneDetail from "./pages/stones/StoneDetail"
 import Admin from "./pages/admin/Admin"
 import axios from "axios"
-import Dashboard from "./pages/admin/Dashboard/Dashboard"
+import AdminLogin from "./pages/admin/AdminLogin/AdminLogin"
 
 const App = () => {
   // const [user, setLoginUser] = useState({ _id: 12 })
@@ -34,17 +34,17 @@ const App = () => {
   return (
     <>
       <Router>
-      
+
         <Routes>
           {/* <Route path="/" element={user && user._id ? <Home setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser} />}></Route> */}
-          <Route path="/" element={<Home/>} /> 
+          <Route path="/" element={<Home />} />
           {/* <Route path="/about" element={user && user._id ? <About /> : <Login setLoginUser={setLoginUser} />}> </Route> */}
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/stones" element={<Stones data={jdata} />}></Route>
           <Route path="/stones/:id" element={<StoneDetail data={jdata} />}></Route>
-        <Route path="/admin" element={<Admin />} />
-        {/* <Route path="/admin/dashboard" element={<Dashboard />} /> */}
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admins/*" element={<Admin/>}></Route>
         </Routes>
 
 
