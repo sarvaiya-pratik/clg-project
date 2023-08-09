@@ -4,7 +4,6 @@ import "./AdminLogin.css"
 const AdminLogin = () => {
     const [loginData, setLoginData] = useState({})
 
-    
     const handleChange = (e)=>{
         setLoginData({ ...loginData, [e.target.name]: e.target.value })
     }

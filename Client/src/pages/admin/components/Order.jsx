@@ -1,8 +1,8 @@
 import React from 'react'
-import "./style.scss"
+import "./style.css"
 const Order = ({slider}) => {
   return (
-    <div id='order' className='content-admin' style={{marginLeft:slider && '28%'}}>
+    <div id='order' className='content-admin' style={{marginLeft:slider && '20%'}}>
       <h2>Orders</h2>
     </div>
   )

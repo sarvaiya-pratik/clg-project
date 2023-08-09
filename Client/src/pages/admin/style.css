@@ -1,6 +1,8 @@
 #admin {
     >header {
-        background-color: rgb(99, 85, 49);
+         background-color: rgb(99, 85, 49);
+        background-color: rgb(189, 209, 226);
+        color: black;
         display: flex;
         height: 60px;
 
@@ -24,7 +26,7 @@
             padding-right: 2rem;
 
             >input {
-                border: none;
+               border: 1px solid black;
                 outline: none;
                 border-radius: 20px;
                 width: max-content;
@@ -53,36 +55,40 @@
         >.left-side {
 
             background-color: rgb(151, 136, 99);
-            width: 28%;
+            background-color: aliceblue;
+            width: 20%;
             height: 100vh;
             transform: translateX(-100%);
             margin-top: 60px;
             position: absolute;
+            
+            >.slide-container {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                padding-left: 1rem; 
+                padding-top: 1.5rem;
 
-
-
-
-            >ul {
-
-                >li {
-                    list-style: none;
-                    padding: 1rem;
-                    padding-left: unset;
-                    border-bottom: 1px solid white;
-
-                    >a {
-                        text-decoration: none;
-                        color: white;
-
-                        >svg {
-                            font-size: 1.2rem;
-                            margin-bottom: 0.3rem;
-                            margin-right: 0.5rem;
-                        }
+               .active{
+                background-color:rgb(148, 191, 228) ;
+                border-left: 4px solid rgb(24, 24, 46);
+               }
+                >a{
+                    color: black;
+                    text-decoration: none;
+                    >svg{
+                        margin: 10px;
                     }
 
+                    &:hover{
+                        background-color: rgb(148, 191, 228);
+
+                    }
                 }
             }
+
+
+
         }
 
         >#showslide {
@@ -95,35 +101,3 @@
     }
 }
 
-/* Dashboard */
-.content-admin{
-    margin-top: 60px;
-    flex-wrap: wrap;
-    background-color: var(--secondary-color);
-    width: 100%;
-    padding: 2rem;
-    /* margin-left: 28%; */
-}
-#dashboard {
-    
-}
-
-
-#addDiamond {
-   
-   
-}
-
-/* Oerder */
-#order {
-    
-}
-
-/* FAQ */
-#faq {
-    
-}
-
-.active{
-    color: blue;
-}
