@@ -13,12 +13,17 @@ import Catagory from './components/Catagory';
 import Message from './components/Message';
 import Report from "./components/Report"
 import Cutomer from './components/Cutomer';
+
+
 const Admin = () => {
   const [search, setSearch] = useState(true)
   const [slider, setSlider] = useState(true)
+
+
+
   return (
     <>
-  
+
 
       <div id="admin">
         <header>
@@ -37,11 +42,11 @@ const Admin = () => {
 
           <AdminSlide slider={slider} />
           <Routes>
-            <Route path="/dashboard" element={<Dashboard slider={slider} />}></Route>
+            <Route path="/dashboard" element={<Dashboard slider={slider}   />}></Route>
             <Route path="/managediamond" element={<AddDiamond slider={slider} />}></Route>
             <Route path="/order" element={<Order slider={slider} />}></Route>
             <Route path="/faq" element={<Faq slider={slider} />}></Route>
-            <Route path="/cutomer" element={<Cutomer slider={slider} />}></Route>
+            <Route path="/cutomer" element={<Cutomer slider={slider}  />}></Route>
             <Route path="/catagory" element={<Catagory slider={slider} />}></Route>
             <Route path="/message" element={< Message slider={slider} />}></Route>
             <Route path="/report" element={< Report slider={slider} />}></Route>

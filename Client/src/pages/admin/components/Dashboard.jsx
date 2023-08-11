@@ -1,13 +1,49 @@
-import React from 'react';
+
+
 import "./style.css"
+import axios from 'axios';
+import { BiUser, BiCart } from "react-icons/bi"
 
+import { useState,useEffect } from "react"
 
-const Dashboard = ({slider}) => {
+const Dashboard = ({ slider }) => {
+  const [user, setUser] = useState()
+  useEffect(() => {
+     axios.get("http://localhost:4001/getuser")
+      .then((r) => {
+        setUser(r.data.length);
+      })
+  },[user])
   return (
     <>
-      <div id="dashboard" className='content-admin' style={{marginLeft:slider && '20%'}}>
-        <p >Welcome to your dashboard</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rerum eum nulla eos nam temporibus, deleniti quos molestias veniam? Temporibus deserunt quae, quis laudantium numquam exercitationem eos beatae in. Eligendi sequi quisquam tempora cupiditate molestias blanditiis veniam voluptates quia vitae eveniet fuga excepturi non qui, placeat perferendis exercitationem vel laboriosam?</p>
+      <div id="dashboard" className='content-admin' style={{ marginLeft: slider && '20%' }}>
+        <h2>DASHBOARD</h2>
+
+        <div className="all-cards">
+          <div className="user-card">
+            <div className="left">
+              <BiUser />
+            </div>
+            <div className="right">
+              <p>users</p>
+              <h2>{user}</h2>
+              <span>see all user</span>
+            </div>
+          </div>
+
+          <div className="user-card">
+            <div className="left">
+              <BiCart />
+            </div>
+            <div className="right">
+              <p>Orders</p>
+              <h2>{15}</h2>
+              <span>see all orders</span>
+            </div>
+          </div>
+
+
+        </div>
       </div>
     </>
   )

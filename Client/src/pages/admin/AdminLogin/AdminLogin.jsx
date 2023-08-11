@@ -18,7 +18,7 @@ const AdminLogin = () => {
             .then((r) => {
                 if (r.status === 201) {
                     toast.success("Login Successfully")
-                    navigate("/admins")
+                    navigate("/admins/dashboard")
                 }
                 else{
                     // alert(r.data.message)

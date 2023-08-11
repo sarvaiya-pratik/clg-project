@@ -27,7 +27,6 @@ const RegisterControl = async (req, res) => {
     else {
         res.send({ status: "failed", message: "All fields are required" })
     }
-
 }
 
 //api LOGIN || POST
@@ -53,7 +52,12 @@ const LoginCotrol = async (req, res) => {
     else {
         res.send({ status: "failed", message: "All fields are Required" })
     }
-
 }
 
-module.exports = { RegisterControl, LoginCotrol }
+const GetUserData =async (req,res)=>{
+    const doc = await UserModel.find();
+    console.log(doc)
+    res.json(doc);
+}
+
+module.exports = { RegisterControl, LoginCotrol,GetUserData}

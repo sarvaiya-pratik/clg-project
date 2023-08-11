@@ -19,7 +19,7 @@ const AddDiamond = ({ slider }) => {
             })
 
     }
-    console.log(ddata)
+  
     return (
         <>
         <div id='addDiamond' className='content-admin' style={{ marginLeft: slider && '20%' }}>

@@ -1,12 +1,15 @@
 const express = require("express");
 const Router = express.Router();
-const { LoginCotrol, RegisterControl } = require("../Controls/User");
+const { LoginCotrol, RegisterControl,GetUserData} = require("../Controls/User");
 const AdminControl = require("../Controls/Admin")
 const { AddProductData, GetProductData } = require("../Controls/ProductData")
 const addFeedback = require('../Controls/Feedback')
+
 // USER
 Router.route("/register").post(RegisterControl)
 Router.route("/login").post(LoginCotrol)
+Router.route("/getuser").get(GetUserData)
+
 
 // ADMIN  
 Router.route("/adminlogin").post(AdminControl)

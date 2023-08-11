@@ -8,7 +8,7 @@ import { TbDeviceLandlinePhone } from "react-icons/tb"
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa"
 import { motion } from "framer-motion"
 import axios from 'axios'
-
+  
 const Footer = () => {
 const [feedback,setFeedback] = useState({})
 const handleSubmit=()=>{
