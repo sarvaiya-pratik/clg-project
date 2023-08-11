@@ -1,7 +1,6 @@
 header {
     display: flex;
     width: 100%;
-    
     align-items: center;
     color: aliceblue;
     position: fixed;
@@ -11,6 +10,20 @@ header {
    
    
 }
+
+.visible {
+    /* display: flex; */
+    top: 0;
+    transition: top 0.4s ease-out;
+  }
+  
+  .hidden {
+    /* display: none; */
+    top: -80px;
+    transition: top 0.4s ease-out;
+  }
+
+  
 header .left {
     flex-basis: 20%;
     text-align: center;

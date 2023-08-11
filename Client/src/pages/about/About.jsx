@@ -7,7 +7,7 @@ const About = () => {
   return (
     <>
     
-    <div id="about">
+    <div id="about" >
     <h2 className='heading'>ABOUT US</h2>
     <LeftAbout
         title="LEGACY"

@@ -13,44 +13,49 @@ import StoneDetail from "./pages/stones/StoneDetail"
 import Admin from "./pages/admin/Admin"
 import axios from "axios"
 import AdminLogin from "./pages/admin/AdminLogin/AdminLogin"
-
+import Loader from ".././src/common/Loader/Loader"
 const App = () => {
   // const [user, setLoginUser] = useState({ _id: 12 })
   const [jdata, setJdata] = useState([])
+  const [load, setLoad] = useState(false)
   console.log(jdata)
-  useEffect(() => {
 
+  useEffect(() => {
+    setLoad(true)
     callapi()
+
   }, [])
 
   const callapi = async () => {
-    await axios.get("http://localhost:4001/api/data")
+    await axios.get("http://localhost:4001/getproduct")
       .then((res) => {
         setJdata(res.data)
+        setLoad(false)
       })
       .catch(err => "Error in json data(Pratik)" + err)
+
   }
+  console.log(jdata)
 
   return (
     <>
-      <Router>
+      {load ? <Loader /> :
+        <Router>
 
-        <Routes>
-          {/* <Route path="/" element={user && user._id ? <Home setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser} />}></Route> */}
-          <Route path="/" element={<Home />} />
-          {/* <Route path="/about" element={user && user._id ? <About /> : <Login setLoginUser={setLoginUser} />}> </Route> */}
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/stones" element={<Stones data={jdata} />}></Route>
-          <Route path="/stones/:id" element={<StoneDetail data={jdata} />}></Route>
-          <Route path="/admin" element={<AdminLogin />} />
-          <Route path="/admins/*" element={<Admin/>}></Route>
-        </Routes>
+          <Routes>
 
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/signup" element={<Signup />}></Route>
+            <Route path="/stones" element={<Stones data={jdata} />}></Route>
+            <Route path="/stones/:id" element={<StoneDetail data={jdata} />}></Route>
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admins/*" element={<Admin />}></Route>
+          </Routes>
 
+        </Router>
 
-      </Router>
-      <Toaster />
+      }
 
     </>
   )

@@ -4,7 +4,6 @@
     padding-top: 4rem;
     background-color: var(--secondary-color);
 
-   
 
     >main {
 
@@ -137,7 +136,8 @@
 
                 >.label {
                     >p {
-                        font-weight: 600;
+                        /* font-weight: 600; */
+                        color: rgb(41, 33, 33);
 
                     }
                 }

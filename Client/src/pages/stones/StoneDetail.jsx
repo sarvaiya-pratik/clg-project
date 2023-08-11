@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-
 import { BsCartPlus } from "react-icons/bs"
+import Header from '../../common/Header/Header'
+import Footer from '../../common/Footer/Footer'
 
 const StoneDetail = ({ data }) => {
 
-
   const { id } = useParams()
   return (<>
+  <Header/>
     {
+      
       data.map((i) => {
-        if (i.stockid == id) {
+        if (i._id == id) {
           return (<>
-            <div id='sotneDetail' key={i.stockid}>
+            <div id='sotneDetail' key={i._id}>
               <h2 className='heading'>Diamond Details</h2>
               <div className="details">
-                <iframe src={i[360]} width='320px' height='320px' ></iframe>
+                <iframe src={i.threesixty} width='320px' height='320px' ></iframe>
                 <div className="right">
                   <h3>{i.title}</h3>
                   <p className='badge'>{i.catagory.toUpperCase()}</p>
@@ -27,51 +29,48 @@ const StoneDetail = ({ data }) => {
                     </div>
                     <div className="label">
                       <h6>Carat</h6>
-                      <p>{i.Carat}</p>
+                      <p>{i.carat}</p>
                     </div>
                     <div className="label">
                       <h6>Colour</h6>
-                      <p>{i.Colour}</p>
+                      <p>{i.colour}</p>
                     </div>
                     <div className="label">
                       <h6>Clarity</h6>
-                      <p>{i.Clarity}</p>
+                      <p>{i.clarity}</p>
                     </div>
                     <div className="label">
                       <h6>Cut</h6>
-                      <p>{i.Cut}</p>
+                      <p>{i.cut}</p>
                     </div>
                     <div className="label">
                       <h6>Polish</h6>
-                      <p>{i.Polish}</p>
+                      <p>{i.polish}</p>
                     </div>
                     <div className="label">
                       <h6>Symmetry</h6>
-                      <p>{i.Symmetry}</p>
+                      <p>{i.symmetry}</p>
                     </div>
                     <div className="label">
                       <h6>Fluorescence</h6>
-                      <p>{i.Fluorescence}</p>
+                      <p>{i.fluorescence}</p>
                     </div>
-                    <div className="label">
-                      <h6>Meaurements</h6>
-                      <p>{i.Measurements}</p>
-                    </div>
+                    
                     <div className="label">
                       <h6>Table</h6>
-                      <p>{i.Table}</p>
+                      <p>{i.table}</p>
                     </div>
                     <div className="label">
                       <h6>Depth</h6>
-                      <p>{i.Depth}</p>
+                      <p>{i.depth}</p>
                     </div>
                     <div className="label">
                       <h6>Ratio</h6>
-                      <p>{i.Ratio}</p>
+                      <p>{i.ratio}</p>
                     </div>
                     <div className="label">
                       <h6>Crown angle</h6>
-                      <p>{i.Crownangle}</p>
+                      <p>{i.crownangle}</p>
                     </div>
                     <div className="label">
                       <h6>Crown height</h6>
@@ -85,14 +84,7 @@ const StoneDetail = ({ data }) => {
                       <h6>Pavilion depth</h6>
                       <p>{i.paviliondepth}</p>
                     </div>
-                    <div className="label">
-                      <h6>Girdle</h6>
-                      <p>{i.Girdle}</p>
-                    </div>
-                    <div className="label">
-                      <h6>Culet</h6>
-                      <p>{i.Culet}</p>
-                    </div>
+                   
                   </div>
 
                   <button className='addToCart'><BsCartPlus />Add To Cart</button>
@@ -106,7 +98,7 @@ const StoneDetail = ({ data }) => {
     }
 
 
-
+<Footer/>
   </>
   )
 }

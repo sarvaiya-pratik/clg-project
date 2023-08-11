@@ -3,8 +3,6 @@ import "./style.css"
 import axios from 'axios'
 
 import toast, { Toaster } from "react-hot-toast"
-
-
 const Login = () => {
   const [loginData, setLoginData] = useState({})
   const [regData, setRegData] = useState({})
@@ -15,7 +13,6 @@ const Login = () => {
   
     setRegData({ ...regData, [e.target.name]: e.target.value })
   }
-
   function handleLogin(e){
     setLoginData({ ...loginData, [e.target.name]: e.target.value })
   }

@@ -1,6 +1,6 @@
 const UserModel = require("../models/Users")
 const { hashPassword, comparePassword } = require("../hepler/authHepler")
-const Jwt = require("jsonwebtoken")
+
 
 // api REGISTER || POST
 

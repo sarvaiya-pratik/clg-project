@@ -8,18 +8,35 @@ const Header = () => {
 
     const [menu, setMenu] = useState(false)
 
+    const [position, setPosition] = useState(window.scrollY)
+    const [visible, setVisible] = useState(false)
+    useEffect(() => {
+        const handleScroll = () => {
+            let moving = window.scrollY
+
+            setVisible(position > moving);
+            setPosition(moving)
+        };
+        window.addEventListener("scroll", handleScroll);
+        return (() => {
+            window.removeEventListener("scroll", handleScroll);
+        })
+    })
+    const cls = visible ? "visible" : "hidden";
+
+
 
 
     return (
         <>
-            <header id='mynav'>
+            <header id='mynav' className={cls}>
                 <div className='left'>
                     <img src="https://freepngimg.com/download/diamond/15-diamond-png-image.png" alt="" style={{ width: '60px', height: '60px' }} />
                 </div>
                 <div className="mobile-nav">
 
                     <label className="hamburger">
-                        <input type="checkbox"  />
+                        <input type="checkbox" />
                         <svg viewBox="0 0 32 32" onClick={() => setMenu(!menu)}>
                             <path className="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
                             <path className="line" d="M7 16 27 16"></path>

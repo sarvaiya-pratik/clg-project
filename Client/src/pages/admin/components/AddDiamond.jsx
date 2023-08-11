@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import "./style.css";
+import axios from "axios"
+import { Toaster,toast } from 'react-hot-toast';
 const AddDiamond = ({ slider }) => {
     const [ddata, setDdata] = useState({})
     const handlechange = (e) => {
@@ -7,9 +9,19 @@ const AddDiamond = ({ slider }) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(ddata);
+        axios.post("http://localhost:4001/addproduct", ddata)
+            .then((r) => {
+               if(r.status === 201){
+                toast.success("Diamond added successfully !")
+               }
+               else{
+               toast.error(r.data.message)}
+            })
+
     }
+    console.log(ddata)
     return (
+        <>
         <div id='addDiamond' className='content-admin' style={{ marginLeft: slider && '20%' }}>
             <h2> ADD DIAMONDS </h2>
             <form action="" onSubmit={handleSubmit}>
@@ -54,7 +66,7 @@ const AddDiamond = ({ slider }) => {
                         <span >Carat</span>
 
                         <span>
-                            <input className='ctinput' type="number" name='carat' onChange={handlechange}/>
+                            <input className='ctinput' type="number" name='carat' onChange={handlechange} />
                             ct
 
                         </span>
@@ -112,7 +124,7 @@ const AddDiamond = ({ slider }) => {
                     </div>
                     <div className="form-con">
                         <span>Polish</span>
-                        <select name="polish" id=""onChange={handlechange}>
+                        <select name="polish" id="" onChange={handlechange}>
                             <option value='none'>Select Cut</option>
                             <option value="Ideal">Ideal</option>
                             <option value="Excellent ">Excellent </option>
@@ -147,31 +159,31 @@ const AddDiamond = ({ slider }) => {
                     </div>
                     <div className="form-con">
                         <span >Table</span>
-                        <input type="number" name='table'  onChange={handlechange} />
+                        <input type="number" name='table' onChange={handlechange} />
                     </div>
                     <div className="form-con">
                         <span >Depth</span>
-                        <input type="number" name='depth'  onChange={handlechange} />
+                        <input type="number" name='depth' onChange={handlechange} />
                     </div>
                     <div className="form-con">
                         <span >Radio</span>
-                        <input type="number" name='ratio'   onChange={handlechange}/>
+                        <input type="number" name='ratio' onChange={handlechange} />
                     </div>
                     <div className="form-con">
                         <span >Crownangle </span>
-                        <input type="number" name='crownangle'  onChange={handlechange} />
+                        <input type="number" name='crownangle' onChange={handlechange} />
                     </div>
                     <div className="form-con">
                         <span >Crownheight </span>
-                        <input type="number"name='crownheight'  onChange={handlechange} />
+                        <input type="number" name='crownheight' onChange={handlechange} />
                     </div>
                     <div className="form-con">
                         <span >Pavilionangle  </span>
-                        <input type="number" name='pavilionangle'  onChange={handlechange}/>
+                        <input type="number" name='pavilionangle' onChange={handlechange} />
                     </div>
                     <div className="form-con">
                         <span >Paviliondepth </span>
-                        <input type="number" name='paviliondepth'   onChange={handlechange}/>
+                        <input type="number" name='paviliondepth' onChange={handlechange} />
                     </div>
 
                 </div>
@@ -181,6 +193,8 @@ const AddDiamond = ({ slider }) => {
                 </button>
             </form>
         </div>
+        <Toaster/>
+        </>
     )
 }
 
