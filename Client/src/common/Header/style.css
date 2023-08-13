@@ -7,23 +7,21 @@ header {
     top: 0;
     z-index: 200;
     background: rgba(0, 0, 0, 0.2);
-   
-   
 }
 
 .visible {
     /* display: flex; */
     top: 0;
     transition: top 0.4s ease-out;
-  }
-  
-  .hidden {
+}
+
+.hidden {
     /* display: none; */
     top: -80px;
     transition: top 0.4s ease-out;
-  }
+}
 
-  
+
 header .left {
     flex-basis: 20%;
     text-align: center;
@@ -32,91 +30,137 @@ header .left {
 .middle {
     display: flex;
     flex-basis: 50%;
-    gap:1rem;
+    gap: 1rem;
 
     >li {
         display: block;
-        /* cursor: pointer; */
-  height: 100%;
-  font-size: 18px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  text-transform: uppercase;
-  text-shadow: 0 0 15px #8e54e9;
-  transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
-  text-align: center;
-  padding: 0 10px; 
-        
-  >a{text-decoration: none;}
-       
-    } 
+        height: 100%;
+        font-size: 18px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-transform: uppercase;
+        text-shadow: 0 0 15px #8e54e9;
+        transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+        text-align: center;
+        padding: 0 10px;
 
-   
+        >a {
+            text-decoration: none;
+        }
+
+    }
 }
 
-.right {
+.rights {
     flex-basis: 30%;
     display: flex;
     justify-content: center;
-    /* flex-direction: column; */
-   
-
-  .drop{
-    position: relative;
-    
-    &:hover .submenu{
-        display: block;
-      }
-    &:hover .menu-title{
-        color: var(--bg-primary);
-    }
-   
-    >.menu-title{
-       list-style: none;
-       font-size: 2rem;
-        cursor: pointer;
-       
-      
-
-    }
-    >.submenu{
-        position: absolute;
-        top:45px;
-        left: -30px;
-        padding: 0.5rem 0 ;
-        display: none;
-        background-color: black;
-        text-align: center;
-        border-radius: 10px;
-        transition: all 0.4s;
-        width: 100px;
+    gap: 3rem;
 
 
-       >li{
+    >.menu-title {
         list-style: none;
-        line-height: 2;
+        font-size: 1.5rem;
         cursor: pointer;
-        text-transform: uppercase;
-        transition: all 0.2s;
-      
-        >a{
-            text-decoration: none;
-            
-        }
+        position: relative;
+        display: inline-block;
 
-        &:hover{
-            background-color: var(--bg-primary);
+        >.drop-con {
+           
+            position: absolute;
+            bottom: -2rem;
+            font-size: 1rem;
+            left: -35px;
+            display: none;
+            font-size: 1.2rem;
+            cursor: pointer;
             border-radius: 10px;
-        }
-       }
-    }
-  }
+           
 
-   
-   
+            >a {
+                color: #fff;
+                text-decoration: none;
+             
+
+                &:hover{
+                    color: #0380a7;
+                }
+                
+            }
+
+        }
+       
+        &:hover .drop-con {
+            display: block;
+        }
+
+        >a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.3rem;
+          
+
+            &:hover {
+                color: #0380a7 !important;
+            }
+        }
+
+        >.userlogo {
+            font-size: 1.3rem;
+            border: 2px solid white;
+            border-radius: 50%;
+            padding: 7px;
+
+           &:hover{
+           
+            color: #0380a7;
+            border-color: #0380a7;
+           }
+
+
+
+        }
+
+
+
+        >.submenu {
+            position: absolute;
+            top: 45px;
+            left: -30px;
+            padding: 0.5rem 0;
+            display: none;
+            background-color: black;
+            text-align: center;
+            border-radius: 10px;
+            transition: all 0.4s;
+            width: 100px;
+
+
+            >li {
+                list-style: none;
+                line-height: 2;
+                cursor: pointer;
+                text-transform: uppercase;
+                transition: all 0.2s;
+
+                >a {
+                    text-decoration: none;
+
+                }
+
+                &:hover {
+                    background-color: var(--bg-primary);
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+
+
+
 }
 
 
@@ -135,34 +179,35 @@ header .left {
     flex-direction: column;
     transform: translateX(-200%);
     transition: all 0.4s;
-    
+
     background-color: var(--bg-secondary);
 
 
 
-    >.middle
-     {
+    >.middle {
         flex-direction: column;
         margin-top: 3rem;
         align-items: center;
         justify-content: center;
         text-transform: uppercase;
-        >li{
-            line-height: 0; 
+
+        >li {
+            line-height: 0;
         }
     }
 
     >.right {
         border-top: 1px solid white;
-        padding:5rem ;
+        padding: 5rem;
         gap: 1rem;
-       >li{
-       
-        >a{
-            text-decoration: none;
 
+        >li {
+
+            >a {
+                text-decoration: none;
+
+            }
         }
-       }
     }
 
 
@@ -190,7 +235,7 @@ header .left {
 
     .mobile-nav {
         display: flex;
-        flex-basis: 70%;    
+        flex-basis: 70%;
         gap: 1rem;
         justify-content: flex-end;
 

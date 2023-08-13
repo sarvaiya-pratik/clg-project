@@ -14,7 +14,6 @@ const Router = require("./Routers/MyRoute")
 app.use("/", Router)
 
 
-
 // mongo connect
 try {
     mongoose.connect(process.env.URLATLAS);

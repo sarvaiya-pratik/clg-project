@@ -1,7 +1,6 @@
 const UserModel = require("../models/Users")
 const { hashPassword, comparePassword } = require("../hepler/authHepler")
 
-
 // api REGISTER || POST
 
 const RegisterControl = async (req, res) => {
@@ -37,9 +36,10 @@ const LoginCotrol = async (req, res) => {
 
         if (user) {
             // check password
+
             const ischeck = await comparePassword(password, user.password)
             if (ischeck) {
-                res.send({ status: "success", message: "Login succesfully" })
+                res.send({ status: "success", message: "Login succesfully", uname: user.name })
             }
             else {
                 res.send({ status: "failed", message: "Invalid Password!" })
@@ -54,10 +54,29 @@ const LoginCotrol = async (req, res) => {
     }
 }
 
-const GetUserData =async (req,res)=>{
+const GetUserData = async (req, res) => {
     const doc = await UserModel.find();
-    console.log(doc)
+    console.log("get user run")
     res.json(doc);
 }
 
-module.exports = { RegisterControl, LoginCotrol,GetUserData}
+const deleteUser = async (req, res) => {
+    const _id = req.body;
+    console.log(_id)
+    console.log("run delete user")
+    try {
+        await UserModel.findOneAndDelete({ _id })
+            .then(() => console.log("delete success"))
+            .catch((e) => {
+                console.log(e)
+            })
+        console.log("delete")
+
+        res.json({ message: "deleted successfully" })
+
+    } catch (error) {
+        return error
+    }
+}
+
+module.exports = { RegisterControl, LoginCotrol, GetUserData, deleteUser }

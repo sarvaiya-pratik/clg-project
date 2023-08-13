@@ -6,7 +6,7 @@ import About from "./pages/about/About"
 import Service from "./pages/service/Service"
 import Stones from "./pages/stones/Stones"
 import Login from "./pages/login/Login"
-import Signup from "./pages/sign-up/Signup"
+
 import { useEffect, useState } from "react"
 import { Toaster } from "react-hot-toast"
 import StoneDetail from "./pages/stones/StoneDetail"
@@ -14,6 +14,7 @@ import Admin from "./pages/admin/Admin"
 import axios from "axios"
 import AdminLogin from "./pages/admin/AdminLogin/AdminLogin"
 import Loader from ".././src/common/Loader/Loader"
+
 const App = () => {
   // const [user, setLoginUser] = useState({ _id: 12 })
   const [jdata, setJdata] = useState([])
@@ -39,6 +40,7 @@ const App = () => {
 
   return (
     <>
+      <Toaster />
       {load ? <Loader /> :
         <Router>
 
@@ -46,11 +48,10 @@ const App = () => {
 
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />}></Route>
-            <Route path="/signup" element={<Signup />}></Route>
             <Route path="/stones" element={<Stones data={jdata} />}></Route>
             <Route path="/stones/:id" element={<StoneDetail data={jdata} />}></Route>
-            <Route path="/admin" element={<AdminLogin />} />
-            <Route path="/admins/*" element={<Admin />}></Route>
+            <Route path="/admin" element={< AdminLogin />} />
+            <Route path="/admins/*" element={<Admin data={jdata}/>}></Route>
           </Routes>
 
         </Router>

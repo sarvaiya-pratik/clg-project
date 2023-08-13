@@ -3,49 +3,58 @@ import "./style.css"
 import axios from 'axios'
 
 import toast, { Toaster } from "react-hot-toast"
+import Header from '../../common/Header/Header'
+import Footer from '../../common/Footer/Footer'
+import { useNavigate } from "react-router-dom"
+
 const Login = () => {
   const [loginData, setLoginData] = useState({})
   const [regData, setRegData] = useState({})
+  const [uname, setUname] = useState();
 
-
+const navigate = useNavigate();
   function handleReg(e) {
-   
-  
+
     setRegData({ ...regData, [e.target.name]: e.target.value })
   }
-  function handleLogin(e){
+  function handleLogin(e) {
     setLoginData({ ...loginData, [e.target.name]: e.target.value })
   }
 
-function handleLoginSubmit(e){
-  e.preventDefault();
-  axios.post("http://localhost:4001/login",loginData)
-  .then((r)=>{
-   if(r.data.status == "success"){
-      toast.success(r.data.message)
-    }
-    else{
-     toast.error(r.data.message)
-    }
-   console.log("Pratik"+r.data.message)
-  })
-}
+  function handleLoginSubmit(e) {
+    e.preventDefault();
+    axios.post("http://localhost:4001/login", loginData)
+      .then((r) => {
+        if (r.data.status == "success") {
+          toast.success(r.data.message)
+          localStorage.setItem('uname',r.data.uname)
+          navigate("/")
+          // setUname(r.data.uname)
+        }
+        else {
+          toast.error(r.data.message)
+        }
+        console.log("Pratik" + r.data.message)
+      })
+  }
 
-function handleRegSubmit(e){
-  e.preventDefault();
- axios.post("http://localhost:4001/register",regData)
-  .then((r)=>{
-    if(r.data.status == "success"){
-      toast.success(r.data.message)
-    }
-    else{
-    toast.error(r.data.message)}
-  })
-}
+  function handleRegSubmit(e) {
+    e.preventDefault();
+    axios.post("http://localhost:4001/register", regData)
+      .then((r) => {
+        if (r.data.status == "success") {
+          toast.success(r.data.message)
+
+        }
+        else {
+          toast.error(r.data.message)
+        }
+      })
+  }
 
   return (
     <>
-<Toaster/>
+      <Header />
       <div className="mylogin">
 
 
@@ -109,7 +118,7 @@ function handleRegSubmit(e){
 
       </div>
 
-
+      <Footer />
     </>
   )
 }

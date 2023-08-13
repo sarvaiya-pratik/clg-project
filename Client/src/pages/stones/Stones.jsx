@@ -28,7 +28,7 @@ const Stones = ({ data }) => {
                       <hr />
                       <p style={{ textAlign: 'center', fontWeight: '600', color: "green" }}>{item.price} $</p>
                       <div className="mid">
-                        <p>T:{item.table}</p>  <p>D:{item.depth}</p>  <p>R:{item.ratio}</p>
+                        <p>T:{item.table}%</p>  <p>D:{item.depth}%</p>  <p>R:{item.ratio}%</p>
                       </div>
                     </NavLink>
                     <hr />

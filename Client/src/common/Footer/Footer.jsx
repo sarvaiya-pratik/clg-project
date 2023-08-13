@@ -12,7 +12,7 @@ import axios from 'axios'
 const Footer = () => {
 const [feedback,setFeedback] = useState({})
 const handleSubmit=()=>{
-axios.post("http://localhost:4001/addfeedback",feedback)
+axios.post("http://localhost:4001/feedback",feedback)
 .then((r)=>{
   if(r.status === 201){
     toast.success("Feedback send succesfully !")

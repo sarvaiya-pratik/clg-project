@@ -2,18 +2,23 @@
 
 import "./style.css"
 import axios from 'axios';
-import { BiUser, BiCart } from "react-icons/bi"
-
-import { useState,useEffect } from "react"
+import { BiUser, BiSolidDiamond } from "react-icons/bi"
+import { useState, useEffect } from "react"
 
 const Dashboard = ({ slider }) => {
   const [user, setUser] = useState()
+  const [diamond, setDiamond] = useState();
+
   useEffect(() => {
-     axios.get("http://localhost:4001/getuser")
+    axios.get("http://localhost:4001/v1/user")
       .then((r) => {
         setUser(r.data.length);
       })
-  },[user])
+    axios.get("http://localhost:4001/getproduct")
+      .then((r) => {
+        setDiamond(r.data.length);
+      })
+  }, [user])
   return (
     <>
       <div id="dashboard" className='content-admin' style={{ marginLeft: slider && '20%' }}>
@@ -33,12 +38,12 @@ const Dashboard = ({ slider }) => {
 
           <div className="user-card">
             <div className="left">
-              <BiCart />
+              <BiSolidDiamond />
             </div>
             <div className="right">
-              <p>Orders</p>
-              <h2>{15}</h2>
-              <span>see all orders</span>
+              <p>Diamonds</p>
+              <h2>{diamond}</h2>
+              <span>see all diamonds</span>
             </div>
           </div>
 

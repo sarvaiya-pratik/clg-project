@@ -58,31 +58,31 @@ const StoneDetail = ({ data }) => {
                     
                     <div className="label">
                       <h6>Table</h6>
-                      <p>{i.table}</p>
+                      <p>{i.table}%</p>
                     </div>
                     <div className="label">
                       <h6>Depth</h6>
-                      <p>{i.depth}</p>
+                      <p>{i.depth}%</p>
                     </div>
                     <div className="label">
                       <h6>Ratio</h6>
-                      <p>{i.ratio}</p>
+                      <p>{i.ratio}%</p>
                     </div>
                     <div className="label">
                       <h6>Crown angle</h6>
-                      <p>{i.crownangle}</p>
+                      <p>{i.crownangle}°</p>
                     </div>
                     <div className="label">
                       <h6>Crown height</h6>
-                      <p>{i.crownheight}</p>
+                      <p>{i.crownheight}%</p>
                     </div>
                     <div className="label">
                       <h6>Pavilion angle</h6>
-                      <p>{i.pavilionangle}</p>
+                      <p>{i.pavilionangle}°</p>
                     </div>
                     <div className="label">
                       <h6>Pavilion depth</h6>
-                      <p>{i.paviliondepth}</p>
+                      <p>{i.paviliondepth}%</p>
                     </div>
                    
                   </div>

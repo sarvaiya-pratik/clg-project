@@ -12,4 +12,9 @@ else{
     res.json({message:"Feedback can't be empty !"})
 }
 }
-module.exports = addFeedback;
+
+const getFeedback = async(req,res)=>{
+    const doc = await feedbackModel.find();
+     res.json(doc);
+}
+module.exports = {addFeedback,getFeedback};

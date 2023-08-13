@@ -10,6 +10,7 @@ const Header = () => {
 
     const [position, setPosition] = useState(window.scrollY)
     const [visible, setVisible] = useState(false)
+
     useEffect(() => {
         const handleScroll = () => {
             let moving = window.scrollY
@@ -24,8 +25,12 @@ const Header = () => {
     })
     const cls = visible ? "visible" : "hidden";
 
+    const handleLogout = () => {
 
+        localStorage.removeItem("uname")
+        window.location.reload()
 
+    }
 
     return (
         <>
@@ -45,53 +50,62 @@ const Header = () => {
 
                 </div>
 
-
                 <div className="middle">
                     <li>
 
 
-                        <button className="button6 type1">
-                            <span className="btn-txt"> <NavLink className="text-light" to="/">Home</NavLink></span>
+                        <button className="button6 ">
+                            <span className="btn-txt"> <NavLink to="/">Home</NavLink></span>
                         </button>
                     </li>
                     <li>
 
 
-                        <button className="button6 type1">
-                            <span className="btn-txt"><a href="#about" className='text-light'>About</a></span>
-                        </button>
-                    </li>
-                    <li>
-
-
-
-                        <button className="button6 type1">
-                            <span className="btn-txt"><a href="#service" className='text-light'>Service</a></span>
+                        <button className="button6 ">
+                            <span className="btn-txt"><a href="#about" >About</a></span>
                         </button>
                     </li>
                     <li>
 
 
 
-                        <button className="button6 type1">
-                            <span className="btn-txt"><NavLink className="text-light" to="/stones" >Stones</NavLink></span>
+                        <button className="button6 ">
+                            <span className="btn-txt"><a href="#service" >Service</a></span>
+                        </button>
+                    </li>
+                    <li>
+
+
+
+                        <button className="button6 ">
+                            <span className="btn-txt"><NavLink to="/stones" >Stones</NavLink></span>
                         </button>
                     </li>
                 </div>
 
-                <div className='right'>
+                <div className='rights'>
+                    {!localStorage.getItem('uname') ?
+                        <button className="button5 " style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+                            <span className="btn-txt"> <NavLink to="/login">JOIN US</NavLink></span>
+                        </button>
+                        : ""}
 
-                    <div className="drop">
+                    {localStorage.getItem('uname') ?
+                        <li className="menu-title">
+                            <div className='userlogo'>{localStorage.getItem('uname').slice(0, 1).toUpperCase()}</div>
+                            <div className="drop-con">
+                                <button className="button5">
+                                    <span className="btn-txt"> <NavLink to="/" onClick={handleLogout}  style={{ fontSize: '1rem' }}>LOGOUT</NavLink></span>
+                                </button>
+
+                            </div>
+
+                        </li>
+                        : ""}
 
 
-                        <li className="menu-title"><BiUserCircle /> </li>
-                        <ul className="submenu">
-                            <li><NavLink className="text-light" to="/login" >Login</NavLink></li>
-                            <li><NavLink className="text-light" to="/signup">Sign Up</NavLink></li>
 
-                        </ul>
 
-                    </div>
 
 
 
@@ -160,7 +174,7 @@ const Header = () => {
                     </li>
 
 
-                    <li>
+                    {/* <li>
                         <button className="button6 type1">
                             <span className="btn-txt">
                                 <NavLink className="text-light" onClick={() => setMenu(!menu)} to="signup">Sign Up</NavLink>
@@ -169,7 +183,7 @@ const Header = () => {
                         </button>
 
 
-                    </li>
+                    </li> */}
 
                 </div>
 

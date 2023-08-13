@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./style.css";
-import { BiLogOut, BiPlus, BiMessage, BiGridAlt, BiStore, BiSearch, BiUser, BiXCircle, BiMenuAltLeft, BiSolidDashboard, BiStats, BiQuestionMark } from "react-icons/bi"
+import {BiSolidDiamond, BiLogOut, BiPlus, BiMessage, BiGridAlt, BiStore, BiSearch, BiUser, BiXCircle, BiMenuAltLeft, BiSolidDashboard, BiStats, BiQuestionMark } from "react-icons/bi"
 import { GoReport } from "react-icons/go"
 import { AiFillSetting } from "react-icons/ai"
 import { NavLink } from 'react-router-dom'
@@ -9,13 +9,13 @@ import Dashboard from './components/Dashboard';
 import AddDiamond from './components/AddDiamond';
 import Order from './components/Order';
 import Faq from './components/Faq';
-import Catagory from './components/Catagory';
+import Diamonds from './components/Diamonds';
 import Message from './components/Message';
 import Report from "./components/Report"
 import Cutomer from './components/Cutomer';
 
 
-const Admin = () => {
+const Admin = ({data}) => {
   const [search, setSearch] = useState(true)
   const [slider, setSlider] = useState(true)
 
@@ -47,7 +47,7 @@ const Admin = () => {
             <Route path="/order" element={<Order slider={slider} />}></Route>
             <Route path="/faq" element={<Faq slider={slider} />}></Route>
             <Route path="/cutomer" element={<Cutomer slider={slider}  />}></Route>
-            <Route path="/catagory" element={<Catagory slider={slider} />}></Route>
+            <Route path="/diamonds" element={<Diamonds slider={slider} data={data} />}></Route>
             <Route path="/message" element={< Message slider={slider} />}></Route>
             <Route path="/report" element={< Report slider={slider} />}></Route>
             <Route path="/addproduct" element={< AddDiamond slider={slider} />}></Route>
@@ -69,7 +69,7 @@ const AdminSlide = ({ slider }) => {
         <NavLink to="/admins/dashboard"> <BiSolidDashboard />Dashboard</NavLink>
         <NavLink to="/admins/cutomer">< BiUser />Customer</NavLink>
         <NavLink to="/admins/order"><BiStore />Orders</NavLink>
-        <NavLink to="/admins/catagory"><BiGridAlt />Catagory</NavLink>
+        <NavLink to="/admins/diamonds"><BiSolidDiamond />Diamonds</NavLink>
         <NavLink to="/admins/message"><BiMessage />Messages</NavLink>
         <NavLink to="/admins/report">< GoReport />Reports</NavLink>
         <NavLink to="/admins/setting"><AiFillSetting />Settings</NavLink>

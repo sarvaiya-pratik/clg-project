@@ -24,4 +24,22 @@ const GetProductData = async (req, res) => {
     res.json(productData)
 }
 
-module.exports = { AddProductData, GetProductData }
+const deleteProduct =async (req,res)=>{
+    const _id = req.body;
+
+    try {
+        await DataModel.findOneAndDelete({ _id })
+            .then(() => console.log("delete success"))
+            .catch((e) => {
+                console.log(e)
+            })
+        console.log("delete")
+
+        res.json({ message: "deleted successfully" })
+
+    } catch (error) {
+        return error
+    }
+}
+
+module.exports = { AddProductData, GetProductData,deleteProduct}
