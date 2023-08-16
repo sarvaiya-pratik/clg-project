@@ -10,9 +10,14 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(cookieParser())
 
+//middleware
+// const AuthUser = require("./middleware/AuthUser")
+// app.use('/v1/*', AuthUser);
+
+
+//routes
 const Router = require("./Routers/MyRoute")
 app.use("/", Router)
-
 
 // mongo connect
 try {
@@ -21,7 +26,6 @@ try {
 } catch (e) {
     console.log(e)
 }
-
 
 app.listen(process.env.PORT, () => {
     console.log("You are running on PORT", process.env.PORT)

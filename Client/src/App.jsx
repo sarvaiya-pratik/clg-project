@@ -13,22 +13,21 @@ import StoneDetail from "./pages/stones/StoneDetail"
 import Admin from "./pages/admin/Admin"
 import axios from "axios"
 import AdminLogin from "./pages/admin/AdminLogin/AdminLogin"
-import Loader from ".././src/common/Loader/Loader"
 
+import Loader from "./common/Loader/Loader"
+axios.defaults.baseURL = "http://localhost:4001";
 const App = () => {
   // const [user, setLoginUser] = useState({ _id: 12 })
   const [jdata, setJdata] = useState([])
   const [load, setLoad] = useState(false)
-  console.log(jdata)
 
   useEffect(() => {
     setLoad(true)
     callapi()
-
   }, [])
 
   const callapi = async () => {
-    await axios.get("http://localhost:4001/getproduct")
+    await axios.get("/product")
       .then((res) => {
         setJdata(res.data)
         setLoad(false)
@@ -51,7 +50,7 @@ const App = () => {
             <Route path="/stones" element={<Stones data={jdata} />}></Route>
             <Route path="/stones/:id" element={<StoneDetail data={jdata} />}></Route>
             <Route path="/admin" element={< AdminLogin />} />
-            <Route path="/admins/*" element={<Admin data={jdata}/>}></Route>
+            <Route path="/admins/*" element={<Admin data={jdata} />}></Route>
           </Routes>
 
         </Router>

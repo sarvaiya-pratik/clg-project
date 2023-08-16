@@ -7,6 +7,19 @@ import axios from 'axios'
 import { BsCartPlus } from "react-icons/bs"
 import { NavLink } from "react-router-dom"
 const Stones = ({ data }) => {
+
+  const [cart,setCart] = useState([])
+  const AddToCart=(item)=>{
+    if(item){
+     
+    }
+    else{
+      setCart([...cart,item])
+    }
+    
+  }
+
+  console.log(cart)
   return (
     <>
       <Header />
@@ -32,7 +45,7 @@ const Stones = ({ data }) => {
                       </div>
                     </NavLink>
                     <hr />
-                    <button className='addToCart'><BsCartPlus />Add To Cart</button>
+                    <button className='addToCart' onClick={()=>AddToCart(item)}><BsCartPlus />Add To Cart</button>
                   </div>
                 </div>)
               })

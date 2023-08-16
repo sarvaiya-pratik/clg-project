@@ -10,9 +10,9 @@ import { useNavigate } from "react-router-dom"
 const Login = () => {
   const [loginData, setLoginData] = useState({})
   const [regData, setRegData] = useState({})
-  const [uname, setUname] = useState();
 
-const navigate = useNavigate();
+
+  const navigate = useNavigate();
   function handleReg(e) {
 
     setRegData({ ...regData, [e.target.name]: e.target.value })
@@ -27,16 +27,21 @@ const navigate = useNavigate();
       .then((r) => {
         if (r.data.status == "success") {
           toast.success(r.data.message)
-          localStorage.setItem('uname',r.data.uname)
+          localStorage.setItem('uname', r.data.uname)
           navigate("/")
-          // setUname(r.data.uname)
+          try {
+            localStorage.setItem('token',r.data.token)
+          } catch (error) {
+            console.log("error in token")
+          }
         }
         else {
           toast.error(r.data.message)
         }
-        console.log("Pratik" + r.data.message)
       })
+
   }
+
 
   function handleRegSubmit(e) {
     e.preventDefault();
@@ -44,8 +49,16 @@ const navigate = useNavigate();
       .then((r) => {
         if (r.data.status == "success") {
           toast.success(r.data.message)
-
+          localStorage.setItem('token',r.data.token)
+          navigate("/")
+          try {
+            setCookie('uid', r.data.token);
+          } catch (error) {
+            console.log("error in token")
+          }
         }
+
+
         else {
           toast.error(r.data.message)
         }

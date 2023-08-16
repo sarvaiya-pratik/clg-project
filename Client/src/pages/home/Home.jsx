@@ -10,11 +10,11 @@ import Header from "../../common/Header/Header"
 import Footer from "../../common/Footer/Footer"
 
 
-const Home = ({ setLoginUser }) => {
+const Home = () => {
 
-  const mypara = "Lorem ipsum, Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, quisquam provident? Iure totam tempora beatae magnam. dolor sit amet Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam, eum! consectetur adipisicing elit. Voluptatibus consequatur quae nulla."
+  const mypara = "MRP Diamonds is a prominent online diamond company specializing in the sale of exquisite diamonds. Our collection boasts a diverse array of diamond shapes, catering to varied preferences. To enhance your shopping experience, we offer 360-degree images that enable you to effortlessly examine our diamonds from every angle. We pride ourselves on providing flexible payment options, encompassing both secure online transactions and the convenience of cash on delivery. Our website's core focus revolves around facilitating seamless online transactions for uncut diamonds. "
   const words = mypara.split("");
-  
+
   const container = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
@@ -34,70 +34,70 @@ const Home = ({ setLoginUser }) => {
   }
   return (
     <>
-<Header/>
-    <div id="home">
+      <Header />
+      <div id="home">
 
-      {/* backgroud with title   */}
-      <div className="top-bg">
-        <video type="video/mp4"  muted autoPlay loop ><source src={topbg}></source></video>
-      </div>
+        {/* backgroud with title   */}
+        <div className="top-bg">
+          <video type="video/mp4" muted autoPlay loop ><source src={topbg}></source></video>
+        </div>
 
-      <div className='heading-banner'>
-        <Typewriter
-          words={["WELCOME TO MRP DIAMONDS"]}
-          loop
-          deleteDelay='100%'
-        />
-        <Cursor cursorColor='white' />
-      </div>
-      {/* End : backgroud with title  */}
+        <div className='heading-banner' style={{ padding: '0 10rem' }}>
+          <Typewriter
+            words={[`${localStorage.getItem('uname') ? localStorage.getItem('uname').toUpperCase() : ""}${localStorage.getItem("uname") ? "," : ""} WELCOME TO MRP DIAMONDS`]}
+            loop
+            deleteDelay='100%'
+          />
+          <Cursor cursorColor='white' />
+        </div>
+        {/* End : backgroud with title  */}
 
 
-      {/*Section : Facts of MRP  */}
+        {/*Section : Facts of MRP  */}
 
-      {/* <div className='second-banner'>
-        <div className="main">
-          <motion.div className="left">
-            <motion.h2 initial={{ x: -200 }} whileInView={{ x: 0 }}>
-              FACTS OF MRP
-            </motion.h2>
-            <motion.p variants={container} initial="hidden" animate="visible">
-              {
-                words.map((val, index) => {
-                  return <motion.span variants={child} key={index}>{val}</motion.span>
-                })
-              }
-            </motion.p>
+        <div className='second-banner'>
+          <div className="main">
+            <motion.div className="left">
+              <motion.h2 initial={{ x: -200 }} whileInView={{ x: 0 }}>
+                FACTS OF MRP
+              </motion.h2>
+              <motion.p variants={container} initial="hidden" animate="visible">
+                {
+                  words.map((val, index) => {
+                    return <motion.span variants={child} key={index}>{val}</motion.span>
+                  })
+                }
+              </motion.p>
 
-          </motion.div>
-          <div className="right">
-            <div className="box">
-              <FaHandHoldingMedical />
-              <h3>ELEGANCE</h3>
-            </div>
-            <div className="box">
-              <FaHandHoldingWater />
-              <h3>EXCELLENCE</h3>
-            </div>
-            <div className="box">
-              < FaHandHoldingUsd/>
-              <h3>VALUE</h3>
-            </div>
-            
-            <div className="box">
-              <FaHandHoldingHeart />
-              <h3>TRUST</h3>
+            </motion.div>
+            <div className="right">
+              <div className="box">
+                <FaHandHoldingMedical />
+                <h3>ELEGANCE</h3>
+              </div>
+              <div className="box">
+                <FaHandHoldingWater />
+                <h3>EXCELLENCE</h3>
+              </div>
+              <div className="box">
+                < FaHandHoldingUsd />
+                <h3>VALUE</h3>
+              </div>
+
+              <div className="box">
+                <FaHandHoldingHeart />
+                <h3>TRUST</h3>
+              </div>
             </div>
           </div>
         </div>
-      </div> */}
 
-    {/* End : facts of MRP  */}
+        {/* End : facts of MRP  */}
 
-    </div>
-    <About/>
-    <Service/>
-    <Footer/>
+      </div>
+      <About />
+      <Service />
+      <Footer />
     </>
   )
 }

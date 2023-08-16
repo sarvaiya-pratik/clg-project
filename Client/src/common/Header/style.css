@@ -73,7 +73,7 @@ header .left {
             position: absolute;
             bottom: -2rem;
             font-size: 1rem;
-            left: -35px;
+            left: -30px;
             display: none;
             font-size: 1.2rem;
             cursor: pointer;
@@ -109,10 +109,13 @@ header .left {
         }
 
         >.userlogo {
-            font-size: 1.3rem;
+         
             border: 2px solid white;
             border-radius: 50%;
-            padding: 7px;
+          text-align: center;
+            width: 40px;
+            height: 40px;
+           
 
            &:hover{
            
@@ -120,7 +123,9 @@ header .left {
             border-color: #0380a7;
            }
 
+           >span{
 
+           }
 
         }
 

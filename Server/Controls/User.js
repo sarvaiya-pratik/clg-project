@@ -1,7 +1,8 @@
 const UserModel = require("../models/Users")
 const { hashPassword, comparePassword } = require("../hepler/authHepler")
-
+const jwt = require('jsonwebtoken')
 // api REGISTER || POST
+
 
 const RegisterControl = async (req, res) => {
     const { name, email, phone, password, cpassword } = req.body;
@@ -15,8 +16,10 @@ const RegisterControl = async (req, res) => {
             if (password === cpassword) {
                 const hpass = await hashPassword(password)
                 const doc = await new UserModel({ "name": name, "email": email, "phone": phone, "password": hpass })
-                doc.save();
-                res.send({ status: "success", message: "Register sucessfully" })
+                await doc.save();
+                const user = await UserModel.findOne({ email })
+                let token = jwt.sign({ UserId: user._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
+                res.send({ status: "success", message: "Register sucessfully", uname: user.name, token: token })
             }
             else {
                 res.send({ status: "failed", message: "Password not same !" })
@@ -30,6 +33,7 @@ const RegisterControl = async (req, res) => {
 
 //api LOGIN || POST
 const LoginCotrol = async (req, res) => {
+
     const { email, password } = req.body;
     if (email && password) {
         const user = await UserModel.findOne({ email })
@@ -39,7 +43,9 @@ const LoginCotrol = async (req, res) => {
 
             const ischeck = await comparePassword(password, user.password)
             if (ischeck) {
-                res.send({ status: "success", message: "Login succesfully", uname: user.name })
+                let token = jwt.sign({ UserId: user._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
+
+                res.send({ status: "success", message: "Login succesfully", uname: user.name, token: token })
             }
             else {
                 res.send({ status: "failed", message: "Invalid Password!" })
@@ -55,17 +61,16 @@ const LoginCotrol = async (req, res) => {
 }
 
 const GetUserData = async (req, res) => {
+
     const doc = await UserModel.find();
     console.log("get user run")
     res.json(doc);
 }
 
 const deleteUser = async (req, res) => {
-    const _id = req.body;
-    console.log(_id)
-    console.log("run delete user")
+    const id = req.params['id']
     try {
-        await UserModel.findOneAndDelete({ _id })
+        await UserModel.findOneAndDelete({ "_id": id })
             .then(() => console.log("delete success"))
             .catch((e) => {
                 console.log(e)

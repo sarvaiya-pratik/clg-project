@@ -4,17 +4,19 @@ import "./style.css"
 import axios from 'axios';
 import { BiUser, BiSolidDiamond } from "react-icons/bi"
 import { useState, useEffect } from "react"
-
+import { useNavigate } from "react-router-dom";
+axios.defaults.baseURL = "http://localhost:4001"
 const Dashboard = ({ slider }) => {
   const [user, setUser] = useState()
   const [diamond, setDiamond] = useState();
 
+  const navigate = useNavigate();
   useEffect(() => {
-    axios.get("http://localhost:4001/v1/user")
+    axios.get("/user")
       .then((r) => {
         setUser(r.data.length);
       })
-    axios.get("http://localhost:4001/getproduct")
+    axios.get("/product")
       .then((r) => {
         setDiamond(r.data.length);
       })
@@ -32,7 +34,7 @@ const Dashboard = ({ slider }) => {
             <div className="right">
               <p>users</p>
               <h2>{user}</h2>
-              <span>see all user</span>
+              <span onClick={() => navigate("/admins/customer")}>see all user</span>
             </div>
           </div>
 
@@ -43,7 +45,7 @@ const Dashboard = ({ slider }) => {
             <div className="right">
               <p>Diamonds</p>
               <h2>{diamond}</h2>
-              <span>see all diamonds</span>
+              <span onClick={() => navigate("/admins/diamonds")}>see all diamonds</span>
             </div>
           </div>
 

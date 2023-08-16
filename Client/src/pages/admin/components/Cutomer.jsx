@@ -3,20 +3,20 @@ import "./style.css"
 import axios from 'axios';
 import { AiFillDelete } from "react-icons/ai"
 import { toast } from 'react-hot-toast';
-
+axios.defaults.baseURL = "http://localhost:4001"
 const Cutomer = ({ slider }) => {
 
   const [user, setUser] = useState()
   useEffect(() => {
-    axios.get("http://localhost:4001/v1/user")
+    axios.get("/user")
       .then((r) => {
         setUser(r.data);
       })
   }, [])
-
+  
   const handleDetele = (_id) => {
     if (window.confirm("Are you sure delete this user ?")) {
-      axios.post("http://localhost:4001/v1/deleteuser", { _id })
+      axios.delete(`/user/${_id}`)
         .then((r) => {
           toast.success(r.data.message)
           window.location.reload();

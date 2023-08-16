@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "./AdminLogin.css"
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
-import { Toaster,toast } from 'react-hot-toast'
+import { Toaster, toast } from 'react-hot-toast'
 
 const AdminLogin = () => {
     const [loginData, setLoginData] = useState({})
@@ -20,7 +20,7 @@ const AdminLogin = () => {
                     toast.success("Login Successfully")
                     navigate("/admins/dashboard")
                 }
-                else{
+                else {
                     // alert(r.data.message)
                     toast.error(r.data.message)
                     console.log(r)
@@ -30,7 +30,7 @@ const AdminLogin = () => {
     return (
 
         <>
-        <Toaster/>
+            <Toaster />
             <div className="admin-container">
 
 

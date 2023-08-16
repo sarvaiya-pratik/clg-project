@@ -5,12 +5,10 @@ import Header from '../../common/Header/Header'
 import Footer from '../../common/Footer/Footer'
 
 const StoneDetail = ({ data }) => {
-
   const { id } = useParams()
   return (<>
-  <Header/>
+    <Header />
     {
-      
       data.map((i) => {
         if (i._id == id) {
           return (<>
@@ -55,7 +53,7 @@ const StoneDetail = ({ data }) => {
                       <h6>Fluorescence</h6>
                       <p>{i.fluorescence}</p>
                     </div>
-                    
+
                     <div className="label">
                       <h6>Table</h6>
                       <p>{i.table}%</p>
@@ -84,7 +82,7 @@ const StoneDetail = ({ data }) => {
                       <h6>Pavilion depth</h6>
                       <p>{i.paviliondepth}%</p>
                     </div>
-                   
+
                   </div>
 
                   <button className='addToCart'><BsCartPlus />Add To Cart</button>
@@ -98,7 +96,7 @@ const StoneDetail = ({ data }) => {
     }
 
 
-<Footer/>
+    <Footer />
   </>
   )
 }

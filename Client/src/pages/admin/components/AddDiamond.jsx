@@ -9,7 +9,7 @@ const AddDiamond = ({ slider }) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:4001/addproduct", ddata)
+        axios.post("http://localhost:4001/product", ddata)
             .then((r) => {
                 if (r.status === 201) {
                     toast.success("Diamond added successfully !")

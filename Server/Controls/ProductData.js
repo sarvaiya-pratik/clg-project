@@ -1,11 +1,12 @@
+
 const DataModel = require('../models/productdata')
 const AddProductData = async (req, res) => {
 
     const { title, catagory, threesixty, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, measurements, table, depth, ratio, crownangle, crownheight, pavilionangle, paviliondepth, } = req.body;
-    if (title && catagory && threesixty && shape) {
+    if (title && catagory && threesixty && shape && carat && price) {
         const productData = await DataModel.findOne({ title });
         if (productData) {
-            res.json({message:"Data Alreay Exist !"})
+            res.json({ message: "Data Alreay Exist !" })
         }
         else {
             let doc = await new DataModel({ title, catagory, threesixty, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, table, depth, ratio, crownangle, crownheight, pavilionangle, paviliondepth, })
@@ -20,15 +21,16 @@ const AddProductData = async (req, res) => {
 
 const GetProductData = async (req, res) => {
 
+
     const productData = await DataModel.find();
     res.json(productData)
 }
 
-const deleteProduct =async (req,res)=>{
-    const _id = req.body;
+const deleteProduct = async (req, res) => {
+    const id = req.params['id']
 
     try {
-        await DataModel.findOneAndDelete({ _id })
+        await DataModel.findOneAndDelete({ "_id": id })
             .then(() => console.log("delete success"))
             .catch((e) => {
                 console.log(e)
@@ -42,4 +44,4 @@ const deleteProduct =async (req,res)=>{
     }
 }
 
-module.exports = { AddProductData, GetProductData,deleteProduct}
+module.exports = { AddProductData, GetProductData, deleteProduct }

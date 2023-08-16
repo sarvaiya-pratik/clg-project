@@ -28,6 +28,7 @@ const Header = () => {
     const handleLogout = () => {
 
         localStorage.removeItem("uname")
+        localStorage.removeItem("token")
         window.location.reload()
 
     }
@@ -76,7 +77,6 @@ const Header = () => {
                     <li>
 
 
-
                         <button className="button6 ">
                             <span className="btn-txt"><NavLink to="/stones" >Stones</NavLink></span>
                         </button>
@@ -92,10 +92,10 @@ const Header = () => {
 
                     {localStorage.getItem('uname') ?
                         <li className="menu-title">
-                            <div className='userlogo'>{localStorage.getItem('uname').slice(0, 1).toUpperCase()}</div>
+                            <div className='userlogo'><span> {localStorage.getItem('uname').slice(0, 1).toUpperCase()} </span></div>
                             <div className="drop-con">
                                 <button className="button5">
-                                    <span className="btn-txt"> <NavLink to="/" onClick={handleLogout}  style={{ fontSize: '1rem' }}>LOGOUT</NavLink></span>
+                                    <span className="btn-txt"> <NavLink to="/" onClick={handleLogout} style={{ fontSize: '1rem' }}>LOGOUT</NavLink></span>
                                 </button>
 
                             </div>
