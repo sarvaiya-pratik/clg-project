@@ -2,24 +2,18 @@ import React, { useEffect } from 'react'
 import "./style.css"
 import Header from '../../common/Header/Header'
 import Footer from '../../common/Footer/Footer'
-import { useState } from 'react'
+
 import axios from 'axios'
 import { BsCartPlus } from "react-icons/bs"
 import { NavLink } from "react-router-dom"
+import { useCart } from "react-use-cart"
 const Stones = ({ data }) => {
 
-  const [cart,setCart] = useState([])
-  const AddToCart=(item)=>{
-    if(item){
-     
-    }
-    else{
-      setCart([...cart,item])
-    }
-    
+  const { addItem } = useCart()
+  const handleAddtoCart = (product) => {
+    addItem(product)
   }
 
-  console.log(cart)
   return (
     <>
       <Header />
@@ -45,7 +39,7 @@ const Stones = ({ data }) => {
                       </div>
                     </NavLink>
                     <hr />
-                    <button className='addToCart' onClick={()=>AddToCart(item)}><BsCartPlus />Add To Cart</button>
+                    <button className='addToCart' onClick={() => handleAddtoCart(item)}><BsCartPlus />Add To Cart</button>
                   </div>
                 </div>)
               })

@@ -28,6 +28,7 @@ const Login = () => {
         if (r.data.status == "success") {
           toast.success(r.data.message)
           localStorage.setItem('uname', r.data.uname)
+          window.location.reload()
           navigate("/")
           try {
             localStorage.setItem('token',r.data.token)

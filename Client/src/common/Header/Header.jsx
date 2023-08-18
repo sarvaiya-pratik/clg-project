@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./style.css"
-import { BiMenu, BiUserCircle } from "react-icons/bi"
+import { BiMenu, BiUserCircle, BiCart } from "react-icons/bi"
 import { NavLink } from "react-router-dom"
+import {useCart} from "react-use-cart"
 
 
 const Header = () => {
@@ -10,6 +11,9 @@ const Header = () => {
 
     const [position, setPosition] = useState(window.scrollY)
     const [visible, setVisible] = useState(false)
+
+    const {items} = useCart()
+   
 
     useEffect(() => {
         const handleScroll = () => {
@@ -85,7 +89,7 @@ const Header = () => {
 
                 <div className='rights'>
                     {!localStorage.getItem('uname') ?
-                        <button className="button5 " style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+                        <button className="button5 " style={{ display: 'flex', justifyContent: 'center', marginTop: '5px' }}>
                             <span className="btn-txt"> <NavLink to="/login">JOIN US</NavLink></span>
                         </button>
                         : ""}
@@ -102,6 +106,11 @@ const Header = () => {
 
                         </li>
                         : ""}
+                    <button className='cartBtn' >
+
+                        <NavLink to="/cart"><BiCart /><h4>{items && items.length}</h4></NavLink>
+                    </button>
+
 
 
 

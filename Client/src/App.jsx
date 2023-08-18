@@ -15,6 +15,7 @@ import axios from "axios"
 import AdminLogin from "./pages/admin/AdminLogin/AdminLogin"
 
 import Loader from "./common/Loader/Loader"
+import Cart from "./pages/cart/Cart"
 axios.defaults.baseURL = "http://localhost:4001";
 const App = () => {
   // const [user, setLoginUser] = useState({ _id: 12 })
@@ -51,6 +52,7 @@ const App = () => {
             <Route path="/stones/:id" element={<StoneDetail data={jdata} />}></Route>
             <Route path="/admin" element={< AdminLogin />} />
             <Route path="/admins/*" element={<Admin data={jdata} />}></Route>
+            <Route path="/cart" element={localStorage.getItem("uname")?<Cart/>:<Login/>}></Route>
           </Routes>
 
         </Router>

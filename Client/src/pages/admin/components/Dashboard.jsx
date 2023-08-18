@@ -1,5 +1,4 @@
 
-
 import "./style.css"
 import axios from 'axios';
 import { BiUser, BiSolidDiamond } from "react-icons/bi"
@@ -10,6 +9,7 @@ const Dashboard = ({ slider }) => {
   const [user, setUser] = useState()
   const [diamond, setDiamond] = useState();
 
+  
   const navigate = useNavigate();
   useEffect(() => {
     axios.get("/user")
@@ -48,8 +48,6 @@ const Dashboard = ({ slider }) => {
               <span onClick={() => navigate("/admins/diamonds")}>see all diamonds</span>
             </div>
           </div>
-
-
         </div>
       </div>
     </>
