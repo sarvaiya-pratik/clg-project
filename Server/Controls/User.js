@@ -3,7 +3,6 @@ const { hashPassword, comparePassword } = require("../hepler/authHepler")
 const jwt = require('jsonwebtoken')
 // api REGISTER || POST
 
-
 const RegisterControl = async (req, res) => {
     const { name, email, phone, password, cpassword } = req.body;
     if (name && email && phone & password && cpassword) {
@@ -30,6 +29,7 @@ const RegisterControl = async (req, res) => {
         res.send({ status: "failed", message: "All fields are required" })
     }
 }
+
 
 //api LOGIN || POST
 const LoginCotrol = async (req, res) => {

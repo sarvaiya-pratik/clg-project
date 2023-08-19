@@ -5,7 +5,7 @@ const AdminControl = async (req, res) => {
 
     if (email && password) {
         const admin = await AdminModel.findOne({ email });
-
+        
         if (admin) {
             if (password === admin.password) {
                 res.status(201).json({ message: "Login Successfully" })

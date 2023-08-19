@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 const mydataSchema = mongoose.Schema({
    
     title: { type: String, required: true, },
+    id: { type: Number, required: true, },
     catagory: { type: String, required: true, },
     threesixty: { type: String, required: true, },
     shape: { type: String, required: true, },

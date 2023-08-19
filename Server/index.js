@@ -14,7 +14,8 @@ app.use(cookieParser())
 // const AuthUser = require("./middleware/AuthUser")
 // app.use('/v1/*', AuthUser);
 
-
+const cart = require("./Routers/Cart")
+app.use('/cart',cart)
 //routes
 const Router = require("./Routers/MyRoute")
 app.use("/", Router)

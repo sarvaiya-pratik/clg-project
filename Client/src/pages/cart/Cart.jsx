@@ -26,7 +26,7 @@ const Cart = () => {
     }
 
 
-  
+
 
 
     return (
@@ -48,7 +48,7 @@ const Cart = () => {
                             </li>
 
                             {
-                                items.length !==0 ?
+                                items.length !== 0 ?
                                     items.map((item, index) => {
                                         return (
                                             <li className="table-row" key={index}>
@@ -60,11 +60,11 @@ const Cart = () => {
                                                 <div className="col col-5 deletecustomer" onClick={() => handleDetele(item)}  ><AiFillDelete /></div>
                                             </li>
                                         )
-                                    }) : <h2 style={{textAlign:'center',margin:'8rem 0'}}>List is Empty</h2>
+                                    }) : <h2 style={{ textAlign: 'center', margin: '8rem 0' }}>List is Empty</h2>
                             }
                             {
                                 items ? <li className='table-header'>
-                                    <div className="col" style={{textAlign:'center'}}>Total</div>
+                                    <div className="col" style={{ textAlign: 'center' }}>Total</div>
                                     <div className="col">₹ {cartTotal}</div>
                                     <div className="col-1"><button className='orderBtn'>Order Now</button></div>
                                 </li> : ""

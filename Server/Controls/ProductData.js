@@ -9,7 +9,8 @@ const AddProductData = async (req, res) => {
             res.json({ message: "Data Alreay Exist !" })
         }
         else {
-            let doc = await new DataModel({ title, catagory, threesixty, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, table, depth, ratio, crownangle, crownheight, pavilionangle, paviliondepth, })
+            let newcount = await DataModel.countDocuments() + 1
+            let doc = await new DataModel({ title, "id": newcount, catagory, threesixty, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, table, depth, ratio, crownangle, crownheight, pavilionangle, paviliondepth, })
             await doc.save();
             res.status(201).send("Record insert successfully")
         }
