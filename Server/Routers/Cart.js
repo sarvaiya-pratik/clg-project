@@ -12,6 +12,7 @@ router.post('/add-to-cart', async (req, res) => {
     console.log("req"+req.body)
 
     res.send("good")
+
     // try {
     //     // const { userId, productId, quantity } = req.body;
     //     const { userId, product } = req.body;
