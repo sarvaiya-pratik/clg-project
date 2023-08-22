@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import "./style.css"
 import { BiMenu, BiUserCircle, BiCart } from "react-icons/bi"
 import { NavLink } from "react-router-dom"
-import {useCart} from "react-use-cart"
-
+import { useCart } from "react-use-cart"
+import axios from 'axios'
 
 const Header = () => {
 
@@ -11,11 +11,17 @@ const Header = () => {
 
     const [position, setPosition] = useState(window.scrollY)
     const [visible, setVisible] = useState(false)
+    const [cart, setCart] = useState()
+    const { items } = useCart()
 
-    const {items} = useCart()
-   
 
     useEffect(() => {
+        axios.get("/cart", { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
+            .then((r) => {
+                setCart(r.data)
+            })
+
+
         const handleScroll = () => {
             let moving = window.scrollY
 
@@ -33,6 +39,7 @@ const Header = () => {
 
         localStorage.removeItem("uname")
         localStorage.removeItem("token")
+    
         window.location.reload()
 
     }
@@ -88,11 +95,7 @@ const Header = () => {
                 </div>
 
                 <div className='rights'>
-                    {!localStorage.getItem('uname') ?
-                        <button className="button5 " style={{ display: 'flex', justifyContent: 'center', marginTop: '5px' }}>
-                            <span className="btn-txt"> <NavLink to="/login">JOIN US</NavLink></span>
-                        </button>
-                        : ""}
+
 
                     {localStorage.getItem('uname') ?
                         <li className="menu-title">
@@ -101,15 +104,20 @@ const Header = () => {
                                 <button className="button5">
                                     <span className="btn-txt"> <NavLink to="/" onClick={handleLogout} style={{ fontSize: '1rem' }}>LOGOUT</NavLink></span>
                                 </button>
-
                             </div>
-
                         </li>
-                        : ""}
-                    <button className='cartBtn' >
 
-                        <NavLink to="/cart"><BiCart /><h4>{items && items.length}</h4></NavLink>
-                    </button>
+                        : <button className="button5 " style={{ display: 'flex', justifyContent: 'center', marginTop: '5px' }}>
+                            <span className="btn-txt"> <NavLink to="/login">JOIN US</NavLink></span>
+                        </button>
+                     }
+                    <button className='cartBtn' >
+                       { localStorage.getItem("token") ? 
+                       
+                       <NavLink to="/cart"><BiCart /><h4>{cart ? cart.length : ""}</h4></NavLink>
+                       :""
+                       }
+                    </button>       
 
 
 

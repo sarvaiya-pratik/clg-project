@@ -1,25 +1,44 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import CartReducer from "./Reducer";
-
-const Cart = createContext();
+import axios from "axios";
+const CartContext = createContext();
 const Context = ({ children }) => {
 
-    const [state, disptch] = useReducer(CartReducer, {
-        cart: [],
-    });
+    const [cart, dispatch] = useReducer(CartReducer, []);
+    const [cartdata, setCartData] = useState()
 
+    const updateCartOnServer = (userId, cart, totalAmount) => {
+        axios.post("http://localhost:4001/cart/add-to-cart", { userId, cart, totalAmount })
+            .then((r) => {
+                console.log("response", r.data)
+            })
+    }
 
+    const calculateTotalAmount = () => {
+        return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    };
+
+    const uid = localStorage.getItem("userId");
+    const totalAmount = calculateTotalAmount();
+
+    useEffect(() => {
+        console.log("cart", cart)
+        localStorage.setItem("cart-data", JSON.stringify(cart));
+        setCartData(localStorage.getItem("cart-data"))
+        // updateCartOnServer(uid, cartdata, totalAmount)
+    }, [cart])
     return (
 
-        <Cart.Provider value={{ state, disptch }}>
+        <CartContext.Provider value={{ cart, dispatch }}>
             {children}
-        </Cart.Provider>
+        </CartContext.Provider>
 
     )
 }
 
 export default Context;
 
-export const CartState = () => {
-    return useContext(Cart)
+export const UseCart = () => {
+    return useContext(CartContext)
 }
+

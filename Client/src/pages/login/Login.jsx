@@ -26,12 +26,16 @@ const Login = () => {
     axios.post("http://localhost:4001/login", loginData)
       .then((r) => {
         if (r.data.status == "success") {
-          toast.success(r.data.message)
+         
           localStorage.setItem('uname', r.data.uname)
-          window.location.reload()
-          navigate("/")
+          localStorage.setItem('token', r.data.token)
+          
+         
           try {
-            localStorage.setItem('token',r.data.token)
+            toast.success(r.data.message)
+ 
+            navigate("/")
+            window.location.reload()
           } catch (error) {
             console.log("error in token")
           }
@@ -49,11 +53,13 @@ const Login = () => {
     axios.post("http://localhost:4001/register", regData)
       .then((r) => {
         if (r.data.status == "success") {
-          toast.success(r.data.message)
-          localStorage.setItem('token',r.data.token)
-          navigate("/")
+
           try {
-            setCookie('uid', r.data.token);
+            toast.success(r.data.message)
+            localStorage.setItem('token', r.data.token)
+            localStorage.setItem('uname', r.data.uname)
+         
+            navigate("/")
           } catch (error) {
             console.log("error in token")
           }

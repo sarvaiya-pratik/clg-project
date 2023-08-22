@@ -1,21 +1,37 @@
-import React, { Suspense, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./style.css"
 import Header from '../../common/Header/Header'
 import Footer from '../../common/Footer/Footer'
 
-import axios from 'axios'
+
 import { BsCartPlus } from "react-icons/bs"
-import { NavLink } from "react-router-dom"
-import { useCart } from "react-use-cart"
+import { NavLink, useNavigate } from "react-router-dom"
+import axios from 'axios'
+import { toast } from 'react-hot-toast'
 
-const ImgDiamond = React.lazy(() => import("./ImgDiamond"))
+
+
+
 const Stones = ({ data }) => {
+  const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate()
 
-  const { addItem } = useCart()
   const handleAddtoCart = (product) => {
-    addItem(product)
+    const productId = product._id
+    const token = localStorage.getItem("token")
+    if (token) {
+      axios.post("/cart/add", { productId, quantity }, { headers: { "Authorization": `Bearer ${token}` } })
+        .then((r) => {
+          console.log("res", r.data)
+        })
+    }
+    else {
+      navigate('/login')
+      toast.error("Pleae Login/Register first !!")
+    }
+
   }
-  
+
   return (
     <>
       <Header />
@@ -36,11 +52,11 @@ const Stones = ({ data }) => {
                     {/* <Suspense fallback={<h2 style={{zIndex:'111'}}>Hii this is loading</h2>}>
                       <ImgDiamond sixty={item.threesixty}/>
                       </ Suspense> */}
-                
 
-                      <iframe  src={item.threesixty} loading="lazy" width="300px" height="300px" alt="Error" ></iframe>
 
-      
+                    <iframe src={item.threesixty} loading="lazy" width="300px" height="300px" alt="Error" ></iframe>
+
+
                     {/* <video src={item.threesixty} width="300px" height="300px" /> */}
                     <div className="card-body">
                       <NavLink to={`/stones/${item._id}`}>

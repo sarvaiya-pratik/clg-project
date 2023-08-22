@@ -16,7 +16,9 @@ import AdminLogin from "./pages/admin/AdminLogin/AdminLogin"
 
 import Loader from "./common/Loader/Loader"
 import Cart from "./pages/cart/Cart"
+import Spinner from "./pages/login/Spinner"
 axios.defaults.baseURL = "http://localhost:4001";
+
 const App = () => {
   // const [user, setLoginUser] = useState({ _id: 12 })
   const [jdata, setJdata] = useState([])
@@ -52,7 +54,8 @@ const App = () => {
             <Route path="/stones/:id" element={<StoneDetail data={jdata} />}></Route>
             <Route path="/admin" element={< AdminLogin />} />
             <Route path="/admins/*" element={<Admin data={jdata} />}></Route>
-            <Route path="/cart" element={localStorage.getItem("uname")?<Cart/>:<Login/>}></Route>
+            <Route path="/cart" element={<Cart />}></Route>
+            <Route path="/spi" element={<Spinner />}></Route>
           </Routes>
 
         </Router>

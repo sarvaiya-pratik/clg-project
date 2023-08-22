@@ -18,7 +18,7 @@ const RegisterControl = async (req, res) => {
                 await doc.save();
                 const user = await UserModel.findOne({ email })
                 let token = jwt.sign({ UserId: user._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
-                res.send({ status: "success", message: "Register sucessfully", uname: user.name, token: token })
+                res.send({ status: "success", message: "Register sucessfully", uname: user.name, token: token,userId:user._id })
             }
             else {
                 res.send({ status: "failed", message: "Password not same !" })
@@ -45,7 +45,7 @@ const LoginCotrol = async (req, res) => {
             if (ischeck) {
                 let token = jwt.sign({ UserId: user._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
 
-                res.send({ status: "success", message: "Login succesfully", uname: user.name, token: token })
+                res.send({ status: "success", message: "Login succesfully", uname: user.name, token: token,userId:user._id})
             }
             else {
                 res.send({ status: "failed", message: "Invalid Password!" })
