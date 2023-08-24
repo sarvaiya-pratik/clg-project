@@ -5,13 +5,12 @@ import Spinner from '../login/Spinner'
 import Header from "../../common/Header/Header"
 import Footer from "../../common/Footer/Footer"
 import axios from 'axios'
-import Loader from '../../common/Loader/Loader'
 
 const Cart = () => {
     const [cart, setCart] = useState()
     const [load, setLoad] = useState(true)
     useEffect(() => {
-    
+        console.log("run Cart")
         axios.get("/cart", { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
             .then((r) => {
                 setCart(r.data)
@@ -32,11 +31,9 @@ const Cart = () => {
     const handleInc = (productId) => {
 
         axios.put(`/cart/inc`, { productId }, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
-
             .then((r) => {
                 console.log("inc", r.data)
             })
-
     }
     const handleDec = (productId) => {
         axios.put(`/cart/dec`, { productId }, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
@@ -44,18 +41,15 @@ const Cart = () => {
             .then((r) => {
                 console.log("inc", r.data)
             })
-
     }
-
 
     const calculateTotalAmount = () => {
         return cart.reduce((total, item) => total + item.price * item.quantity, 0);
     };
-
     return (
         <>
             <Header />
-            {load ? <Spinner/> :
+            {load ? <Spinner /> :
                 <div id="cart">
                     <main>
 
@@ -76,9 +70,9 @@ const Cart = () => {
                                             return (
                                                 <li className="table-row" key={index}>
 
-                                                    <div className="col col-1" ><iframe src={item.threesixty} width="50px" height="50px" style={{ alignSelf: 'flex-start'}} /><p>{item.name}</p></div>
+                                                    <div className="col col-1" ><iframe src={item.threesixty} width="50px" height="50px" style={{ alignSelf: 'flex-start' }} /><p>{item.name}</p></div>
                                                     <div className="col col-2" >{item.price}</div>
-                                                    <div className="col col-3" ><AiFillPlusCircle onClick={() => handleInc(item.productId)} style={{cursor:'pointer'}}/>{item.quantity}<AiFillMinusCircle style={{cursor:'pointer'}} onClick={() => handleDec(item.productId)} /></div>
+                                                    <div className="col col-3" ><AiFillPlusCircle onClick={() => handleInc(item.productId)} style={{ cursor: 'pointer' }} />{item.quantity}<AiFillMinusCircle style={{ cursor: 'pointer' }} onClick={() => handleDec(item.productId)} /></div>
                                                     <div className="col col-4" >{item.quantity * item.price}</div>
                                                     <div className="col col-5 deletecustomer" onClick={() => handleDetele(item.productId)}  ><AiFillDelete /></div>
                                                 </li>

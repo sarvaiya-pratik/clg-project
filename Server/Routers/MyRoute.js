@@ -7,7 +7,7 @@ const AdminControl = require("../Controls/Admin")
 // PRODUCT
 const { AddProductData, GetProductData, deleteProduct } = require("../Controls/ProductData")
 // FEEDBACK
-const { addFeedback, getFeedback } = require('../Controls/Feedback')
+const { addFeedback, getFeedback,deleteFeedback } = require('../Controls/Feedback')
 //CART
 const addToCart = require("../Controls/Cart")
 
@@ -36,6 +36,7 @@ Router.route("/v1/product/:id").delete(deleteProduct)
 // FEEDBACK 
 Router.route("/feedback").post(addFeedback);
 Router.route("/feedback").get(getFeedback);
+Router.route("/feedback/:id").delete(deleteFeedback);
 
 
 //CART

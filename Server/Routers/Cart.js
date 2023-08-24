@@ -82,7 +82,6 @@ router.put("/inc", AuthUser, async (req, res) => {
     const userId = req.user._id;
     const { productId } = req.body
 
-    console.log("pid", productId)
     const userCart = await Cart.findOne({ userId })
 
     if (!userCart) {
@@ -90,7 +89,7 @@ router.put("/inc", AuthUser, async (req, res) => {
     }
     else {
         let cartItem = userCart.items.find((e) => e.productId === productId)
-        console.log(cartItem)
+
         cartItem.quantity += 1;
         await userCart.save();
         res.json({ coe: 200, message: "Quantity updated successfully" })
@@ -105,7 +104,6 @@ router.put("/dec", AuthUser, async (req, res) => {
     const userId = req.user._id;
     const { productId } = req.body
 
-    console.log("pid", productId)
     const userCart = await Cart.findOne({ userId })
 
     if (!userCart) {
@@ -114,7 +112,7 @@ router.put("/dec", AuthUser, async (req, res) => {
     else {
 
         let cartItem = userCart.items.find((e) => e.productId === productId)
-        console.log(cartItem)
+
         cartItem ? cartItem.quantity -= 1 : ""
         await userCart.save();
         res.json({ coe: 200, message: "Quantity updated successfully" })
@@ -127,7 +125,7 @@ router.delete('/delete/:id', AuthUser, async (req, res) => {
     const userId = req.user._id;
     const productId = req.params["id"]
 
-    console.log("pid", productId)
+
     let userCart = await Cart.findOne({ userId })
 
     if (!userCart) {

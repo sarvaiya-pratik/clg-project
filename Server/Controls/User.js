@@ -63,7 +63,7 @@ const LoginCotrol = async (req, res) => {
 const GetUserData = async (req, res) => {
 
     const doc = await UserModel.find();
-    console.log("get user run")
+   
     res.json(doc);
 }
 

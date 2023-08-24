@@ -17,7 +17,7 @@ import AdminLogin from "./pages/admin/AdminLogin/AdminLogin"
 import Loader from "./common/Loader/Loader"
 import Cart from "./pages/cart/Cart"
 import Spinner from "./pages/login/Spinner"
-axios.defaults.baseURL = "http://localhost:4001";
+// axios.defaults.baseURL = "http://localhost:4001";
 
 const App = () => {
   // const [user, setLoginUser] = useState({ _id: 12 })
@@ -30,7 +30,7 @@ const App = () => {
   }, [])
 
   const callapi = async () => {
-    await axios.get("/product")
+    await axios.get("http://localhost:4001/product")
       .then((res) => {
         setJdata(res.data)
         setLoad(false)

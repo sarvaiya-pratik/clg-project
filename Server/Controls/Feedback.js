@@ -17,4 +17,17 @@ const getFeedback = async(req,res)=>{
     const doc = await feedbackModel.find();
      res.json(doc);
 }
-module.exports = {addFeedback,getFeedback};
+
+const deleteFeedback =async (req,res)=>{
+    const id = req.params.id
+
+    try {
+        await feedbackModel.findByIdAndDelete({_id:id});
+        res.json({message:"Delete succesfully"})
+        
+    } catch (error) {
+        res.send("Catch ")
+    }
+
+}
+module.exports = {addFeedback,getFeedback,deleteFeedback};
