@@ -5,10 +5,12 @@ import Spinner from '../login/Spinner'
 import Header from "../../common/Header/Header"
 import Footer from "../../common/Footer/Footer"
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
     const [cart, setCart] = useState()
     const [load, setLoad] = useState(true)
+    const navigate = useNavigate();
     useEffect(() => {
         console.log("run Cart")
         axios.get("/cart", { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
@@ -17,7 +19,7 @@ const Cart = () => {
                 setLoad(false)
             })
 
-    }, [cart])
+    }, [])
 
     const handleDetele = (productId) => {
         axios.delete(`/cart/delete/${productId}`, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
@@ -34,6 +36,7 @@ const Cart = () => {
             .then((r) => {
                 console.log("inc", r.data)
             })
+        window.location.reload();
     }
     const handleDec = (productId) => {
         axios.put(`/cart/dec`, { productId }, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
@@ -41,6 +44,7 @@ const Cart = () => {
             .then((r) => {
                 console.log("inc", r.data)
             })
+        window.location.reload();
     }
 
     const calculateTotalAmount = () => {
@@ -83,7 +87,11 @@ const Cart = () => {
                                     cart ? <li className='table-header'>
                                         <div className="col" style={{ textAlign: 'center' }}>Total</div>
                                         <div className="col">₹ {calculateTotalAmount()}</div>
-                                        <div className="col-1"><button className='orderBtn'>Order Now</button></div>
+                                        <div className="col-1">
+
+                                            <button className='orderBtn' onClick={() => navigate("/order")}>Order Now</button>
+
+                                        </div>
                                     </li> : ""
                                 }
 

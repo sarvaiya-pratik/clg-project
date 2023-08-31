@@ -9,6 +9,7 @@ const productdata = require("../models/productdata")
 router.get("/", AuthUser, async (req, res) => {
 
     const userId = req.user._id;
+    
 
     const userCart = await Cart.findOne({ userId });
 
@@ -44,6 +45,8 @@ router.get("/", AuthUser, async (req, res) => {
 
 
 })
+
+
 // POST || ADD
 router.post("/add", AuthUser, async (req, res) => {
     try {
@@ -112,8 +115,8 @@ router.put("/dec", AuthUser, async (req, res) => {
     else {
 
         let cartItem = userCart.items.find((e) => e.productId === productId)
+        cartItem.quantity <= 1 ? cartItem.quantity = 1 : cartItem.quantity -= 1;
 
-        cartItem ? cartItem.quantity -= 1 : ""
         await userCart.save();
         res.json({ coe: 200, message: "Quantity updated successfully" })
 
@@ -124,7 +127,6 @@ router.put("/dec", AuthUser, async (req, res) => {
 router.delete('/delete/:id', AuthUser, async (req, res) => {
     const userId = req.user._id;
     const productId = req.params["id"]
-
 
     let userCart = await Cart.findOne({ userId })
 

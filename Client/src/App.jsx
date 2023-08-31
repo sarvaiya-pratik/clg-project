@@ -17,7 +17,9 @@ import AdminLogin from "./pages/admin/AdminLogin/AdminLogin"
 import Loader from "./common/Loader/Loader"
 import Cart from "./pages/cart/Cart"
 import Spinner from "./pages/login/Spinner"
-// axios.defaults.baseURL = "http://localhost:4001";
+
+import Order from "./pages/cart/address/Order"
+
 
 const App = () => {
   // const [user, setLoginUser] = useState({ _id: 12 })
@@ -56,6 +58,7 @@ const App = () => {
             <Route path="/admins/*" element={<Admin data={jdata} />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/spi" element={<Spinner />}></Route>
+            <Route path="/order" element={<Order />}></Route>
           </Routes>
 
         </Router>

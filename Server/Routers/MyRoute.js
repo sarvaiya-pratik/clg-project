@@ -11,6 +11,8 @@ const { addFeedback, getFeedback,deleteFeedback } = require('../Controls/Feedbac
 //CART
 const addToCart = require("../Controls/Cart")
 
+const {OderDetail,report,getOrderDetail,DeleteOrder} = require("../Controls/Order")
+const AuthUser = require("../middleware/AuthUser")
 // ----------------ROUTES-----------------
 
 
@@ -19,7 +21,6 @@ Router.route("/register").post(RegisterControl)
 Router.route("/login").post(LoginCotrol)
 Router.route("/user").get(GetUserData)
 Router.route("/user/:id").delete(deleteUser)
-
 
 
 // ADMIN  
@@ -43,4 +44,9 @@ Router.route("/feedback/:id").delete(deleteFeedback);
 
 Router.route("/addtocart/:id").post(addToCart)
 
-module.exports = Router;
+// Order
+Router.route("/order").post(AuthUser,OderDetail,report)
+Router.route("/order").get(getOrderDetail)
+Router.route("/order/:_id").delete(DeleteOrder)
+
+module.exports = Router;    

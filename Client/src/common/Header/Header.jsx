@@ -4,7 +4,7 @@ import { BiMenu, BiUserCircle, BiCart } from "react-icons/bi"
 import { NavLink } from "react-router-dom"
 import { useCart } from "react-use-cart"
 import axios from 'axios'
-
+import logo from "./main-logo.png"
 const Header = () => {
 
     const [menu, setMenu] = useState(false)
@@ -22,6 +22,9 @@ const Header = () => {
             })
 
 
+        
+    },[])
+    useEffect(()=>{
         const handleScroll = () => {
             let moving = window.scrollY
 
@@ -48,7 +51,7 @@ const Header = () => {
         <>
             <header id='mynav' className={cls}>
                 <div className='left'>
-                    <img src="https://freepngimg.com/download/diamond/15-diamond-png-image.png" alt="" style={{ width: '60px', height: '60px' }} />
+                    <img src={logo} alt="" style={{ width: '60px', height: '60px' }} />
                 </div>
                 <div className="mobile-nav">
 

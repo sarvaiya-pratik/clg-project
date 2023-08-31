@@ -1,5 +1,5 @@
 /* Global Admin css */
-.deleteBtn{
+.deleteBtn {
 
     .bin {
         --black: #000000;
@@ -19,9 +19,10 @@
         height: var(--height);
         border: 2px solid var(--black);
         border-radius: 0 0 6px 6px;
-      }
-      
-      .bin::after, .bin::before {
+    }
+
+    .bin::after,
+    .bin::before {
         content: "";
         position: absolute;
         transform-origin: left bottom;
@@ -30,9 +31,9 @@
         border-style: solid;
         margin: auto;
         right: 0;
-      }
-      
-      .bin::after {
+    }
+
+    .bin::after {
         left: -4px;
         top: -5px;
         height: 7px;
@@ -40,58 +41,69 @@
         border: 2px solid var(--black);
         background-color: var(--binbg);
         border-radius: 5px 5px 0 0;
-      }
-      
-      .bin::before {
+    }
+
+    .bin::before {
         top: -8px;
         height: 2px;
         width: 10px;
         border-color: var(--black) var(--black) transparent var(--black);
         left: 0;
-      }
-      
-      .bin:focus, .bin:active {
+    }
+
+    .bin:focus,
+    .bin:active {
         outline: none;
         cursor: none;
-      }
-      
-      .bin:focus::before, .bin:focus::after, .bin:active::before, .bin:active::after {
+    }
+
+    .bin:focus::before,
+    .bin:focus::after,
+    .bin:active::before,
+    .bin:active::after {
         transform-origin: left bottom;
         transform: rotate(-45deg);
-      }
-      
-      .bin:focus::before, .bin:active::before {
+    }
+
+    .bin:focus::before,
+    .bin:active::before {
         top: -18px;
         left: -23px;
         right: 3px;
-      }
-      
-      .bin:focus ~ .div, .bin:active ~ .div {
+    }
+
+    .bin:focus~.div,
+    .bin:active~.div {
         cursor: none;
         z-index: 1;
-      }
-      
-      .bin:focus ~ .div:hover, .bin:active ~ .div:hover {
+    }
+
+    .bin:focus~.div:hover,
+    .bin:active~.div:hover {
         cursor: none;
-      }
-      
-      .bin:focus ~ .overlay, .bin:active ~ .overlay {
+    }
+
+    .bin:focus~.overlay,
+    .bin:active~.overlay {
         pointer-events: inherit;
         z-index: 2;
         cursor: none;
-      }
-      
-      .bin:focus ~ .div > small, .bin:active ~ .div > small {
+    }
+
+    .bin:focus~.div>small,
+    .bin:active~.div>small {
         opacity: 1;
         animation: throw 300ms 30ms cubic-bezier(0.215, 0.61, 0.355, 0.3) forwards;
-      }
-      
-      .div:focus, .div:active, .div:hover {
+    }
+
+    .div:focus,
+    .div:active,
+    .div:hover {
         z-index: 1;
         cursor: none;
-      }
-      
-      .div > small {
+    }
+
+    .div>small {
         position: absolute;
         width: 20px;
         height: 16px;
@@ -102,86 +114,89 @@
         bottom: 0;
         border-left: 1px solid black;
         opacity: 0;
-      }
-      
-      .div > small::before, .div > small::after {
+    }
+
+    .div>small::before,
+    .div>small::after {
         content: "";
         position: absolute;
         width: 1px;
         border-right: 1px solid black;
-      }
-      
-      .div > small::before {
+    }
+
+    .div>small::before {
         height: 17px;
         transform: rotate(-42deg);
         top: -3px;
         right: 13px;
-      }
-      
-      .div > small::after {
+    }
+
+    .div>small::after {
         height: 4px;
         transform: rotate(-112deg);
         top: 18px;
         right: 11px;
-      }
-      
-      .div > small > i::before, .div > small > i::after {
+    }
+
+    .div>small>i::before,
+    .div>small>i::after {
         content: "";
         position: absolute;
         border-top: 1px solid black;
-      }
-      
-      .div > small > i::before {
+    }
+
+    .div>small>i::before {
         border-left: 1px solid black;
         width: 4px;
         bottom: -4px;
         height: 4px;
         transform: rotate(66deg);
-      }
-      
-      .div > small > i::after {
+    }
+
+    .div>small>i::after {
         border-right: 1px solid black;
         width: 5px;
         bottom: -2px;
         height: 5px;
         transform: rotate(-114deg);
         right: 6px;
-      }
-      
-      @keyframes throw {
+    }
+
+    @keyframes throw {
         0% {
-          transform: translate(0, 0);
+            transform: translate(0, 0);
         }
-      
+
         50% {
-          transform: translate(0, -30px) rotate(-10deg);
+            transform: translate(0, -30px) rotate(-10deg);
         }
-      
+
         60% {
-          transform: translate(0, -40px) rotate(-30deg);
+            transform: translate(0, -40px) rotate(-30deg);
         }
-      
+
         70% {
-          transform: translate(-5px, -50px) rotate(-40deg) scale(1);
-          opacity: 1;
+            transform: translate(-5px, -50px) rotate(-40deg) scale(1);
+            opacity: 1;
         }
-      
+
         80% {
-          transform: translate(-10px, -60px) rotate(-60deg) scale(0.9);
-          opacity: 1;
+            transform: translate(-10px, -60px) rotate(-60deg) scale(0.9);
+            opacity: 1;
         }
-      
+
         90% {
-          transform: translate(-20px, -50px) rotate(-100deg) scale(0.5);
-          opacity: 0.8;
+            transform: translate(-20px, -50px) rotate(-100deg) scale(0.5);
+            opacity: 0.8;
         }
-      
+
         100% {
-          transform: translate(-30px, -20px) rotate(-80deg) scale(0.4);
-          opacity: 0;
+            transform: translate(-30px, -20px) rotate(-80deg) scale(0.4);
+            opacity: 0;
         }
-      }
+    }
 }
+
 .rbtn {
     color: white;
     background-color: #222;
@@ -198,36 +213,36 @@
     display: inline-flex;
     align-items: center;
     border: none;
-  }
-  
-  .rbtn:hover {
+}
+
+.rbtn:hover {
     background-color: #333;
-  }
-  
-  .rbtn svg {
+}
+
+.rbtn svg {
     display: inline;
     width: 1.3rem;
     height: 1.3rem;
     margin-right: 0.75rem;
     color: white;
-  }
-  
-  .rbtn:focus svg {
-    animation: spin_357 0.5s linear;
-  }
-  
-  @keyframes spin_357 {
-    from {
-      transform: rotate(0deg);
-    }
-  
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
+}
 
-  
+.rbtn:focus svg {
+    animation: spin_357 0.5s linear;
+}
+
+@keyframes spin_357 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
 
 
 
@@ -238,39 +253,43 @@
     justify-content: space-evenly;
 
     >h2 {
-        display: flex;
-        justify-content: center;
-       
+  font-weight: 600;
+  background-image: linear-gradient(to right, #0380a7, rgb(139, 105, 18));
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 
 
     }
-    >.searchwithref{
+
+    >.searchwithref {
         display: flex;
         gap: 1rem;
+
         >.inputwitlogo {
-      
+
             display: flex;
             background-color: aliceblue;
             align-items: center;
-    
-    
+
+
             border-radius: 20px;
             padding: 5px 8px;
-    
+
             >svg {
                 font-size: 1.8rem;
-    
+
             }
-    
+
             >input {
                 background-color: transparent;
                 border: none;
                 outline: none;
                 padding-left: 3px;
-    
+
             }
-    
-    
+
+
         }
 
         /* Refresh */
@@ -290,38 +309,38 @@
             display: inline-flex;
             align-items: center;
             border: none;
-          }
-          
-          .rbtn:hover {
+        }
+
+        .rbtn:hover {
             background-color: #333;
-          }
-          
-          .rbtn svg {
+        }
+
+        .rbtn svg {
             display: inline;
             width: 1.3rem;
             height: 1.3rem;
             margin-right: 0.75rem;
             color: white;
-          }
-          
-          .rbtn:focus svg {
+        }
+
+        .rbtn:focus svg {
             animation: spin_357 0.5s linear;
-          }
-          
-          @keyframes spin_357 {
+        }
+
+        @keyframes spin_357 {
             from {
-              transform: rotate(0deg);
+                transform: rotate(0deg);
             }
-          
+
             to {
-              transform: rotate(360deg);
+                transform: rotate(360deg);
             }
-          }
-          
+        }
+
 
     }
 
-   
+
 
 }
 
@@ -1053,4 +1072,118 @@
         }
     }
 
+}
+
+/* Order */
+#order {
+    >h2 {
+        font-weight: 500;
+        color: var(--third-color);
+        border-bottom: 1px solid black;
+
+    }
+
+    >.container {
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        .col-1 {
+            flex-basis: 10%;
+        }
+
+        .col-2 {
+            flex-basis: 30%;
+        }
+
+        .col-3 {
+            flex-basis: 40%;
+        }
+
+        .col-4 {
+            flex-basis: 15%;
+        }
+
+        .col-5 {
+            flex-basis: 5%;
+        }
+
+        .deletecustomer {
+            font-size: 1.5rem;
+            cursor: pointer;
+
+            &:hover {
+                color: red;
+            }
+        }
+
+        >h2 {
+            font-size: 26px;
+            margin: 20px 0;
+            text-align: center;
+
+            small {
+                font-size: 0.5em;
+            }
+        }
+
+        >.responsive-table {
+            >li {
+                border-radius: 3px;
+                padding: 25px 30px;
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 25px;
+            }
+
+            >.table-header {
+                background-color: #95A5A6;
+                font-size: 18px;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+                font-weight: 600;
+            }
+
+            >.table-row {
+                background-color: #ffffff;
+                box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+
+            }
+
+
+        }
+
+        @media all and (max-width: 767px) {
+            .table-header {
+                display: none;
+            }
+
+            .table-row {}
+
+            li {
+                display: block;
+            }
+
+            .col {
+
+                flex-basis: 100%;
+
+            }
+
+            .col {
+                display: flex;
+                padding: 10px 0;
+
+                &:before {
+                    color: #6C7A89;
+                    padding-right: 10px;
+                    content: attr(data-label);
+                    flex-basis: 50%;
+                    text-align: right;
+                }
+            }
+        }
+    }
 }

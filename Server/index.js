@@ -10,15 +10,16 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(cookieParser())
 
-//middleware
-// const AuthUser = require("./middleware/AuthUser")
-// app.use('/v1/*', AuthUser);
+const AuthUser = require("./middleware/AuthUser")
 
 const cart = require("./Routers/Cart")
 app.use('/cart',cart)
 //routes
 const Router = require("./Routers/MyRoute")
 app.use("/", Router)
+
+
+
 
 // mongo connect
 try {
