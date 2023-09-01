@@ -5,13 +5,25 @@ import axios from "axios"
 const Order = ({ slider }) => {
   const [orderData, setOrderData] = useState()
   const [search, setSearch] = useState("")
+  const [cart, setCart] = useState()
 
   useEffect(() => {
+    console.log("run Cart")
+    axios.get("/cart", { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
+      .then((r) => {
+        setCart(r.data)
+        // setLoad(false)
+      })
+
     axios.get("http://localhost:4001/order")
       .then((r) => {
         setOrderData(r.data.order)
       })
-  })
+
+  }, [])
+
+
+
   const handleDetele = (_id) => {
     if (window.confirm("Are you sure delete this user ?")) {
       axios.delete(`http://localhost:4001/order/${_id}`)
@@ -27,6 +39,9 @@ const Order = ({ slider }) => {
   const handleRefresh = () => {
     window.location.reload()
   }
+
+
+  console.log("cart ",cart)
   return (
     <div id='order' className='content-admin' style={{ marginLeft: slider && '20%' }}>
       <h2>Orders</h2>
@@ -55,12 +70,43 @@ const Order = ({ slider }) => {
           <li className="table-header">
             <div className="col col-1">NO</div>
             <div className="col col-2">Customer Name</div>
-            <div className="col col-3">Email</div>
-            <div className="col col-4">City</div>
-            <div className="col col-5">Del</div>
+            <div className="col col-3">Product name</div>
+            <div className="col col-4"> Qty</div>
+            <div className="col col-5">City</div>
+            <div className="col col-6">Del</div>
           </li>
 
           {
+            cart ?
+              orderData.map((item, index) => {
+                let cartData = cart.find((cartItem) => cartItem.userId == item.userId);
+              //  console.log("oitem",cartData)
+               
+                  return (<li className="table-row" key={index}>
+                  <div className="col col-1" >{index+1}</div>
+                  <div className="col col-2" >{item.fname + " " + item.lname}</div>
+                  <div className="col col-3" >{cartData.name}</div>
+                  <div className="col col-4" >{cartData.quantity}</div>
+                  <div className="col col-5" >{item.city}</div>
+                  <div className="col col-6 deletecustomer" onClick={() => handleDetele(item._id)}  >
+                    <div className="deleteBtn">
+                      <button class="bin">🗑</button>
+                      <div class="div">
+                        <small>
+                          <i></i>
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </li>)
+                
+               
+
+              })
+
+              : ""
+
+          /* {
             orderData ?
               orderData.filter(val => search == "" ? val : val.fname.toLowerCase().includes(search.toLowerCase()))
                 .sort((a, b) => a.fname.localeCompare(b.fname))
@@ -84,7 +130,7 @@ const Order = ({ slider }) => {
                     </li>
                   )
                 }) : ""
-          }
+          } */}
 
 
         </ul>

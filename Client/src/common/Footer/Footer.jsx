@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./style.css"
-import { Toaster,toast } from 'react-hot-toast'
+import { Toaster, toast } from 'react-hot-toast'
 
 import { GrLocation } from "react-icons/gr"
 import { AiOutlinePhone, AiOutlineMail } from "react-icons/ai"
@@ -8,23 +8,29 @@ import { TbDeviceLandlinePhone } from "react-icons/tb"
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa"
 import { motion } from "framer-motion"
 import axios from 'axios'
-  
+
 const Footer = () => {
-const [feedback,setFeedback] = useState({})
-const handleSubmit=()=>{
-axios.post("http://localhost:4001/feedback",feedback)
-.then((r)=>{
-  if(r.status === 201){
-    toast.success("Feedback send succesfully !")
+  const [feedback, setFeedback] = useState({})
+  const handleSubmit = () => {
+    axios.post("http://localhost:4001/feedback", feedback)
+      .then((r) => {
+        if (r.status === 201) {
+          toast.success("Feedback send succesfully !")
+          document.location.reload()
+
+        }
+        else {
+          toast.error(r.data.message)
+        }
+      })
+    const handleval = () => {
+      return " "
+    }
   }
-  else{
-    toast.error(r.data.message)
-  }
-})
-}
+
   return (
     <>
-<Toaster/>
+      <Toaster />
       <motion.hr whileInView={{ marginLeft: '0' }} style={{ margin: '0', color: 'black', marginLeft: '100%', transition: 'all 1s' }} />
       <div className="wave-container">
         <div id="footer">
@@ -72,7 +78,7 @@ axios.post("http://localhost:4001/feedback",feedback)
                 </button>
               </a>
 
-            <a href="https://www.instagram.com/pratiksaravaiya/?igshid=YmMyMTA2M2Y%3D" target='_blank'>
+              <a href="https://www.instagram.com/pratiksaravaiya/?igshid=YmMyMTA2M2Y%3D" target='_blank'>
                 <button className="card4">
                   <FaInstagram className='instagram' style={{ color: "#E1306C" }} />
                 </button>
@@ -85,7 +91,7 @@ axios.post("http://localhost:4001/feedback",feedback)
             <h2 className='heading'>FEEDBACK !</h2>
             <div className="subscribe">
               <p>Write here...</p>
-              <input placeholder="Give your feedback !" className="subscribe-input" name="feedback" type="text" onChange={(e)=>setFeedback({...feedback,[e.target.name]:e.target.value})} />
+              <input placeholder="Give your feedback !" className="subscribe-input" name="feedback" type="text" onChange={(e) => setFeedback({ ...feedback, [e.target.name]: e.target.value })} />
               <br />
               <div className="submit-btn" onClick={handleSubmit}>SUBMIT</div>
             </div>
@@ -96,7 +102,7 @@ axios.post("http://localhost:4001/feedback",feedback)
 
 
 
-        <p style={{ textAlign: 'center', fontSize: '1.1 rem',marginTop:'3rem' }}>&copy; 2023 MRP DIAMONDS All right reserved</p>
+        <p style={{ textAlign: 'center', fontSize: '1.1 rem', marginTop: '3rem' }}>&copy; 2023 MRP DIAMONDS All right reserved</p>
 
 
         <div className="wave"></div>

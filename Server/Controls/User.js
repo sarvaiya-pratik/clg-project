@@ -1,11 +1,12 @@
 const UserModel = require("../models/Users")
 const { hashPassword, comparePassword } = require("../hepler/authHepler")
-const jwt = require('jsonwebtoken')
-// api REGISTER || POST
+const jwt = require('jsonwebtoken');
+const { eventNames } = require("../models/Cart");
 
+// POST || REGISTER
 const RegisterControl = async (req, res) => {
     const { name, email, phone, password, cpassword } = req.body;
-    if (name && email && phone & password && cpassword) {
+    if (email) {
         const user = await UserModel.findOne({ email })
         if (user) {
             res.send({ status: "failed", message: "Email already registered" })
@@ -18,7 +19,7 @@ const RegisterControl = async (req, res) => {
                 await doc.save();
                 const user = await UserModel.findOne({ email })
                 let token = jwt.sign({ UserId: user._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
-                res.send({ status: "success", message: "Register sucessfully", uname: user.name, token: token,userId:user._id })
+                res.send({ status: "success", message: "Register sucessfully", uname: user.name, token: token, userId: user._id })
             }
             else {
                 res.send({ status: "failed", message: "Password not same !" })
@@ -31,7 +32,7 @@ const RegisterControl = async (req, res) => {
 }
 
 
-//api LOGIN || POST
+// POST || LOGIN 
 const LoginCotrol = async (req, res) => {
 
     const { email, password } = req.body;
@@ -45,7 +46,7 @@ const LoginCotrol = async (req, res) => {
             if (ischeck) {
                 let token = jwt.sign({ UserId: user._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
 
-                res.send({ status: "success", message: "Login succesfully", uname: user.name, token: token,userId:user._id})
+                res.send({ status: "success", message: "Login succesfully", uname: user.name, token: token, userId: user._id })
             }
             else {
                 res.send({ status: "failed", message: "Invalid Password!" })
@@ -60,10 +61,11 @@ const LoginCotrol = async (req, res) => {
     }
 }
 
+// GET || READ-USERS
 const GetUserData = async (req, res) => {
 
     const doc = await UserModel.find();
-   
+
     res.json(doc);
 }
 
@@ -75,7 +77,7 @@ const deleteUser = async (req, res) => {
             .catch((e) => {
                 console.log(e)
             })
-        
+
 
         res.json({ message: "deleted successfully" })
 

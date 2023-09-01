@@ -4,21 +4,15 @@ const mongoose = require("mongoose")
 const cors = require("cors")
 const bodyParser = require("body-parser")
 const app = express()
-const cookieParser = require("cookie-parser")
-app.use(express.urlencoded({extended:false}))
+
+// basic middelwares 
+app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 app.use(bodyParser.json())
-app.use(cookieParser())
 
-const AuthUser = require("./middleware/AuthUser")
-
-const cart = require("./Routers/Cart")
-app.use('/cart',cart)
 //routes
 const Router = require("./Routers/MyRoute")
 app.use("/", Router)
-
-
 
 
 // mongo connect
@@ -26,7 +20,7 @@ try {
     mongoose.connect(process.env.URLATLAS);
     console.log("Database connected successfully")
 } catch (e) {
-    console.log(e)
+    console.log("error in Atalas Connection", e)
 }
 
 app.listen(process.env.PORT, () => {

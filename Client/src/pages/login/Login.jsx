@@ -6,13 +6,13 @@ import toast, { Toaster } from "react-hot-toast"
 import Header from '../../common/Header/Header'
 import Footer from '../../common/Footer/Footer'
 import { useNavigate } from "react-router-dom"
-import { AiOutlineUser,AiOutlineMail,AiOutlinePhone,AiOutlineLock} from "react-icons/ai"
+import { AiOutlineUser, AiOutlineMail, AiOutlinePhone, AiOutlineLock } from "react-icons/ai"
 
 const Login = () => {
   const [loginData, setLoginData] = useState({})
   const [regData, setRegData] = useState({})
   const [action, setAction] = useState("Login")
-  const [showPass,setShowPass] = useState("password")
+  const [showPass, setShowPass] = useState("password")
 
   const navigate = useNavigate();
   function handleReg(e) {
@@ -26,15 +26,16 @@ const Login = () => {
 
   function handleLoginSubmit(e) {
     e.preventDefault()
+
+    console.log(regData)
     axios.post("http://localhost:4001/login", loginData)
       .then((r) => {
         if (r.data.status == "success") {
-
           localStorage.setItem('uname', r.data.uname)
           localStorage.setItem('token', r.data.token)
 
           try {
-            toast.success(r.data.message)
+            toast.success(r.data.message) 
 
             navigate("/")
             window.location.reload()
@@ -74,8 +75,8 @@ const Login = () => {
       })
   }
 
-  const handleShowPass=()=>{
-    setShowPass(showPass=="password"?"text":"password")
+  const handleShowPass = () => {
+    setShowPass(showPass == "password" ? "text" : "password")
   }
 
   return (
@@ -83,8 +84,6 @@ const Login = () => {
       <Header />
 
       <div className="main-container">
-
-
 
         <div className="container">
           <div className="header">
@@ -95,7 +94,7 @@ const Login = () => {
             <form className="inputs" onSubmit={handleLoginSubmit} >
               <div className="input">
                 <AiOutlineUser />
-                <input type="text" placeholder='Email' name="email"
+                <input type="email" placeholder='Email' name="email" required
                   onChange={handleLogin}
                 />
               </div>
@@ -104,7 +103,7 @@ const Login = () => {
                 <input type="password" placeholder='Password' name="password"
                   onChange={handleLogin} />
               </div>
-              <div className="forgate-password">Lost password ? <span>click here</span></div> 
+              <div className="forgate-password">Lost password ? <span>click here</span></div>
 
               <div className="submit-container">
                 <button type='submit' className="submit gray" onClick={() => setAction("Sign Up")}>Sign Up</button>
@@ -125,26 +124,30 @@ const Login = () => {
                 <AiOutlineMail />
                 <input type="eamil" placeholder='Email Id'
                   name='email'
+                  required
                   onChange={handleReg} />
               </div>
               <div className="input" >
                 <AiOutlinePhone />
                 <input type="text" placeholder='phone'
                   name='phone'
+                  required
                   onChange={handleReg} />
               </div>
               <div className="input" >
                 <AiOutlineLock />
-                <input type="password"  placeholder='New Pasword'
+                <input type="password" placeholder='New Pasword'
                   name='password'
+                  required
                   onChange={handleReg} />
               </div>
               <div className="input">
                 <AiOutlineLock />
                 <input type={showPass} placeholder='Confirm Password'
                   name='cpassword'
+                  required
                   onChange={handleReg} />
-                  <input type="checkbox" onClick={handleShowPass} style={{width:'30px',height:'30px',marginRight:'20px'}}/>
+                <input type="checkbox" onClick={handleShowPass} style={{ width: '30px', height: '30px', marginRight: '20px' }} />
               </div>
               <div className="submit-container">
                 <button type='submit' className="submit" onClick={() => setAction("Sign Up")}>Sign Up</button>
@@ -152,7 +155,7 @@ const Login = () => {
               </div>
             </form>
           }
-        
+
 
         </div>
 
@@ -167,7 +170,7 @@ const Login = () => {
 
 
 
-     
+
       <Footer />
     </>
   )

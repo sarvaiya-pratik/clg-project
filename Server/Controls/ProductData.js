@@ -1,7 +1,8 @@
 
 const DataModel = require('../models/productdata')
-const AddProductData = async (req, res) => {
 
+// POST || ADD-PRODUCTS
+const AddProductData = async (req, res) => {
     const { title, catagory, threesixty, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, measurements, table, depth, ratio, crownangle, crownheight, pavilionangle, paviliondepth, } = req.body;
     if (title && catagory && threesixty && shape && carat && price) {
         const productData = await DataModel.findOne({ title });
@@ -20,6 +21,7 @@ const AddProductData = async (req, res) => {
     }
 }
 
+// GET || READ-PRODUCTS
 const GetProductData = async (req, res) => {
 
 
@@ -27,6 +29,7 @@ const GetProductData = async (req, res) => {
     res.json(productData)
 }
 
+// DELETE || DELETE-PRODUCTS
 const deleteProduct = async (req, res) => {
     const id = req.params['id']
 

@@ -18,7 +18,6 @@ const AddDiamond = ({ slider }) => {
                     toast.error(r.data.message)
                 }
             })
-
     }
 
     return (

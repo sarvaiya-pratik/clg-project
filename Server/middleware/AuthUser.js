@@ -21,7 +21,7 @@ const AuthUser = async (req, res, next) => {
             next()
         } catch (error) {
             console.log("UnAuthorization !")
-            // res.redirect("/")
+          
         }
     }
     else {
