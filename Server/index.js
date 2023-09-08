@@ -5,6 +5,10 @@ const cors = require("cors")
 const bodyParser = require("body-parser")
 const app = express()
 
+
+
+  
+
 // basic middelwares 
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
@@ -14,7 +18,7 @@ app.use(bodyParser.json())
 const Router = require("./Routers/MyRoute")
 app.use("/", Router)
 
-
+app.post
 // mongo connect
 try {
     mongoose.connect(process.env.URLATLAS);

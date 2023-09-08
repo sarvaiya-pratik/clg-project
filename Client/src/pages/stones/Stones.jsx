@@ -27,7 +27,6 @@ const Stones = ({ data }) => {
       navigate('/login')
       toast.error("Pleae Login/Register first !!")
     }
-
   }
 
   return (
@@ -41,13 +40,13 @@ const Stones = ({ data }) => {
             <input type="search" placeholder='Search Diamonds' onChange={(e) => setSearch(e.target.value)} />
           </div>
           <div className="diamonds">
-
+          {/* c_fill,h_300,w_300 */}
             {
               data.filter(val => search == "" ? val : val.title.toLowerCase().includes(search.toLowerCase()))
                 .map((item, index) => {
                   return (
                     <div className='diamond-card' key={index}>
-                      <iframe src={item.threesixty} loading="lazy" width="300px" height="300px" alt="Error" ></iframe>
+                      <iframe src={item.threesixty} width="300px" height="300px" ></iframe>
                       <div className="card-body">
                         <NavLink to={`/stones/${item._id}`}>
                           <h5>{item.title}</h5>

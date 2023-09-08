@@ -2,14 +2,23 @@ import React, { useState } from 'react';
 import "./style.css";
 import axios from "axios"
 import { Toaster, toast } from 'react-hot-toast';
+
 const AddDiamond = ({ slider }) => {
-    const [ddata, setDdata] = useState({})
+    let [ddata, setDdata] = useState({})
+    const [selectedFile, setSelectedFile] = useState(null);
     const handlechange = (e) => {
         setDdata({ ...ddata, [e.target.name]: e.target.value })
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:4001/product", ddata)
+        const formData = new FormData();
+        formData.append('imguri', selectedFile)
+
+        Object.keys(ddata).forEach((key) => {
+            formData.append(key, ddata[key]);
+        });
+
+        axios.post("http://localhost:4001/product", formData)
             .then((r) => {
                 if (r.status === 201) {
                     toast.success("Diamond added successfully !")
@@ -19,6 +28,8 @@ const AddDiamond = ({ slider }) => {
                 }
             })
     }
+
+
 
     return (
         <>
@@ -59,9 +70,11 @@ const AddDiamond = ({ slider }) => {
                             <input type="number" name='price' onChange={handlechange} />
                         </div>
                         <div className="form-con">
-                            <span >Video url</span>
-                            <input type="text" name='threesixty' onChange={handlechange} />
+                            <span >Select Img</span>
+                            <input type="file" name='file' onChange={(e) => setSelectedFile(e.target.files[0])} />
                         </div>
+
+
                         <div className="form-con">
                             <span >Carat</span>
 

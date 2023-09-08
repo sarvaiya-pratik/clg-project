@@ -5,7 +5,6 @@ const productdata = require("../models/productdata")
 
 // GET || READ
     const getCart = async(req,res)=>{
-        
     const userId = req.user._id;
     
 

@@ -1,5 +1,6 @@
 const orderModel = require("../models/Order")
 
+
 // GET || READ-ORDER
 const getOrderDetail = async (req, res) => {
     try {
@@ -25,7 +26,9 @@ const DeleteOrder = async (req, res) => {
 
 }
 
+
 // POST || ADD-ORDER
+
 const OderDetail = async (req, res, next) => {
     const { fname, lname, address, email, zip, city } = req.body;
     const userId = req.user._id;

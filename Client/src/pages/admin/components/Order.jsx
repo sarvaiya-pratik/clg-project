@@ -22,7 +22,7 @@ const Order = ({ slider }) => {
 
   }, [])
 
-
+console.log("cart",cart)
 
   const handleDetele = (_id) => {
     if (window.confirm("Are you sure delete this user ?")) {
@@ -41,7 +41,7 @@ const Order = ({ slider }) => {
   }
 
 
-  console.log("cart ",cart)
+  console.log("cart ", cart)
   return (
     <div id='order' className='content-admin' style={{ marginLeft: slider && '20%' }}>
       <h2>Orders</h2>
@@ -80,10 +80,10 @@ const Order = ({ slider }) => {
             cart ?
               orderData.map((item, index) => {
                 let cartData = cart.find((cartItem) => cartItem.userId == item.userId);
-              //  console.log("oitem",cartData)
-               
-                  return (<li className="table-row" key={index}>
-                  <div className="col col-1" >{index+1}</div>
+                //  console.log("oitem",cartData)
+             
+                return (cartData?<li className="table-row" key={index}>
+                  <div className="col col-1" >{index + 1}</div>
                   <div className="col col-2" >{item.fname + " " + item.lname}</div>
                   <div className="col col-3" >{cartData.name}</div>
                   <div className="col col-4" >{cartData.quantity}</div>
@@ -98,9 +98,9 @@ const Order = ({ slider }) => {
                       </div>
                     </div>
                   </div>
-                </li>)
-                
-               
+                </li> : null) 
+          
+
 
               })
 

@@ -4,7 +4,7 @@ import { BiMenu, BiUserCircle, BiCart } from "react-icons/bi"
 import { NavLink } from "react-router-dom"
 import { useCart } from "react-use-cart"
 import axios from 'axios'
-import logo from "./meet.png"
+import logo from "./logo.png"
 const Header = () => {
 
     const [menu, setMenu] = useState(false)
@@ -51,7 +51,7 @@ const Header = () => {
         <>
             <header id='mynav' className={cls}>
                 <div className='left'>
-                    <img src={logo} alt="" style={{ width: '120px', height: '80px' }} />
+                    <img src={logo} alt="" style={{ width: '120px', height: '100px' }} />
                 </div>
                 <div className="mobile-nav">
 

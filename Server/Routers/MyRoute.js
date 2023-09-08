@@ -15,6 +15,13 @@ const { OderDetail, report, getOrderDetail, DeleteOrder } = require("../Controls
 // Middleware for Authentication
 const AuthUser = require("../middleware/AuthUser")
 
+const multer = require("multer")
+const storage = multer.memoryStorage();
+const upload = multer({ storage })
+
+
+
+
 
 // ----------------ROUTES-----------------
 
@@ -28,7 +35,7 @@ Router.route("/user/:id").delete(deleteUser)
 Router.route("/adminlogin").post(AdminControl)
 
 // PRODUCT DATA 
-Router.route("/product").post(AddProductData)
+Router.route("/product").post(upload.single('imguri'), AddProductData)
 Router.route("/product").get(GetProductData)
 Router.route("/product/:id").delete(deleteProduct)
 // Router.route("/v1/product").get(GetProductData)

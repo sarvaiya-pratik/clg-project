@@ -1,4 +1,28 @@
 /* Global Admin css */
+
+.upload-btn-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 1.1rem;
+    align-items: center;
+    flex-direction: column;
+    width: 220px;
+
+    >.upload-btn {
+        display: flex;
+        padding: 6px 30px;
+        border: none;
+        background-color: darkgoldenrod;
+        border-radius: 10px;
+        color: #fff;
+        align-self: self-start;
+        justify-content: flex-start;
+        gap: 4px;
+
+
+    }
+}
+
 .deleteBtn {
 
     .bin {
@@ -253,11 +277,11 @@
     justify-content: space-evenly;
 
     >h2 {
-  font-weight: 600;
-  background-image: linear-gradient(to right, #0380a7, rgb(139, 105, 18));
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
+        font-weight: 600;
+        background-image: linear-gradient(to right, #0380a7, rgb(139, 105, 18));
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
 
 
     }
@@ -1109,6 +1133,7 @@
         .col-5 {
             flex-basis: 10%;
         }
+
         .col-6 {
             flex-basis: 10%;
         }
