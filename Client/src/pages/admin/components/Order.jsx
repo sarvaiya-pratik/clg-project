@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./style.css"
 import { AiOutlineSearch } from 'react-icons/ai'
 import axios from "axios"
+
 const Order = ({ slider }) => {
   const [orderData, setOrderData] = useState()
   const [search, setSearch] = useState("")
@@ -15,6 +16,7 @@ const Order = ({ slider }) => {
         // setLoad(false)
       })
 
+
     axios.get("http://localhost:4001/order")
       .then((r) => {
         setOrderData(r.data.order)
@@ -22,7 +24,8 @@ const Order = ({ slider }) => {
 
   }, [])
 
-console.log("cart",cart)
+
+  console.log("order detail ", orderData)
 
   const handleDetele = (_id) => {
     if (window.confirm("Are you sure delete this user ?")) {
@@ -51,7 +54,6 @@ console.log("cart",cart)
           <h2> List of Orders</h2>
           <div className="searchwithref">
 
-
             <div className="inputwitlogo">
               <AiOutlineSearch />
               <input type="search" placeholder='Search Customer' onChange={(e) => setSearch(e.target.value)} />
@@ -66,6 +68,7 @@ console.log("cart",cart)
           </div>
         </div>
 
+
         <ul className="responsive-table">
           <li className="table-header">
             <div className="col col-1">NO</div>
@@ -75,14 +78,13 @@ console.log("cart",cart)
             <div className="col col-5">City</div>
             <div className="col col-6">Del</div>
           </li>
-
           {
             cart ?
               orderData.map((item, index) => {
                 let cartData = cart.find((cartItem) => cartItem.userId == item.userId);
                 //  console.log("oitem",cartData)
-             
-                return (cartData?<li className="table-row" key={index}>
+
+                return (cartData ? <li className="table-row" key={index}>
                   <div className="col col-1" >{index + 1}</div>
                   <div className="col col-2" >{item.fname + " " + item.lname}</div>
                   <div className="col col-3" >{cartData.name}</div>
@@ -98,8 +100,8 @@ console.log("cart",cart)
                       </div>
                     </div>
                   </div>
-                </li> : null) 
-          
+                </li> : null)
+
 
 
               })

@@ -13,6 +13,7 @@ const Message = ({ slider }) => {
       })
   }, [])
 
+  
   const handleDelete = (id) => {
 
     if (window.confirm("Are you sure delete this feedback ?")) {
