@@ -5,9 +5,9 @@
   --bg-secondary: #2f3037;
   --black-color: #000000;
   --secondary-color: rgb(214, 225, 235);
-  --third-color:#0380a7;
+  --third-color: #0380a7;
 
-  
+
 
 }
 
@@ -16,7 +16,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
+
+body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
 }
 
@@ -54,10 +55,10 @@ body{
   border-bottom: 1px solid #0380a7;
   /* width: fit-content; */
   text-align: center;
-  
+
   color: #0380a7;
   margin-bottom: 1rem;
- 
+
 }
 
 /* Hamburger menu */
@@ -85,18 +86,18 @@ body{
   stroke-width: 2.1;
   /* Define the transition for transforming the Stroke */
   transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
-              stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .line-top-bottom {
   stroke-dasharray: 12 63;
 }
 
-.hamburger input:checked + svg {
+.hamburger input:checked+svg {
   transform: rotate(-45deg);
 }
 
-.hamburger input:checked + svg .line-top-bottom {
+.hamburger input:checked+svg .line-top-bottom {
   stroke-dasharray: 20 300;
   stroke-dashoffset: -32.42;
 }
@@ -104,86 +105,116 @@ body{
 
 
 
-  .button6 {
-    height: 30px;
-    width: 100px;
+.button6 {
+  height: 30px;
+  width: 100px;
 
-    background-color: transparent;
-    cursor: pointer;
-    border-bottom: 1px solid #fff !important;
- 
-    border: none;
-    overflow: hidden;
+  background-color: transparent;
+  cursor: pointer;
+  border-bottom: 1px solid #fff !important;
 
-    color: white;
+  border: none;
+  overflow: hidden;
+
+  color: white;
 
 
-  &:hover{
+  &:hover {
     border-bottom: 2px solid var(--bg-primary) !important;
     border-top: 2px solid var(--bg-primary) !important;
 
 
   }
-  &:hover a{
-  
+
+  &:hover a {
+
     font-weight: bolder;
     color: goldenrod;
   }
-  
-  }
 
-  .button5 {
-    height: 27px;
-    width: 100px;
-    background-color: transparent;
-    cursor: pointer;
-    border-bottom: 1px solid #fff !important;
-    font-size: 15px;
-    border: none;
-    overflow: hidden;
-    color: white;
+}
+
+.button5 {
+  height: 27px;
+  width: 100px;
+  background-color: transparent;
+  cursor: pointer;
+  border-bottom: 1px solid #fff !important;
+  font-size: 15px;
+  border: none;
+  overflow: hidden;
+  color: white;
 
 
-  &:hover{
+  &:hover {
     border-bottom: 2px solid var(--third-color) !important;
     /* border-top: 2px solid var(--third-color) !important; */
 
 
   }
-  &:hover a{
-  
+
+  &:hover a {
+
     font-weight: bolder;
     color: var(--third-color);
   }
-  
+
+}
+
+
+
+
+.btn-txt {
+  z-index: 1;
+  font-weight: 600;
+  letter-spacing: 2px;
+
+
+  >a {
+    text-decoration: none;
+    color: #fff;
+
+
+
   }
+}
 
 
+.orderBtn {
+  border: none;
+  padding: 5px 30px;
+  border-radius: 10px;
+  background-color: #0380a7;
+  color: white;
 
-
-  .btn-txt {
-    z-index: 1;
-    font-weight: 600;
-    letter-spacing: 2px;
-   
-
-    >a{
-      text-decoration: none;
-      color: #fff;
-
-      
-      
-    }
-  }
-
-
-  .orderBtn{
-    border: none;
-    padding: 5px 30px;
-    border-radius: 10px;
-    background-color: #0380a7;
-    color: white;
-   &:hover{
+  &:hover {
     background-color: #437180;
-   }
   }
+}
+
+.active-role {
+  background-color: green;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 3px 8px;
+  font-size: 18px;
+
+  &:hover {
+    background-color: red;
+  }
+
+}
+.inactive-role {
+  background-color: red;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 3px 8px;
+  font-size: 18px;
+
+  &:hover {
+    background-color: green;
+  }
+
+}

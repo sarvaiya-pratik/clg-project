@@ -86,4 +86,35 @@ const deleteUser = async (req, res) => {
     }
 }
 
-module.exports = { RegisterControl, LoginCotrol, GetUserData, deleteUser }
+// UPDATE || PUT  
+const updateUserActive = async(req,res)=>{
+console.log("update")
+const _id = req.params.id
+// const {active} = req.body
+// console.log("active",active)
+if(_id){
+  const doc = await UserModel.findByIdAndUpdate(_id,{active:false})
+  doc.save();   
+ return res.json({code:200,message:"Update succesfully"})
+}
+
+else{   
+   return res.json({code:404,message:"Id must require"})
+}
+}
+const updateUserInactive = async(req,res)=>{
+console.log("update")
+const _id = req.params.id
+if(_id){
+  const doc = await UserModel.findByIdAndUpdate(_id,{active:true})
+  doc.save();   
+ return res.json({code:200,message:"Update succesfully"})
+}
+else{   
+   return res.json({code:404,message:"Id must require"})
+}
+
+
+}
+
+module.exports = { RegisterControl, LoginCotrol, GetUserData, deleteUser,updateUserActive,updateUserInactive}

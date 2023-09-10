@@ -1,7 +1,7 @@
 const express = require("express");
 const Router = express.Router();
 // USER
-const { LoginCotrol, RegisterControl, GetUserData, deleteUser } = require("../Controls/User");
+const { LoginCotrol, RegisterControl, GetUserData, deleteUser,updateUserActive,updateUserInactive } = require("../Controls/User");
 // ADMIN
 const AdminControl = require("../Controls/Admin")
 // PRODUCT
@@ -30,6 +30,8 @@ Router.route("/register").post(RegisterControl)
 Router.route("/login").post(LoginCotrol)
 Router.route("/user").get(GetUserData)
 Router.route("/user/:id").delete(deleteUser)
+Router.route("/user/active/:id").put(updateUserActive)
+Router.route("/user/inactive/:id").put(updateUserInactive)
 
 // ADMIN  
 Router.route("/adminlogin").post(AdminControl)

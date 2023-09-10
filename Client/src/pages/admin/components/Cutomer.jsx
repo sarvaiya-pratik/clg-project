@@ -8,6 +8,8 @@ const Cutomer = ({ slider }) => {
 
   const [user, setUser] = useState()
   const [search, setSearch] = useState("")
+  const [active, setActive] = useState(true)
+
   useEffect(() => {
     axios.get("/user")
       .then((r) => {
@@ -15,18 +17,39 @@ const Cutomer = ({ slider }) => {
       })
   }, [])
 
-  const handleDetele = (_id) => {
-    if (window.confirm("Are you sure delete this user ?")) {
-      axios.delete(`/user/${_id}`)
-        .then((r) => {
-          toast.success(r.data.message)
-          window.location.reload();
-        })
-    }
-    else {
-      toast.error("canceled")
-    }
+  console.log(active)
+  const handleUpdateActive = (_id) => {
+    
+    axios.put(`/user/active/${_id}`,)
+      .then((r) => {
+        console.log(r.data)
+        toast.success(r.data.message)
+        document.location.reload()
+      })
   }
+  const handleUpdateInactive = (_id) => {
+    
+    axios.put(`/user/inactive/${_id}`,)
+      .then((r) => {
+        console.log(r.data)
+        toast.success(r.data.message)
+        document.location.reload()
+      })
+  }
+
+
+  // const handleDetele = (_id) => {
+  //   if (window.confirm("Are you sure delete this user ?")) {
+  //     axios.delete(`/user/${_id}`)
+  //       .then((r) => {
+  //         toast.success(r.data.message)
+  //         window.location.reload();
+  //       })
+  //   }
+  //   else {
+  //     toast.error("canceled")
+  //   }
+  // }
   const handleRefresh = () => {
     window.location.reload()
   }
@@ -60,7 +83,7 @@ const Cutomer = ({ slider }) => {
             <div className="col col-2">Customer Name</div>
             <div className="col col-3">Email</div>
             <div className="col col-4">Phone</div>
-            <div className="col col-5">status</div> 
+            <div className="col col-5">status</div>
           </li>
 
           {
@@ -74,17 +97,19 @@ const Cutomer = ({ slider }) => {
                       <div className="col col-2" >{item.name}</div>
                       <div className="col col-3" >{item.email}</div>
                       <div className="col col-4" >{item.phone}</div>
-                      <div className="col col-5 deletecustomer" onClick={() => handleDetele(item._id)}  >
-                        <div className="deleteBtn">
+                      <div className="col col-5 deletecustomer"  >
+                        {/* <div className="deleteBtn">
                           <button class="bin">🗑</button>
                           <div class="div">
                             <small>
                               <i></i>
                             </small>
                           </div>
-                        </div>
+                        </div> */}
+                        {
+                          item.active ? <button className='active-role'onClick={()=>handleUpdateActive(item._id)} >Active</button> : <button className='inactive-role' onClick={()=>handleUpdateInactive(item._id)}>Inactive</button>
+                        }
 
-                        {/* <button style={{color:'green'}}>Active</button> */}
                       </div>
                     </li>
                   )

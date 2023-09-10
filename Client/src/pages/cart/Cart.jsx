@@ -31,7 +31,7 @@ const Cart = () => {
         window.location.reload()
     }
     const handleInc = (productId) => {
-
+        
         axios.put(`/cart/inc`, { productId }, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
             .then((r) => {
                 console.log("inc", r.data)
