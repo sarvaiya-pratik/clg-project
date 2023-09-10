@@ -58,27 +58,31 @@ header .left {
     flex-basis: 30%;
     display: flex;
     justify-content: center;
-
-
     gap: 3rem;
 
+
     >.cartBtn {
-        background-color: transparent;
+            
+            background-color: transparent;
+        border-radius: 50%;
+        padding: 0.4rem;
         border: none;
+        
 
         >a {
             text-decoration: none;
             display: flex;
-            color: black;
+            color: #fff;
+
             >svg {
                 font-size: 1.8rem;
-             
+
 
             }
 
             >h4 {
                 font-size: 1.4rem;
-                
+
             }
         }
     }
@@ -93,7 +97,7 @@ header .left {
         >.drop-con {
 
             position: absolute;
-            bottom: -2rem;
+            bottom: -1.4rem;
             font-size: 1rem;
             left: -30px;
             display: none;
@@ -145,6 +149,7 @@ header .left {
                 border-color: #0380a7;
             }
         }
+
         >.submenu {
             position: absolute;
             top: 45px;
@@ -254,11 +259,31 @@ header .left {
         display: none;
     }
 
-    .mobile-nav {
-        display: flex;
-        flex-basis: 70%;
-        gap: 1rem;
-        justify-content: flex-end;
+    #mynav {
+        width: 100vw;
 
     }
+
+    .mobile-nav {
+        display: flex;
+        flex-basis: 100%;
+        justify-content: end;
+        padding-right: 1rem;
+        font-size: 25px;
+    }
+
+    #join-btn {
+        display: none !important;
+       
+    }
+    .rights{
+        display: none;
+    }
 }
+
+#join-btn {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+

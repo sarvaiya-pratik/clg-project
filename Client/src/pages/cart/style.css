@@ -1,35 +1,52 @@
 #cart {
-margin-top: 5rem;
+    .empty-cart {
+        text-align: center;
+        margin: 3em;
+
+        >.go-to-buy {
+
+            padding: 6px 10px;
+            background-color: green;
+            border-radius: 10px;
+            outline: none;
+            border: none;
+            margin-top: 2rem;
+
+
+        }
+    }
+
+    margin-top: 5rem;
+
     >main {
 
         >.product-list {
-            >h2{
-                padding-left:40px ;
+
+            >h2 {
+                padding-left: 40px;
                 color: var(--third-color);
                 border-bottom: 1px solid;
-               
+
             }
+
             max-width: 1000px;
 
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 10px;
-            padding-right: 40px;
+          margin: auto;
 
             .col-1 {
-                flex-basis: 40%;
-                text-align: center;
-                display: flex;
-                justify-content: space-around;
+                flex-basis: 5%;
+               
             }
 
             .col-2 {
                 text-align: center;
-                flex-basis: 15%;
+                flex-basis: 45%;
+                display: flex;
+                justify-content: space-around   ;
             }
 
             .col-3 {
-                flex-basis: 15%;
+                flex-basis: 10%;
                 text-align: center;
 
                 >svg {
@@ -39,13 +56,23 @@ margin-top: 5rem;
             }
 
             .col-4 {
-                flex-basis: 15%;
+                flex-basis: 10%;
                 text-align: center;
 
             }
 
             .col-5 {
-                flex-basis: 15%;
+                flex-basis: 10%;
+                text-align: center;
+
+            }
+            .col-5 {
+                flex-basis: 10%;
+                text-align: center;
+
+            }
+            .col-6 {
+                flex-basis: 10%;
                 text-align: center;
 
             }
@@ -70,6 +97,9 @@ margin-top: 5rem;
             }
 
             >.responsive-table {
+            padding: unset !important;
+
+
                 >li {
                     border-radius: 3px;
                     padding: 25px 30px;
@@ -96,32 +126,52 @@ margin-top: 5rem;
             }
 
             @media all and (max-width: 767px) {
-                .table-header {
-                    display: none;
-                }
+                #cart {}
 
-                .table-row {}
+                >.responsive-table {
+                    padding: unset;
+                    width: 100vw;
 
-                li {
-                    display: block;
-                }
+                    .table-header {
+                        display: none;
+                        
 
-                .col {
 
-                    flex-basis: 100%;
+                    }
 
-                }
+                    .table-row {
+                        width: 100%;
+                       
+                    }
 
-                .col {
-                    display: flex;
-                    padding: 10px 0;
+                    >li {
+                       /* background-color: aqua !important; */
+                       /* gap: 10px; */
+                       padding: unset !important;
+                       margin: auto;
 
-                    &:before {
-                        color: #6C7A89;
-                        padding-right: 10px;
-                        content: attr(data-label);
-                        flex-basis: 50%;
-                        text-align: right;
+                        
+                    }
+
+
+
+                    .col {
+
+                        /* flex-basis: 100%; */
+
+                    }
+
+                    .col {
+                        /* display: flex; */
+
+
+                        &:before {
+                            color: #6C7A89;
+                            padding-right: 10px;
+                            content: attr(data-label);
+                            flex-basis: 50%;
+                            text-align: right;
+                        }
                     }
                 }
             }

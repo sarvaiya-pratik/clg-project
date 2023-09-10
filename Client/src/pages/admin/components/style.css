@@ -18,10 +18,9 @@
         align-self: self-start;
         justify-content: flex-start;
         gap: 4px;
-
-
     }
 }
+
 
 .deleteBtn {
 
@@ -44,7 +43,6 @@
         border: 2px solid var(--black);
         border-radius: 0 0 6px 6px;
     }
-
     .bin::after,
     .bin::before {
         content: "";
@@ -56,7 +54,7 @@
         margin: auto;
         right: 0;
     }
-
+    
     .bin::after {
         left: -4px;
         top: -5px;
@@ -1099,6 +1097,7 @@
 }
 
 /* Order */
+
 #order {
     >h2 {
         font-weight: 500;
@@ -1119,7 +1118,7 @@
         }
 
         .col-2 {
-            flex-basis: 20%;
+            flex-basis: 10%;
         }
 
         .col-3 {
@@ -1127,7 +1126,7 @@
         }
 
         .col-4 {
-            flex-basis: 10%;
+            flex-basis: 20%;
         }
 
         .col-5 {
@@ -1135,6 +1134,9 @@
         }
 
         .col-6 {
+            flex-basis: 10%;
+        }
+        .col-7 {
             flex-basis: 10%;
         }
 

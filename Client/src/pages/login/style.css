@@ -5,8 +5,9 @@
     background: linear-gradient(#0380a7, goldenrod);
     justify-content: center;
     padding-top: 5rem;
+
     >.container {
-        width: 40% ;
+        width: 40%;
         height: 450px;
         display: flex;
         flex-direction: column;
@@ -112,9 +113,19 @@
 .gray {
     background: #EAEAEA;
     color: #676767;
-
 }
 
+@media screen and (max-width:773px) {
+    .main-container {
+
+        >.container {
+            width: 90%;
+        }
+    }
+    .input {
+        width: 90%;
+    }
+}
 
 
 

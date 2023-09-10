@@ -13,14 +13,14 @@ const Stones = ({ data }) => {
   const [quantity, setQuantity] = useState(1);
   const [search, setSearch] = useState("")
   const navigate = useNavigate()
-
   const handleAddtoCart = (product) => {
+    toast.success("Added")
     const productId = product._id
     const token = localStorage.getItem("token")
     if (token) {
       axios.post("/cart/add", { productId, quantity }, { headers: { "Authorization": `Bearer ${token}` } })
         .then((r) => {
-          console.log("res", r.data)
+          document.location.reload()
         })
     }
     else {
@@ -28,7 +28,6 @@ const Stones = ({ data }) => {
       toast.error("Pleae Login/Register first !!")
     }
   }
-
   return (
     <>
       <Header />
@@ -40,7 +39,7 @@ const Stones = ({ data }) => {
             <input type="search" placeholder='Search Diamonds' onChange={(e) => setSearch(e.target.value)} />
           </div>
           <div className="diamonds">
-          {/* c_fill,h_300,w_300 */}
+
             {
               data.filter(val => search == "" ? val : val.title.toLowerCase().includes(search.toLowerCase()))
                 .map((item, index) => {

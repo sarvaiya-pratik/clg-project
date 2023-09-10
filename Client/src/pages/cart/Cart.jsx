@@ -18,7 +18,7 @@ const Cart = () => {
                 setCart(r.data)
                 setLoad(false)
             })
-
+            
     }, [])
 
     const handleDetele = (productId) => {
@@ -52,8 +52,9 @@ const Cart = () => {
     };
     return (
         <>
-            <Header />
             {load ? <Spinner /> :
+            <>
+            <Header />
                 <div id="cart">
                     <main>
 
@@ -61,35 +62,44 @@ const Cart = () => {
                             <h2>List of Product</h2>
                             <ul className="responsive-table">
                                 <li className="table-header">
-                                    <div className="col col-1">Item</div>
-                                    <div className="col col-2">Price</div>
-                                    <div className="col col-3">Quantity</div>
-                                    <div className="col col-4">SubTotal</div>
-                                    <div className="col col-5">Remove</div>
+
+                                    <div className="col col-1">No</div>
+                                    <div className="col col-2">Item</div>
+                                    <div className="col col-3">Price</div>
+                                    <div className="col col-4">Quantity</div>
+                                    <div className="col col-5">SubTotal</div>
+                                    <div className="col col-6">Remove</div>
                                 </li>
 
                                 {
-                                    cart ?
+                                    cart.length > 0 ?
                                         cart.map((item, index) => {
                                             return (
                                                 <li className="table-row" key={index}>
 
-                                                    <div className="col col-1" ><iframe src={item.threesixty} width="50px" height="50px" style={{ alignSelf: 'flex-start' }} /><p>{item.name}</p></div>
-                                                    <div className="col col-2" >{item.price}</div>
-                                                    <div className="col col-3" ><AiFillPlusCircle onClick={() => handleInc(item.productId)} style={{ cursor: 'pointer' }} />{item.quantity}<AiFillMinusCircle style={{ cursor: 'pointer' }} onClick={() => handleDec(item.productId)} /></div>
-                                                    <div className="col col-4" >{item.quantity * item.price}</div>
-                                                    <div className="col col-5 deletecustomer" onClick={() => handleDetele(item.productId)}  ><AiFillDelete /></div>
+                                                    <div className="col col-1" >{index+1}</div>
+                                                    <div className="col col-2" ><iframe src={item.threesixty} width="50px" height="50px" style={{ alignSelf: 'flex-start' }} /><p>{item.name}</p></div>
+                                                    <div className="col col-3" >{item.price}</div>
+                                                    <div className="col col-4" ><AiFillPlusCircle onClick={() => handleInc(item.productId)} style={{ cursor: 'pointer' }} />{item.quantity}<AiFillMinusCircle style={{ cursor: 'pointer' }} onClick={() => handleDec(item.productId)} /></div>
+                                                    <div className="col col-5" >{item.quantity * item.price}</div>
+                                                    <div className="col col-6 deletecustomer" onClick={() => handleDetele(item.productId)}  ><AiFillDelete /></div>
                                                 </li>
                                             )
-                                        }) : <h2 style={{ textAlign: 'center', margin: '8rem 0' }}>List is Empty</h2>
+                                        }) :<>
+                                        <div className="empty-cart">
+                                        <h2 >List is Empty</h2>
+                                        <button className='go-to-buy' onClick={()=>navigate("/stones")}>Go to Buy</button>
+                                        </div>
+                                      
+                                        </> 
                                 }
                                 {
-                                    cart ? <li className='table-header'>
+                                    cart ? <li className='table-header' style={{display:'flex',width:"100%",flexWrap:'wrap'}}>
                                         <div className="col" style={{ textAlign: 'center' }}>Total</div>
                                         <div className="col">₹ {calculateTotalAmount()}</div>
-                                        <div className="col-1">
+                                        <div className="col">
 
-                                            <button className='orderBtn' onClick={() => navigate("/order")}>Order Now</button>
+                                            <button className='orderBtn' onClick={() => cart.length > 0 ? navigate("/order") : navigate("/stones")}>Order Now</button>
 
                                         </div>
                                     </li> : ""
@@ -101,7 +111,7 @@ const Cart = () => {
 
                     </main>
 
-                </div>
+                </div> </>
             }
             <Footer />
         </>

@@ -1,6 +1,6 @@
 const orderModel = require("../models/Order")
-
-
+const Cart = require("../models/Cart")
+const productModel = require("../models/productdata")
 // GET || READ-ORDER
 const getOrderDetail = async (req, res) => {
     try {
@@ -26,12 +26,31 @@ const DeleteOrder = async (req, res) => {
 
 }
 
-
 // POST || ADD-ORDER
-
 const OderDetail = async (req, res, next) => {
-    const { fname, lname, address, email, zip, city } = req.body;
+    const { fname, lname, address, email, zip, city } = req.body;  
     const userId = req.user._id;
+
+    const userCart = await Cart.findOne({ userId });
+
+    if (!userCart) {
+        return res.json([]);
+    }
+
+    const productIdsWithQuantities = userCart.items.map(item => ({
+        productId: item.productId,
+        quantity: item.quantity
+    }));
+
+
+    const productId = productIdsWithQuantities.map(item => item.productId);
+    console.log(productId[0])
+    const Product = await productModel.findById(productId)
+    const pname = Product.title;
+    const price = Product.price
+
+    const qtys = productIdsWithQuantities.map(item=> item.quantity)
+    const qty = qtys[0]
 
     if (fname && lname && address && email && zip && city) {
 
@@ -41,7 +60,7 @@ const OderDetail = async (req, res, next) => {
             res.json({ status: "failed", message: "Email already Exist !" })
         }
         else {
-            const doc = await new orderModel({ userId, fname, lname, address, email, zip, city })
+            const doc = await new orderModel({ userId, fname, lname, address, email, zip, city,pname,qty ,price})
             await doc.save()
             //  res.json({ status: "success", message: "Order created" });
             next()

@@ -4,9 +4,9 @@ const Cart = require('../models/Cart');
 const productdata = require("../models/productdata")
 
 // GET || READ
-    const getCart = async(req,res)=>{
+const getCart = async (req, res) => {
     const userId = req.user._id;
-    
+
 
     const userCart = await Cart.findOne({ userId });
 
@@ -29,7 +29,7 @@ const productdata = require("../models/productdata")
         const productInfo = productIdsWithQuantities.find(item => item.productId === product._id.toString());
 
         return {
-            userId:userId,
+            userId: userId,
             productId: product._id,
             name: product.title,
             price: product.price,
@@ -47,7 +47,7 @@ const productdata = require("../models/productdata")
 
 // POST || ADD
 
-    const addCart = async(req,res)=>{
+const addCart = async (req, res) => {
     try {
         const userId = req.user._id;
         const { productId, quantity } = req.body;
@@ -80,7 +80,7 @@ const productdata = require("../models/productdata")
 }
 
 // PUT || INCREMENT
-    const incCart = async(req,res)=>{
+const incCart = async (req, res) => {
     const userId = req.user._id;
     const { productId } = req.body
 
@@ -102,7 +102,7 @@ const productdata = require("../models/productdata")
 
 // PUT || DECREMENT
 
-    const decCart = async(req,res)=>{
+const decCart = async (req, res) => {
     const userId = req.user._id;
     const { productId } = req.body
 
@@ -123,7 +123,7 @@ const productdata = require("../models/productdata")
 }
 
 // DELETE
-    const delCart = async(req,res)=>{
+const delCart = async (req, res) => {
     const userId = req.user._id;
     const productId = req.params["id"]
 
@@ -144,4 +144,4 @@ const productdata = require("../models/productdata")
 
 
 
-module.exports = {getCart,incCart,decCart,delCart,addCart};
+module.exports = { getCart, incCart, decCart, delCart, addCart };

@@ -11,11 +11,6 @@ cloudinary.config({
 
 // POST || ADD-PRODUCTS
 const AddProductData = async (req, res) => {
-
-
-
-
-
     const { title, catagory, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, measurements, table, depth, ratio, crownangle, crownheight, pavilionangle, paviliondepth, } = req.body;
     if (title && catagory && shape && carat && price) {
         const productData = await DataModel.findOne({ title });

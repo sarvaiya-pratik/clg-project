@@ -166,6 +166,16 @@
 
 
 @media  screen and (max-width:773px) {
+#stones{
+    >main{
+        >.filter{
+            >input{
+                width: 80%;
+            }
+        }
+    }
+}
+
 
     #sotneDetail{
         >.details{

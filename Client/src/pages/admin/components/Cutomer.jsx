@@ -60,7 +60,7 @@ const Cutomer = ({ slider }) => {
             <div className="col col-2">Customer Name</div>
             <div className="col col-3">Email</div>
             <div className="col col-4">Phone</div>
-            <div className="col col-5">Del</div>
+            <div className="col col-5">status</div> 
           </li>
 
           {
@@ -83,6 +83,8 @@ const Cutomer = ({ slider }) => {
                             </small>
                           </div>
                         </div>
+
+                        {/* <button style={{color:'green'}}>Active</button> */}
                       </div>
                     </li>
                   )
