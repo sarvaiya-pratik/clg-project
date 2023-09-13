@@ -22,21 +22,20 @@ const Order = ({ slider }) => {
 
   }, [])
 
-  console.log("order detail ", orderData)
 
-  const handleDetele = (_id) => {
-    if (window.confirm("Are you sure delete this user ?")) {
-      axios.delete(`http://localhost:4001/order/${_id}`)
-        .then((r) => {
-          toast.success(r.data.message)
-          window.location.reload();
-        })
-    }
 
-    else {
-      toast.error("canceled")
-    }
-  }
+  // const handleDetele = (_id) => {
+  //   if (window.confirm("Are you sure delete this user ?")) {
+  //     axios.delete(`http://localhost:4001/order/${_id}`)
+  //       .then((r) => {
+  //         toast.success(r.data.message)
+  //         window.location.reload();
+  //       })
+  //   }
+  //   else {
+  //     toast.error("canceled")
+  //   }
+  // }
   const handleRefresh = () => {
     window.location.reload()
   }
@@ -77,7 +76,7 @@ const Order = ({ slider }) => {
             <div className="col col-7">status</div>
           </li>
           {
-            cart ?
+            orderData ?
               orderData.map((item, index) => {
                 // let cartData = cart.find((cartItem) => cartItem.userId == item.userId);
                 //  console.log("oitem",cartData) 
@@ -88,16 +87,12 @@ const Order = ({ slider }) => {
                   <div className="col col-4" >{item.pname}</div>
                   <div className="col col-5" >{item.qty}</div>
                   <div className="col col-6" >{item.price}</div>
-                  <div className="col col-6 deletecustomer" onClick={() => handleDetele(item._id)}  >
-                    <div className="deleteBtn">
-                      <button className="bin">🗑</button>
-                      <div className="div">
-                        <small>
-                          <i></i>
-                        </small>
+                  <div className="col col-7 "  >
+                        {
+                          item.active ? <button className='active-role'onClick={()=>handleUpdateActive(item._id)} >Confirm</button> : <button className='inactive-role' onClick={()=>handleUpdateInactive(item._id)}>Pending</button>
+                        }
+
                       </div>
-                    </div>
-                  </div>
                 </li>)
 
               })

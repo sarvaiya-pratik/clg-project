@@ -13,6 +13,7 @@ const Stones = ({ data }) => {
   const [quantity, setQuantity] = useState(1);
   const [search, setSearch] = useState("")
   const navigate = useNavigate()
+  
   const handleAddtoCart = (product) => {
     toast.success("Added")
     const productId = product._id
@@ -41,7 +42,8 @@ const Stones = ({ data }) => {
           <div className="diamonds">
 
             {
-              data.filter(val => search == "" ? val : val.title.toLowerCase().includes(search.toLowerCase()))
+              data.filter(val=>val.active==true)
+              .filter(val => search == "" ? val : val.title.toLowerCase().includes(search.toLowerCase()))
                 .map((item, index) => {
                   return (
                     <div className='diamond-card' key={index}>

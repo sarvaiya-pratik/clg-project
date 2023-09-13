@@ -10,21 +10,39 @@ import { FiPlus } from "react-icons/fi"
 const Diamonds = ({ slider, data }) => {
   const [search, setSearch] = useState("")
 
-  const handleDetele = (_id) => {
-    if (window.confirm("Are you sure delete this user ?")) {
-      axios.delete(`/product/${_id}`)
-        .then((r) => {
-          toast.success(r.data.message)
-          setTimeout(() => {
-            window.location.reload();
-          }, 2000)
-        })
-    }
-    else {
-      toast.error("canceled")
-    }
-
+  const handleUpdateActive = (_id) => {
+    axios.put(`/product/active/${_id}`,)
+      .then((r) => {
+        console.log(r.data)
+        toast.success(r.data.message)
+        document.location.reload()
+      })
   }
+
+  const handleUpdateInactive = (_id) => {
+    axios.put(`/product/inactive/${_id}`,)
+      .then((r) => {
+        console.log(r.data)
+        toast.success(r.data.message)
+        document.location.reload()
+      })
+  }
+
+  // const handleDetele = (_id) => {
+  //   if (window.confirm("Are you sure delete this user ?")) {
+  //     axios.delete(`/product/${_id}`)
+  //       .then((r) => {
+  //         toast.success(r.data.message)
+  //         setTimeout(() => {
+  //           window.location.reload();
+  //         }, 2000)
+  //       })
+  //   }
+  //   else {
+  //     toast.error("canceled")
+  //   }
+
+  // }
 
   const handleRefresh = () => {
     window.location.reload()
@@ -64,12 +82,6 @@ const Diamonds = ({ slider, data }) => {
               </button>
             </div>
           </div>
-
-
-
-
-
-
           <ul className="responsive-table">
             <li className="table-header">
               <div className="col col-1">NO</div>
@@ -78,9 +90,8 @@ const Diamonds = ({ slider, data }) => {
               <div className="col col-4">Shape</div>
               <div className="col col-5">Carat</div>
               <div className="col col-6">Price</div>
-              <div className="col col-7">del</div>
+              <div className="col col-7">Status</div>
             </li>
-
             {
               data ?
                 data.filter(e => search == "" ? e : e.title.toLowerCase().includes(search.toLowerCase()))
@@ -96,16 +107,12 @@ const Diamonds = ({ slider, data }) => {
                         <div className="col col-4" >{item.shape}</div>
                         <div className="col col-5" >{item.carat}</div>
                         <div className="col col-6" >{item.price}</div>
-                        <div className="col col-7 deletecustomer" onClick={() => handleDetele(item._id)}  >
-                        <div className="deleteBtn">
-                          <button class="bin">🗑</button>
-                          <div class="div">
-                            <small>
-                              <i></i>
-                            </small>
-                          </div>
-                        </div>
-                        </div>
+                        <div className="col col-7 deletecustomer"  >
+                        {
+                          item.active ? <button className='active-role'onClick={()=>handleUpdateActive(item._id)} >Available</button> : <button className='inactive-role' onClick={()=>handleUpdateInactive(item._id)}>Unavailable</button>
+                        }
+
+                      </div>
                       </li>
                     )
                   }) : ""

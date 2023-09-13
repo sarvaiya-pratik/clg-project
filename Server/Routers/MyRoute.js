@@ -5,7 +5,7 @@ const { LoginCotrol, RegisterControl, GetUserData, deleteUser,updateUserActive,u
 // ADMIN
 const AdminControl = require("../Controls/Admin")
 // PRODUCT
-const { AddProductData, GetProductData, deleteProduct } = require("../Controls/ProductData")
+const { AddProductData, GetProductData, updateProductActive,updateProductInactive  } = require("../Controls/ProductData")
 // FEEDBACK
 const { addFeedback, getFeedback, deleteFeedback } = require('../Controls/Feedback')
 // CART
@@ -39,7 +39,9 @@ Router.route("/adminlogin").post(AdminControl)
 // PRODUCT DATA 
 Router.route("/product").post(upload.single('imguri'), AddProductData)
 Router.route("/product").get(GetProductData)
-Router.route("/product/:id").delete(deleteProduct)
+Router.route("/product/active/:id").put(updateProductActive)
+Router.route("/product/inactive/:id").put(updateProductInactive)
+// Router.route("/product/:id").delete(deleteProduct)
 // Router.route("/v1/product").get(GetProductData)
 // Router.route("/v1/product/:id").delete(deleteProduct)
 

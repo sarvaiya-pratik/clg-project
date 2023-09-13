@@ -5,10 +5,6 @@ const cors = require("cors")
 const bodyParser = require("body-parser")
 const app = express()
 
-
-
-  
-
 // basic middelwares 
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
@@ -30,12 +26,5 @@ try {
 app.listen(process.env.PORT, () => {
     console.log("You are running on PORT", process.env.PORT)
 })
-
-
-
-
-
-
-
 
 

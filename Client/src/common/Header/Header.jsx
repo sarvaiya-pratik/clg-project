@@ -39,6 +39,7 @@ const Header = () => {
 
         localStorage.removeItem("uname")
         localStorage.removeItem("token")
+        navigate("/")
         window.location.reload()
 
     }

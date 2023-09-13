@@ -825,31 +825,38 @@
 
         .col-1 {
             flex-basis: 5%;
+            text-align: center;
         }
 
         .col-2 {
             flex-basis: 30%;
             padding: 0 10px;
+            text-align: center;
         }
 
         .col-3 {
             flex-basis: 15%;
+            text-align: center;
         }
 
         .col-4 {
-            flex-basis: 15%;
+            flex-basis: 10%;
+            text-align: center;
         }
 
         .col-5 {
             flex-basis: 15%;
+            text-align: center;
         }
 
         .col-6 {
-            flex-basis: 15%;
+            flex-basis: 10%;
+            text-align: center;
         }
 
         .col-7 {
-            flex-basis: 5%;
+            flex-basis: 15%;
+            text-align: center;
         }
 
         .deletecustomer {

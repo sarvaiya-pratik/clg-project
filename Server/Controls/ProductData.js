@@ -8,7 +8,6 @@ cloudinary.config({
     api_secret: 'N9twT6TyEA79iaVrisgngm-rm6I'
 });
 
-
 // POST || ADD-PRODUCTS
 const AddProductData = async (req, res) => {
     const { title, catagory, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, measurements, table, depth, ratio, crownangle, crownheight, pavilionangle, paviliondepth, } = req.body;
@@ -20,25 +19,25 @@ const AddProductData = async (req, res) => {
         else {
             if (req.file) {
                 const transformationOptions = {
-                    width: 300, 
-                    height: 300, 
-                    crop: 'fill', 
-                  };
+                    width: 300,
+                    height: 300,
+                    crop: 'fill',
+                };
 
                 cloudinary.uploader.upload_stream(
                     { transformation: transformationOptions },
                     async (error, result) => {
-                    if (error) {
-                        console.error(error);
-                        return res.status(500).json({ message: 'Upload failed' });
-                    }
+                        if (error) {
+                            console.error(error);
+                            return res.status(500).json({ message: 'Upload failed' });
+                        }
 
-                    let newcount = await DataModel.countDocuments() + 1
-                    let doc = await new DataModel({ title, "id": newcount, catagory, "threesixty": result.secure_url, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, table, depth, ratio, crownangle, crownheight, pavilionangle, paviliondepth, })
-                    await doc.save();
-                    res.status(201).send("Record insert successfully")
+                        let newcount = await DataModel.countDocuments() + 1
+                        let doc = await new DataModel({ title, "id": newcount, catagory, "threesixty": result.secure_url, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, table, depth, ratio, crownangle, crownheight, pavilionangle, paviliondepth, })
+                        await doc.save();
+                        res.status(201).send("Record insert successfully")
 
-                }).end(req.file.buffer);
+                    }).end(req.file.buffer);
 
 
             }
@@ -60,23 +59,52 @@ const GetProductData = async (req, res) => {
     res.json(productData)
 }
 
-// DELETE || DELETE-PRODUCTS
-const deleteProduct = async (req, res) => {
-    const id = req.params['id']
+// UPDATE || PUT  
+const updateProductActive = async (req, res) => {
+    console.log("update")
+    const _id = req.params.id
+    if (_id) {
+        await DataModel.findByIdAndUpdate(_id, { active: false })
 
-    try {
-        await DataModel.findOneAndDelete({ "_id": id })
-            .then(() => console.log("delete success"))
-            .catch((e) => {
-                console.log(e)
-            })
-        console.log("delete")
+        return res.json({ code: 200, message: "Update succesfully" })
+    }
 
-        res.json({ message: "deleted successfully" })
-
-    } catch (error) {
-        return error
+    else {
+        return res.json({ code: 404, message: "Id must require" })
     }
 }
+const updateProductInactive = async (req, res) => {
+    console.log("update")
+    const _id = req.params.id
+    if (_id) {
+        await DataModel.findByIdAndUpdate(_id, { active: true })
 
-module.exports = { AddProductData, GetProductData, deleteProduct }
+        return res.json({ code: 200, message: "Update succesfully" })
+    }
+    else {
+        return res.json({ code: 404, message: "Id must require" })
+    }
+
+
+}
+
+// DELETE || DELETE-PRODUCTS
+// const deleteProduct = async (req, res) => {
+//     const id = req.params['id']
+
+//     try {
+//         await DataModel.findOneAndDelete({ "_id": id })
+//             .then(() => console.log("delete success"))
+//             .catch((e) => {
+//                 console.log(e)
+//             })
+//         console.log("delete")
+
+//         res.json({ message: "deleted successfully" })
+
+//     } catch (error) {
+//         return error
+//     }
+// }
+
+module.exports = { AddProductData, GetProductData, updateProductActive, updateProductInactive }

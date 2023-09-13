@@ -3,9 +3,27 @@ import { useParams } from 'react-router-dom'
 import { BsCartPlus } from "react-icons/bs"
 import Header from '../../common/Header/Header'
 import Footer from '../../common/Footer/Footer'
-
+import axios from 'axios'
+import toast from 'react-hot-toast'
 const StoneDetail = ({ data }) => {
+  const [quantity, setQuantity] = useState(1);
   const { id } = useParams()
+  const handleAddtoCart = (product) => {
+    toast.success("Added")
+    const productId = product._id
+    const token = localStorage.getItem("token")
+    if (token) {
+      axios.post("/cart/add", { productId, quantity }, { headers: { "Authorization": `Bearer ${token}` } })
+        .then((r) => {
+          document.location.reload()
+        })
+    }
+    else {
+      navigate('/login')
+      toast.error("Pleae Login/Register first !!")
+    }
+  }
+
   return (<>
     <Header />
     {
@@ -85,7 +103,7 @@ const StoneDetail = ({ data }) => {
 
                   </div>
 
-                  <button className='addToCart'><BsCartPlus />Add To Cart</button>
+                  <button className='addToCart' onClick={() => handleAddtoCart(i)}><BsCartPlus />Add To Cart</button>
                 </div>
               </div>
 

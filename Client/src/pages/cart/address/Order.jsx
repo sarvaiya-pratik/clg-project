@@ -5,8 +5,9 @@ import Header from "../../../common/Header/Header"
 import Footer from "../../../common/Footer/Footer"
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
+import {useNavigate} from "react-router-dom"
 const Order = () => {
-
+const navigate = useNavigate()
     const [orderData, setOrderData] = useState({})
 
     const handleChange = (e) => {
@@ -22,6 +23,7 @@ const Order = () => {
             .then((r) => {
                 if (r.data.status === "success") {
                     toast.success(r.data.message)
+                    navigate("/")
                 }
                 else if (r.data.status === "failed") {
                     toast.error(r.data.message)

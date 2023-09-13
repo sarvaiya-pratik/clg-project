@@ -20,8 +20,9 @@ const AddDiamond = ({ slider }) => {
 
         axios.post("http://localhost:4001/product", formData)
             .then((r) => {
-                if (r.status === 201) {
+                if (r.status == 201) {
                     toast.success("Diamond added successfully !")
+                    document.location.reload()
                 }
                 else {
                     toast.error(r.data.message)

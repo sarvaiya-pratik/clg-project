@@ -26,7 +26,6 @@ const Login = () => {
 
   function handleLoginSubmit(e) {
     e.preventDefault()
-
     console.log(regData)
     axios.post("http://localhost:4001/login", loginData)
       .then((r) => {
@@ -42,6 +41,9 @@ const Login = () => {
           } catch (error) {
             console.log("error in token")
           }
+        }
+        else if(r.data.status = "Noactive"){
+          toast.error(r.data.message)
         }
         else {
           toast.error(r.data.message)

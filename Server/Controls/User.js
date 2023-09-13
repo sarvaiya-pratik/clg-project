@@ -1,7 +1,7 @@
 const UserModel = require("../models/Users")
 const { hashPassword, comparePassword } = require("../hepler/authHepler")
 const jwt = require('jsonwebtoken');
-const { eventNames } = require("../models/Cart");
+
 
 // POST || REGISTER
 const RegisterControl = async (req, res) => {
@@ -31,7 +31,6 @@ const RegisterControl = async (req, res) => {
     }
 }
 
-
 // POST || LOGIN 
 const LoginCotrol = async (req, res) => {
 
@@ -44,9 +43,16 @@ const LoginCotrol = async (req, res) => {
 
             const ischeck = await comparePassword(password, user.password)
             if (ischeck) {
-                let token = jwt.sign({ UserId: user._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
+                const checkActive = user.active
+                if(checkActive){
 
-                res.send({ status: "success", message: "Login succesfully", uname: user.name, token: token, userId: user._id })
+                    let token = jwt.sign({ UserId: user._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
+    
+                    res.send({ status: "success", message: "Login succesfully", uname: user.name, token: token, userId: user._id })
+                }
+                else{
+                    res.send({status:"Noactive",message:"You are Blocked by Admin"})
+                }
             }
             else {
                 res.send({ status: "failed", message: "Invalid Password!" })
@@ -87,34 +93,34 @@ const deleteUser = async (req, res) => {
 }
 
 // UPDATE || PUT  
-const updateUserActive = async(req,res)=>{
-console.log("update")
-const _id = req.params.id
-// const {active} = req.body
-// console.log("active",active)
-if(_id){
-  const doc = await UserModel.findByIdAndUpdate(_id,{active:false})
-  doc.save();   
- return res.json({code:200,message:"Update succesfully"})
+const updateUserActive = async (req, res) => {
+    console.log("update")
+    const _id = req.params.id
+    // const {active} = req.body
+    // console.log("active",active)
+    if (_id) {
+        const doc = await UserModel.findByIdAndUpdate(_id, { active: false })
+        doc.save();
+        return res.json({ code: 200, message: "Update succesfully" })
+    }
+
+    else {
+        return res.json({ code: 404, message: "Id must require" })
+    }
+}
+const updateUserInactive = async (req, res) => {
+    console.log("update")
+    const _id = req.params.id
+    if (_id) {
+        const doc = await UserModel.findByIdAndUpdate(_id, { active: true })
+        doc.save();
+        return res.json({ code: 200, message: "Update succesfully" })
+    }
+    else {
+        return res.json({ code: 404, message: "Id must require" })
+    }
+
+
 }
 
-else{   
-   return res.json({code:404,message:"Id must require"})
-}
-}
-const updateUserInactive = async(req,res)=>{
-console.log("update")
-const _id = req.params.id
-if(_id){
-  const doc = await UserModel.findByIdAndUpdate(_id,{active:true})
-  doc.save();   
- return res.json({code:200,message:"Update succesfully"})
-}
-else{   
-   return res.json({code:404,message:"Id must require"})
-}
-
-
-}
-
-module.exports = { RegisterControl, LoginCotrol, GetUserData, deleteUser,updateUserActive,updateUserInactive}
+module.exports = { RegisterControl, LoginCotrol, GetUserData, deleteUser, updateUserActive, updateUserInactive }
