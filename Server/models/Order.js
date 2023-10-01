@@ -10,6 +10,10 @@ const orderSchema = mongoose.Schema({
         pname: { type: String },
         qty: { type: String },
         price:{type:String},
+        active: {
+                type: Boolean,
+                default: false,
+            }
         
 }, { timestamps: true })
 

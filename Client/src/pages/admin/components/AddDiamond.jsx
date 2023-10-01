@@ -13,16 +13,19 @@ const AddDiamond = ({ slider }) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('imguri', selectedFile)
-
         Object.keys(ddata).forEach((key) => {
             formData.append(key, ddata[key]);
+           
         });
-
+       
         axios.post("http://localhost:4001/product", formData)
             .then((r) => {
                 if (r.status == 201) {
                     toast.success("Diamond added successfully !")
-                    document.location.reload()
+                    setTimeout(() => {
+                        
+                        document.location.reload()
+                    }, 2000);
                 }
                 else {
                     toast.error(r.data.message)
@@ -201,9 +204,9 @@ const AddDiamond = ({ slider }) => {
                         </div>
 
                     </div>
-                    <button type="submit" class="adminaddbtn">
-                        <span class="button__text">Add Diamond</span>
-                        <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
+                    <button type="submit" className="adminaddbtn">
+                        <span className="button__text">Add Diamond</span>
+                        <span className="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" strokeWidth="2" strokeLinejoin ="round" strokeLinecap="round" stroke="currentColor" height="24" fill="none" className="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
                     </button>
                 </form>
             </div>

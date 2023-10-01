@@ -63,7 +63,7 @@ const navigate = useNavigate()
                                 <label htmlFor="inputField">City</label>
                             </div>
                             <div className="input-container">
-                                <input type="text" id="inputField" placeholder="" name='zip' onChange={handleChange} />
+                                <input type="number" id="inputField" placeholder="" name='zip' onChange={handleChange} />
                                 <label htmlFor="inputField">Zip</label>
                             </div>
                             <div className="input-container">
@@ -71,7 +71,7 @@ const navigate = useNavigate()
                                 <label htmlFor="inputField">Address</label>
                             </div>
                             <div className="input-container">
-                                <input type="text" id="inputField" placeholder="" name='email' onChange={handleChange} />
+                                <input type="email" id="inputField" placeholder="" name='email' onChange={handleChange} />
                                 <label htmlFor="inputField">Email</label>
                             </div>
                             <div className="button-con">

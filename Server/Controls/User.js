@@ -2,12 +2,15 @@ const UserModel = require("../models/Users")
 const { hashPassword, comparePassword } = require("../hepler/authHepler")
 const jwt = require('jsonwebtoken');
 
-
 // POST || REGISTER
 const RegisterControl = async (req, res) => {
     const { name, email, phone, password, cpassword } = req.body;
-    if (email) {
-        const user = await UserModel.findOne({ email })
+    if (email && name && phone && password && cpassword) {  
+        // email validate
+        const emainRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm")
+        isvalidEmail = emainRegex.test(email)
+        if (isvalidEmail){
+            const user = await UserModel.findOne({ email })
         if (user) {
             res.send({ status: "failed", message: "Email already registered" })
         }
@@ -24,6 +27,12 @@ const RegisterControl = async (req, res) => {
             else {
                 res.send({ status: "failed", message: "Password not same !" })
             }
+        }
+        }
+
+      
+        else{
+            res.send({ status: "failed", message: "Please enter emain currect pattern" })
         }
     }
     else {

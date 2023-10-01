@@ -7,8 +7,7 @@ cloudinary.config({
     api_key: '355881747719519',
     api_secret: 'N9twT6TyEA79iaVrisgngm-rm6I'
 });
-
-// POST || ADD-PRODUCTS
+// this is with cloudnary
 const AddProductData = async (req, res) => {
     const { title, catagory, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, measurements, table, depth, ratio, crownangle, crownheight, pavilionangle, paviliondepth, } = req.body;
     if (title && catagory && shape && carat && price) {
@@ -31,16 +30,16 @@ const AddProductData = async (req, res) => {
                             console.error(error);
                             return res.status(500).json({ message: 'Upload failed' });
                         }
-
-                        let newcount = await DataModel.countDocuments() + 1
-                        let doc = await new DataModel({ title, "id": newcount, catagory, "threesixty": result.secure_url, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, table, depth, ratio, crownangle, crownheight, pavilionangle, paviliondepth, })
+                        // let newcount = await DataModel.countDocuments() + 1
+                        let doc = await new DataModel({ title, catagory, "threesixty": result.secure_url, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, table, depth, ratio, crownangle, crownheight, pavilionangle, paviliondepth, })
                         await doc.save();
                         res.status(201).send("Record insert successfully")
-
+                        
                     }).end(req.file.buffer);
-
-
-            }
+                    
+                    
+                }
+                // POST || ADD-PRODUCTS
             else {
                 res.json({ message: "error in file img" })
             }
@@ -50,6 +49,25 @@ const AddProductData = async (req, res) => {
         res.json({ message: "All Fields are required" })
     }
 }
+
+// const AddProductData = async (req, res) => {
+//     const { title, catagory, shape, price, carat, colour, clarity, cut, polish, symmetry, f0luorescence, measurements, table, depth, ratio, crownangle, crownheight, pavilionangle, paviliondepth, } = req.body;
+//     if (title && catagory && shape && carat && price) {
+//         const productData = await DataModel.findOne({ title });
+//         if (productData) {
+//             res.json({ message: "Data Alreay Exist !" })
+//         }
+//         else {
+           
+
+               
+//                 }
+             
+//    }
+//     else {
+//         res.json({ message: "All Fields are required" })
+//     }
+// }
 
 // GET || READ-PRODUCTS
 const GetProductData = async (req, res) => {

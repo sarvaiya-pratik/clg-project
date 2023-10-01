@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import "./style.css"
 import { AiOutlineSearch } from 'react-icons/ai'
 import axios from "axios"
-
+import toast from 'react-hot-toast'
+axios.defaults.baseURL = "http://localhost:4001"
 const Order = ({ slider }) => {
   const [orderData, setOrderData] = useState()
   const [search, setSearch] = useState("")
@@ -23,7 +24,28 @@ const Order = ({ slider }) => {
   }, [])
 
 
+  const handleUpdateActive = (_id) => {
+    axios.put(`/order/active/${_id}`)
+      .then((r) => {
+        console.log(r.data)
+        if(r.data.code == 200){
+        toast.success(r.data.message)
+        document.location.reload()
+        }
+      })
+  }
 
+  const handleUpdateInactive = (_id) => {
+    axios.put(`/order/inactive/${_id}`)
+      .then((r) => {
+        console.log(r.data)
+        if(r.data.code == 200){
+          toast.success(r.data.message)
+          document.location.reload()
+        }
+       
+      })
+  }
   // const handleDetele = (_id) => {
   //   if (window.confirm("Are you sure delete this user ?")) {
   //     axios.delete(`http://localhost:4001/order/${_id}`)

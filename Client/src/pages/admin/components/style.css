@@ -639,7 +639,7 @@
         }
 
         .col-3 {
-            flex-basis: 40%;
+            flex-basis: 30%;
         }
 
         .col-4 {
@@ -647,7 +647,7 @@
         }
 
         .col-5 {
-            flex-basis: 5%;
+            flex-basis: 15%;
         }
 
         .deletecustomer {

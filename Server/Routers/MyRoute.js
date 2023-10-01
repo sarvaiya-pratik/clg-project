@@ -11,7 +11,7 @@ const { addFeedback, getFeedback, deleteFeedback } = require('../Controls/Feedba
 // CART
 const { getCart, incCart, decCart, delCart, addCart } = require("../Controls/Cart")
 // ORDER
-const { OderDetail, report, getOrderDetail, DeleteOrder } = require("../Controls/Order")
+const { OderDetail, report, getOrderDetail,updateOrderActive,updateOrderInactive} = require("../Controls/Order")
 // Middleware for Authentication
 const AuthUser = require("../middleware/AuthUser")
 
@@ -61,6 +61,8 @@ Router.route("/cart/delete/:id").delete(AuthUser, delCart)
 // Order
 Router.route("/order").post(AuthUser, OderDetail, report)
 Router.route("/order").get(getOrderDetail)
-Router.route("/order/:_id").delete(DeleteOrder)
+Router.route("/order/active/:id").put(updateOrderActive)
+Router.route("/order/inactive/:id").put(updateOrderInactive)
+// Router.route("/order/:_id").delete(DeleteOrder)
 
 module.exports = Router;    

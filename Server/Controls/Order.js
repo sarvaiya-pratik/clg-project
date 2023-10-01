@@ -1,6 +1,7 @@
 const orderModel = require("../models/Order")
 const Cart = require("../models/Cart")
 const productModel = require("../models/productdata")
+const cartModel = require("../models/Cart")
 // GET || READ-ORDER
 const getOrderDetail = async (req, res) => {
     try {
@@ -12,19 +13,49 @@ const getOrderDetail = async (req, res) => {
     }
 }
 
-// DELETE || DELETE-ORDER
-const DeleteOrder = async (req, res) => {
-    const _id = req.params._id;
-    try {
-        await orderModel.findOneAndDelete({ _id })
+// UPDATE || PUT  
+const updateOrderActive = async (req, res) => {
+   
+    const _id = req.params.id
+    if (_id) {
+        await orderModel.findByIdAndUpdate(_id, { active: false })
 
-        res.json({ message: "deleted successfully" })
-
-    } catch (error) {
-        console.log("error in order", error)
+        return res.json({ code: 200, message: "Update succesfully" })
     }
 
+    else {
+        return res.json({ code: 404, message: "Id must require" })
+    }
 }
+const updateOrderInactive = async (req, res) => {
+    console.log("update")
+    const _id = req.params.id
+    if (_id) {
+        await orderModel.findByIdAndUpdate(_id, { active: true })
+
+        return res.json({ code: 200, message: "Update succesfully" })
+    }
+    else {
+        return res.json({ code: 404, message: "Id must require" })
+    }
+
+
+}
+
+
+// // DELETE || DELETE-ORDER
+// const DeleteOrder = async (req, res) => {
+//     const _id = req.params._id;
+//     try {
+//         await orderModel.findOneAndDelete({ _id })
+
+//         res.json({ message: "deleted successfully" })
+
+//     } catch (error) {
+//         console.log("error in order", error)
+//     }
+
+// }
 
 // POST || ADD-ORDER
 const OderDetail = async (req, res, next) => {
@@ -62,6 +93,7 @@ const OderDetail = async (req, res, next) => {
         else {
             const doc = await new orderModel({ userId, fname, lname, address, email, zip, city,pname,qty ,price})
             await doc.save()
+            await cartModel.deleteOne({userId})
             //  res.json({ status: "success", message: "Order created" });
             next()
 
@@ -76,7 +108,8 @@ const OderDetail = async (req, res, next) => {
 
 
 const report = (req, res) => {
+
     res.json({ status: "success", message: "Order created" });
 }
 
-module.exports = { getOrderDetail, OderDetail, report, DeleteOrder };
+module.exports = { getOrderDetail, OderDetail, report,updateOrderActive,updateOrderInactive };
