@@ -28,6 +28,6 @@ const mydataSchema = mongoose.Schema({
 
 }, { timestamps: true })
 
-const DataModel = mongoose.model("mydata", mydataSchema)
+const DataModel = mongoose.model("diamond", mydataSchema)
 module.exports = DataModel;
 

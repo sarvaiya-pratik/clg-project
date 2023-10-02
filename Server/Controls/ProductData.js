@@ -34,12 +34,12 @@ const AddProductData = async (req, res) => {
                         let doc = await new DataModel({ title, catagory, "threesixty": result.secure_url, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, table, depth, ratio, crownangle, crownheight, pavilionangle, paviliondepth, })
                         await doc.save();
                         res.status(201).send("Record insert successfully")
-                        
+
                     }).end(req.file.buffer);
-                    
-                    
-                }
-                // POST || ADD-PRODUCTS
+
+
+            }
+            // POST || ADD-PRODUCTS
             else {
                 res.json({ message: "error in file img" })
             }
@@ -58,11 +58,11 @@ const AddProductData = async (req, res) => {
 //             res.json({ message: "Data Alreay Exist !" })
 //         }
 //         else {
-           
 
-               
+
+
 //                 }
-             
+
 //    }
 //     else {
 //         res.json({ message: "All Fields are required" })

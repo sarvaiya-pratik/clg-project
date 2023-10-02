@@ -96,7 +96,7 @@ const Login = () => {
             <form className="inputs" onSubmit={handleLoginSubmit} >
               <div className="input">
                 <AiOutlineUser />
-                <input type="email" placeholder='Email' name="email" required
+                <input type="text" placeholder='Email' name="email" required
                   onChange={handleLogin}
                 />
               </div>

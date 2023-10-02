@@ -20,7 +20,6 @@ import Spinner from "./pages/login/Spinner"
 
 import Order from "./pages/cart/address/Order"
 
-
 const App = () => {
   // const [user, setLoginUser] = useState({ _id: 12 })
   const [jdata, setJdata] = useState([])
@@ -29,6 +28,7 @@ const App = () => {
   useEffect(() => {
     setLoad(true)
     callapi()
+    console.log("Bar bar")
   }, [])
 
   const callapi = async () => {
@@ -38,9 +38,7 @@ const App = () => {
         setLoad(false)
       })
       .catch(err => "Error in json data(Pratik)" + err)
-
   }
-  console.log(jdata)
 
   return (
     <>

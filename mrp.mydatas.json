@@ -1,0 +1,409 @@
+[{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b3316665"
+  },
+  "catagory": "natural",
+  "title": "Round 1.00ct H VS1 VG VG VG None",
+  "threesixty": "https://loupe360.com/diamond/587300772/video",
+  "shape": "Round",
+  "price": 1200,
+  "carat": "1ct",
+  "colour": "H",
+  "clarity": "VS1",
+  "cut": "VG",
+  "polish": "VG",
+  "symmetry": "None",
+  "fluorescence": "None",
+  "table": "57.00",
+  "depth": "65.30",
+  "ratio": "0.99",
+  "crownangle": "35.60",
+  "crownheight": "15.50",
+  "pavilionangle": "41.80",
+  "paviliondepth": "44.50",
+  "active": true
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b3316666"
+  },
+  "catagory": "natural",
+  "title": "Round 1.00ct H VS2 VG EX VG None",
+  "threesixty": "https://loupe360.com/diamond/1701158124/video",
+  "shape": "Round",
+  "price": 1110,
+  "carat": "1ct",
+  "colour": "H",
+  "clarity": "VS2",
+  "cut": "VG",
+  "polish": "EX",
+  "symmetry": "VG",
+  "fluorescence": "None",
+  "table": "56.00",
+  "depth": "64.80",
+  "ratio": "0.98",
+  "crownangle": "38.60",
+  "crownheight": "17.50",
+  "pavilionangle": "39.80",
+  "paviliondepth": "41.50%",
+  "active": true
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b3316668"
+  },
+  "catagory": "natural",
+  "title": "Round 1.00ct F VS1 VG EX VG Medium",
+  "threesixty": "https://loupe360.com/diamond/557222765/video",
+  "shape": "Round",
+  "price": 1090,
+  "carat": "1.00ct",
+  "colour": "F",
+  "clarity": "VS1",
+  "cut": "VG",
+  "polish": "EX",
+  "symmetry": "VG",
+  "fluorescence": "Medium",
+  "table": "57.00",
+  "depth": "64.90",
+  "ratio": "0.99",
+  "crownangle": "38.00",
+  "crownheight": "38.00",
+  "pavilionangle": "40.00",
+  "paviliondepth": "42.00",
+  "active": true
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b3316669"
+  },
+  "catagory": "natural",
+  "title": "Round 1.00ct F VS1 VG EX VG Medium",
+  "threesixty": "https://loupe360.com/diamond/591362629/video",
+  "shape": "Round",
+  "price": 2105,
+  "carat": "1.00ct",
+  "colour": "F",
+  "clarity": "VS1",
+  "cut": "VG",
+  "polish": "EX",
+  "symmetry": "VG",
+  "fluorescence": "Medium",
+  "table": "57.00",
+  "depth": "64.90",
+  "ratio": "0.99",
+  "crownangle": "38.00",
+  "crownheight": "38.00",
+  "pavilionangle": "40.00",
+  "paviliondepth": "42.00",
+  "active": true,
+  "updatedAt": {
+    "$date": "2023-09-13T12:21:04.168Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b331666a"
+  },
+  "catagory": "natural",
+  "title": "Emerald 2.01ct O-P SI3 EX VG Medium Bl",
+  "threesixty": "https://loupe360.com/diamond/cdinesh223006401/video",
+  "shape": "Emerald",
+  "price": 2103,
+  "carat": "2.01ct",
+  "colour": "O-P",
+  "clarity": "SI3",
+  "cut": "",
+  "polish": "EX",
+  "symmetry": "VG",
+  "fluorescence": "Medium B",
+  "table": "65.90",
+  "depth": "71.00",
+  "ratio": "0.76",
+  "crownangle": "51.00",
+  "crownheight": "14.00",
+  "pavilionangle": "59.00",
+  "paviliondepth": "51.00",
+  "active": false,
+  "updatedAt": {
+    "$date": "2023-09-30T12:42:34.936Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b331666b"
+  },
+  "catagory": "natural",
+  "title": "Emerald 1.02ct H SI2 EX EX None",
+  "threesixty": "https://loupe360.com/diamond/cdinesh223012301/video",
+  "shape": "Emerald",
+  "price": 2111,
+  "carat": "1.02ct",
+  "colour": "H",
+  "clarity": "SI2",
+  "cut": "",
+  "polish": "EX",
+  "symmetry": "EX",
+  "fluorescence": "None",
+  "table": "62.50",
+  "depth": "72.90",
+  "ratio": "1.45",
+  "crownangle": "32.20",
+  "crownheight": "15.00",
+  "pavilionangle": "38.60",
+  "paviliondepth": "52.00",
+  "active": true,
+  "updatedAt": {
+    "$date": "2023-09-30T12:54:36.521Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b331666c"
+  },
+  "catagory": "natural",
+  "title": "Heart 1.00ct G SI2 GD VG VG None",
+  "threesixty": "https://loupe360.com/diamond/1479042036/video",
+  "shape": "Heart",
+  "price": 2142,
+  "carat": "1.00ct",
+  "colour": "G",
+  "clarity": "SI2",
+  "cut": "GD",
+  "polish": "VG",
+  "symmetry": "VG",
+  "fluorescence": "None",
+  "table": "56.00",
+  "depth": "59.60",
+  "ratio": "0.88",
+  "crownangle": "37.80",
+  "crownheight": "16.50",
+  "pavilionangle": "37.60",
+  "paviliondepth": "54.00",
+  "active": false,
+  "updatedAt": {
+    "$date": "2023-09-30T12:42:39.422Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b331666d"
+  },
+  "catagory": "natural",
+  "title": "Heart 0.71ct E SI1 VG VG Faint",
+  "threesixty": "https://loupe360.com/diamond/1467761468/video",
+  "shape": "Heart",
+  "price": 3133,
+  "carat": "0.71ct",
+  "colour": "E",
+  "clarity": "SI1",
+  "cut": "",
+  "polish": "VG",
+  "symmetry": "VG",
+  "fluorescence": "None",
+  "table": "60.00",
+  "depth": "53.60",
+  "ratio": "0.48",
+  "crownangle": "41.8",
+  "crownheight": "26.50",
+  "pavilionangle": "37.50°",
+  "paviliondepth": "44.00",
+  "active": false,
+  "updatedAt": {
+    "$date": "2023-09-30T12:42:36.790Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b331666e"
+  },
+  "catagory": "natural",
+  "title": "Marquise 1.00ct J I1 VG EX GD Strong",
+  "threesixty": "https://loupe360.com/diamond/GT13709811/img",
+  "shape": "Marquise",
+  "price": 3127,
+  "carat": "1.00ct",
+  "colour": "J",
+  "clarity": "I1",
+  "cut": "VG",
+  "polish": "EX",
+  "symmetry": "GD",
+  "fluorescence": "Strong",
+  "table": "57.00",
+  "depth": "51.30",
+  "ratio": "1.80",
+  "crownangle": "26.80",
+  "crownheight": "11.50",
+  "pavilionangle": "46.50°",
+  "paviliondepth": "41.00",
+  "active": false,
+  "updatedAt": {
+    "$date": "2023-09-30T12:42:42.053Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b331666f"
+  },
+  "catagory": "natural",
+  "title": "Marquise 1.00ct J SI2 GD VG VG Faint",
+  "threesixty": "https://loupe360.com/diamond/127409042/img",
+  "shape": "Marquise",
+  "price": 2137,
+  "carat": "1.00ct",
+  "colour": "J",
+  "clarity": "SI2",
+  "cut": "GD",
+  "polish": "VG",
+  "symmetry": "VG",
+  "fluorescence": "Faint",
+  "table": "59.00",
+  "depth": "52.60",
+  "ratio": "0.48",
+  "crownangle": "43.80",
+  "crownheight": "18.50",
+  "pavilionangle": "47.50",
+  "paviliondepth": "47.00",
+  "active": true,
+  "updatedAt": {
+    "$date": "2023-09-13T13:43:47.281Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b3316670"
+  },
+  "catagory": "natural",
+  "title": "Pear 0.69ct J SI1 VG VG None",
+  "threesixty": "https://loupe360.com/diamond/mausamandpallifestylePear0226/img",
+  "shape": "Pear",
+  "price": 2186,
+  "carat": "0.69ct",
+  "colour": "J",
+  "clarity": "SI1",
+  "cut": "",
+  "polish": "VG",
+  "symmetry": "VG",
+  "fluorescence": "None",
+  "table": "59.00",
+  "depth": "61.60",
+  "ratio": "1.48",
+  "crownangle": "0.00",
+  "crownheight": "0.00",
+  "pavilionangle": "0.00",
+  "paviliondepth": "0.00",
+  "active": true,
+  "updatedAt": {
+    "$date": "2023-09-13T13:43:49.421Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b3316671"
+  },
+  "catagory": "natural",
+  "title": "Asscher 1.01ct F SI1 EX VG Faint",
+  "threesixty": "https://loupe360.com/diamond/591362629/video",
+  "shape": "Asscher",
+  "price": 32101,
+  "carat": "1.01ct",
+  "colour": "F",
+  "clarity": "SI1",
+  "cut": "",
+  "polish": "EX",
+  "symmetry": "VG",
+  "fluorescence": "Faint",
+  "table": "68.00",
+  "depth": "71.60",
+  "ratio": "1.01",
+  "crownangle": "0.00",
+  "crownheight": "0.00",
+  "pavilionangle": "0.00",
+  "paviliondepth": "0.00",
+  "active": false,
+  "updatedAt": {
+    "$date": "2023-10-01T10:08:22.430Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b3316672"
+  },
+  "catagory": "natural",
+  "title": "Rose 1.11ct I VS1 EX VG Faint",
+  "threesixty": "https://loupe360.com/diamond/1478011292/video",
+  "shape": "Rose",
+  "price": 1300,
+  "carat": "1.11ct",
+  "colour": "I",
+  "clarity": "VS1",
+  "cut": "",
+  "polish": "EX",
+  "symmetry": "VG",
+  "fluorescence": "Faint",
+  "table": "75.00",
+  "depth": "35.60",
+  "ratio": "1.01",
+  "crownangle": "0.00",
+  "crownheight": "0.00",
+  "pavilionangle": "0.00°",
+  "paviliondepth": "0.00",
+  "active": true
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b3316673"
+  },
+  "catagory": "natural",
+  "title": "Rose 1.70ct E VS2 VG GD None",
+  "threesixty": "https://loupe360.com/diamond/cdinesh220100801/video",
+  "shape": "Rose",
+  "price": 2000,
+  "carat": "1.70ct",
+  "colour": "E",
+  "clarity": "VS2",
+  "cut": "",
+  "polish": "VG",
+  "symmetry": "GD",
+  "fluorescence": "None",
+  "table": "73.00",
+  "depth": "32.60",
+  "ratio": "1.31",
+  "crownangle": "0.00",
+  "crownheight": "0.00",
+  "pavilionangle": "0.00",
+  "paviliondepth": "0.00",
+  "active": true
+},
+{
+  "_id": {
+    "$oid": "65194592b280e1f623e46789"
+  },
+  "title": "233",
+  "catagory": "lab grown",
+  "threesixty": "https://res.cloudinary.com/dvnubzprf/image/upload/v1696155025/tmkd4xkttu6xlglfbohn.jpg",
+  "shape": "princess ",
+  "price": 32,
+  "carat": "32",
+  "colour": "none",
+  "clarity": "none",
+  "cut": "none",
+  "polish": "none",
+  "symmetry": "none",
+  "fluorescence": "none",
+  "table": "none",
+  "depth": "none",
+  "ratio": "none",
+  "crownangle": "none",
+  "crownheight": "none",
+  "pavilionangle": "none",
+  "paviliondepth": "none",
+  "active": true,
+  "createdAt": {
+    "$date": "2023-10-01T10:10:26.550Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-01T10:10:26.550Z"
+  },
+  "__v": 0
+}]

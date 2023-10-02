@@ -19,10 +19,6 @@ const multer = require("multer")
 const storage = multer.memoryStorage();
 const upload = multer({ storage })
 
-
-
-
-
 // ----------------ROUTES-----------------
 
 // USER
@@ -49,7 +45,6 @@ Router.route("/product/inactive/:id").put(updateProductInactive)
 Router.route("/feedback").post(addFeedback);
 Router.route("/feedback").get(getFeedback);
 Router.route("/feedback/:id").delete(deleteFeedback);
-
 
 //CART
 Router.route("/cart/add").post(AuthUser, addCart)

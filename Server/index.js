@@ -14,7 +14,6 @@ app.use(bodyParser.json())
 const Router = require("./Routers/MyRoute")
 app.use("/", Router)
 
-app.post
 // mongo connect
 try {
     mongoose.connect(process.env.URLATLAS);

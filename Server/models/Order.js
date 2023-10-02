@@ -8,8 +8,8 @@ const orderSchema = mongoose.Schema({
         address: { type: String },
         email: { type: String },
         pname: { type: String },
-        qty: { type: String },
-        price:{type:String},
+        qty: { type: Number },
+        price:{type:Number},
         active: {
                 type: Boolean,
                 default: false,

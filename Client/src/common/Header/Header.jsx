@@ -18,7 +18,7 @@ const Header = () => {
             .then((r) => {
                 setCart(r.data)
             })
-
+        console.log("header useefect")
 
     }, [])
     useEffect(() => {

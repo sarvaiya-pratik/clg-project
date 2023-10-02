@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import "./style.css";
 import axios from "axios"
 import { Toaster, toast } from 'react-hot-toast';
-
+import Loader from "../../../common/Loader/Loader"
 const AddDiamond = ({ slider }) => {
     let [ddata, setDdata] = useState({})
     const [selectedFile, setSelectedFile] = useState(null);
+    const [load,setLoad] = useState(false)
     const handlechange = (e) => {
         setDdata({ ...ddata, [e.target.name]: e.target.value })
     }
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoad(true)
         const formData = new FormData();
         formData.append('imguri', selectedFile)
         Object.keys(ddata).forEach((key) => {
@@ -21,6 +23,7 @@ const AddDiamond = ({ slider }) => {
         axios.post("http://localhost:4001/product", formData)
             .then((r) => {
                 if (r.status == 201) {
+                    setLoad(false)
                     toast.success("Diamond added successfully !")
                     setTimeout(() => {
                         
@@ -37,6 +40,10 @@ const AddDiamond = ({ slider }) => {
 
     return (
         <>
+            {
+                load?<Loader/> :
+           
+
             <div id='addDiamond' className='content-admin' style={{ marginLeft: slider && '20%' }}>
                 <h2> ADD DIAMONDS </h2>
                 <form action="" onSubmit={handleSubmit}>
@@ -210,7 +217,9 @@ const AddDiamond = ({ slider }) => {
                     </button>
                 </form>
             </div>
+}
             <Toaster />
+        
         </>
     )
 }
