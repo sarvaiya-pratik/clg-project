@@ -31,6 +31,7 @@ const AddDiamond = ({ slider }) => {
                     }, 2000);
                 }
                 else {
+                    setLoad(false)
                     toast.error(r.data.message)
                 }
             })

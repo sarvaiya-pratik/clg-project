@@ -14,11 +14,12 @@ const Header = () => {
     const { items } = useCart()
     const navigate = useNavigate()
     useEffect(() => {
-        axios.get("/cart", { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
+        let token = localStorage.getItem("token")
+        token ? axios.get("/cart", { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
             .then((r) => {
                 setCart(r.data)
             })
-        console.log("header useefect")
+            : ""
 
     }, [])
     useEffect(() => {
@@ -62,7 +63,7 @@ const Header = () => {
                 <div className="mobile-nav">
 
                     <label className="hamburger">
-                        <input type="checkbox" checked={menu} />   
+                        <input type="checkbox" checked={menu} />
                         <svg viewBox="0 0 32 32" onClick={() => setMenu(!menu)}>
                             <path className="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
                             <path className="line" d="M7 16 27 16"></path>
@@ -185,7 +186,7 @@ const Header = () => {
                             <>
 
 
-                                <li style={{listStyle:'none'}}>
+                                <li style={{ listStyle: 'none' }}>
                                     <button className="button6 type1 mb-4" >
                                         <span className="btn-txt">
                                             <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/cart" >My Cart</NavLink>
@@ -193,7 +194,7 @@ const Header = () => {
                                         </span>
                                     </button>
                                 </li>
-                                <li style={{listStyle:'none'}}>
+                                <li style={{ listStyle: 'none' }}>
                                     <button className="button6 type1" >
                                         <span className="btn-txt">
                                             <NavLink className="text-light" onClick={handleMobileLogout} to="/" >Logout</NavLink>

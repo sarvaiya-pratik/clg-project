@@ -81,7 +81,7 @@ const LoginCotrol = async (req, res) => {
 
 
     else {
-        res.send({ status: "failed", message: "" })
+        res.send({ status: "failed", message: "All field are require" })
     }
 }
 

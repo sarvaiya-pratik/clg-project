@@ -79,7 +79,7 @@ const AdminSlide = ({ slider }) => {
         <NavLink to="/admins/dashboard"> <BiSolidDashboard />Dashboard</NavLink>
         <NavLink to="/admins/customer">< BiUser />Customer</NavLink>
         <NavLink to="/admins/diamonds"><BiSolidDiamond />Diamonds</NavLink>
-        <NavLink to="/admins/message"><BiMessage />Messages</NavLink>
+        <NavLink to="/admins/message"><BiMessage />Feedback</NavLink>
         <NavLink to="/admins/order"><BiStore />Orders</NavLink>
         {/* <NavLink to="/admins/report">< GoReport />Reports</NavLink> */}
         {/* <NavLink to="/admins/setting"><AiFillSetting />Settings</NavLink> */}

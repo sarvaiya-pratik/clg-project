@@ -7,7 +7,6 @@ const productdata = require("../models/productdata")
 const getCart = async (req, res) => {
     const userId = req.user._id;
 
-
     const userCart = await Cart.findOne({ userId });
 
     if (!userCart) {
@@ -48,6 +47,7 @@ const getCart = async (req, res) => {
 // POST || ADD
 
 const addCart = async (req, res) => {
+    console.log("add cart")
     try {
         const userId = req.user._id;
         const { productId, quantity } = req.body;

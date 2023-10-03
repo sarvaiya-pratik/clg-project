@@ -99,7 +99,9 @@ const Order = ({ slider }) => {
           </li>
           {
             orderData ?
-              orderData.map((item, index) => {
+            orderData.filter((val)=>search == ""? val : val.fname.toLowerCase().includes(search.toLocaleLowerCase()))
+            .sort((a,b)=>a.fname.localeCompare(b.fname))
+              .map((item, index) => {
                 // let cartData = cart.find((cartItem) => cartItem.userId == item.userId);
                 //  console.log("oitem",cartData) 
                 return (<li className="table-row" key={index}>
