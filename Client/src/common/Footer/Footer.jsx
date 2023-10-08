@@ -8,9 +8,11 @@ import { TbDeviceLandlinePhone } from "react-icons/tb"
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa"
 import { motion } from "framer-motion"
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Footer = () => {
   const [feedback, setFeedback] = useState({})
+  const navigate = useNavigate()
   const handleSubmit = () => {
     axios.post("/feedback", feedback)
       .then((r) => {
@@ -57,11 +59,11 @@ const Footer = () => {
           <div className="social">
             <h2 className='heading'>FOLLOW US !</h2>
             <div className="up">
-              <a href="https://www.facebook.com/pratik.saravaiya?mibextid=ZbWKwL" target='_blank'>
-                <button className="card1">
+              {/* <a href="https://www.facebook.com/pratik.saravaiya?mibextid=ZbWKwL" target='_blank'> */}
+                <button className="card1" onClick={()=>navigate("/admin")}>
                   <FaFacebook className='facebook' style={{ color: " #3b5998" }} />
                 </button>
-              </a>
+              {/* </a> */}
               <a href="https://pratik-sarvaiya.vercel.app/" target='_blank'>
                 <button className="card2">
                   <FaTwitter className='twitter' style={{ color: '#00acee' }} />
