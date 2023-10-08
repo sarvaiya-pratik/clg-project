@@ -19,7 +19,7 @@ const navigate = useNavigate()
     const handleSubmit = (e) => {
         e.preventDefault();
         let token = localStorage.getItem("token")
-        axios.post("http://localhost:4001/order", orderData, { headers: { "Authorization": `Bearer ${token}` } })
+        axios.post("/order", orderData, { headers: { "Authorization": `Bearer ${token}` } })
             .then((r) => {
                 if (r.data.status === "success") {
                     toast.success(r.data.message)

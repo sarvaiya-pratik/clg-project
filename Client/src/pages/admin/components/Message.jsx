@@ -7,7 +7,7 @@ const Message = ({ slider }) => {
   const [feedback, setFeedback] = useState();
 
   useEffect(() => {
-    axios.get("http://localhost:4001/feedback")
+    axios.get("/feedback")
       .then((r) => {
         setFeedback(r.data);
       })
@@ -17,7 +17,7 @@ const Message = ({ slider }) => {
   const handleDelete = (id) => {
 
     if (window.confirm("Are you sure delete this feedback ?")) {
-      axios.delete(`http://localhost:4001/feedback/${id}`)
+      axios.delete(`/feedback/${id}`)
         .then((r) => {
           toast.success(r.data.message)
           window.location.reload();

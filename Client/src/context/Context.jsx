@@ -8,7 +8,7 @@ const Context = ({ children }) => {
     const [cartdata, setCartData] = useState()
 
     const updateCartOnServer = (userId, cart, totalAmount) => {
-        axios.post("http://localhost:4001/cart/add-to-cart", { userId, cart, totalAmount })
+        axios.post("/cart/add-to-cart", { userId, cart, totalAmount })
             .then((r) => {
                 console.log("response", r.data)
             })

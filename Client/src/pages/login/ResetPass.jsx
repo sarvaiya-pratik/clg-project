@@ -20,7 +20,7 @@ const [loading,setLoading] = useState(false)
     setLoading(true)
     e.preventDefault()
    if(password == cpassword){
-    axios.post("http://localhost:4001/user/login/reset-password/reset",{password})
+    axios.post("/user/login/reset-password/reset",{password})
     .then((r) => {
      if (r.data.code == 200 ){
         setLoading(false)

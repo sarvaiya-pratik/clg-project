@@ -17,7 +17,7 @@ const [loading,setLoading] = useState(false)
     e.preventDefault()
     setLoading(true)
   
-    axios.post("http://localhost:4001/user/login/reset-password/getotp",{email:ForgateData})
+    axios.post("/user/login/reset-password/getotp",{email:ForgateData})
       .then((r) => {
        if (r.data.code == 200 ){
          setLoading(false)

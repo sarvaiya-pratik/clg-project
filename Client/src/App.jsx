@@ -18,9 +18,9 @@ import ResetPass from "./pages/login/ResetPass"
 import Loader from "./common/Loader/Loader"
 import Cart from "./pages/cart/Cart"
 import Spinner from "./pages/login/Spinner"
-
 import Order from "./pages/cart/address/Order"
 
+axios.defaults.baseURL = "http://localhost:4001"
 const App = () => {
   // const [user, setLoginUser] = useState({ _id: 12 })
   const [jdata, setJdata] = useState([])
@@ -29,11 +29,11 @@ const App = () => {
   useEffect(() => {
     setLoad(true)
     callapi()
-    console.log("Bar bar")
+   
   }, [])
 
   const callapi = async () => {
-    await axios.get("http://localhost:4001/product")
+    await axios.get("/product")
       .then((res) => {
         setJdata(res.data)
         setLoad(false)
@@ -44,7 +44,7 @@ const App = () => {
   return (
     <>
       <Toaster />
-      {load ? <Loader /> :
+      {/* {load ? <Loader /> : */}
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -67,7 +67,7 @@ const App = () => {
         </Router>
         
 
-      }
+      {/* } */}
 
     </>
   )

@@ -20,7 +20,7 @@ const AddDiamond = ({ slider }) => {
            
         });
        
-        axios.post("http://localhost:4001/product", formData)
+        axios.post("/product", formData)
             .then((r) => {
                 if (r.status == 201) {
                     setLoad(false)

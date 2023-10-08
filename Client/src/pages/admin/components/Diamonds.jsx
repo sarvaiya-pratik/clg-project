@@ -3,7 +3,7 @@ import "./style.css"
 import { AiFillDelete, AiOutlineReload, AiOutlineSearch } from 'react-icons/ai'
 import axios from 'axios'
 import toast from "react-hot-toast"
-axios.defaults.baseURL = "http://localhost:4001"
+// axios.defaults.baseURL = "http://localhost:4001"
 import { NavLink } from "react-router-dom"
 import { FiPlus } from "react-icons/fi"
 

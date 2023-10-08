@@ -5,7 +5,7 @@ import { BiUser, BiSolidDiamond } from "react-icons/bi"
 import { CiDeliveryTruck } from "react-icons/ci"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
-axios.defaults.baseURL = "http://localhost:4001"
+// axios.defaults.baseURL = "http://localhost:4001"
 const Dashboard = ({ slider }) => {
   const [user, setUser] = useState()
   const [diamond, setDiamond] = useState();
@@ -23,7 +23,7 @@ const Dashboard = ({ slider }) => {
         setDiamond(r.data.length);
       })
 
-    axios.get("http://localhost:4001/order")
+    axios.get("/order")
       .then((r) => {
         setOrder(r.data.length)
       })

@@ -15,7 +15,7 @@ const AdminLogin = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post("http://localhost:4001/adminlogin", loginData)
+        axios.post("/adminlogin", loginData)
             .then((r) => {
                 if (r.status === 201) {
                     toast.success("Login Successfully")

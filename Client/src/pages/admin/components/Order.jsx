@@ -3,7 +3,7 @@ import "./style.css"
 import { AiOutlineSearch } from 'react-icons/ai'
 import axios from "axios"
 import toast from 'react-hot-toast'
-axios.defaults.baseURL = "http://localhost:4001"
+// axios.defaults.baseURL = "http://localhost:4001"
 const Order = ({ slider }) => {
   const [user, setUser] = useState()
   const [checkboxes, setCheckboxes] = useState();

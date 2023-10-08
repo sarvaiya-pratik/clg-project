@@ -25,7 +25,7 @@ const Login = () => {
     e.preventDefault()
     setLoading(true)
     console.log(regData)
-    axios.post("http://localhost:4001/user/login", loginData)
+    axios.post("/user/login", loginData)
       .then((r) => {
         if (r.data.status == "success") {
           localStorage.setItem('uname', r.data.uname)
@@ -55,7 +55,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true)
     console.log("REG", regData)
-    axios.post("http://localhost:4001/user/register", regData)
+    axios.post("/user/register", regData)
       .then((r) => {
         if (r.data.status == "success") {
           try {
