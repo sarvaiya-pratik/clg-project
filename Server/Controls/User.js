@@ -42,7 +42,7 @@ const RegisterControl = async (req, res) => {
                         subject: 'Registration Confirmation',
                         html: `<h3>Thank you for registering!<h3><br>UserID : <b>${user.email}</b> <br>Password : <b> ${password}<b><br> <p> Welcome to MRP Diamonds,${user.name}`,
                     };
-                    transport.sendMail(mailOptions, (error, info) => {
+                   transport.sendMail(mailOptions,async(error, info) => {
                         if (error) {
                             console.error('Error sending email:', error);
                             res.status(500).send('Error sending email');
@@ -89,7 +89,7 @@ const LoginCotrol = async (req, res) => {
                             subject: 'Login Confirmation',
                             text: 'You are Login successfully !',
                         };
-                        transport.sendMail(mailOptions, (error, info) => {
+                        transport.sendMail(mailOptions,async (error, info) => {
                             if (error) {
                                 console.error('Error sending email:', error);
                               return  res.status(500).send('Error sending email');
@@ -224,7 +224,7 @@ const resentOtp = async (req, res) => {
             html: `<h3>OTP is : ${MYOTP} </h3>`,
             text: "Plase Enter this otp and Reset your password ! Thank you from MRP diamonds.."
         };
-        transport.sendMail(mailOptions, (error, info) => {
+        transport.sendMail(mailOptions,async (error, info) => {
             if (error) {
                 console.error('Error sending email:', error);
                 return res.status(500).send('Error sending email');
@@ -277,7 +277,7 @@ const resetPassword = async (req, res) => {
                     subject: 'RESET PASSWORD !',
                     html: `<h3>Reset Password Successfully </h3><br><p>Your Password is : <b> ${password}</b> Thank you from MRP diamonds..</p>`
                 };
-                transport.sendMail(mailOptions, (error, info) => {
+                transport.sendMail(mailOptions, async(error, info) => {
                     if (error) {
                         console.error('Error sending email:', error);
                      return   res.status(500).send('Error sending email');
