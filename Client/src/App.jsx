@@ -20,7 +20,7 @@ import Cart from "./pages/cart/Cart"
 import Spinner from "./pages/login/Spinner"
 import Order from "./pages/cart/address/Order"
 
-axios.defaults.baseURL = "https://clg-project-server-new.vercel.app"
+axios.defaults.baseURL = "https://clg-server.onrender.com"
 const App = () => {
   // const [user, setLoginUser] = useState({ _id: 12 })
   const [jdata, setJdata] = useState([])
