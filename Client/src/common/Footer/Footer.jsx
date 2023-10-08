@@ -60,7 +60,7 @@ const Footer = () => {
             <h2 className='heading'>FOLLOW US !</h2>
             <div className="up">
               {/* <a href="https://www.facebook.com/pratik.saravaiya?mibextid=ZbWKwL" target='_blank'> */}
-                <button className="card1" onClick={()=>navigate("/admin")}>
+                <button className="card1" onClick={()=>navigate("/")}>
                   <FaFacebook className='facebook' style={{ color: " #3b5998" }} />
                 </button>
               {/* </a> */}
