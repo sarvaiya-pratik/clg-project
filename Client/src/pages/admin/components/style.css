@@ -1,5 +1,80 @@
 /* Global Admin css */
-
+/* Switch toggle  */
+.switch {
+    --circle-dim: 1.4em;
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 3.5em;
+    height: 2em;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f5aeae;
+    transition: .4s;
+    border-radius: 30px;
+  }
+  
+  .slider-card {
+    position: absolute;
+    content: "";
+    height: var(--circle-dim);
+    width: var(--circle-dim);
+    border-radius: 20px;
+    left: 0.3em;
+    bottom: 0.3em;
+    transition: .4s;
+    pointer-events: none;
+  }
+  
+  .slider-card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    perspective: 1000px;
+    border-radius: 50%;
+    transition: .4s transform;
+  }
+  
+  .slider-card-front {
+    background-color: #DC3535;
+  }
+  
+  .slider-card-back {
+    background-color: #379237;
+    transform: rotateY(180deg);
+  }
+  
+  input:checked ~ .slider-card .slider-card-back {
+    transform: rotateY(0);
+  }
+  
+  input:checked ~ .slider-card .slider-card-front {
+    transform: rotateY(-180deg);
+  }
+  
+  input:checked ~ .slider-card {
+    transform: translateX(1.5em);
+  }
+  
+  input:checked ~ .slider {
+    background-color: #9ed99c;
+  }
+/* upload button  */
 .upload-btn-container {
     display: flex;
     justify-content: center;
@@ -43,6 +118,7 @@
         border: 2px solid var(--black);
         border-radius: 0 0 6px 6px;
     }
+
     .bin::after,
     .bin::before {
         content: "";
@@ -54,7 +130,7 @@
         margin: auto;
         right: 0;
     }
-    
+
     .bin::after {
         left: -4px;
         top: -5px;
@@ -616,6 +692,8 @@
 
 /* CUSTOMER */
 #customer {
+   
+
     >h2 {
         font-weight: 500;
         color: var(--third-color);
@@ -761,7 +839,6 @@
                 box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
                 background-color: #4e99e9;
 
-
                 >.sign {
                     width: 100%;
                     transition-duration: .3s;
@@ -859,7 +936,7 @@
             text-align: center;
         }
 
-        .deletecustomer {
+        .deletecustomer {   
             font-size: 1.5rem;
             cursor: pointer;
 
@@ -1121,7 +1198,7 @@
         padding-right: 10px;
 
         .col-1 {
-            flex-basis: 10%;
+            flex-basis: 8%;
         }
 
         .col-2 {
@@ -1129,22 +1206,31 @@
         }
 
         .col-3 {
-            flex-basis: 30%;
+            flex-basis: 22%;
+            text-align: center;
         }
 
         .col-4 {
-            flex-basis: 20%;
+            flex-basis: 18%;
+            text-align: center;
         }
 
         .col-5 {
-            flex-basis: 10%;
+            flex-basis: 9%;
+            text-align: center;
         }
 
         .col-6 {
-            flex-basis: 10%;
+            flex-basis: 9%;
         }
+
         .col-7 {
             flex-basis: 10%;
+        }
+
+        .col-8 {
+            flex-basis: 14%;
+            text-align: center;
         }
 
         .deletecustomer {

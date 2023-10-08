@@ -29,19 +29,31 @@ const Admin = ({ data }) => {
       <div id="admin">
         <header>
           <div className="left">
-            <BiMenuAltLeft onClick={() => setSlider(!slider)} />
-            <img src={logo} alt="" width="40px"  />
-            <h5>MRP DIAMONDS</h5>
+            {/* <BiMenuAltLeft onClick={() => setSlider(!slider)} /> */}
+            <input id="checkbox" type="checkbox" onChange={()=>setSlider(!slider)} checked={slider}/>
+    <label class="toggle" for="checkbox">
+        <div id="bar1" class="bars"></div>
+        <div id="bar2" class="bars"></div>
+        <div id="bar3" class="bars"></div>
+    </label>
+            
+          </div>
+          <div className="centers">
+          <img src={logo} alt="" width="40px" />
+            <button data-text="Awesome" class="admin-heding-btn">
+              <span class="actual-text">&nbsp;MRP DIAMONDS &nbsp;</span>
+              
+            </button>
           </div>
           {/* <div className="cen">
            
           </div> */}
           <div className="right">
-            
-          <div className="search">
-        <input placeholder="Search..." type="text"/>
-        <button type="submit">Go</button>
-      </div>
+
+            {/* <div className="search">
+              <input placeholder="Search..." type="text" />
+              <button type="submit">Go</button>
+            </div> */}
 
 
             <img src={admin} alt=" " />

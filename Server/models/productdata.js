@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+import mongoose from "mongoose";
 
 const mydataSchema = mongoose.Schema({
 
@@ -29,5 +29,5 @@ const mydataSchema = mongoose.Schema({
 }, { timestamps: true })
 
 const DataModel = mongoose.model("diamond", mydataSchema)
-module.exports = DataModel;
+export default DataModel;
 

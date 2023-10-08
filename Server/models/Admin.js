@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from "mongoose";
 
 const AdminSchema = mongoose.Schema({
     email: { type: String },
@@ -7,4 +7,4 @@ const AdminSchema = mongoose.Schema({
     { timestamps: true })
 const AdminModel = mongoose.model('admin', AdminSchema);
 
-module.exports = AdminModel;
+export default  AdminModel;

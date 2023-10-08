@@ -25,7 +25,7 @@ const Dashboard = ({ slider }) => {
 
     axios.get("http://localhost:4001/order")
       .then((r) => {
-        setOrder(r.data.order.length)
+        setOrder(r.data.length)
       })
 
     console.log("order", order)

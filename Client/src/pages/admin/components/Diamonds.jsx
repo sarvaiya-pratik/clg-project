@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./style.css"
 import { AiFillDelete, AiOutlineReload, AiOutlineSearch } from 'react-icons/ai'
 import axios from 'axios'
@@ -8,7 +8,44 @@ import { NavLink } from "react-router-dom"
 import { FiPlus } from "react-icons/fi"
 
 const Diamonds = ({ slider, data }) => {
+  const [user, setUser] = useState()
+  const [checkboxes, setCheckboxes] = useState();
   const [search, setSearch] = useState("")
+  const [active, setActive] = useState(true)
+
+  const initialCheckboxes = user ? user.map((userName, index) => ({
+    id: index, // You can use a unique ID here, e.g., user ID if available
+    label: userName,
+    checked: userName.active,
+  })) : ""  
+
+  const handleCheckboxChange = (e, id,_id) => {
+    console.log("bbbb")
+    const updatedCheckboxes = checkboxes.map((checkbox) =>
+      checkbox.id === id ? { ...checkbox, checked: !checkbox.checked } : checkbox
+    );
+    setCheckboxes(updatedCheckboxes);
+    console.log("mmm", e.target.checked)
+    if (e.target.checked == false) {
+      handleUpdateActive(_id)
+    }
+    else {
+      handleUpdateInactive(_id)
+    }
+  };
+
+  useEffect(() => {
+    axios.get("/product")
+      .then((r) => {
+        setUser(r.data);
+      })
+  }, [])
+
+  useEffect(() => {
+    setCheckboxes(initialCheckboxes)
+    console.log("run")
+  }, [user])
+
 
   const handleUpdateActive = (_id) => {
     axios.put(`/product/active/${_id}`,)
@@ -93,6 +130,35 @@ const Diamonds = ({ slider, data }) => {
               <div className="col col-7">Status</div>
             </li>
             {
+
+checkboxes ?
+  checkboxes.filter((val) => search == "" ? val : val.label.title.toLowerCase().includes(search.toLowerCase()))
+    .map((item, index) => {
+      return (
+        <li className="table-row" key={index}>
+          <div className="col col-1" >{index + 1}</div>
+          <div className="col col-2" >{item.label.title}</div>
+          <div className="col col-3" >{item.label.catagory}</div>
+          <div className="col col-4" >{item.label.shape}</div>
+          <div className="col col-5" >{item.label.carat}</div>
+          <div className="col col-6" >{item.label.price}</div>
+          <div className="col col-7 deletecustomer"   >
+
+            <label className="switch">
+              <input type="checkbox" checked={item.checked} onChange={(e) => handleCheckboxChange(e, item.id,item.label._id)} />
+              <div className="slider"></div>
+              <div className="slider-card">
+                <div className="slider-card-face slider-card-front"></div>
+                <div className="slider-card-face slider-card-back"></div>
+              </div>
+            </label>
+
+          </div>
+        </li>
+      )
+    }) : ""
+}
+            {/* {
               data ?
                 data.filter(e => search == "" ? e : e.title.toLowerCase().includes(search.toLowerCase()))
                   .sort((a, b) => {
@@ -116,7 +182,7 @@ const Diamonds = ({ slider, data }) => {
                       </li>
                     )
                   }) : ""
-            }
+            } */}
 
 
           </ul>

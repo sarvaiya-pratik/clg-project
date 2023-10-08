@@ -1,8 +1,10 @@
-require("dotenv").config()
-const express = require("express")
-const mongoose = require("mongoose")
-const cors = require("cors")
-const bodyParser = require("body-parser")
+// require("dotenv").config()
+import dotenv from 'dotenv'
+dotenv.config();
+import  express  from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors'
+import bodyParser from 'body-parser'
 const app = express()
 
 // basic middelwares 
@@ -11,7 +13,8 @@ app.use(cors())
 app.use(bodyParser.json())
 
 //routes
-const Router = require("./Routers/MyRoute")
+
+import Router from './Routers/MyRoute.js';
 app.use("/", Router)
 
 // mongo connect

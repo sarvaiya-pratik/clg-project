@@ -1,7 +1,7 @@
 
-const AuthUser = require("../middleware/AuthUser")
-const Cart = require('../models/Cart');
-const productdata = require("../models/productdata")
+// const AuthUser = require("../middleware/AuthUser")
+import Cart from '../models/Cart.js';
+import DataModel from '../models/productdata.js';
 
 // GET || READ
 const getCart = async (req, res) => {
@@ -21,7 +21,7 @@ const getCart = async (req, res) => {
 
     const productIds = productIdsWithQuantities.map(item => item.productId);
 
-    const products = await productdata.find({ _id: { $in: productIds } });
+    const products = await DataModel.find({ _id: { $in: productIds } });
 
 
     const productsWithQuantities = products.map(product => {
@@ -144,4 +144,5 @@ const delCart = async (req, res) => {
 
 
 
-module.exports = { getCart, incCart, decCart, delCart, addCart };
+
+export  { getCart,incCart, decCart, delCart, addCart }

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+import mongoose from "mongoose";
 const orderSchema = mongoose.Schema({
         userId: { type: String },
         fname: { type: String },
@@ -19,4 +19,4 @@ const orderSchema = mongoose.Schema({
 
 const orderModel = mongoose.model("order", orderSchema)
 
-module.exports = orderModel; 
+export default orderModel; 

@@ -1,5 +1,4 @@
-const feedbackModel = require('../models/Feedback')
-
+import feedbackModel from '../models/Feedback.js';
 // POST || ADD-FEEDBACK
 const addFeedback=async(req,res)=>{
 const {feedback} = req.body;
@@ -33,4 +32,4 @@ const deleteFeedback =async (req,res)=>{
     }
 
 }
-module.exports = {addFeedback,getFeedback,deleteFeedback};
+export  {addFeedback,getFeedback,deleteFeedback};

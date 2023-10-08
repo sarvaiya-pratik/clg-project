@@ -1,7 +1,7 @@
 
-const DataModel = require('../models/productdata')
+import DataModel from '../models/productdata.js';
 
-const cloudinary = require('cloudinary').v2;
+import cloudinary from "cloudinary"
 cloudinary.config({
     cloud_name: 'dvnubzprf',
     api_key: '355881747719519',
@@ -125,4 +125,4 @@ const updateProductInactive = async (req, res) => {
 //     }
 // }
 
-module.exports = { AddProductData, GetProductData, updateProductActive, updateProductInactive }
+export  { AddProductData, GetProductData, updateProductActive, updateProductInactive }

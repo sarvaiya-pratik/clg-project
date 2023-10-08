@@ -1,12 +1,11 @@
-const orderModel = require("../models/Order")
-const Cart = require("../models/Cart")
-const productModel = require("../models/productdata")
-const cartModel = require("../models/Cart")
-// GET || READ-ORDER
+import orderModel from "../models/Order.js"
+import Cart from "../models/Cart.js"
+import DataModel from "../models/productdata.js"
+import cartModel from "../models/Cart.js"// GET || READ-ORDER
 const getOrderDetail = async (req, res) => {
     try {
         const order = await orderModel.find();
-        res.json({ status: "success", order })
+        res.json( order )
 
     } catch (error) {
         res.json({ status: "failed" })
@@ -49,7 +48,7 @@ const updateOrderInactive = async (req, res) => {
 //     try {
 //         await orderModel.findOneAndDelete({ _id })
 
-//         res.json({ message: "deleted successfully" })
+//         res.json({ message: "deleted successfully" })        
 
 //     } catch (error) {
 //         console.log("error in order", error)
@@ -76,7 +75,7 @@ const OderDetail = async (req, res, next) => {
 
     const productId = productIdsWithQuantities.map(item => item.productId);
     console.log(productId[0])
-    const Product = await productModel.findById(productId)
+    const Product = await DataModel.findById(productId)
     const pname = Product.title;
     const price = Product.price
 
@@ -112,4 +111,4 @@ const report = (req, res) => {
     res.json({ status: "success", message: "Order created" });
 }
 
-module.exports = { getOrderDetail, OderDetail, report,updateOrderActive,updateOrderInactive };
+export { getOrderDetail, OderDetail, report,updateOrderActive,updateOrderInactive };

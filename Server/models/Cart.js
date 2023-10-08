@@ -1,5 +1,5 @@
 // models/Cart.js
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const cartSchema = new mongoose.Schema({
   userId: { type: String, ref: "user", required: true },
@@ -13,5 +13,6 @@ const cartSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('cart', cartSchema);
+const cartModel = mongoose.model('cart', cartSchema);
+export default cartModel
 

@@ -6,14 +6,15 @@ import About from "./pages/about/About"
 import Service from "./pages/service/Service"
 import Stones from "./pages/stones/Stones"
 import Login from "./pages/login/Login"
-
+import GetOtp from "./pages/login/GetOtp"
+import { VarifyOtp } from "./pages/login/VarifyOtp"
 import { useEffect, useState } from "react"
 import { Toaster } from "react-hot-toast"
 import StoneDetail from "./pages/stones/StoneDetail"
 import Admin from "./pages/admin/Admin"
 import axios from "axios"
 import AdminLogin from "./pages/admin/AdminLogin/AdminLogin"
-
+import ResetPass from "./pages/login/ResetPass"
 import Loader from "./common/Loader/Loader"
 import Cart from "./pages/cart/Cart"
 import Spinner from "./pages/login/Spinner"
@@ -45,11 +46,15 @@ const App = () => {
       <Toaster />
       {load ? <Loader /> :
         <Router>
-
           <Routes>
-
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />}></Route>
+            <Route path="/login" element={<Login />}>
+            </Route>
+
+            <Route path="/login/reset-password/getotp" element={<GetOtp />}></Route>
+            <Route path="/login/reset-password/varify" element={<VarifyOtp />}></Route>
+            <Route path="/login/reset-password/reset" element={<ResetPass />}></Route>
+
             <Route path="/stones" element={<Stones data={jdata} />}></Route>
             <Route path="/stones/:id" element={<StoneDetail data={jdata} />}></Route>
             <Route path="/admin" element={< AdminLogin />} />
@@ -60,6 +65,7 @@ const App = () => {
           </Routes>
 
         </Router>
+        
 
       }
 

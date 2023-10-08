@@ -1,4 +1,5 @@
-const AdminModel = require('../models/Admin')
+
+import AdminModel from '../models/Admin.js';
 
 const AdminControl = async (req, res) => {
     const { email, password } = req.body;
@@ -22,4 +23,4 @@ const AdminControl = async (req, res) => {
     }
 }
 
-module.exports = AdminControl;
+export default  AdminControl
