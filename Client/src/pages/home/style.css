@@ -139,6 +139,7 @@
     #home {
         .heading-banner {
             padding: 0 1rem;
+            font-size: 16px;
         }
 
         .second-banner {
@@ -179,11 +180,13 @@
                     gap: 0.4rem;
 
                     .box {
+                      
                         width: 40%;
                         max-height: 100%;
+                        padding: 1rem !important    ;
 
                         >h3 {
-                            font-size: 1.3rem;
+                            font-size: 1rem !important; 
                         }
 
                     }

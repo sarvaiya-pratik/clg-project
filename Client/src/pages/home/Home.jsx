@@ -42,7 +42,7 @@ const Home = () => {
           <video type="video/mp4" muted autoPlay loop ><source src={topbg}></source></video>
         </div>
 
-        <div className='heading-banner' style={{ padding: '0 10rem' }}>
+        <div className='heading-banner' >
           <Typewriter
             words={[`${localStorage.getItem('uname') ? localStorage.getItem('uname').toUpperCase() : ""}${localStorage.getItem("uname") ? "," : ""} WELCOME TO MRP DIAMONDS`]}
             loop

@@ -3,6 +3,7 @@
 #admin {
     font-family: 'Assistant', sans-serif;
     font-weight: 500;
+
     >header {
         background-color: rgb(99, 85, 49);
         background-color: rgb(189, 209, 226);
@@ -11,18 +12,17 @@
         height: 60px;
         width: 100%;
 
-    
         >.left {
             display: flex;
-            flex-basis:33% !important;
+            flex-basis: 25% !important;
             gap: 1rem;
             padding-left: 2rem;
 
             #checkbox {
                 display: none;
-              }
-              
-              .toggle {
+            }
+
+            .toggle {
                 position: relative;
                 width: 27px;
                 height: 27px;
@@ -34,45 +34,46 @@
                 gap: 12px;
                 font-weight: 700;
                 transition-duration: .3s;
-              }
-             
-              .bars {
+            }
+
+            .bars {
                 width: 100%;
-                height: 2px ;
+                height: 2px;
                 background-color: rgb(0, 0, 0);
                 border-radius: 20px;
                 font-weight: 700;
                 transition-duration: .4s;
-              }
-              
-              /* #checkbox:checked + .toggle .bars {
+            }
+
+            /* #checkbox:checked + .toggle .bars {
                 margin-left: 13px;
               } */
-              
-              #checkbox:checked + .toggle #bar2 {
+
+            #checkbox:checked+.toggle #bar2 {
                 transform: translateY(14px) rotate(60deg);
                 margin-left: 0;
                 transform-origin: right;
                 transition-duration: .3s;
                 z-index: 2;
-              }
-              
-              #checkbox:checked + .toggle #bar1 {
+            }
+
+            #checkbox:checked+.toggle #bar1 {
                 transform: translateY(28px) rotate(-60deg);
                 transition-duration: .3s;
                 transform-origin: left;
                 z-index: 1;
-              }
-              
-              #checkbox:checked + .toggle {
+            }
+
+            #checkbox:checked+.toggle {
                 transform: rotate(-90deg);
-              }
-              /* #checkbox:checked + .toggle #bar3 {
+            }
+
+            /* #checkbox:checked + .toggle #bar3 {
                 transform: rotate(90deg);
                 transition-duration: .3s;
                 transform-origin:right;
               } */
-              
+
 
 
             >svg {
@@ -80,20 +81,22 @@
                 cursor: pointer;
             }
         }
-        .centers{
+
+        .centers {
             display: flex;
-            flex-basis:33% !important;
+            flex-basis: 50% !important;
             justify-content: center;
+
             .admin-heding-btn {
                 margin: 0;
                 height: auto;
                 background: transparent;
                 padding: 0;
                 border: none;
-              }
+            }
 
             .admin-heding-btn {
-   
+
                 --text-stroke-color: rgba(0, 0, 0, 0.6);
                 /* --animation-color: #0484bb; */
                 --fs-size: 2em;
@@ -106,13 +109,13 @@
                 color: transparent;
                 font-weight: 500;
                 -webkit-text-stroke: 1.5px var(--text-stroke-color);
-              }
+            }
         }
 
-      
+
         >.right {
             display: flex;
-            flex-basis:33% !important;
+            flex-basis: 25% !important;
             justify-content: flex-end;
 
             padding-right: 2rem;
@@ -133,6 +136,7 @@
                         outline-color: #4e99e9;
                     }
                 }
+
                 >button[type="submit"] {
                     background-color: #4e99e9;
                     border: none;
@@ -168,7 +172,7 @@
 
     >main {
         display: flex;
-
+        /* border: 2px solid black; */
 
         >.left-side {
 
@@ -176,10 +180,10 @@
             background-color: aliceblue;
             width: 20%;
             height: 100vh;
-            transform: translateX(-100%);
+            transform: translateX(-200%);
             margin-top: 60px;
             position: absolute;
-            transition: all  0.2s;
+            transition: all 0.2s;
 
             >.slide-container {
                 display: flex;
@@ -219,5 +223,85 @@
 
         }
 
+    }
+}
+
+@media all and (max-width: 767px) {
+    #admin {
+        >main {
+
+            display: flex;
+
+            >.left-side {
+
+                /* background-colo: rgb(151, 136, 99); */
+                background-color: aliceblue;
+                width: 100%;
+                /* height: 100vh; */
+                transform: translateY(-100%);
+                margin-top: 60px;
+                position: absolute;
+                transition: all 0.5s;
+                z-index: 111;
+
+                >.slide-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    padding-left: 1rem;
+                    padding-top: 1.5rem;
+
+                    .active {
+                        background-color: rgb(148, 191, 228);
+                        border-left: 4px solid rgb(24, 24, 46);
+                    }
+
+                    >a {
+                        color: black;
+                        text-decoration: none;
+
+                        >svg {
+                            margin: 10px;
+                        }
+
+                        &:hover {
+                            background-color: rgb(148, 191, 228);
+
+                        }
+                    }
+                }
+
+
+            }
+
+            >#showslide {
+                transform: translateY(0%) !important;
+                position: fixed !important;
+                transition: all 0, 5s;
+                /* display: ; */
+
+            }
+
+        }
+
+
+
+        .centers {
+            .admin-heding-btn {
+
+                --text-stroke-color: rgba(0, 0, 0, 0.6);
+                /* --animation-color: #0484bb; */
+                --fs-size: 0.8em !important;
+                letter-spacing: 2px;
+                text-decoration: none;
+                font-size: var(--fs-size);
+                font-family: "Arial";
+                position: relative;
+                text-transform: uppercase;
+                color: transparent;
+                font-weight: 500;
+                -webkit-text-stroke: 1.5px var(--text-stroke-color);
+            }
+        }
     }
 }

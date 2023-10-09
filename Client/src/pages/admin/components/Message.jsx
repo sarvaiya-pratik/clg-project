@@ -27,7 +27,7 @@ const Message = ({ slider }) => {
     }
   }
   return (
-    <div id='message' className='content-admin' style={{ marginLeft: slider && '20%' }}>
+    <div id='message' className='content-admin' >
       <h2 style={{ color: '#0380a7', borderBottom: '1px solid black' }}> List of Feedback</h2>
       <div class="ag-format-container">
         <div class="ag-courses_box">

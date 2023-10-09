@@ -13,6 +13,7 @@ const AddDiamond = ({ slider }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setLoad(true)
+        // setLoad(true)
         const formData = new FormData();
         formData.append('imguri', selectedFile)
         Object.keys(ddata).forEach((key) => {
@@ -26,7 +27,7 @@ const AddDiamond = ({ slider }) => {
                     setLoad(false)
                     toast.success("Diamond added successfully !")
                     setTimeout(() => {
-                        
+                       
                         document.location.reload()
                     }, 2000);
                 }

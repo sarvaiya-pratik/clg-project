@@ -103,7 +103,7 @@ const Login = () => {
                 <AiOutlineLock />
                 <input type={showPass ? "text" : "password"} value={loginData.password} placeholder='Password' name="password" autoComplete='off'
                   onChange={handleLogin} />
-                {showPass ? <AiFillEye size="1.4rem" onClick={handleShowPass} style={{ cursor: 'pointer' }} /> : <AiFillEyeInvisible size="1.4rem" onClick={handleShowPass} style={{ cursor: 'pointer' }} />}
+                {showPass ? <AiFillEye className='eyesize' onClick={handleShowPass} style={{ cursor: 'pointer' }} /> : <AiFillEyeInvisible size="1.4rem" onClick={handleShowPass} style={{ cursor: 'pointer' }} />}
               </div>
               <div className="forgate-password" >Lost password ? <span onClick={()=>navigate("/login/reset-password/getotp")} >click here</span></div>
 

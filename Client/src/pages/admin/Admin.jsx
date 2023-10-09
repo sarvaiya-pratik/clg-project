@@ -18,7 +18,7 @@ import logo from "./diamond_logo.png"
 
 const Admin = ({ data }) => {
   const [search, setSearch] = useState(true)
-  const [slider, setSlider] = useState(true)
+  const [slider, setSlider] = useState(false)
 
 
 
@@ -61,8 +61,7 @@ const Admin = ({ data }) => {
         </header>
 
         <main>
-
-          <AdminSlide slider={slider} />
+          <AdminSlide slider={slider} setSlider={setSlider} />
           <Routes>
             <Route path="/dashboard" element={<Dashboard slider={slider} />}></Route>
             <Route path="/managediamond" element={<AddDiamond slider={slider} />}></Route>
@@ -82,22 +81,22 @@ const Admin = ({ data }) => {
   )
 }
 
-const AdminSlide = ({ slider }) => {
+const AdminSlide = ({ slider,setSlider }) => {
   return (<>
     <div className="left-side" id={slider && 'showslide'} >
 
       <div className='slide-container'>
 
-        <NavLink to="/admins/dashboard"> <BiSolidDashboard />Dashboard</NavLink>
-        <NavLink to="/admins/customer">< BiUser />Customer</NavLink>
-        <NavLink to="/admins/diamonds"><BiSolidDiamond />Diamonds</NavLink>
-        <NavLink to="/admins/message"><BiMessage />Feedback</NavLink>
-        <NavLink to="/admins/order"><BiStore />Orders</NavLink>
+        <NavLink to="/admins/dashboard" onClick={()=>setSlider(!slider)} > <BiSolidDashboard />Dashboard</NavLink>
+        <NavLink to="/admins/customer" onClick={()=>setSlider(!slider)}>< BiUser />Customer</NavLink>
+        <NavLink to="/admins/diamonds" onClick={()=>setSlider(!slider)}><BiSolidDiamond />Diamonds</NavLink>
+        <NavLink to="/admins/message" onClick={()=>setSlider(!slider)}><BiMessage />Feedback</NavLink>
+        <NavLink to="/admins/order" onClick={()=>setSlider(!slider)}><BiStore />Orders</NavLink>
         {/* <NavLink to="/admins/report">< GoReport />Reports</NavLink> */}
         {/* <NavLink to="/admins/setting"><AiFillSetting />Settings</NavLink> */}
         {/* <NavLink to="/admins/faq"><BiQuestionMark />FAQ</NavLink> */}
-        <NavLink to="/admins/addproduct"><BiPlus />Add Diamond</NavLink>
-        <NavLink to="/admin" style={{ marginTop: '2rem' }}><BiLogOut />Logout</NavLink>
+        <NavLink to="/admins/addproduct" onClick={()=>setSlider(!slider)}><BiPlus />Add Diamond</NavLink>
+        <NavLink to="/admin" style={{ marginTop: '2rem' }} onClick={()=>setSlider(!slider)}><BiLogOut />Logout</NavLink>
 
       </div>
     </div>

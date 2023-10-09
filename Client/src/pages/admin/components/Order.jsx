@@ -86,7 +86,7 @@ const Order = ({ slider }) => {
 
 
   return (
-    <div id='order' className='content-admin' style={{ marginLeft: slider && '20%' }}>
+    <div id='order' className='content-admin' >
       <h2>Orders</h2>
 
       <div className="container">

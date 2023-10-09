@@ -40,7 +40,7 @@ const Cart = () => {
            
     }
     const handleDec = (productId) => {
-        setLoading(false)
+        setLoading(true)
         axios.put(`/cart/dec`, { productId }, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
 
             .then((r) => {
@@ -62,7 +62,7 @@ const Cart = () => {
 
             try {
                 let token = localStorage.getItem("token");
-                const response = await axios.get("http://localhost:4001/cart", {
+                const response = await axios.get("/cart", {
                     headers: { "Authorization": `Bearer ${token}` }
                 });
                 setCart(response.data)

@@ -87,7 +87,7 @@ const Diamonds = ({ slider, data }) => {
 
   return (
     <>
-      <div id='diamonds' className='content-admin' style={{ marginLeft: slider && '20%' }}>
+      <div id='diamonds' className='content-admin' >
         <div className="headingWithAdd">
           <h2>Diamonds</h2>
           <NavLink to="/admins/addproduct">

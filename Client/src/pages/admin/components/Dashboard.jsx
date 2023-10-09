@@ -32,7 +32,7 @@ const Dashboard = ({ slider }) => {
   }, [user])
   return (
     <>
-      <div id="dashboard" className='content-admin' style={{ marginLeft: slider && '20%' }}>
+      <div id="dashboard" className='content-admin' >
         <h2>DASHBOARD</h2>
 
         <div className="all-cards">

@@ -1,4 +1,5 @@
 #cart {
+    padding: 0 14rem;
     .empty-cart {
         text-align: center;
         margin: 3em;
@@ -11,8 +12,6 @@
             outline: none;
             border: none;
             margin-top: 2rem;
-
-
         }
     }
 
@@ -29,9 +28,9 @@
 
             }
 
-            max-width: 1000px;
+            /* max-width: 1000px; */
 
-          margin: auto;
+        
 
             .col-1 {
                 flex-basis: 5%;
@@ -39,14 +38,15 @@
             }
 
             .col-2 {
-                text-align: center;
-                flex-basis: 45%;
-                display: flex;
-                justify-content: space-around   ;
+               text-align: center;
+                flex-basis: 35%;
+                    gap: 1rem;
+                /* display: flex; */
+               
             }
 
             .col-3 {
-                flex-basis: 10%;
+                flex-basis: 15%;
                 text-align: center;
 
                 >svg {
@@ -56,7 +56,7 @@
             }
 
             .col-4 {
-                flex-basis: 10%;
+                flex-basis: 15%;
                 text-align: center;
 
             }
@@ -70,7 +70,7 @@
                 flex-basis: 10%;
                 text-align: center;
 
-            }
+            }   
             .col-6 {
                 flex-basis: 10%;
                 text-align: center;
@@ -98,8 +98,6 @@
 
             >.responsive-table {
             padding: unset !important;
-
-
                 >li {
                     border-radius: 3px;
                     padding: 25px 30px;
@@ -119,38 +117,36 @@
                 >.table-row {
                     background-color: #ffffff;
                     box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
-
+                    align-items: center;
+                    margin: 5px 0;
                 }
 
 
             }
 
             @media all and (max-width: 767px) {
-                #cart {}
-
+                
+              
                 >.responsive-table {
                     padding: unset;
-                    width: 100vw;
-
+                   overflow-x: scroll !important;
                     .table-header {
-                        display: none;
-                        
-
-
+                        /* display: none; */
+                       width: 600px !important;
+                      
+                        font-size: 14px;
                     }
 
                     .table-row {
-                        width: 100%;
-                       
+                        width: 600px !important;
+                        font-size: 15px;
                     }
 
                     >li {
                        /* background-color: aqua !important; */
                        /* gap: 10px; */
                        padding: unset !important;
-                       margin: auto;
-
-                        
+                       margin: auto; 
                     }
 
 
@@ -176,5 +172,8 @@
                 }
             }
         }
+    }
+    @media all and (max-width: 767px) {
+        padding: unset;
     }
 }

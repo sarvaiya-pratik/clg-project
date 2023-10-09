@@ -18,7 +18,6 @@ const Stones = () => {
   const [refresh,setRefresh] = UseRefresher()
 
   useEffect(() => {
-    localStorage.setItem("refresh",refresh)
     axios.get("/product")
       .then((r) => {
         setData(r.data)

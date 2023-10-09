@@ -77,15 +77,16 @@ export const VarifyOtp = () => {
             <div className="inputContainer">
               {digits.map((digit, index) => (
 
-                <input maxlength="1" type="text" className="otp-input"
+                <input maxlength="1" type="number" className="otp-input"
                   key={index}
+                  
+                  onInput={(e)=>e.target.value = e.target.value.slice(0,1)}
                   maxLength="1"
                   value={digit}
                   onKeyDown={(e) => handleBackspace(e, index)}
                   onChange={(e) => handleInputChange(e, index)}
                   ref={inputRefs[index]} />
               ))}
-
 
             </div>
             <button className="verifyButton" type="submit" onClick={handleSubmit}>Verify</button>

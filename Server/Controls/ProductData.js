@@ -1,8 +1,7 @@
 
 import DataModel from '../models/productdata.js';
-
 import cloudinary from "cloudinary"
-cloudinary.config({
+cloudinary.v2.config({
     cloud_name: 'dvnubzprf',
     api_key: '355881747719519',
     api_secret: 'N9twT6TyEA79iaVrisgngm-rm6I'
@@ -17,30 +16,31 @@ const AddProductData = async (req, res) => {
         }
         else {
             if (req.file) {
+                console.log("req.file")
                 const transformationOptions = {
                     width: 300,
                     height: 300,
                     crop: 'fill',
                 };
-
-                cloudinary.uploader.upload_stream(
+                 cloudinary.uploader.upload_stream(
                     { transformation: transformationOptions },
                     async (error, result) => {
                         if (error) {
                             console.error(error);
                             return res.status(500).json({ message: 'Upload failed' });
                         }
+                        console.log("unser cloud")
                         // let newcount = await DataModel.countDocuments() + 1
                         let doc = await new DataModel({ title, catagory, "threesixty": result.secure_url, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, table, depth, ratio, crownangle, crownheight, pavilionangle, paviliondepth, })
                         await doc.save();
-                        res.status(201).send("Record insert successfully")
+                    return res.status(201).send("Record insert successfully")
 
                     }).end(req.file.buffer);
 
-
             }
-            // POST || ADD-PRODUCTS
+
             else {
+                console.log("error in file img")
                 res.json({ message: "error in file img" })
             }
         }
@@ -58,8 +58,6 @@ const AddProductData = async (req, res) => {
 //             res.json({ message: "Data Alreay Exist !" })
 //         }
 //         else {
-
-
 
 //                 }
 
@@ -125,4 +123,4 @@ const updateProductInactive = async (req, res) => {
 //     }
 // }
 
-export  { AddProductData, GetProductData, updateProductActive, updateProductInactive }
+export { AddProductData, GetProductData, updateProductActive, updateProductInactive }

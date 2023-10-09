@@ -79,7 +79,7 @@ const Cutomer = ({ slider }) => {
     setRefresh(!refresh)
   }
   return (
-    <div id='customer' className='content-admin' style={{ marginLeft: slider && '20%' }}>
+    <div id='customer' className='content-admin' >
       <h2>Customers</h2>
 
       <div className="container">
