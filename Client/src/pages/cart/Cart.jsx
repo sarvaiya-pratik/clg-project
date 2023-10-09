@@ -8,36 +8,47 @@ import Footer from "../../common/Footer/Footer";
 import Loader from "../../common/Loader/Loader";
 import { useNavigate } from 'react-router-dom'
 import toast from "react-hot-toast";
+import { UseRefresher } from "../../context/RefreshContextProvider";
 const Cart = () => {
     const [cart, setCart] = useState()
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null);
+    // const [refresh,setRefresh] = useState(true)
     const navigate = useNavigate()
+    const [refresh,setRefresh] = UseRefresher()
     const handleDetele = (productId) => {
         if (window.confirm("Are Sure delete this ?")) {
+            setLoading(true)
             axios.delete(`/cart/delete/${productId}`, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
-                .then((r) => {
-                    console.log("inc", r.data)
+            .then((r) => {
+                
+                setRefresh(!refresh)
+                    setLoading(false)
+                    toast.error("Deleted")
                 })
-            window.location.reload()
+                
         }
     }
     const handleInc = (productId) => {
-
+        setLoading(true)
         axios.put(`/cart/inc`, { productId }, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
             .then((r) => {
+                setRefresh(!refresh)
+                setLoading(false)
                 console.log("inc", r.data)
             })
-        window.location.reload();
+           
     }
     const handleDec = (productId) => {
-
+        setLoading(false)
         axios.put(`/cart/dec`, { productId }, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
 
             .then((r) => {
                 console.log("inc", r.data)
+                setRefresh(!refresh)
+                setLoading(false)
             })
-        window.location.reload();
+            
 
 
 
@@ -63,7 +74,7 @@ const Cart = () => {
         };
 
         fetchData();
-    }, []);
+    }, [refresh]);
     return (
         <>
             <Header />
@@ -89,7 +100,7 @@ const Cart = () => {
                                         </li>
 
                                         {
-                                            cart.length > 0 ?
+                                           cart ? cart.length > 0 ?
 
                                                 cart.map((item, index) => {
                                                     return (
@@ -111,6 +122,7 @@ const Cart = () => {
                                                     </div>
 
                                                 </>
+                                                : ""
                                         }
                                         {
                                             cart ? <li className='table-header' style={{ display: 'flex', width: "100%", flexWrap: 'wrap' }}>

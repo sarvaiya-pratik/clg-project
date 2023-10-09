@@ -9,7 +9,7 @@ const Cutomer = ({ slider }) => {
   const [user, setUser] = useState()
   const [checkboxes, setCheckboxes] = useState();
   const [search, setSearch] = useState("")
-  const [active, setActive] = useState(true)
+  const [refresh, setRefresh] = useState(true)
 
   const initialCheckboxes = user ? user.map((userName, index) => ({
     id: index, // You can use a unique ID here, e.g., user ID if available
@@ -37,7 +37,7 @@ const Cutomer = ({ slider }) => {
       .then((r) => {
         setUser(r.data);
       })
-  }, [])
+  }, [refresh])
 
   useEffect(() => {
     setCheckboxes(initialCheckboxes)
@@ -51,7 +51,7 @@ const Cutomer = ({ slider }) => {
       .then((r) => {
         console.log(r.data)
         toast.success(r.data.message)
-        document.location.reload()
+        setRefresh(!refresh)
       })
   }
   const handleUpdateInactive = (_id) => {
@@ -59,7 +59,7 @@ const Cutomer = ({ slider }) => {
       .then((r) => {
         console.log(r.data)
         toast.success(r.data.message)
-        document.location.reload()
+        setRefresh(!refresh)
       })
   }
 
@@ -76,7 +76,7 @@ const Cutomer = ({ slider }) => {
   //   }
   // }
   const handleRefresh = () => {
-    window.location.reload()
+    setRefresh(!refresh)
   }
   return (
     <div id='customer' className='content-admin' style={{ marginLeft: slider && '20%' }}>

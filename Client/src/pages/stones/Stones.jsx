@@ -2,28 +2,37 @@ import React, { useEffect, useState } from 'react'
 import "./style.css"
 import Header from '../../common/Header/Header'
 import Footer from '../../common/Footer/Footer'
-
-
 import { BsCartPlus } from "react-icons/bs"
 import { NavLink, useNavigate } from "react-router-dom"
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
+import { UseRefresher } from '../../context/RefreshContextProvider'
 
-const Stones = ({ data }) => {
+const Stones = () => {
+  const [data, setData] = useState()
   const [quantity, setQuantity] = useState(1);
   const [search, setSearch] = useState("")
+  // const [refresh, setRefresh] = useState(true)
   const navigate = useNavigate()
 
+  const [refresh,setRefresh] = UseRefresher()
+
+  useEffect(() => {
+    localStorage.setItem("refresh",refresh)
+    axios.get("/product")
+      .then((r) => {
+        setData(r.data)
+      })
+  },[refresh])
   const handleAddtoCart = (product) => {
-
-
     const productId = product._id
     const token = localStorage.getItem("token")
     if (token) {
-      toast.success("Added")
+
       axios.post("/cart/add", { productId, quantity }, { headers: { "Authorization": `Bearer ${token}` } })
         .then((r) => {
-          document.location.reload()
+          setRefresh(!refresh)
+          toast.success("Added")
         })
     }
     else {
@@ -44,7 +53,7 @@ const Stones = ({ data }) => {
           <div className="diamonds">
 
             {
-              data.filter(val => val.active == true)
+              data ? data.filter(val => val.active == true)
                 .filter(val => search == "" ? val : val.title.toLowerCase().includes(search.toLowerCase()))
                 .map((item, index) => {
                   return (
@@ -66,6 +75,7 @@ const Stones = ({ data }) => {
 
                   )
                 })
+                : ""
             }
           </div>
         </main>

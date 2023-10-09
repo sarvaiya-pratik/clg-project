@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom"
 import { useCart } from "react-use-cart"
 import axios from 'axios'
 import logo from "./mrps.png"
+import { UseRefresher } from '../../context/RefreshContextProvider'
 const Header = () => {
     const [menu, setMenu] = useState(false)
     const [position, setPosition] = useState(window.scrollY)
@@ -13,7 +14,9 @@ const Header = () => {
     const [cart, setCart] = useState()
     const { items } = useCart()
     const navigate = useNavigate()
+    const [refresh,setRefresh] = UseRefresher()
     useEffect(() => {
+        console.log("refre",refresh)
         let token = localStorage.getItem("token")
         token ? axios.get("/cart", { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
             .then((r) => {
@@ -21,11 +24,10 @@ const Header = () => {
             })
             : ""
 
-    }, [])
+    },[refresh])
     useEffect(() => {
         const handleScroll = () => {
             let moving = window.scrollY
-
             setVisible(position > moving);
             setPosition(moving)
         };
@@ -41,7 +43,7 @@ const Header = () => {
         localStorage.removeItem("uname")
         localStorage.removeItem("token")
         navigate("/")
-        window.location.reload()
+        // window.location.reload()
 
     }
 
@@ -50,7 +52,7 @@ const Header = () => {
         localStorage.removeItem("uname")
         localStorage.removeItem("token")
         navigate("/")
-        window.location.reload()
+        // window.location.reload()
 
     }
 

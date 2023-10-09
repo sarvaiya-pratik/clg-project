@@ -5,13 +5,13 @@ import { GrClose } from 'react-icons/gr'
 import { toast } from 'react-hot-toast'
 const Message = ({ slider }) => {
   const [feedback, setFeedback] = useState();
-
+  const [refresh,setRefresh] = useState(true)
   useEffect(() => {
     axios.get("/feedback")
       .then((r) => {
         setFeedback(r.data);
       })
-  }, [])
+  }, [refresh])
 
   
   const handleDelete = (id) => {
@@ -20,7 +20,8 @@ const Message = ({ slider }) => {
       axios.delete(`/feedback/${id}`)
         .then((r) => {
           toast.success(r.data.message)
-          window.location.reload();
+          
+          setRefresh(!refresh)
 
         })
     }

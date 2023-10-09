@@ -8,7 +8,7 @@ const Order = ({ slider }) => {
   const [user, setUser] = useState()
   const [checkboxes, setCheckboxes] = useState();
   const [search, setSearch] = useState("")
-  const [active, setActive] = useState(true)
+  const [refresh, setRefresh] = useState(true)
 
   const initialCheckboxes = user ? user.map((userName, index) => ({
     id: index, // You can use a unique ID here, e.g., user ID if available
@@ -36,7 +36,7 @@ const Order = ({ slider }) => {
       .then((r) => {
         setUser(r.data);
       })
-  }, [])
+  }, [refresh])
 
   useEffect(() => {
     setCheckboxes(initialCheckboxes)
@@ -80,7 +80,7 @@ const Order = ({ slider }) => {
   //   }
   // }
   const handleRefresh = () => {
-    window.location.reload()
+    setRefresh(!refresh)
   }
 
 

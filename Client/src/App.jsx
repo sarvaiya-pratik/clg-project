@@ -19,7 +19,7 @@ import Loader from "./common/Loader/Loader"
 import Cart from "./pages/cart/Cart"
 import Spinner from "./pages/login/Spinner"
 import Order from "./pages/cart/address/Order"
-
+import  RefreshContextProvider from "./context/RefreshContextProvider"
 axios.defaults.baseURL = "https://clg-server.onrender.com"
 const App = () => {
   // const [user, setLoginUser] = useState({ _id: 12 })
@@ -43,6 +43,7 @@ const App = () => {
 
   return (
     <>
+    <RefreshContextProvider>
       <Toaster />
       {/* {load ? <Loader /> : */}
         <Router>
@@ -55,8 +56,8 @@ const App = () => {
             <Route path="/login/reset-password/varify" element={<VarifyOtp />}></Route>
             <Route path="/login/reset-password/reset" element={<ResetPass />}></Route>
 
-            <Route path="/stones" element={<Stones data={jdata} />}></Route>
-            <Route path="/stones/:id" element={<StoneDetail data={jdata} />}></Route>
+            <Route path="/stones" element={<Stones />}></Route>
+            <Route path="/stones/:id" element={<StoneDetail  />}></Route>
             <Route path="/admin" element={< AdminLogin />} />
             <Route path="/admins/*" element={<Admin data={jdata} />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
@@ -68,7 +69,7 @@ const App = () => {
         
 
       {/* } */}
-
+      </RefreshContextProvider>
     </>
   )
 }

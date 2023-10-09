@@ -5,9 +5,20 @@ import Header from '../../common/Header/Header'
 import Footer from '../../common/Footer/Footer'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-const StoneDetail = ({ data }) => {
+import { UseRefresher } from '../../context/RefreshContextProvider'
+const StoneDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const { id } = useParams()
+  const [data,setData] = useState()
+  const [refresh,setRefresh] = UseRefresher()
+
+  useEffect(() => {
+    axios.get("/product")
+      .then((r) => {
+        setData(r.data)
+      })
+  }, [refresh])
+
   const handleAddtoCart = (product) => {
     toast.success("Added")
     const productId = product._id
@@ -15,7 +26,8 @@ const StoneDetail = ({ data }) => {
     if (token) {
       axios.post("/cart/add", { productId, quantity }, { headers: { "Authorization": `Bearer ${token}` } })
         .then((r) => {
-          document.location.reload()
+          setRefresh(!refresh)
+          toast.success("Added")
         })
     }
     else {
