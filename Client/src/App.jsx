@@ -21,9 +21,11 @@ import Spinner from "./pages/login/Spinner"
 import Order from "./pages/cart/address/Order"
 import  RefreshContextProvider from "./context/RefreshContextProvider"
 
-axios.defaults.baseURL = "https://clg-server.onrender.com"
+// axios.defaults.baseURL = "https://clg-server.onrender.com"
+axios.defaults.baseURL = "clg-project-server.vercel.app"
 
 // axios.defaults.baseURL = "http://localhost:4001"
+
 
 const App = () => {
   // const [user, setLoginUser] = useState({ _id: 12 })
