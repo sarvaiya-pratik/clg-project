@@ -34,9 +34,8 @@ const Home = () => {
   }
   return (
     <>
-      <Header />
+      
       <div id="home">
-
         {/* backgroud with title   */}
         <div className="top-bg">
           <video type="video/mp4" muted autoPlay loop ><source src={topbg}></source></video>
@@ -97,7 +96,7 @@ const Home = () => {
       </div>
       <About />
       <Service />
-      <Footer />
+      
     </>
   )
 }

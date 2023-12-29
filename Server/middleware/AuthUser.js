@@ -1,38 +1,47 @@
-import dotenv from "dotenv"
-dotenv.config()
-import jwt from "jsonwebtoken"
-import UserModel from "../models/Users.js";
-export const AuthUser = async (req, res, next) => {
-    console.log("auth run")
-    let token
-    const { authorization } = req.headers
 
-    if (authorization && authorization.startsWith('Bearer')) {
-        // console.log(authorization)
-        try {
-            // console.log("middeleware run ")
-            token = authorization.split(' ')[1]
-            console.log("token",token)
-            //  verify token
-            const { UserId } = jwt.verify(token, process.env.JWT_SECRET)
-          
-            // get user from token 
-            // userdet = await UserModel.findOne({ _id: UserId }).select('-password')
-           let userdet = await UserModel.findOne({ _id: UserId}).select('-password')
-           
-            req.user = userdet;
+import { getUserByToken } from "../config/tokenProvider.js"
+import User from "../models/user.model.js"
 
-            next()
-        } catch (error) {
-            console.log("UnAuthorization bro !")
+
+export const authUser = async (req, res, next) => {
+    console.log("runn midddleware")
+    try {
+        const jwtCookie = req.cookies.jwt;
+        console.log("your cookie : ", jwtCookie)
+        const googlecookie = req.cookies['connect.sid'];
+        // console.log("google cookie:",googlecookie)
+
+        if (googlecookie || jwtCookie) {
+            if (googlecookie) {
+               if(req.user){
+                next()
+               }
+            }
+
+            if (jwtCookie) {
+                const userId = await getUserByToken(jwtCookie)
+                const user = await User.findById(userId.userId)
+                if (user) {
+                    req.user = user
+                    
+                    next()
+                }
+                else {
+                    console.log("You are unAuth")
+                    return res.status(401).json({ error: "Unauthorize" })
+                }
+            }
+
         }
-    }
-    else {
-        return res.status(401).send({ status: "failed", message: "Unauthorized" })
+        else {
+            console.log("unAutorize")
+            return res.status(401).json({ error: "Unauthorize" })
+        }
 
+    } catch (error) {
+        console.log("Error in catch bro")
+        console.log(error)
+        return res.status(401).send(error)
     }
-    if (!token) {
-        console.log(`No Token`)
-    }
+
 }
-

@@ -1,82 +1,152 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import "react-toastify/dist/ReactToastify.css";
 import "./app.css"
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import { Suspense, lazy } from "react"
 
-import Home from "./pages/home/Home"
-import About from "./pages/about/About"
-import Service from "./pages/service/Service"
-import Stones from "./pages/stones/Stones"
-import Login from "./pages/login/Login"
-import GetOtp from "./pages/login/GetOtp"
-import { VarifyOtp } from "./pages/login/VarifyOtp"
-import { useEffect, useState } from "react"
-import { Toaster } from "react-hot-toast"
-import StoneDetail from "./pages/stones/StoneDetail"
-import Admin from "./pages/admin/Admin"
-import axios from "axios"
-import AdminLogin from "./pages/admin/AdminLogin/AdminLogin"
-import ResetPass from "./pages/login/ResetPass"
-import Loader from "./common/Loader/Loader"
-import Cart from "./pages/cart/Cart"
-import Spinner from "./pages/login/Spinner"
-import Order from "./pages/cart/address/Order"
-import  RefreshContextProvider from "./context/RefreshContextProvider"
 
-// axios.defaults.baseURL = "https://clg-server.onrender.com"
-axios.defaults.baseURL = "clg-project-server.vercel.app"
-
-// axios.defaults.baseURL = "http://localhost:4001"
+const Home = lazy(()=>import("./pages/home/Home"))
+const Login = lazy(()=>import("./pages/login/Login"))
+const Stones = lazy(()=>import("./pages/stones/Stones"))
+const StoneDetail = lazy(()=>import("./pages/stones/StoneDetail"))
+const Cart = lazy(()=>import("./pages/cart/Cart"))
+const Profile = lazy(()=>import("./pages/profile/Profile"))
+const Admin = lazy(()=>import("./pages/admin/Admin"))
+const Dashboard = lazy(()=>import("./pages/admin/components/Dashboard"))
+const Diamonds = lazy(()=>import("./pages/admin/components/Diamonds"))
+const Message = lazy(()=>import("./pages/admin/components/Message"))
+const Order = lazy(()=>import("./pages/admin/components/Order"))
+const Customer = lazy(()=>import("./pages/admin/components/Cutomer"))
+const AddDiamond = lazy(()=>import("./pages/admin/components/AddDiamond"))
+const AdminRoute = lazy(()=>import("./pages/admin/AdminRoute"))
+const Notfound = lazy(()=>import("./common/Error/Notfound"))
+const Layout = lazy(()=>import("./Layout"))
+const Checkout = lazy(()=>import("./pages/order/checkout"))
+const SuccessPayment = lazy(()=>import("./pages/order/SuccessPayment"))
+const EditProfile = lazy(()=>import("./pages/profile/EditProfile"))
+const MyOrder = lazy(()=>import("./pages/profile/MyOrder"))
+const DeliveryAddress = lazy(()=>import("./pages/profile/DeliveryAddress"))
+const SuccessOrder = lazy(()=>import("./pages/order/SuccessOrder"))
+const Payment = lazy(()=>import("./pages/order/Payment"))
 
 
 const App = () => {
-  // const [user, setLoginUser] = useState({ _id: 12 })
-  const [jdata, setJdata] = useState([])
-  const [load, setLoad] = useState(false)
 
-  useEffect(() => {
-    setLoad(true)
-    callapi()
-   
-  }, [])
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
 
-  const callapi = async () => {
-    await axios.get("/product")
-      .then((res) => {
-        setJdata(res.data)
-        setLoad(false)
-      })
-      .catch(err => "Error in json data(Pratik)" + err)
-  }
+      children: [
+        {
+          path: '/',
+          element: <Home />
+        },
+        {
+          path: 'login',
+          element: <Login />
+        },
+        {
+          path: 'stones',
+          element: <Stones />
+        },
+        {
+          path: 'stones/:id',
+          element: <StoneDetail />
+        },
+        {
+          path: 'cart',
+          element: <Cart />
+        },
+        {
+          path: 'profile',
+          element: <Profile />,
+          children: [
+            {
+              path: '',
+              element: <EditProfile />
+            },
+            {
+              path: 'orders',
+              element: <MyOrder />
+            },
+            {
+              path: 'address',
+              element: <DeliveryAddress />
+            }
+          ]
+        },
+        {
+          path: 'order/checkout',
+          element: <Checkout />
+        },
+        {
+          path: 'order/checkout/payment',
+          element: <Payment />
+        },
+        {
+          path: 'payment/paymentsuccess',
+          element: <SuccessPayment />
+        },
+        {
+          path: 'order/ordersuccess/:reference',
+          element: <SuccessOrder />
+        },
+
+      ]
+    },
+
+
+    {
+      path: "/admin",
+      element: <AdminRoute />,
+      children: [
+        {
+          path: "",
+          element: <Dashboard />
+        },
+        {
+          path: 'dashboard',
+          element: <Dashboard />
+        },
+        {
+          path: 'customer',
+          element: <Customer />
+        },
+        {
+          path: 'diamonds',
+          element: <Diamonds />
+        },
+        {
+          path: 'message',
+          element: <Message />
+        },
+        {
+          path: 'order',
+          element: <Order />
+        },
+        {
+          path: 'addproduct',
+          element: <AddDiamond />
+        }
+
+      ]
+
+    },
+
+    {
+      path: "*",
+      element: <Notfound />
+    }
+
+  ])
 
   return (
-    <>
-    <RefreshContextProvider>
-      <Toaster />
-      {/* {load ? <Loader /> : */}
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />}>
-            </Route>
 
-            <Route path="/login/reset-password/getotp" element={<GetOtp />}></Route>
-            <Route path="/login/reset-password/varify" element={<VarifyOtp />}></Route>
-            <Route path="/login/reset-password/reset" element={<ResetPass />}></Route>
+    <RouterProvider router={router}>
 
-            <Route path="/stones" element={<Stones />}></Route>
-            <Route path="/stones/:id" element={<StoneDetail  />}></Route>
-            <Route path="/admin" element={< AdminLogin />} />
-            <Route path="/admins/*" element={<Admin data={jdata} />}></Route>
-            <Route path="/cart" element={<Cart />}></Route>
-            <Route path="/spi" element={<Spinner />}></Route>
-            <Route path="/order" element={<Order />}></Route>
-          </Routes>
 
-        </Router>
-        
+    </RouterProvider>
 
-      {/* } */}
-      </RefreshContextProvider>
-    </>
   )
 }
 

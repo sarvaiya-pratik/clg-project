@@ -92,15 +92,13 @@ const Footer = () => {
 
             <h2 className='heading'>FEEDBACK !</h2>
             <div className="subscribe">
-              <p>Write here...</p>
+              <p className=''>Write here...</p>
               <input placeholder="Give your feedback !" className="subscribe-input" name="feedback" type="text" onChange={(e) => setFeedback({ ...feedback, [e.target.name]: e.target.value })} />
               <br />
               <div className="submit-btn" onClick={handleSubmit}>SUBMIT</div>
             </div>
           </div>
         </div>
-
-
 
 
 

@@ -5,31 +5,24 @@ import { BiUser, BiSolidDiamond } from "react-icons/bi"
 import { CiDeliveryTruck } from "react-icons/ci"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
-// axios.defaults.baseURL = "http://localhost:4001"
-const Dashboard = ({ slider }) => {
-  const [user, setUser] = useState()
-  const [diamond, setDiamond] = useState();
-  const [order, setOrder] = useState();
+import { useDispatch, useSelector } from "react-redux";
+import { getalluser } from "../../../redux/user/userApi";
+import { getproductall } from "../../../redux/product/productApi";
 
+const Dashboard = ({ slider }) => {
+
+
+
+  const product = useSelector((state)=>state.product.products)
+  const user = useSelector((state) => state.user.users)
+const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(getalluser())
+    dispatch(getproductall  ())
+  },[])
 
   const navigate = useNavigate();
-  useEffect(() => {
-    axios.get("/user")
-      .then((r) => {
-        setUser(r.data.length);
-      })
-    axios.get("/product")
-      .then((r) => {
-        setDiamond(r.data.length);
-      })
 
-    axios.get("/order")
-      .then((r) => {
-        setOrder(r.data.length)
-      })
-
-    console.log("order", order)
-  }, [user])
   return (
     <>
       <div id="dashboard" className='content-admin' >
@@ -38,11 +31,11 @@ const Dashboard = ({ slider }) => {
         <div className="all-cards">
           <div className="user-card">
             <div className="left">
-              <BiUser />
+              <BiUser />  
             </div>
             <div className="right">
               <p>users</p>
-              <h2>{user}</h2>
+              <h2>{user && user.length}</h2>
               <span onClick={() => navigate("/admins/customer")}>see all user</span>
             </div>
           </div>
@@ -53,7 +46,7 @@ const Dashboard = ({ slider }) => {
             </div>
             <div className="right">
               <p>Diamonds</p>
-              <h2>{diamond}</h2>
+              <h2>{product && product.length}</h2>
               <span onClick={() => navigate("/admins/diamonds")}>see all diamonds</span>
             </div>
           </div>
@@ -63,7 +56,7 @@ const Dashboard = ({ slider }) => {
             </div>
             <div className="right">
               <p>Orders</p>
-              <h2>{order}</h2>
+              <h2>{2}</h2>
               <span onClick={() => navigate("/admins/order")}>see all Orders</span>
             </div>
           </div>
@@ -75,3 +68,5 @@ const Dashboard = ({ slider }) => {
 }
 
 export default Dashboard
+
+
