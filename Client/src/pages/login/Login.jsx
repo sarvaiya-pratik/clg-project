@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./style.css"
 
-import {toast} from "react-toastify"
+import { toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
 import { AiFillEye, AiFillEyeInvisible, AiOutlineUser, AiOutlineMail, AiOutlinePhone, AiOutlineLock, AiOutlineGoogle } from "react-icons/ai"
 import { useDispatch, useSelector } from 'react-redux'
@@ -38,21 +38,25 @@ const Login = () => {
     e.preventDefault()
     dispatch(loginUser(loginData))
 
+    // setTimeout(() => {
+    //   window.location.reload()
+
+    // }, 1000);
 
   }
 
   useEffect(() => {
     if (user && action == "Login") {
-      toast.success("Login success")
+      toast.success("Login successfully !")
       navigate("/")
-      
+
       dispatch(getusercurrent())
     }
   }, [user])
   useEffect(() => {
-   
+
     if (user && action == "Sign Up") {
-      toast.success("Login success")
+      toast.success("Login successfully !")
       navigate("/")
       dispatch(getusercurrent())
     }
@@ -61,6 +65,7 @@ const Login = () => {
 
   function handleRegSubmit(e) {
     e.preventDefault()
+
     dispatch(createUser(regData))
 
   }
@@ -108,7 +113,7 @@ const Login = () => {
 
 
               </p>
-              <div className="forgate-password" >Lost password ? <span onClick={() => navigate("/login/reset-password/getotp")} >click here</span></div>
+              <div className="forgate-password" >Lost password ? <span onClick={() => navigate("/login/reset-password")} >click here</span></div>
 
               <div className="submit-container">
                 <button type='submit' className="submit"
@@ -131,7 +136,7 @@ const Login = () => {
                   maxLength={20}
                   value={regData.name}
                   onChange={handleReg} />
-                
+
               </div>
 
               <div className="input" >

@@ -20,7 +20,6 @@ const generateHashPass = async (password) => {
 }
 
 const validateHashPass = async (password, hashPassword) => {
-    console.log('hash',password,hashPassword)
     const pass = await bcrypt.compare(password, hashPassword)
     if (pass) {
         return true

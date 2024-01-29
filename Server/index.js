@@ -1,16 +1,22 @@
 import express from 'express'
-import cors from 'cors'
 import dotenv from 'dotenv'
+dotenv.config()
+import cors from 'cors'
 import connectDb from './config/db.js'
 import session from 'express-session'
 import passport from 'passport'
 import cookieParser from 'cookie-parser'
+const app = express()
+app.use(cookieParser())
+r
 import Razorpay from 'razorpay'
 
-dotenv.config()
-const app = express()
+import userRouter from './routers/user.route.js'
+import productRouter from './routers/product.route.js'
+import cartRouter from "./routers/cart.route.js"
+import orderRouter from "./routers/order.route.js"
+import FeedbackRouter from './routers/feedback.route.js'
 
-app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
@@ -18,7 +24,6 @@ app.use(cors({
     credentials: true
 }))
 
-app.options('*', cors({ origin: 'http://localhost:5173' }))
 
 app.use(express.json())
 
@@ -47,18 +52,22 @@ connectPassport()
 
 // ------------------ROUTERS-----------------
 
-import userRouter from './routers/user.route.js'
-import productRouter from './routers/product.route.js'
-import cartRouter from "./routers/cart.route.js"
-import orderRouter from "./routers/order.route.js"
-
-
 app.use('/users', userRouter)
 app.use('/products', productRouter)
 app.use('/cart', cartRouter)
 app.use('/order', orderRouter)
+app.use('/feedback', FeedbackRouter)
 
-app.listen(process.env.PORT, () => {
-    console.log("Server run on PORT", process.env.PORT)
-    connectDb(process.env.MONGO_URL)
-})
+const runServer = async () => {
+    try {
+        await connectDb(process.env.MONGO_URL);
+        app.listen(process.env.PORT, () => {
+            console.log('Server is running on PORT', process.env.PORT);
+        });
+    } catch (error) {
+        console.error('Error starting the server:', error);
+        process.exit(1);
+    }
+}
+
+runServer()

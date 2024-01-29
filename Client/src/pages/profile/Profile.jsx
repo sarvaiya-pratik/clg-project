@@ -10,7 +10,7 @@ import { useState } from "react";
 import dayjs from "dayjs";
 import EditProfile from "./EditProfile";
 import DeliveryAddress from "./DeliveryAddress";
-import MyOrder from "./MyOrder";
+import MyOrder from "./Order/MyOrder";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/auth/authSlice";
 import Cookies from "js-cookie";
@@ -43,7 +43,7 @@ const navigate = useNavigate()
                     <li className='top' onClick={() => navigate("/profile")} style={{ cursor: 'pointer' }}>
                         <Avatar src={user && user.image} />
                         <div>
-                            <h3>{user && user.name}</h3>
+                            <h4>{user && user.name}</h4>
                             <p>{user && user.email}</p>
                         </div>
                         <BiSolidRightArrow />

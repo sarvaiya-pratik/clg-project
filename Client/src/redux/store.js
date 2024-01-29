@@ -4,6 +4,7 @@ import userSlice from './user/userSlice'
 import productSlice from './product/productSlice'
 import cartSlice from './cart/cartSlice'
 import orderSlice from './order/orderSlice'
+import FeedbackSlice from './feedback/FeedbackSlice'
 // import storage from 'redux-persist/lib/storage'
 // import {persistReducer} from 'redux-persist'
 // import { combineReducers } from '@reduxjs/toolkit'
@@ -34,7 +35,8 @@ const store = configureStore({
     user: userSlice,
     product: productSlice,
     cart: cartSlice,
-    order: orderSlice
+    order: orderSlice,
+    feedback:FeedbackSlice
   }
 })
 

@@ -1,8 +1,8 @@
 #checkout {
     padding-top: 100px;
     min-height: 70vh;
-
-
+    background-color: var(--secondary-color);
+    padding-bottom: 80px;
     >.delivery-address {
         display: flex;
         padding-top: 2rem;
@@ -36,7 +36,7 @@
             }
 
             >form {
-                
+              
                 display: flex;
                 flex-direction: column;
                 gap: 1rem;

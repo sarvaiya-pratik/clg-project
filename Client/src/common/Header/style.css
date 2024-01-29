@@ -209,7 +209,7 @@ header .left {
     flex-direction: column;
     transform: translateX(-200%);
     transition: all 0.4s;
-    background-color: var(--bg-secondary);
+    background-color: black;
     padding-top: 2rem;
 
     >.middle {
@@ -217,6 +217,7 @@ header .left {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        
 
         >.btn-txt {
             font-size: 1.5rem;

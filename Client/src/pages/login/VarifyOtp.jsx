@@ -37,7 +37,7 @@ export const VarifyOtp = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
-    axios.post("/user/login/reset-password/varifyotp", { digits })
+    axios.post("/users/auth/verify", { digits })
       .then((r) => {
         if (r.data.code == 200) {
           setLoading(false)
@@ -53,7 +53,7 @@ export const VarifyOtp = () => {
   const handleResent = (e) => {
     setLoading(true)
     e.preventDefault()
-    axios.get("/user/login/reset-password/resent")
+    axios.get("/users/auth/resend")
       .then((r) => {
         if (r.data.code == 200) {
           setLoading(false)

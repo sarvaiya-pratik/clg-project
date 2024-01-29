@@ -41,13 +41,13 @@ const Header = () => {
 
     const user = useSelector((state) => state.user.users)
     if (user) {
-
-        localStorage.setItem('user', user.isAdmin)
+        localStorage.setItem('user', JSON.stringify(user))
     }
     const cart = useSelector((state) => state.cart.cart)
     useEffect(() => {
         dispatch(getusercurrent())
         dispatch(getUserCart())
+
     }, [dispatch])
 
     useEffect(() => {
@@ -65,7 +65,6 @@ const Header = () => {
 
     const handleLogout = () => {
         dispatch(logout())
-        Cookies.remove('jwt')
         localStorage.removeItem('user')
         window.open("http://localhost:5050/users/logout", "_self")
     }
@@ -227,9 +226,8 @@ const Header = () => {
                 <div className='right' style={{ textAlign: 'center' }}>
 
                     {
-                        localStorage.getItem("token") ?
+                        user ?
                             <>
-
 
                                 <li style={{ listStyle: 'none' }}>
 

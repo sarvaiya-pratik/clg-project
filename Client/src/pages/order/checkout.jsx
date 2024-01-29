@@ -6,20 +6,14 @@ import { Button } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getusercurrent, updateuseraddress } from '../../redux/user/userApi'
-import { BiBorderRight, BiCart, BiHome, BiMoney } from 'react-icons/bi'
+import { BiCart, BiHome, BiMoney } from 'react-icons/bi'
 import { toast } from 'react-toastify'
 import { FaRegAddressCard } from "react-icons/fa6";
 
-import { createOrder, getUserOrderData, paypayment } from '../../redux/order/orderApi'
 const checkout = () => {
-
-
     const user = useSelector((state) => state.user.users);
     const error = useSelector((state) => state.user.error);
     const loading = useSelector((state) => state.user.loading);
-
-
-
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -31,19 +25,8 @@ const checkout = () => {
         state: user?.address[0]?.state || '',
         pincode: user?.address[0]?.pincode || '',
     })
-    const [state, setState] = useState({ right: false });
+    const [state, setState] = useState(false);
 
-    const toggleDrawer = (anchor, open) => (event) => {
-        if (
-            event.type === 'keydown' &&
-            (event.key === 'Tab' || event.key === 'Shift')
-        ) {
-            return;
-        }
-        setState({ ...state, [anchor]: open });
-    };
-
-    // okk---------------
     useEffect(() => {
         if (user) {
             setAddressData({
@@ -56,6 +39,7 @@ const checkout = () => {
             });
         }
     }, [user, loading, dispatch]);
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -76,9 +60,6 @@ const checkout = () => {
         setAddressData({ ...addressData, [e.target.name]: e.target.value })
     }
 
-    // const order = useSelector((state) => state.order.order)
- 
-
     return (
         <>
             <div id="checkout">
@@ -89,7 +70,6 @@ const checkout = () => {
                             underline="hover"
                             sx={{ display: 'flex', alignItems: 'center' }}
                             color="inherit"
-
                             style={{ cursor: 'pointer' }}
                         >
                             <BiHome sx={{ mr: 0.5 }} fontSize="inherit" />
@@ -117,69 +97,61 @@ const checkout = () => {
                     </Breadcrumbs>
                 </div>
 
-
                 <Steps mystep={1} />
 
                 <div className="delivery-address">
                     {
-
                         user?.address.length > 0 ?
                             <div className="top-side">
                                 <div className="address-card">
-                                    {/* <h4>Current Address</h4> */}
-                                    {/* <Badge color='primary'  badgeContent="Current address" ></Badge> */}
                                     <Chip label="Delivery Address" color='primary' style={{ position: 'absolute', top: '-20px' }} />
                                     <h5>{user?.address[0]?.fname + " " + user?.address[0].lname} </h5>
                                     <p>{user?.address[0]?.streetAddress}</p>
                                     <p>{user?.address[0]?.city + " - " + user?.address[0]?.pincode}</p>
-                                    {/* <Button variant="outlined">Edit</Button> */}
                                     <div>
-                                        {['right'].map((anchor) => (
-                                            <Fragment key={anchor}>
-                                                <Button onClick={toggleDrawer(anchor, true)}>Edit</Button>
-                                                <Drawer
+                                        <Fragment key="right">
+                                            <Button onClick={() => setState(true)}>Edit</Button>
+                                            <Drawer
+                                                anchor={'right'}
+                                                open={state}
+                                                onClose={() => setState(false)}
+                                            >
+                                                <Box className="address-drawer" sx={{ width: 350 }}>
+                                                    <h4 style={{ paddingLeft: '1rem', marginTop: '2rem' }}>Edit Address</h4>
+                                                    <form action="" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', padding: '1rem', gap: '1rem' }}>
+                                                        <TextField id="outlined-basic" label="First Name" variant="standard" name='firstname' value={addressData.firstname} onChange={handleChange} />
+                                                        <TextField id="outlined-basic" label="Last Name" variant="standard" name='lastname' value={addressData.lastname} onChange={handleChange} />
+                                                        <TextField id="outlined-basic" label="Address (Area and Street)" variant="standard" name='street' value={addressData.street} onChange={handleChange} />
+                                                        <TextField id="outlined-basic" label="City" variant="standard" name='city' value={addressData.city} onChange={handleChange} />
+                                                        <TextField id="outlined-basic" label="Pin Code" variant="standard" name='pincode' value={addressData.pincode} onChange={handleChange} />
+                                                        {/* <TextField id="outlined-basic" label="State" variant="standard" name='email' onChange={handleChange} /> */}
+                                                        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                                                            <InputLabel id="demo-simple-select-standard-label">State</InputLabel>
+                                                            <Select
+                                                                labelId="demo-simple-select-standard-label"
+                                                                id="demo-simple-select-standard"
+                                                                onChange={handleChange}
+                                                                label="State"
+                                                                name='state'
+                                                                value={addressData.state}
 
-                                                    anchor={anchor}
-                                                    open={state[anchor]}
-                                                    onClose={toggleDrawer(anchor, false)}
-                                                >
-                                                    {/* {list(anchor)} */}
-                                                    <Box className="address-drawer" sx={{ width: 350 }}>
-                                                        <h4 style={{ paddingLeft: '1rem', marginTop: '2rem' }}>Edit Address</h4>
-                                                        <form action="" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', padding: '1rem', gap: '1rem' }}>
-                                                            <TextField id="outlined-basic" label="First Name" variant="standard" name='firstname' value={addressData.firstname} onChange={handleChange} />
-                                                            <TextField id="outlined-basic" label="Last Name" variant="standard" name='lastname' value={addressData.lastname} onChange={handleChange} />
-                                                            <TextField id="outlined-basic" label="Address (Area and Street)" variant="standard" name='street' value={addressData.street} onChange={handleChange} />
-                                                            <TextField id="outlined-basic" label="City" variant="standard" name='city' value={addressData.city} onChange={handleChange} />
-                                                            <TextField id="outlined-basic" label="Pin Code" variant="standard" name='pincode' value={addressData.pincode} onChange={handleChange} />
-                                                            {/* <TextField id="outlined-basic" label="State" variant="standard" name='email' onChange={handleChange} /> */}
-                                                            <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                                                                <InputLabel id="demo-simple-select-standard-label">State</InputLabel>
-                                                                <Select
-                                                                    labelId="demo-simple-select-standard-label"
-                                                                    id="demo-simple-select-standard"
-                                                                    onChange={handleChange}
-                                                                    label="State"
-                                                                    name='state'
-                                                                    value={addressData.state}
+                                                            >
+                                                                <MenuItem value="">
+                                                                    <em>None</em>
+                                                                </MenuItem>
+                                                                <MenuItem value="Gujarat">Gujarat</MenuItem>
+                                                                <MenuItem value="Junagadh">Mumbai</MenuItem>
+                                                                <MenuItem value="Navasari">Delhi</MenuItem>
+                                                            </Select>
+                                                        </FormControl>
 
-                                                                >
-                                                                    <MenuItem value="">
-                                                                        <em>None</em>
-                                                                    </MenuItem>
-                                                                    <MenuItem value="Gujarat">Gujarat</MenuItem>
-                                                                    <MenuItem value="Junagadh">Mumbai</MenuItem>
-                                                                    <MenuItem value="Navasari">Delhi</MenuItem>
-                                                                </Select>
-                                                            </FormControl>
+                                                        <Button type='submit' variant="contained" style={{ marginTop: '1rem' }} onClick={() => setState(false)} >Save Address</Button>
+                                                    </form>
 
-                                                            <Button type='submit' variant="contained" style={{ marginTop: '1rem' }} onClick={toggleDrawer(anchor, false)} >Save Address</Button>
-                                                        </form>
-
-                                                    </Box>
-                                                </Drawer>
-                                            </Fragment>
-                                        ))}
+                                                </Box>
+                                            </Drawer>
+                                        </Fragment>
+                                        {/* ))} */}
                                     </div>
 
                                 </div>

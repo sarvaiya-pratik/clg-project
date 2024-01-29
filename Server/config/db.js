@@ -1,12 +1,12 @@
 import mongoose from "mongoose"
 
 
-const connectDb = async(URL)=>{
+const connectDb =  async(URL) => {
     try {
-        mongoose.connect(URL)
-        .then(()=>{
-            console.log("Connected")
-        })
+       await  mongoose.connect(URL)
+            .then(() => {
+                console.log("MongoDD Connected successfully ")
+            })
     } catch (error) {
         console.log(error)
     }

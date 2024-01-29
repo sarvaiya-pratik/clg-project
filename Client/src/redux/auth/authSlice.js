@@ -1,6 +1,6 @@
-import {  createSlice, isRejectedWithValue } from "@reduxjs/toolkit";
+import { createSlice, isRejectedWithValue } from "@reduxjs/toolkit";
 import axios from "axios";
-import { createUser,  loginUser, loginWithGoogle } from "./authApi";
+import { createUser, loginUser, loginWithGoogle } from "./authApi";
 
 const initialState = {
     users: null,
@@ -12,9 +12,9 @@ const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        logout:(state,action)=>{
+        logout: (state, action) => {
             state.users = null
-            state.loading =false
+            state.loading = false
         }
     },
     extraReducers: (builder) => {
@@ -36,36 +36,33 @@ const authSlice = createSlice({
                 state.err = null
             })
             .addCase(loginUser.fulfilled, (state, action) => {
-              
+
                 state.loading = false;
                 state.users = action.payload.user
-                state.err=null
+                state.err = null
             })
             .addCase(loginUser.rejected, (state, action) => {
                 state.loading = false;
                 state.err = action.error.message;
             })
-            .addCase(loginWithGoogle.pending,(state,action)=>{
+            .addCase(loginWithGoogle.pending, (state, action) => {
                 state.loading = true
-              
-                state.err=null
+                state.err = null
             })
-            .addCase(loginWithGoogle.fulfilled,(state,action)=>{
+            .addCase(loginWithGoogle.fulfilled, (state, action) => {
                 state.loading = false
-                state.users=action.payload.user
-                state.err=null
-              
-              
+                state.users = action.payload.user
+                state.err = null
             })
-            .addCase(loginWithGoogle.rejected,(state,action)=>{
+            .addCase(loginWithGoogle.rejected, (state, action) => {
                 state.loading = false
-                // state.err=action.error.message
+                state.err = action.error.message
             })
- 
+
     }
 });
 
 export const { selectError, selectUser, selectLoading } = (state) => state.auth
 
-export const {logout} = authSlice.actions
+export const { logout } = authSlice.actions
 export default authSlice.reducer;

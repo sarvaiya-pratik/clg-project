@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getalluser, getusercurrent, updateuser, updateuseraddress } from "./userApi";
+import { deleteUser, getUserById, getalluser, getusercurrent, updateuser, updateuseraddress } from "./userApi";
 
 const initialState = {
     users: null,
@@ -64,6 +64,8 @@ const userSlice = createSlice({
          state.err=action.error.message
          state.users=null
      })
+
+
     .addCase(updateuseraddress.pending,(state,action)=>{
        
          state.loading = true
@@ -73,10 +75,45 @@ const userSlice = createSlice({
      .addCase(updateuseraddress.fulfilled,(state,action)=>{
          state.loading = false
          state.users=action.payload.user
-         console.log("fulfil",action.payload.user)
          state.error=null
      })
      .addCase(updateuseraddress.rejected,(state,action)=>{
+
+         state.loading = false
+         state.err=action.error.message
+         state.users=null
+     })
+
+    .addCase(deleteUser.pending,(state,action)=>{
+       
+         state.loading = true
+         state.users = null
+         state.error=null
+     })
+     .addCase(deleteUser.fulfilled,(state,action)=>{
+         state.loading = false
+         state.users=action.payload.user
+         state.error=null
+     })
+     .addCase(deleteUser.rejected,(state,action)=>{
+
+         state.loading = false
+         state.err=action.error.message
+         state.users=null
+     })
+
+    .addCase(getUserById.pending,(state,action)=>{
+       
+         state.loading = true
+         state.users = null
+         state.error=null
+     })
+     .addCase(getUserById.fulfilled,(state,action)=>{
+         state.loading = false
+         state.users=action.payload.user
+         state.error=null
+     })
+     .addCase(getUserById.rejected,(state,action)=>{
 
          state.loading = false
          state.err=action.error.message

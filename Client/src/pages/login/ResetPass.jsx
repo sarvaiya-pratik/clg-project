@@ -10,77 +10,77 @@ import { FaSlash } from 'react-icons/fa'
 import Loader from '../../common/Loader/Loader'
 
 const ResetPass = () => {
-const [password,setPassword] = useState()
-const [cpassword,setCPassword] = useState()
-const [loading,setLoading] = useState(false)
+  const [password, setPassword] = useState()
+  const [cpassword, setCPassword] = useState()
+  const [loading, setLoading] = useState(false)
 
- 
+
   const navigate = useNavigate();
   function handleLoginSubmit(e) {
     setLoading(true)
     e.preventDefault()
-   if(password == cpassword){
-    axios.post("/user/login/reset-password/reset",{password})
-    .then((r) => {
-     if (r.data.code == 200 ){
-        setLoading(false)
-      toast.success(r.data.message)
-      navigate("/login")
-     }
-     else{
-        setLoading(false)
-      toast.error(r.data.message)
-     }
-    })
+    if (password == cpassword) {
+      axios.post("/users/auth/reset", { password })
+        .then((r) => {
+          if (r.data.code == 200) {
+            setLoading(false)
+            toast.success(r.data.message)
+            navigate("/login")
+          }
+          else {
+            setLoading(false)
+            toast.error(r.data.message)
+          }
+        })
 
-   }
-  
-   else{
-    setLoading(false)
-    toast.error("Password not same !")
-   }
+    }
+
+    else {
+      setLoading(false)
+      toast.error("Password not same !")
+    }
   }
 
- 
+
   const handleShowPass = () => {
     setShowPass(!showPass)
   }
   return (
-    loading ? <Loader/>:
-    <>
-      <Header />
-      <div className="main-container">
+    loading ? <Loader /> :
+      <>
+        <Header />
+        <div className="main-container">
 
-        <div className="container" >
-          <div className="header">
-            <div className="text">Reset Your Password !</div>
-            <div className="underline"></div>
-          </div>
-        
+          <div className="container" >
+            <div className="header">
+              <div className="text">Reset Your Password !</div>
+              <div className="underline"></div>
+            </div>
+
             <form className="inputs" onSubmit={handleLoginSubmit} >
               <div className="input">
                 <AiOutlineUser />
                 <input type="password" placeholder='New Password' name="email" required
-                  onChange={(e)=>setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="input">
                 <AiOutlineUser />
                 <input type="password" placeholder='Confirm New Password' name="email" required
-                  onChange={(e)=>setCPassword(e.target.value)}
+                  onChange={(e) => setCPassword(e.target.value)}
                 />
               </div>
 
 
               <div className="submit-container">
                 <button type='submit' className="submit">Confirm</button>
-            
+
               </div>
             </form>
+          </div>
         </div>
-      </div>
-      <Footer />
-    </>
+        <Footer />
+      </>
   )
 }
 

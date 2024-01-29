@@ -1,10 +1,12 @@
 #payment {
 
     padding: 6rem 5rem;
-    >.top{
+    background-color: var(--secondary-color);
+
+    >.top {
         margin-bottom: 2rem;
 
-     
+
     }
 
 
@@ -13,6 +15,9 @@
 
         >.right {
             flex-basis: 50%;
+            gap: 1rem;
+            display: flex;
+            flex-direction: column;
 
             >h2 {
                 margin-bottom: 2rem;
@@ -20,14 +25,13 @@
 
             >.product-container {
                 display: flex;
-                /* border: 1px solid black; */
-                box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+              
                 width: 80%;
                 height: 100px;
                 border-radius: 10px;
                 gap: 1rem;
-                background-color: aliceblue;
-
+                box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+                
                 >iframe {
                     width: 100px;
                     border-radius: 10px;
@@ -36,7 +40,7 @@
 
                 >.inner-container {
                     padding: 2px;
-                    line-height: 0.8rem;
+                    line-height: 0.3rem;
                 }
             }
 
@@ -57,18 +61,24 @@
                 box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
                 width: 70%;
 
-
                 >li {
                     list-style: none;
                     display: flex;
                     justify-content: space-between;
+                    /* line-height: 1.5rem; */
                 }
 
+                >.total-amount {
+                    border-top: 0.5px solid gray;
+                    padding-top: 10px;
+                    font-weight: bolder;
+                }
             }
 
         }
     }
-    >.last-btn{
+
+    >.last-btn {
         padding-left: 14rem;
         margin-top: 3rem;
     }

@@ -1,7 +1,7 @@
 #stones {
     height: 100%;
     width: 100%;
-    padding-top: 7rem;
+    padding-top: 6rem;
     background-color: var(--secondary-color);
     padding-bottom: 7rem;
 
@@ -30,7 +30,10 @@
             padding: 13px;
             max-width: 490px;
             width: 90%;
-            margin: 1rem auto;
+            margin-top: -20px;
+            margin-left: auto;
+            margin-right: auto;
+            /* margin: 0.5rem auto; */
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
@@ -82,64 +85,212 @@
 
         }
 
-        >.diamonds {
+
+
+        >.main-container {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            padding: 1rem 3rem;
 
-            .diamond-card {
-                width: 300px;
+            >.filter-slide {
+                min-width: 300px;
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 5px, rgba(33, 142, 188, 0.12) 0px -12px 30px, rgba(21, 75, 122, 0.12) 0px 4px 6px, rgba(29, 94, 146, 0.17) 0px 12px 13px, rgba(37, 144, 171, 0.09) 0px -3px 5px;
+                border: 1px solid var(--third-color);
                 border-radius: 10px;
-                margin: 1rem;
-                background-color: #fff;
+                height: fit-content;
 
-                box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+                padding-bottom: 100px;
+                position: sticky;
+                top: 4rem;
 
-                &:hover {
-                    box-shadow: rgba(50, 50, 93, 0);
-                    background-color: rgb(216, 213, 213);
+                >h2 {
+                    text-align: center;
 
+                    /* border-style: double; */
                 }
 
-                >iframe {
-                    border-radius: 10px;
-                    margin-bottom: 12px;
+                >.category {
+                    margin-top: 1rem;
+                    padding: 0 2rem;
+                    border-bottom: 1px solid gray;
                 }
 
-                >.card-body {
-                    padding: 0 0.6rem;
+                >.price {
+                    margin-top: 1rem;
+                    padding: 0 2rem;
 
-                    >a {
-                        text-decoration: none;
-                        color: black;
+                    >.apply {
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
+
+                        /* border: 1px solid black; */
+                        >span {
+                            color: green;
+                        }
                     }
+                }
+            }
 
-                    >h2 {
-                        color: black;
-                        text-decoration: none;
-                        /* padding:0 0.6rem; */
-                        font-weight: 600;
-                        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-                        font-size: 18px;
+            >.diamond-container {
+                padding: 0 2rem;
+                width: calc(100% - 300px);
 
-                        &:hover {
-                            color: var(--bg-primary);
+                >.top-side {
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 5px, rgba(33, 142, 188, 0.12) 0px -12px 30px, rgba(21, 75, 122, 0.12) 0px 4px 6px, rgba(29, 94, 146, 0.17) 0px 12px 13px, rgba(37, 144, 171, 0.09) 0px -3px 5px;
+                    border: 1px solid var(--third-color);
+                    border-radius: 10px;
+                    padding: 1rem 4rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 2rem;
+
+                    >h5 {
+                        /* color: green; */
+                        font-weight: 700;
+
+                        >span {
+                            color: rgb(22, 154, 22);
                         }
                     }
 
+                    >select {
+                        /* appearance: none; */
+                        background-color: transparent;
 
+                        border: 1px solid gray;
+                        border-radius: 10px;
+                        font-size: 20px;
+                        padding: 1px 5px 2px 2px;
+                        margin: 0;
+                        /* width: 100%; */
+                        font-family: inherit;
 
-                    .mid {
-                        display: flex;
-                        justify-content: space-between;
-                        padding: 0 0.6rem;
-                        align-content: center;
+                        cursor: inherit;
+                        outline: none;
+                        line-height: inherit;
+
+                        &:hover {
+                            outline: 1px solid rebeccapurple;
+                        }
+
 
                     }
-
-
                 }
 
+                >.diamonds {
+                    display: flex;
+                    justify-content: space-around;
+                    flex-wrap: wrap;
+                    background-color: transparent;
+                    border: 1px solid var(--third-color);
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 55px, rgba(33, 142, 188, 0.12) 0px -12px 30px, rgba(21, 75, 122, 0.12) 0px 4px 6px, rgba(29, 94, 146, 0.17) 0px 12px 13px, rgba(37, 144, 171, 0.09) 0px -3px 5px;
+                    border-radius: 10px;
+
+                    .diamond-card {
+                        width: 250px;
+                        border-radius: 10px;
+                        margin: 1rem;
+                        background-color: #fff;
+                        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+                        &:hover {
+                            box-shadow: rgba(50, 50, 93, 0);
+                            background-color: rgb(216, 213, 213);
+
+                        }
+
+                        >iframe {
+                            border-radius: 10px;
+                            margin-bottom: 12px;
+                            width: 250px;
+                            height: 250px;
+                        }
+
+                        >.card-body {
+                            padding: 0 0.6rem;
+
+                            >a {
+                                text-decoration: none;
+                                color: black;
+                            }
+
+                            >h2 {
+                                color: black;
+                                text-decoration: none;
+                                /* padding:0 0.6rem; */
+                                font-weight: 600;
+                                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                                font-size: 18px;
+
+                                &:hover {
+                                    color: var(--bg-primary);
+                                }
+                            }
+
+
+
+                            .mid {
+                                display: flex;
+                                justify-content: space-between;
+                                padding: 0 0.6rem;
+                                align-content: center;
+
+                            }
+
+
+                        }
+
+                    }
+                }
+
+                >.pagination {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 2rem;
+                    border: 1px solid var(--third-color);
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(33, 142, 188, 0.12) 0px -12px 30px, rgba(21, 75, 122, 0.12) 0px 4px 6px, rgba(29, 94, 146, 0.17) 0px 12px 13px, rgba(37, 144, 171, 0.09) 0px -3px 5px;
+                    border-radius: 10px;
+                    padding: 0.5rem 4rem;
+                }
+            }
+        }
+
+
+    }
+}
+
+@media all and (max-width:960px) {
+
+    #stones {
+        >main {
+
+            >.main-container {
+                padding: 1rem 1rem;
+
+                >.filter-slide {
+                    /* display: none; */
+                    position: absolute;
+                    transform: translateY(-200%);
+                }
+
+                .diamond-container {
+                    width: 100%;
+                    padding: 0 0;
+
+                    >.top-side {
+                        width: 100%;
+                        padding: 1rem 2rem;
+
+                        >h5 {
+                            font-size: 0.8rem;
+                        }
+
+                        >select {
+                            font-size: 0.8rem;
+                        }
+                    }
+                }
             }
         }
     }
@@ -176,6 +327,25 @@
 
 }
 
+.Unavailble {
+    border: none;
+    outline: none;
+    background-color: rgb(204 93 93);
+    color: white;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    height: 2rem;
+    transition: all 0.7s;
+
+    >svg {
+        transform: translateX(-90px);
+        display: none;
+    }
+}
+
+
 #sotneDetail {
     width: 100%;
     height: 100%;
@@ -183,53 +353,189 @@
     padding: 7rem 5rem;
     background-color: var(--secondary-color);
 
-    >.details {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        background-color: #fff;
-        width: 100%;
-        height: 100%;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    >.daimond-details {
 
-        >iframe {
-            border-radius: 10px;
-            width: 311px;
-            height: 311px;
 
-        }
-
-        >.right {
+        >.details {
             display: flex;
-            flex-direction: column;
-            flex-basis: 70%;
-            padding: 1rem;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            background-color: #fff;
+            width: 100%;
+            height: 100%;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 
-            >.badge {
-                background-color: rgb(52, 131, 52);
+            >iframe {
+                border-radius: 10px;
+                width: 311px;
+                height: 311px;
 
-                width: fit-content;
             }
 
-            >.os {
-                max-height: 300px;
+            >.right {
                 display: flex;
                 flex-direction: column;
-                flex-wrap: wrap;
+                flex-basis: 70%;
+                padding: 1rem;
 
-                >.label {
-                    >p {
-                        /* font-weight: 600; */
-                        color: rgb(41, 33, 33);
+                >.badge {
+                    background-color: rgb(52, 131, 52);
 
+                    width: fit-content;
+                }
+
+                >.s-box {
+                    padding-top: 1rem;
+
+
+                    >.os {
+                        max-height: 200px;
+                        display: flex;
+                        flex-direction: column;
+                        flex-wrap: wrap;
+
+                        >.label {
+                            /* border-right: 1px solid black; */
+                            /* padding: 1pxs; */
+                            display: flex;
+                            justify-content: space-between;
+                            width: 200px;
+                            text-align: center;
+                            align-items: center;
+
+                           
+                        }
+                    }
+                }
+
+                >span {
+                    display: flex;
+                    margin: auto;
+                    gap: 2rem;
+
+                    .add-to-cart {
+                        outline: 1px solid var(--third-color);
+                        color: var(--third-color);
+                        padding: 8px 6rem;
+                        border: none;
+                        border-radius: 3px;
+                    }
+
+                    >.buy-now {
+
+                        background-color: var(--third-color);
+                        color: white;
+                        padding: 8px 6rem;
+                        border: none;
+                        border-radius: 3px;
                     }
                 }
             }
 
+        }
 
+
+    }
+
+
+
+    >.feedback {
+
+        margin-top: 8rem;
+        padding: 2rem 2 rem;
+
+        >.feedback_heading {
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        >.box-container {
+
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            >.box {
+                display: flex;
+                flex-direction: column;
+                padding: 1rem;
+                background-color: white;
+
+
+                >.first {
+                    display: flex;
+                    gap: 1rem;
+
+                    align-items: center;
+
+                    >label {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: green;
+                        border-radius: 5px;
+                        padding: 0 0.5rem;
+                        gap: 4px;
+                        color: white;
+                    }
+
+                    >span {
+                        font-weight: 700;
+                        font-size: 20px;
+                    }
+
+                }
+
+                >.second {
+                    >p {
+                        font-weight: 700;
+                    }
+                }
+
+                >.third {
+                    color: #565353;
+
+                }
+            }
+        }
+
+    }
+
+    #releated-stones {
+        margin-top: 5rem;
+
+        >section {
+            display: flex;
+            /* justify-content: center; */
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            >.d-card {
+                /* border: 1px solid white; */
+                cursor: pointer;
+                border-radius: 10px;
+                width: 250px;
+                height: fit-content;
+                background-color: #fff;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+                .description {
+                    padding: 10px 10px;
+                }
+
+                &:hover {
+                    box-shadow: rgba(50, 50, 93, 0);
+                    background-color: rgb(216, 213, 213);
+
+                }
+
+
+            }
         }
     }
+
+
 }
 
 
@@ -252,7 +558,7 @@
 
             align-items: center;
 
-            >iframe {}
+           
 
             >.right {
                 flex-wrap: wrap;
@@ -268,3 +574,133 @@
         }
     }
 }
+
+@media screen and (max-width:1151px){
+    #sotneDetail {
+       
+        padding: 4rem 2rem;
+       
+
+        >.daimond-details{
+
+            >.details{
+                /* flex-direction: column; */
+
+                >iframe {
+                   
+                    width: 300px;
+                    height: 300px;
+    
+                }
+
+                >.right{
+                    /* flex-wrap: wrap;
+                    flex-basis: 100%;
+                    width: 100%;   */
+                    
+                    >.s-box{
+
+                        >.os{
+                          max-height: 280px;
+
+                          >.label{
+                            display: flex;
+                            justify-content: space-between;
+                            width: 150px;
+                            padding: 0 0.3rem;
+                            text-align: center;
+                            align-items: center;
+                          }
+                        }
+                    }
+
+                    >span{
+
+                        .add-to-cart,.buy-now{
+                            padding: 0.3rem 1rem;
+                        }
+
+                    }
+                }
+
+    
+            }
+        }
+
+        #releated-stones{
+            >section{
+                justify-content: center;
+            }
+        }
+    }
+}
+@media screen and (max-width:768px){
+    #sotneDetail {
+       
+        padding: unset;
+       
+
+        >.daimond-details{
+
+            >.details{
+                flex-direction: column;
+
+                >iframe {
+                   
+                    width: 300px;
+                    height: 300px;
+    
+                }
+
+                >.right{
+                    flex-wrap: wrap;
+                    flex-basis: 100%;
+                    width: 100%;  
+                    
+                    >.s-box{
+
+                        >.os{
+                          max-height: fit-content;
+
+                          >.label{
+                            display: flex;
+                            justify-content: space-between;
+                            width: 100%;
+                            padding: 0 0.3rem;
+                            text-align: center;
+                            align-items: center;
+                          }
+                        }
+                    }
+
+                    >span{
+
+                        .add-to-cart,.buy-now{
+                            padding: 0.3rem 1rem;
+                        }
+
+                    }
+                }
+
+    
+            }
+        }
+
+        #releated-stones{
+            >section{
+                justify-content: center;
+            }
+        }
+    }
+
+}
+
+/* @media screen and (max-width: 768px) {
+    #sotneDetail {
+        padding: 0 0;
+
+       
+    }
+
+
+} */

@@ -10,7 +10,7 @@ const AdminRoute = ({ children }) => {
 
     const login = JSON.parse(localStorage.getItem('user'))
 
-    if (login) {
+    if (login.isAdmin) {
         return (<Admin/>)
     }
     else {

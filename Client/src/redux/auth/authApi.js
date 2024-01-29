@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
@@ -7,14 +7,14 @@ export const createUser = createAsyncThunk('createuser', async (data) => {
         const response = await axios.post('/users/auth/signup', data, { withCredentials: true });
 
         // Assuming the API returns an error object in case of failure
-
+        console.log(response.data)
         if (response.status === 200) {
             return response.data;
-        } else {
-            throw response.data.error
         }
     } catch (error) {
-        throw error;
+        console.log("catch run", error)
+        throw error.response.data;
+
     }
 });
 
@@ -24,12 +24,14 @@ export const loginUser = createAsyncThunk('login', async (data) => {
 
         if (response.status === 200) {
             return response.data;
-        } else {
 
-            throw response.data.error
         }
     } catch (error) {
-        throw error;
+        if (error.response) {
+
+            throw error.response.data;
+        }
+
     }
 });
 
@@ -39,12 +41,10 @@ export const loginWithGoogle = createAsyncThunk('loginWitGoogle', async () => {
         console.log(response.data.user)
         if (response.status === 200) {
             return response.data
-        } else {
-
-            throw response.data.error
-        }
+        } 
     } catch (error) {
-        throw error;
+        
+        throw error.response.data
     }
 });
 

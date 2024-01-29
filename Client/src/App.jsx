@@ -3,32 +3,39 @@ import "./app.css"
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import { Suspense, lazy } from "react"
 
+import Feedback from "./pages/profile/Reviews/Feedback";
+import GetOtp from "./pages/login/GetOtp";
+import { VarifyOtp } from "./pages/login/VarifyOtp";
+import ResetPass from "./pages/login/ResetPass";
+// import OrderDetails from "./pages/profile/OrderDetails";
 
-const Home = lazy(()=>import("./pages/home/Home"))
-const Login = lazy(()=>import("./pages/login/Login"))
-const Stones = lazy(()=>import("./pages/stones/Stones"))
-const StoneDetail = lazy(()=>import("./pages/stones/StoneDetail"))
-const Cart = lazy(()=>import("./pages/cart/Cart"))
-const Profile = lazy(()=>import("./pages/profile/Profile"))
-const Admin = lazy(()=>import("./pages/admin/Admin"))
-const Dashboard = lazy(()=>import("./pages/admin/components/Dashboard"))
-const Diamonds = lazy(()=>import("./pages/admin/components/Diamonds"))
-const Message = lazy(()=>import("./pages/admin/components/Message"))
-const Order = lazy(()=>import("./pages/admin/components/Order"))
-const Customer = lazy(()=>import("./pages/admin/components/Cutomer"))
-const AddDiamond = lazy(()=>import("./pages/admin/components/AddDiamond"))
-const AdminRoute = lazy(()=>import("./pages/admin/AdminRoute"))
-const Notfound = lazy(()=>import("./common/Error/Notfound"))
-const Layout = lazy(()=>import("./Layout"))
-const Checkout = lazy(()=>import("./pages/order/checkout"))
-const SuccessPayment = lazy(()=>import("./pages/order/SuccessPayment"))
-const EditProfile = lazy(()=>import("./pages/profile/EditProfile"))
-const MyOrder = lazy(()=>import("./pages/profile/MyOrder"))
-const DeliveryAddress = lazy(()=>import("./pages/profile/DeliveryAddress"))
-const SuccessOrder = lazy(()=>import("./pages/order/SuccessOrder"))
-const Payment = lazy(()=>import("./pages/order/Payment"))
+const OrderDetails = lazy(() => import("./pages/profile/Order/OrderDetails"))
+const Home = lazy(() => import("./pages/home/Home"))
+const Login = lazy(() => import("./pages/login/Login"))
+const Stones = lazy(() => import("./pages/stones/Stones"))
+const StoneDetail = lazy(() => import("./pages/stones/StoneDetail"))
+const Cart = lazy(() => import("./pages/cart/Cart"))
+const Profile = lazy(() => import("./pages/profile/Profile"))
+const Notfound = lazy(() => import("./common/Error/Notfound"))
+const Layout = lazy(() => import("./Layout"))
+const Checkout = lazy(() => import("./pages/order/checkout"))
+const SuccessPayment = lazy(() => import("./pages/order/SuccessPayment"))
+const EditProfile = lazy(() => import("./pages/profile/EditProfile"))
+const MyOrder = lazy(() => import("./pages/profile/Order/MyOrder"))
+const DeliveryAddress = lazy(() => import("./pages/profile/DeliveryAddress"))
+const SuccessOrder = lazy(() => import("./pages/order/SuccessOrder"))
+const Payment = lazy(() => import("./pages/order/Payment"))
 
+// admin
 
+const Category = lazy(()=>import("./pages/admin/components/Category/Category"))
+const Dashboard = lazy(() => import("./pages/admin/components/Dashboard"))
+const Diamonds = lazy(() => import("./pages/admin/components/Diamonds/Diamonds"))
+const Reviews = lazy(() => import("./pages/admin/components/Feedback/Feedback"))
+const Order = lazy(() => import("./pages/admin/components/Order/Order"))
+const Customer = lazy(() => import("./pages/admin/components/Customer/Customer"))
+const AddDiamond = lazy(() => import("./pages/admin/components/AddDiamond"))
+const AdminRoute = lazy(() => import("./pages/admin/AdminRoute"))
 const App = () => {
 
   const router = createBrowserRouter([
@@ -43,19 +50,44 @@ const App = () => {
         },
         {
           path: 'login',
-          element: <Login />
+          element: <Login />,
+
         },
+        {
+          path: 'login/reset-password',
+          element: <GetOtp />,
+
+        },
+        {
+          path: 'login/reset-password/varify',
+          element: <VarifyOtp />,
+
+        },
+        {
+          path: 'login/reset-password/reset',
+          element: <ResetPass />,
+
+        },
+
         {
           path: 'stones',
           element: <Stones />
         },
         {
-          path: 'stones/:id',
+          path: 'stones/:pid',
           element: <StoneDetail />
         },
         {
           path: 'cart',
           element: <Cart />
+        },
+        {
+          path: 'orders/:id/:oid',
+          element: <OrderDetails />
+        },
+        {
+          path: 'orders/review/:pid',
+          element: <Feedback />
         },
         {
           path: 'profile',
@@ -69,6 +101,7 @@ const App = () => {
               path: 'orders',
               element: <MyOrder />
             },
+
             {
               path: 'address',
               element: <DeliveryAddress />
@@ -109,7 +142,7 @@ const App = () => {
           element: <Dashboard />
         },
         {
-          path: 'customer',
+          path: 'users',
           element: <Customer />
         },
         {
@@ -117,8 +150,8 @@ const App = () => {
           element: <Diamonds />
         },
         {
-          path: 'message',
-          element: <Message />
+          path: 'feedback',
+          element: <Reviews />
         },
         {
           path: 'order',
@@ -127,6 +160,10 @@ const App = () => {
         {
           path: 'addproduct',
           element: <AddDiamond />
+        },
+        {
+          path: 'category',
+          element: <Category />
         }
 
       ]

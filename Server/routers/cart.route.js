@@ -3,7 +3,6 @@ import { addToCart, deleteCartItem, findUserCart } from "../controllers/cart.con
 import { authUser } from "../middleware/authUser.js"
 
 const router = express.Router()
-console.log("cart router")
 
 
 router.post('/add',authUser, addToCart)

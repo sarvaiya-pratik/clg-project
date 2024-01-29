@@ -1,20 +1,27 @@
 import express from 'express'
-import { login, register } from '../controllers/auth.controller.js'
-import { getAllUser, getCurrentUser, updateAdress, updateUser } from '../controllers/user.controller.js'
+import { forgatePassword, login, register, resentOtp, resetPassword, varifyOtp } from '../controllers/auth.controller.js'
+import { deleteUser, getAllUser, getCurrentUser, getUserById, updateAdress, updateUser } from '../controllers/user.controller.js'
 import passport from 'passport'
 import { authUser } from '../middleware/authUser.js'
-import User from '../models/user.model.js'
-import { getUserByToken } from '../config/tokenProvider.js'
+
 const router = express.Router()
-console.log("user router")
 router.post('/auth/signup', register)
 router.post('/auth/signin', login)
 router.put('/update/:uid', updateUser)
 router.put('/update/address/:uid', updateAdress)
-router.get('/currentuser',authUser,getCurrentUser)
+router.get('/currentuser', authUser, getCurrentUser)
 router.get('/', getAllUser)
-router.get('/auth/google',
-    passport.authenticate('google', { scope: ['profile', 'email'] }));
+router.delete('/remove/:id', deleteUser)
+router.get('/ID/:id', getUserById)
+
+// FORGATE PASSWORD
+
+router.post('/auth/forgot', forgatePassword)
+router.get('/auth/resend', resentOtp)
+router.post('/auth/verify', varifyOtp)
+router.post('/auth/reset', resetPassword)
+
+router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 
 router.get("/auth/google/callback", passport.authenticate("google", {
@@ -24,7 +31,7 @@ router.get("/auth/google/callback", passport.authenticate("google", {
 
 router.get('/login/success', async (req, res) => {
     if (req.user) {
-       
+
         res.status(200).json({ message: "Login succes", user: req.user })
     }
     else {
@@ -32,9 +39,9 @@ router.get('/login/success', async (req, res) => {
     }
 })
 
-
 // logout  
 router.get("/logout", (req, res, next) => {
+
     req.logout((err) => {
         if (err) {
             res.status(400).send(err)
@@ -45,15 +52,11 @@ router.get("/logout", (req, res, next) => {
                 return res.status(500).send('Internal Server Error');
             }
 
-            res.clearCookie('connect.sid');
+            res.clearCookie('connect.sid').clearCookie('token')
             res.redirect('http://localhost:5173/')
 
         });
     })
-
-
-
-
 })
 
 export default router

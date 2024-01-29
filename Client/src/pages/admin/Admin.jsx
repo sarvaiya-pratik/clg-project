@@ -1,53 +1,52 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./style.css";
-import { BiSolidDiamond, BiLogOut, BiPlus, BiMessage, BiGridAlt, BiStore, BiSearch, BiUser, BiXCircle, BiMenuAltLeft, BiSolidDashboard, BiStats, BiQuestionMark } from "react-icons/bi"
-import { GoReport } from "react-icons/go"
-import { AiFillSetting } from "react-icons/ai"
+import { BiSolidDiamond, BiLogOut, BiPlus, BiMessage, BiGridAlt, BiStore, BiSearch, BiUser, BiXCircle, BiMenuAltLeft, BiSolidDashboard, BiStats, BiQuestionMark, BiDiamond, BiCategory } from "react-icons/bi"
+import { FaFileInvoiceDollar } from "react-icons/fa6";
+import { IoDiamondOutline } from "react-icons/io5";
 import { NavLink, Outlet } from 'react-router-dom'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Dashboard from './components/Dashboard';
-import AddDiamond from './components/AddDiamond';
-import Order from './components/Order';
-import Faq from './components/Faq';
-import Diamonds from './components/Diamonds';
-import Message from './components/Message';
-import Report from "./components/Report"
-import Cutomer from './components/Cutomer';
-import admin from "./admin.jpeg"
+
+
+// import admin from "./admin.jpeg"
 import logo from "./diamond_logo.png"
+import { ToastContainer, toast } from 'react-toastify'
+import { Avatar } from '@mui/material';
+import { AiFillSetting } from 'react-icons/ai';
 
 const Admin = ({ data }) => {
-  const [search, setSearch] = useState(true)
   const [slider, setSlider] = useState(false)
+  const [admin, setAdmin] = useState()
 
-
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'))
+    setAdmin(user)
+  }, [])
 
   return (
     <>
+      <ToastContainer position="bottom-right" />
       <div id="admin">
         <div className='adminheader'>
           <div className="left">
+            
             <input id="checkbox" type="checkbox" onChange={() => setSlider(!slider)} checked={slider} />
             <label class="toggle" for="checkbox">
               <div id="bar1" class="bars"></div>
               <div id="bar2" class="bars"></div>
               <div id="bar3" class="bars"></div>
             </label>
-    
-            <BiMenuAltLeft onClick={() => setSlider(!slider)} className='adminmenuicon' />
-            <h2>ADMIN</h2>
 
+            <BiMenuAltLeft onClick={() => setSlider(!slider)} className='adminmenuicon' />
+            {/* <img src={logo} alt="" width="40px"  /> */}
+            <IoDiamondOutline color='white' />
+            
           </div>
           <div className="centers">
-            <img src={logo} alt="" width="40px" />
-            <button data-text="Awesome" class="admin-heding-btn">
-              <span class="actual-text">&nbsp;MRP DIAMONDS &nbsp;</span>
-
-            </button>
+            <div class="head-wrapper">
+              <div class="bg"> MRP DIAMONDS</div>
+              <div class="fg"> MRP DIAMONDS</div>
+            </div>
           </div>
-          {/* <div className="cen">
-           
-          </div> */}
+
           <div className="right">
 
             {/* <div className="search">
@@ -56,13 +55,13 @@ const Admin = ({ data }) => {
             </div> */}
 
 
-            <img src={admin} alt=" " />
+            <Avatar src={admin?.image}  alt=" " />
           </div>
         </div>
 
         <main>
           <AdminSlide slider={slider} setSlider={setSlider} />
-          <Outlet/>
+          <Outlet />
           {/* <Routes>
             <Route path="/admin/dashboard" element={<Dashboard slider={slider} />}></Route>
             <Route path="/managediamond" element={<AddDiamond slider={slider} />}></Route>
@@ -89,12 +88,12 @@ export const AdminSlide = ({ slider, setSlider }) => {
       <div className='slide-container'>
 
         <NavLink to="/admin/dashboard" onClick={() => setSlider(!slider)} > <BiSolidDashboard />Dashboard</NavLink>
-        <NavLink to="/admin/customer" onClick={() => setSlider(!slider)}>< BiUser />Customer</NavLink>
-        <NavLink to="/admin/diamonds" onClick={() => setSlider(!slider)}><BiSolidDiamond />Diamonds</NavLink>
-        <NavLink to="/admin/message" onClick={() => setSlider(!slider)}><BiMessage />Feedback</NavLink>
+        <NavLink to="/admin/users" onClick={() => setSlider(!slider)}>< BiUser />Users</NavLink>
+        <NavLink to="/admin/diamonds" onClick={() => setSlider(!slider)}><BiDiamond />Diamonds</NavLink>
         <NavLink to="/admin/order" onClick={() => setSlider(!slider)}><BiStore />Orders</NavLink>
-        {/* <NavLink to="/admins/report">< GoReport />Reports</NavLink> */}
-        {/* <NavLink to="/admins/setting"><AiFillSetting />Settings</NavLink> */}
+        <NavLink to="/admin/feedback" onClick={() => setSlider(!slider)}><BiMessage />Feedback</NavLink>
+        <NavLink to="/admin/category" onClick={() => setSlider(!slider)}>< BiCategory  />Shapes</NavLink>
+        {/* <NavLink to="/admin/invoice"><FaFileInvoiceDollar />Invoice</NavLink> */}
         {/* <NavLink to="/admins/faq"><BiQuestionMark />FAQ</NavLink> */}
         <NavLink to="/admin/addproduct" onClick={() => setSlider(!slider)}><BiPlus />Add Diamond</NavLink>
         <NavLink to="/" style={{ marginTop: '2rem' }} onClick={() => setSlider(!slider)}><BiLogOut />Logout</NavLink>

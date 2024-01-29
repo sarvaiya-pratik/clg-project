@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getproductall } from "./productApi";
+import { deleteProductById, getProductById, getproductall } from "./productApi";
 
 let initialState = {
-    products: null,
+    products: [],
     loading: false,
     error: null
 }
@@ -24,14 +24,47 @@ const productSlice = createSlice({
              state.products=action.payload
             
              state.error=null
-             console.log("fullfill")
+            
          })
          .addCase(getproductall.rejected,(state,action)=>{
              state.loading = false
              state.error=action.error.message
              console.log("rejected product")
          })
+
+
+        .addCase(getProductById.pending,(state,action)=>{
+             state.loading = true
+             state.error=null
+         })
+         .addCase(getProductById.fulfilled,(state,action)=>{
+             state.loading = false
+             state.products=action.payload
+            
+             state.error=null
+            
+         })
+         .addCase(getProductById.rejected,(state,action)=>{
+             state.loading = false
+             state.error=action.error.message
+             ("rejected product")
+         })
+
          
+        .addCase(deleteProductById.pending,(state,action)=>{
+             state.loading = true
+             state.error=null
+         })
+         .addCase(deleteProductById.fulfilled,(state,action)=>{
+             state.loading = false
+             state.products=action.payload
+             state.error=null
+         })
+         .addCase(deleteProductById.rejected,(state,action)=>{
+             state.loading = false
+             state.error=action.error.message
+         })
+
     }
 })
 

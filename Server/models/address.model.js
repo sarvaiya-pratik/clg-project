@@ -5,6 +5,8 @@ const AddressShema = new mongoose.Schema({
     lname:{type:String,required:true},
     streetAddress:{type:String,required:true},
     city:{type:String,required:true},
+    phone:{type:Number},
+    email:{type:String},
     state:{type:String,required:true},
     pincode:{type:Number,required:true},
     user:{

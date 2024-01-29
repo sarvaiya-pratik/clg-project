@@ -33,27 +33,15 @@ const Cart = () => {
     const dispatch = useDispatch()
     const user = getCurrentUserHook()
 
-    // let uid = user ? user._id : null
-
-
-
     useEffect(() => {
-
         dispatch(getUserCart())
-
-
-
     }, [refresh])
 
     const handleDetele = (id) => {
 
         dispatch(deleteCartItem(id))
         // window.location.reload()
-
-
     }
-
-
     return (
         <>
 
@@ -67,7 +55,7 @@ const Cart = () => {
                             <div role="presentation"  >
                                 <Breadcrumbs aria-label="breadcrumb">
                                     <Link
-                                    onClick={()=>navigate("/")}
+                                        onClick={() => navigate("/")}
                                         underline="hover"
                                         sx={{ display: 'flex', alignItems: 'center' }}
                                         color="inherit"
@@ -104,15 +92,20 @@ const Cart = () => {
 
                                         {
                                             cart?.items?.length > 0 ?
-
                                                 cart.items.map((item, index) => {
                                                     return (
                                                         <li className="table-row" key={index}>
 
                                                             <div className="col col-1" >{index + 1}</div>
-                                                            <div className="col col-2" ><iframe src={item.imgUrl} width="50px" height="50px" style={{ alignSelf: 'flex-start' }} /><p>{item.productName}</p></div>
+                                                            <div className="col col-2" >
+                                                                {
+                                                                    item.imgUrl.startsWith('http://res.cloudinary.com') ?
+                                                                        <img src={item.imgUrl} width="50px" height="50px"  ></img> :
+                                                                        <iframe src={item.imgUrl} width="50px" height="50px"></iframe>
+                                                                }
+                                                                <p>{item.productName}</p></div>
                                                             <div className="col col-3" >{item.price}</div>
-                                                            <div className="col col-4" ><AiFillPlusCircle onClick={() => handleInc(item.productId)} style={{ cursor: 'pointer' }} />{item.quantity}<AiFillMinusCircle style={{ cursor: 'pointer' }} onClick={() => handleDec(item.productId)} /></div>
+                                                            <div className="col col-4" ><AiFillMinusCircle style={{ cursor: 'pointer' }} onClick={() => handleDec(item.productId)} />{item.quantity}<AiFillPlusCircle onClick={() => handleInc(item.productId)} style={{ cursor: 'pointer' }} /></div>
                                                             <div className="col col-5" >{item.quantity * item.price}</div>
                                                             <div className="col col-6 deletecustomer" onClick={() => handleDetele(item._id)}  ><AiFillDelete /></div>
                                                         </li>
@@ -129,11 +122,14 @@ const Cart = () => {
                                         }
                                         {
                                             cart ? <li className='table-header' style={{ display: 'flex', width: "100%", flexWrap: 'wrap' }}>
-                                                <div className="col" style={{ textAlign: 'center' }}>Subtotal</div>
-                                                <div className="col">₹ {cart.totalPrice}</div>
-                                                <div className="col">
+                                                <div className="col" style={{ display:'flex',justifyContent:'space-around' }}>Subtotal
+                                                    <span> ₹ {cart.totalPrice}</span>
+                                                </div>
+                                                {/* <div className="col"></div> */}
+                                                <div className="col" style={{display:'flex',justifyContent:'center'}}>
 
-                                                    <Button color="primary" variant="contained" className='orderBtn' onClick={() => cart?.items?.length > 0 ? navigate("/order/checkout") : navigate("/stones")}>Check Out</Button>
+                                                    <Button color="inherit" variant="outlined" className='orderBtn' sx={{ mr: 2 }} onClick={() => navigate("/stones")}>Buy more</Button>
+                                                    <Button color="inherit" style={{ color: 'black' }} variant="contained" className='orderBtn' onClick={() => cart?.items?.length > 0 ? navigate("/order/checkout") : navigate("/stones")}>Check Out</Button>
 
                                                 </div>
                                             </li> : ""

@@ -24,7 +24,6 @@ const DeliveryAddress = () => {
 
     useEffect(() => {
         if (user) {
-console.log(user)
             setAddressData({
                 firstname: user?.address[0]?.fname || "",
                 lastname: user?.address[0]?.lname || "",

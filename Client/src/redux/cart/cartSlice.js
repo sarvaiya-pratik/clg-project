@@ -31,11 +31,11 @@ const cartSlice = createSlice({
             });
 
 
-            builder.addCase(addCartToUser.pending, (state) => {
-                state.loading = true
-                state.error = null
-                // state.cart = null
-            })
+        builder.addCase(addCartToUser.pending, (state) => {
+            state.loading = true
+            state.error = null
+            // state.cart = null
+        })
             .addCase(addCartToUser.fulfilled, (state, action) => {
                 state.loading = false
                 state.error = null
@@ -46,18 +46,16 @@ const cartSlice = createSlice({
                 state.error = action.error.message
             });
 
-            builder.addCase(deleteCartItem.pending,  (state, action) => {
-                state.loading = true
-               
-                console.log("Pending runn")
-            })
-            .addCase(deleteCartItem.fulfilled,  (state, action) => {
+        builder.addCase(deleteCartItem.pending, (state, action) => {
+            state.loading = true
+
+        })
+            .addCase(deleteCartItem.fulfilled, (state, action) => {
                 state.loading = false
                 state.cart = action.payload.cart
-                console.log("action",action.payload.cart)
-                state.error=null
+                state.error = null
             })
-            .addCase(deleteCartItem.rejected,  (state, action) => {
+            .addCase(deleteCartItem.rejected, (state, action) => {
                 state.loading = false
                 state.error = action.error.message
             })

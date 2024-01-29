@@ -97,9 +97,10 @@ const Payment = () => {
                                     <div className="product-container">
                                         <iframe src={item.imgUrl} frameborder="0"></iframe>
                                         <div className="inner-container">
-                                            <h5 style={{ marginBottom: '1.3rem' }}>{item.productName}</h5>
-                                            <p>carat :<span> {item.carat} </span> </p>
-                                            <p>price : <span style={{ color: 'green' }}>₹ {item.price}</span> </p>
+                                            <h5 style={{ marginBottom: '1rem' }}>{item.productName}</h5>
+                                            <p>Qty :<span> {item.quantity} </span> </p>
+                                            <p>Carat :<span> {item.carat} </span> </p>
+                                            <p>Price : <span style={{ color: 'green' }}>₹ {item.price}</span> </p>
                                         </div>
                                     </div>
                                 )
@@ -132,10 +133,14 @@ const Payment = () => {
                                 <p>₹ {cart?.totalPrice}</p>
                             </li>
                             <li>
-                                <p>Deliver charge</p>
-                                <p style={{ color: 'green' }}>FREE</p>
+                                <p>Discount</p>
+                                <p style={{ color: 'green' }}>0</p>
                             </li>
                             <li>
+                                <p>Delivery Charges</p>
+                                <p style={{ color: 'green' }}>FREE</p>
+                            </li>
+                            <li className='total-amount'>
                                 <h5>Total Amount</h5>
                                 <p> ₹ {cart?.totalPrice}</p>
                             </li>

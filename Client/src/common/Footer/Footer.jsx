@@ -37,7 +37,7 @@ const Footer = () => {
       <div className="wave-container">
         <div id="footer">
           <div className="address">
-            <h2 className='heading'>MRP DIAMONDS</h2>
+            <h2 className='heading' style={{ fontWeight: '500' }}>MRP DIAMONDS</h2>
             <div className="box">
               <GrLocation />
               <p>NEAR GIRDHAR CIRCLE NEAR VED VESU SURAT - 395678</p>
@@ -57,19 +57,18 @@ const Footer = () => {
           </div>
 
           <div className="social">
-            <h2 className='heading'>FOLLOW US !</h2>
+            <h2 className='heading' style={{ fontWeight: '500' }}>FOLLOW US !</h2>
             <div className="up">
               {/* <a href="https://www.facebook.com/pratik.saravaiya?mibextid=ZbWKwL" target='_blank'> */}
-                <button className="card1" onClick={()=>navigate("/admin")}>
-                  <FaFacebook className='facebook' style={{ color: " #3b5998" }} />
-                </button>
+              <button className="card1" onClick={() => navigate("/admin")}>
+                <FaFacebook className='facebook' style={{ color: " #3b5998" }} />
+              </button>
               {/* </a> */}
               <a href="https://pratik-sarvaiya.vercel.app/" target='_blank'>
                 <button className="card2">
                   <FaTwitter className='twitter' style={{ color: '#00acee' }} />
                 </button>
               </a>
-
 
             </div>
             <div className="down">
@@ -90,7 +89,7 @@ const Footer = () => {
           </div>
           <div className="feedback">
 
-            <h2 className='heading'>FEEDBACK !</h2>
+            <h2 className='heading' style={{ fontWeight: '500' }}>FEEDBACK !</h2>
             <div className="subscribe">
               <p className=''>Write here...</p>
               <input placeholder="Give your feedback !" className="subscribe-input" name="feedback" type="text" onChange={(e) => setFeedback({ ...feedback, [e.target.name]: e.target.value })} />

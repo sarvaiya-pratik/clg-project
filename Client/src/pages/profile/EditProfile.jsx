@@ -22,33 +22,22 @@ const EditProfile = () => {
     const dispatch = useDispatch();
 
 
-    const fullname = user ? user.name.split(" ") : [" ", " "];
-    const fname = fullname[0];
-    const lname = fullname[1];
-
     const [profiledata, setProfileData] = useState({
-        firstName: user && fname,
-        lastName: user && lname,
-        mobileNo: user && user.phone,
+        name: user && user.name,
+        phone: user && user.phone,
         email: user && user.email,
         gender: user && user.gender,
         dob: user ? dayjs(user.dob) : null, // Convert to Dayjs
     })
-    // useEffect(() => {
-    //     dispatch(getusercurrent())
-    //     console.log(profiledata)
-    // }, [dispatch])
+
 
     useEffect(() => {
         if (user) {
-            const fullname = user.name.split(' ');
-            const fname = fullname[0];
-            const lname = fullname[1];
+          
 
             setProfileData({
-                firstName: fname || '',
-                lastName: lname || '',
-                mobileNo: user.phone || '',
+                name: user.name || '',
+                phone: user.phone || '',
                 email: user.email || '',
                 gender: user.gender || '',
                 dob: user.dob ? dayjs(user.dob) : null,
@@ -89,32 +78,24 @@ const EditProfile = () => {
         <>
             {
                 loading ? <Loader /> :
-
                     <div className="right-side">
                         <div className="heading-edit-profile">Edit Profile Details</div>
                         <form action="" onSubmit={handleSubmit}>
+                           
                             <TextField
                                 id="outlined-basic"
-                                label="First Name"
+                                label="Full Name"
                                 variant="standard"
-                                name="firstName"
-                                value={profiledata.firstName}
-                                onChange={handleChange}
-                            />
-                            <TextField
-                                id="outlined-basic"
-                                label="Last Name"
-                                variant="standard"
-                                name="lastName"
-                                value={profiledata.lastName}
+                                name="name"
+                                value={profiledata.name}
                                 onChange={handleChange}
                             />
                             <TextField
                                 id="outlined-basic"
                                 label="Mobile Number"
                                 variant="standard"
-                                name="mobileNo"
-                                value={profiledata.mobileNo}
+                                name="phone"
+                                value={profiledata.phone}
                                 onChange={handleChange}
                             />
                             <TextField
