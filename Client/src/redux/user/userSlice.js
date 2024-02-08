@@ -42,9 +42,10 @@ const userSlice = createSlice({
          state.error=null
      })
      .addCase(getusercurrent.rejected,(state,action)=>{
+console.log("rejected",action.error.message)
 
          state.loading = false
-         state.err=action.error.message
+         state.error=action.error.message
          state.users=null
      })
     .addCase(updateuser.pending,(state,action)=>{

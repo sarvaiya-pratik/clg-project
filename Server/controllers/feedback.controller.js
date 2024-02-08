@@ -40,8 +40,8 @@ export const reviewProduct = async (req, res) => {
             return res.status(200).json({ succes: true, review: review })
         }
     } catch (error) {
-        console.log(error)
-        res.status(500).json({ success: false })
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 
@@ -52,8 +52,8 @@ export const getFeedback = async (req, res) => {
         return res.status(200).json({ succes: true, feedback })
 
     } catch (error) {
-        console.log(error.message)
-        return res.status(500).json({ succes: false, error: error.message })
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 
@@ -69,8 +69,8 @@ export const deleteFeedback = async (req, res) => {
     })
 
     } catch (error) {
-        console.log(error.message)
-        return res.status(500).json({ succes: false, error: error.message })
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 
 }

@@ -5,11 +5,7 @@ const futureDate = new Date(currentDate);
 futureDate.setDate(currentDate.getDate() + 3);
 
 const orderSchema = new mongoose.Schema({
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'users',
-        required: true
-    },
+    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'users', required: true},
 
     orderItems: [{
         type: mongoose.Schema.Types.ObjectId,

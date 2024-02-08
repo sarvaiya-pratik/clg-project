@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import "./style.css"
 import topbg from "./bg/video-diamond.mp4"
 import { FaHandHoldingHeart, FaHandHoldingMedical, FaHandHoldingWater, FaHandHoldingUsd } from "react-icons/fa"
@@ -8,9 +8,20 @@ import About from '../about/About'
 import Service from '../service/Service'
 import Header from "../../common/Header/Header"
 import Footer from "../../common/Footer/Footer"
+import LocomotiveScroll from 'locomotive-scroll'
 
 
 const Home = () => {
+
+  const scrollRef = useRef(null)
+
+  // useEffect(()=>{
+  //   const scroll = new LocomotiveScroll({
+  //     el:scrollRef.current,
+  //     smooth:true,
+  //   })
+  // })
+
 
   const mypara = "MRP Diamonds is a prominent online diamond company specializing in the sale of exquisite diamonds. Our collection boasts a diverse array of diamond shapes, catering to varied preferences. To enhance your shopping experience, we offer 360-degree images that enable you to effortlessly examine our diamonds from every angle. We pride ourselves on providing flexible payment options, encompassing both secure online transactions and the convenience of cash on delivery. Our website's core focus revolves around facilitating seamless online transactions for uncut diamonds. "
   const words = mypara.split("");
@@ -34,8 +45,8 @@ const Home = () => {
   }
   return (
     <>
-      
-      <div id="home">
+
+      <div id="home" ref={scrollRef} className='scroll-container'>
         {/* backgroud with title   */}
         <div className="top-bg">
           <video type="video/mp4" muted autoPlay loop ><source src={topbg}></source></video>
@@ -96,7 +107,7 @@ const Home = () => {
       </div>
       <About />
       <Service />
-      
+
     </>
   )
 }

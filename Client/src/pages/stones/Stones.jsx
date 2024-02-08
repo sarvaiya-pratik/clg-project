@@ -13,7 +13,7 @@ import axios from 'axios'
 const Stones = () => {
   const [search, setSearch] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
-  const [value, setValue] = React.useState([0, 1000])
+  const [value, setValue] = React.useState([])
 
   const [checkedItems, setCheckedItems] = useState({
     all: true,
@@ -33,7 +33,6 @@ const Stones = () => {
   const user = useSelector((state) => state.user.users)
   const [listCategory, setListCategory] = useState([]);
   const [data, setData] = useState(product)
-
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -89,16 +88,15 @@ const Stones = () => {
     const selectedCategories = Object.keys(checkedItems).filter((key) => checkedItems[key]);
 
     if (selectedCategories.length === 0) {
-      // If no category is selected, show all products
+    //  if no product shapes selected then show all the products
       setData(product);
     }
     else if (selectedCategories[0] == "all") {
       setData(product)
     }
     else {
-      // If one or more categories are selected, filter products based on selected categories
+  //  if any category selected then show selected products
       const filteredProducts = product.filter((item) => selectedCategories.includes(item?.shape?.category));
-      console.log(selectedCategories)
       setData(filteredProducts);
     }
   }, [checkedItems, product]);

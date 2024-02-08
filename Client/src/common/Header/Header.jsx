@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import "./style.css"
-import { Link } from "react-scroll"
-import { NavLink, useNavigate } from "react-router-dom"
+import { Link, scroller } from "react-scroll"
+import { useLocation, useNavigate } from "react-router-dom"
+import { Link as NavLink } from 'react-router-dom'
 import axios from 'axios'
 import logo from "./mrps.png"
 import toast from 'react-hot-toast'
@@ -22,6 +23,34 @@ import { getUserCart } from '../../redux/cart/cartApi'
 import { IoBagHandleOutline } from "react-icons/io5";
 
 const Header = () => {
+    const location = useLocation()
+
+    const isHomePage = location.pathname === '/';
+    useEffect(() => {
+
+        const searchParams = new URLSearchParams(location.search);
+
+        const from = searchParams.get('from');
+        const section = searchParams.get('section');
+
+
+        if (from != "home") {
+            scroller.scrollTo(section, {
+                duration: 400,
+                delay: 0,
+                smooth: 'easeInOutQuart'
+
+            });
+        }
+        scroller.scrollTo("home", {
+            duration: 400,
+            delay: 0,
+            smooth: 'easeInOutQuart'
+        })
+    }, [location]);
+
+
+
     const [menu, setMenu] = useState(false)
     const [position, setPosition] = useState(window.scrollY)
     const [visible, setVisible] = useState(false)
@@ -48,7 +77,7 @@ const Header = () => {
         dispatch(getusercurrent())
         dispatch(getUserCart())
 
-    }, [dispatch])
+    }, [])
 
     useEffect(() => {
         const handleScroll = () => {
@@ -100,18 +129,36 @@ const Header = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <Link to='about'>
+                        {
+                            isHomePage ?
+                                <Link to='about'>
+                                    <span className="btn-txt">About</span>
+                                </Link>
 
-                            <span className="btn-txt">About</span>
+                                :
 
-                        </Link>
+                                <NavLink to="/?from=stones&section=about" >
+                                    <span className="btn-txt">About</span>
+                                </NavLink>
+
+                        }
                     </li>
+
                     <li>
-                        <Link to='service'>
+                        {
+                            isHomePage ?
 
-                            <span className="btn-txt">Services</span>
+                                <Link to='service'>
 
-                        </Link>
+                                    <span className="btn-txt">Services</span>
+
+                                </Link>
+
+                                :
+                                <NavLink to="/?from=stones&section=service" >
+                                    <span className="btn-txt">Services</span>
+                                </NavLink>
+                        }
                     </li>
                     <li>
 

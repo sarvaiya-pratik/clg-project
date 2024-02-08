@@ -23,17 +23,19 @@ export const getUserById = createAsyncThunk('users/by-ID', async (id) => {
 })
 
 export const getusercurrent = createAsyncThunk('/users/currentuser', async () => {
+    console.log("run current")
     try {
         const response = await axios.get('/users/currentuser', { withCredentials: true })
+   console.log(response)
         if (response.status === 200) {
+           
             return response.data
-        } else {
-
-            throw response.data.error
-        }
+        } 
 
     } catch (error) {
-        throw error
+        console.log("Errorrrr",error)
+        throw  error.response.data.error
+
     }
 })
 

@@ -30,6 +30,20 @@
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
   /* font-family: 'Cabin', sans-serif !important; */
+  scroll-snap-type: proximity;
+}
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* color of the track */
+}
+::-webkit-scrollbar-thumb {
+  background: #888; /* color of the scrollbar handle */
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* color of the scrollbar handle on hover */
 }
 
 .bg-dark {

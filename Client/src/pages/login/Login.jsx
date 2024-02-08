@@ -10,6 +10,7 @@ import { createUser, loginUser, loginWithGoogle } from '../../redux/auth/authApi
 import { TextField } from '@mui/material'
 import { getusercurrent } from '../../redux/user/userApi'
 
+
 const Login = () => {
 
   const [loginData, setLoginData] = useState({})
@@ -19,7 +20,7 @@ const Login = () => {
 
   const error = useSelector((state) => state.auth.err)
   const user = useSelector((state) => state.auth.users)
-
+  const currentUserError = useSelector((state)=>state.user.error)
   const dispatch = useDispatch()
 
   const navigate = useNavigate()
@@ -37,7 +38,9 @@ const Login = () => {
   function handleLoginSubmit(e) {
     e.preventDefault()
     dispatch(loginUser(loginData))
+    dispatch(getusercurrent())
 
+ 
     // setTimeout(() => {
     //   window.location.reload()
 
@@ -46,17 +49,18 @@ const Login = () => {
   }
 
   useEffect(() => {
-    if (user && action == "Login") {
+    if (user && action == "Login" && !error && currentUserError ) {
       toast.success("Login successfully !")
       navigate("/")
 
       dispatch(getusercurrent())
     }
+   
   }, [user])
   useEffect(() => {
 
     if (user && action == "Sign Up") {
-      toast.success("Login successfully !")
+      toast.success("Register successfully !")
       navigate("/")
       dispatch(getusercurrent())
     }
@@ -110,6 +114,7 @@ const Login = () => {
 
               <p style={{ color: '#D8000C', backgroundColor: ' #FFBABA', width: '60%', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '10px' }}>
                 {error && <><BiError size={20} /> {error}</>}
+                {/* {currentUserError && <><BiError size={20} /> {currentUserError}</>} */}
 
 
               </p>

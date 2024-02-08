@@ -20,10 +20,11 @@ const RelatedStones = () => {
     useEffect(() => {
         axios.get('/products', { withCredentials: true })
             .then((r) => {
-                const temp = r.data.products.filter((e)=>e.shape.category == product.shape.category)
+                const temp = r.data.products.filter((e)=>e.shape?.category == product.shape?.category)
                 const related = temp.filter((e)=>e._id !== product._id)
                 setRelatedProduct(related)
             })
+            console.log("RP",realtedProduct)
     })
     useEffect(() => {
        

@@ -60,7 +60,7 @@ export const createOrder = async (req, res) => {
         res.status(200).json({ success: true, redirectUrl: `http://localhost:5173/payment/paymentsuccess?reference=${response.id}` })
 
     } catch (error) {
-        console.log(error)
+        console.error('Error:', error);
         res.status(500).json({ success: false, message: error.message })
     }
 };
@@ -81,7 +81,7 @@ export const checkout = async (req, res) => {
         res.status(200).json({ success: true, order: response });
 
     } catch (error) {
-        console.log(error)
+        console.error('Error:', error);
         res.status(500).json({ success: false, message: error.message })
     }
 };
@@ -159,7 +159,7 @@ export const paymentVarification = async (req, res) => {
         }
 
     } catch (error) {
-        console.log(error)
+        console.error('Error:', error);
         res.status(500).json({ success: false, message: error.message })
     }
 
@@ -174,7 +174,7 @@ export const getUserOrderData = async (req, res) => {
 
         res.status(200).json({ success: true, order })
     } catch (error) {
-        console.log(error)
+        console.error('Error:', error);
         res.status(500).json({ success: false, message: error.message })
     }
 }
@@ -183,7 +183,7 @@ export const getOrderData = async (req, res) => {
         const order = await Order.find().populate('orderItems').populate('userId').populate("shippingAddress")
         res.status(200).json({ success: true, order })
     } catch (error) {
-        console.log(error)
+        console.error('Error:', error);
         res.status(500).json({ success: false, message: error.message })
     }
 }
@@ -193,7 +193,7 @@ export const getOrderById = async (req, res) => {
         const order = await Order.findById(id).populate('shippingAddress').populate('orderItems').populate('userId')
         res.status(200).json({ success: true, order })
     } catch (error) {
-        console.log(error)
+        console.error('Error:', error);
         res.status(500).json({ success: false, message: error.message })
     }
 }
@@ -209,7 +209,7 @@ export const updateOrderStatus = async (req, res) => {
         const order = await Order.findById(id).populate('shippingAddress').populate('orderItems').populate('userId')
         res.status(200).json({ success: true, message: "Update succesfully", order })
     } catch (error) {
-        console.log(error)
+        console.error('Error:', error);
         res.status(500).json({ success: false, message: error.message })
     }
 
@@ -226,7 +226,7 @@ export const deleteOrder = async (req, res) => {
         res.status(200).json({ success: true, message: "Deleted succesfully", order })
 
     } catch (error) {
-        console.log(error)
+        console.error('Error:', error);
         res.status(500).json({ success: false, message: error.message })
     }
 }

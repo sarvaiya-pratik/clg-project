@@ -8,7 +8,7 @@ import passport from 'passport'
 import cookieParser from 'cookie-parser'
 const app = express()
 app.use(cookieParser())
-r
+
 import Razorpay from 'razorpay'
 
 import userRouter from './routers/user.route.js'

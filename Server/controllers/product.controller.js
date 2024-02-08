@@ -13,18 +13,18 @@ const addProduct = async (req, res) => {
 
             const existproduct = await Product.findOne({ title })
             if (existproduct) {
-                return res.status(400).json({ error: "Product name alredy exist" })
+                return res.status(400).json({success:false, message: "Product name alredy exist" })
             }
 
 
             if (!req.file) {
-                return res.status(400).json({ error: "Image must be sent" })
+                return res.status(400).json({success:false, message: "Image must be sent" })
             }
 
             const response = await uploadFile(req.file.path)
 
             if (!response) {
-                return res.status(400).json({ error: "Error in cloudanary" })
+                return res.status(400).json({success:true, message: "Error in cloudanary" })
             }
 
             const newproduct = new Product({ title, catagory, imgUrl: response.url, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, table, depth, ratio, crownangle, crownheight, quantity })
@@ -33,15 +33,14 @@ const addProduct = async (req, res) => {
                 success: true,
                 message: "Added succesfully"
             })
-
         }
         else {
-            return res.status(400).json({ error: "All fields are required " })
+            return res.status(400).json({ success: false, message: "All fields are required" })
         }
 
     } catch (error) {
-        console.log(error.message)
-        return res.status(500).send(error.message)
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
 
     }
 }
@@ -57,8 +56,8 @@ const getProductById = async (req, res) => {
         })
 
     } catch (error) {
-        console.log(error)
-        return res.status(500).send(error.message)
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 
 }
@@ -66,15 +65,15 @@ const getAllProduct = async (req, res) => {
 
     try {
         const products = await Product.find().populate("shape")
-
+        // const products = await Product.find()
         return res.status(200).json({
             success: true,
             products
         })
 
     } catch (error) {
-        console.log("EROROR", error)
-        return res.status(500).send(error.message)
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 
@@ -94,11 +93,12 @@ const deleteProduct = async (req, res) => {
 
         }
         else {
-            res.status(400).json({ error: "Product not exist" })
+            res.status(400).json({ success: true, message: "Product not exist" })
         }
 
     } catch (error) {
-        return res.status(500).send(error.message)
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 
@@ -117,12 +117,13 @@ const updateProductById = async (req, res) => {
 
         }
         else {
-            res.status(400).json({ error: "Product not exist" })
+            res.status(400).json({ success: false, message: "Product not exist" })
         }
 
 
     } catch (error) {
-        return res.status(500).send(error.message)
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 
@@ -135,7 +136,8 @@ const exportData = async (req, res) => {
         return res.status(200).json({ message: "OK", product })
 
     } catch (error) {
-        console.log(error)
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 
 }
@@ -150,8 +152,8 @@ const createCategory = async (req, res) => {
         return res.status(200).json({ success: false, category: allcategory })
 
     } catch (error) {
-        console.log(error.message)
-        return res.status(500).send(error.message)
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 
@@ -160,8 +162,8 @@ const getCategory = async (req, res) => {
         const category = await Category.find()
         return res.status(200).json({ success: true, category })
     } catch (error) {
-        console.log("ERROR", error.message)
-        return res.status(500).send(error.message)
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 
@@ -177,8 +179,8 @@ const updateCategory = async (req, res) => {
         return res.status(200).json({ success: true, category })
 
     } catch (error) {
-        console.log("ERROR", error.message)
-        return res.status(500).send(error.message)
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 
@@ -193,8 +195,8 @@ const deleteCategory = async (req, res) => {
         return res.status(200).json({ success: true, category })
 
     } catch (error) {
-        console.log("ERROR", error.message)
-        return res.status(500).send(error.message)
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 

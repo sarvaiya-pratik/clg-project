@@ -10,7 +10,6 @@ const GetOtp = () => {
   const [ForgateData, setForgateData] = useState({})
   const [loading, setLoading] = useState(false)
 
-
   const navigate = useNavigate();
   function handleLoginSubmit(e) {
     e.preventDefault()

@@ -4,88 +4,82 @@ import Product from "../models/product.model.js"
 import Cart from "../models/cart.model.js";
 import CartItem from "../models/cartItem.model.js";
 import { ApiError } from "../utils/ApiError.js";
-
 const addToCart = async (req, res) => {
-
     const { productId, quantity } = req.body;
-    // quantity = quantity || 1
-    const userId = req.user._id
+    const userId = req.user._id;
 
     try {
-
         if (!(userId && productId)) {
-            // return res.status(400).json({ error: "all fields are required" })
-            throw new ApiError(400, "All fields are required")
+            // throw new ApiError(400, "All fields are required");
+            return res.status(400).json({success:false,message:"All fields are required"})
         }
 
-        const cart = await Cart.findOne({ userId }).populate('items')
-        const cartitem = await CartItem.findOne({ userId, productId })
-        const product = await Product.findById(productId)
+        let cart = await Cart.findOne({ userId }).populate('items');
+        let cartItem = await CartItem.findOne({ userId, productId });
+        const product = await Product.findById(productId);
 
-        if (!cartitem) {
-            const newCartItem = new CartItem({ cart: cart._id, productId, quantity, price: product.price, userId, productName: product.title, imgUrl: product.imgUrl, carat: product.carat })
-            await newCartItem.save()
-
-            cart.items.push(newCartItem)
+        if (!cartItem) {
+            const newCartItem = new CartItem({
+                cart: cart._id,
+                productId,
+                quantity,
+                price: product.price,
+                userId,
+                productName: product.title,
+                imgUrl: product.imgUrl,
+                carat: product.carat
+            });
+            await newCartItem.save();
+            cart.items.push(newCartItem);
+        } else {
+            cartItem.quantity += quantity;
+            await cartItem.save();
         }
-        else {
 
-            cartitem.quantity += quantity
-            await cartitem.save()
-            await cart.save()
-        }
+        await cart.save();
 
-        await cart.save()
+        cart = await Cart.findOne({ userId }).populate('items'); // Refresh cart
 
-        const newcartitem = await CartItem.findOne({ userId, productId })
+        const newCartItem = await CartItem.findOne({ userId, productId });
 
-        if (newcartitem.quantity == 0) {
-            await CartItem.deleteOne({ _id: cartitem._id })
+        if (newCartItem.quantity == 0) {
+            await CartItem.deleteOne({ _id: newCartItem._id });
 
-            let latestcart = await Cart.findOne({ userId }).populate('items')
-            latestcart.totalItem = latestcart.totalItem - 1
-            let totalPrice = 0
-            // latestcart.totalPrice = 
-            for (let cartitems of latestcart.items) {
-                totalPrice += cartitems.price * cartitems.quantity
+            // Remove the deleted cartItem from the cart
+            cart.items = cart.items.filter(item => item._id.toString() !== newCartItem._id.toString());
+
+            // Recalculate totals
+            cart.totalItem = cart.items.length;
+            let totalPrice = 0;
+            for (let cartItem of cart.items) {
+                totalPrice += cartItem.price * cartItem.quantity;
             }
-            latestcart.totalPrice = totalPrice
+            cart.totalPrice = totalPrice;
+            await cart.save();
 
-            await latestcart.save()
-
-            return res.status(200).json({ success: true, message: "product added to cart succesfully", cart: latestcart })
-
-        }
-        else {
-            const newcart = await Cart.findOne({ userId }).populate('items')
-
-            let totalPrice = 0
-            let totalItem = 0
-
-            for (let cartitems of newcart.items) {
-                totalPrice += cartitems.price * cartitems.quantity
-                totalItem += cartitems.quantity
-            }
-
-            newcart.totalItem = totalItem
-            newcart.totalPrice = totalPrice
-
-            await newcart.save()
-
-
-
-            return res.status(200).json({ success: true, message: "product added to cart succesfully", cart: newcart })
+            return res.status(200).json({ success: true, message: "Product removed from cart successfully", cart });
         }
 
+        // Update totals if necessary
+        let totalPrice = 0;
+        let totalItem = 0;
+        for (let cartItem of cart.items) {
+            totalPrice += cartItem.price * cartItem.quantity;
+            totalItem += cartItem.quantity;
+        }
+        cart.totalItem = totalItem;
+        cart.totalPrice = totalPrice;
+        await cart.save();
+
+        return res.status(200).json({ success: true, message: "Product added to cart successfully", cart });
 
     } catch (error) {
-        if (error instanceof ApiError) {
-            return res.status(error.statusCode).send(error.message);
-        } else {
-            return res.status(500).send('Internal Server Error');
-        }
+      
+        res.status(500).json({ success: false, message: error.message })
     }
 }
+
+
 // get cart by userId
 
 
@@ -95,8 +89,8 @@ const findUserCart = async (req, res) => {
         const cart = await Cart.findOne({ userId: req.user._id }).populate('items')
 
         if (!cart) {
-            // return res.status(400).json({ error: "Cart not found" })
-            throw new ApiError(400, "Cart not found")
+            return res.status(400).json({ success:false,message: "Cart not found" })
+           
         }
 
         let totalPrice = 0
@@ -114,11 +108,9 @@ const findUserCart = async (req, res) => {
         return res.status(200).json({ success: true, cart })
 
     } catch (error) {
-        if (error instanceof ApiError) {
-            return res.status(error.statusCode).send(error.message);
-        } else {
-            return res.status(500).send('Internal Server Error');
-        }
+      
+        res.status(500).json({ success: false, message: error.message })
+        
     }
 
 }
@@ -128,32 +120,32 @@ const deleteCartItem = async (req, res) => {
     const uid = req.user._id
 
     try {
-
-        await CartItem.findByIdAndDelete(id)
-
         const cart = await Cart.findOne({ userId: req.user._id }).populate('items')
+        cart.items =  cart.items.filter((e)=>e._id.toString() !== id.toString())
+        
+        await CartItem.findByIdAndDelete(id)
+        cart.items = cart.items.filter(item => item._id.toString() !== id);
+        
 
         let totalPrice = 0
         let totalItem = 0
 
+
         for (let cartitems of cart.items) {
             totalPrice += cartitems.price * cartitems.quantity
             totalItem += cartitems.quantity
+            console.log(cartitems._id.toString())
         }
 
         cart.totalItem = totalItem
         cart.totalPrice = totalPrice
 
         await cart.save()
-
         return res.status(200).json({ success: true, message: "Deleted succesfully !", cart })
 
     } catch (error) {
-        if (error instanceof ApiError) {
-            return res.status(error.statusCode).send(error.message);
-        } else {
-            return res.status(500).send('Internal Server Error');
-        }
+        console.log("ERROR", error.message)
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 

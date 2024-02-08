@@ -13,11 +13,14 @@ const getAllUser = async (req, res) => {
         })
 
     } catch (error) {
-        return res.status(500).send(error)
+
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 
 const getCurrentUser = async (req, res) => {
+    console.log("run get currrent ")
     try {
 
         if (req.user) {
@@ -25,35 +28,39 @@ const getCurrentUser = async (req, res) => {
             return res.status(200).json({ user: user, success: true })
         }
 
-        res.status(404).send('User not found')
-
+        return res.status(404).json({success:false,message:"User not found !"})
 
     } catch (error) {
-        console.log(error)
-        return res.status(500).send(error.message)
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 
-const updateUser = async (req, res) => {
-    const { name, phone, gender, dob, isAdmin, } = req.body
-    const userId = req.params.uid
 
+const updateUser = async (req, res) => {
     try {
-        const user = await User.findByIdAndUpdate(userId, { name, phone, dob, gender, dob, isAdmin })
+        const { name, phone, gender, dob, isAdmin, } = req.body
+        const userId = req.params.uid
+
+        if (!userId) {
+            return res.status(404).json({success:false,message:"UserId not found !"})
+        }
+
+        const user = await User.findByIdAndUpdate(userId, { name, phone, dob, gender, dob, isAdmin }, { new: true })
         await user.save()
         res.status(200).json({ success: true, message: "Updated succesfully", user })
 
     } catch (error) {
-        console.log(error)
-        return res.status(500).send(error.message)
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 
 }
 
 const updateAdress = async (req, res) => {
-    const { firstname, lastname, street, city, pincode, state } = req.body
-    const userId = req.params.uid
     try {
+        const { firstname, lastname, street, city, pincode, state } = req.body
+        const userId = req.params.uid
 
         const user = await User.findById(userId).populate('address')
         // console.log("user", user)
@@ -64,22 +71,24 @@ const updateAdress = async (req, res) => {
 
             const existingAddress = await Address.findById(existingAddressId)
 
-            if (existingAddress) {
-                // Update the existing address
-                existingAddress.fname = firstname
-                existingAddress.lname = lastname
-                existingAddress.streetAddress = street
-                existingAddress.city = city
-                existingAddress.pincode = pincode
-                existingAddress.state = state
-                await existingAddress.save();
 
-                res.status(200).json({ success: true, message: "Address updated", user })
 
+            if (!existingAddress) {
+                res.status(404).json({ success: false, message: "Address Not found" })
             }
+            await Address.findByIdAndUpdate(existingAddress._id, { fname: firstname, lname: lastname, streetAddress: street, city, pincode, state }, { new: true })
+            // Update the existing address
+            // existingAddress.fname = firstname
+            // existingAddress.lname = lastname
+            // existingAddress.streetAddress = street
+            // existingAddress.city = city
+            // existingAddress.pincode = pincode
+            // existingAddress.state = state
+            // await existingAddress.save();
+
+            res.status(200).json({ success: true, message: "Address updated", user })
 
 
-            res.status(404).json({ success: false, message: "Not found" })
 
 
         }
@@ -110,6 +119,7 @@ const updateAdress = async (req, res) => {
 
     } catch (error) {
         console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 
@@ -126,7 +136,7 @@ const getUserById = async (req, res) => {
         return res.status(404).json({ success: false, message: "User not found" });
     } catch (error) {
         console.error('Error:', error);
-        return res.status(500).json({ success: false, message: "Internal Server Error" });
+        res.status(500).json({ success: false, message: error.message })
     }
 };
 const deleteUser = async (req, res) => {
@@ -136,12 +146,12 @@ const deleteUser = async (req, res) => {
     try {
 
         await User.findByIdAndDelete(userId)
-
         const user = await User.find().populate("address")
 
         res.status(200).json({ success: true, message: "Deleted Succesfully", user })
     } catch (error) {
         console.error('Error:', error);
+        res.status(500).json({ success: false, message: error.message })
     }
 
 }
