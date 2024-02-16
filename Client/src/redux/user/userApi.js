@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-
 export const getalluser = createAsyncThunk('users/all', async () => {
     try {
         const res = await axios.get('/users', { withCredentials: true })

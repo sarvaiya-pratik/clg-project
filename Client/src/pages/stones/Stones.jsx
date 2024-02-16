@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import "./style.css"
 import { BsCartPlus } from "react-icons/bs"
 import { NavLink, useNavigate } from "react-router-dom"
@@ -13,7 +13,7 @@ import axios from 'axios'
 const Stones = () => {
   const [search, setSearch] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
-  const [value, setValue] = React.useState([])
+  const [filterValue, setFilterValue] = React.useState([0, 10000])
 
   const [checkedItems, setCheckedItems] = useState({
     all: true,
@@ -33,12 +33,12 @@ const Stones = () => {
   const user = useSelector((state) => state.user.users)
   const [listCategory, setListCategory] = useState([]);
   const [data, setData] = useState(product)
-
+  const [handleRangePriceCalled, setHandleRangePriceCalled] = useState(false);
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  useEffect(() => {
 
+  useEffect(() => {
     axios.get('/products/category/all').then((r) => {
       setListCategory(r.data?.category);
 
@@ -80,7 +80,6 @@ const Stones = () => {
       updatedCheckedItems.all = false
     }
 
-
     setCheckedItems(updatedCheckedItems);
   };
 
@@ -88,14 +87,14 @@ const Stones = () => {
     const selectedCategories = Object.keys(checkedItems).filter((key) => checkedItems[key]);
 
     if (selectedCategories.length === 0) {
-    //  if no product shapes selected then show all the products
+      //  if no product shapes selected then show all the products
       setData(product);
     }
     else if (selectedCategories[0] == "all") {
       setData(product)
     }
     else {
-  //  if any category selected then show selected products
+      //  if any category selected then show selected products
       const filteredProducts = product.filter((item) => selectedCategories.includes(item?.shape?.category));
       setData(filteredProducts);
     }
@@ -111,13 +110,20 @@ const Stones = () => {
   }, [product])
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setFilterValue(newValue);
   }
 
-  const handleRangePrice = () => {
-    const filteredByPrice = product.filter((item) => item.price >= value[0] && item.price <= value[1]);
+  // const handleRangePrice = () => {
+  //   const filteredByPrice = product.filter((item) => item.price >= filterValue[0] && item.price <= filterValue[1]);
+  //   setData(filteredByPrice)
+  // }
+
+  const handleRangePrice = useCallback(() => {
+    const filteredByPrice = product.filter((item) => item.price >= filterValue[0] && item.price <= filterValue[1]);
     setData(filteredByPrice)
-  }
+    setHandleRangePriceCalled(!handleRangePriceCalled);
+  }, [data, filterValue, handleRangePriceCalled])
+
   const handlePageChange = (event, value) => {
     setCurrentPage(value)
   }
@@ -126,6 +132,9 @@ const Stones = () => {
     return `${value}`;
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [checkedItems, currentPage, handleRangePriceCalled])
 
   const renderPageData = () => {
     const startIndex = (currentPage - 1) * pageSize;
@@ -221,7 +230,7 @@ const Stones = () => {
                   <h3>Price Range</h3>
                   <Slider
                     getAriaLabel={() => 'Temperature range'}
-                    value={value}
+                    value={filterValue}
                     onChange={handleChange}
                     valueLabelDisplay="auto"
                     getAriaValueText={valuetext}
@@ -229,7 +238,7 @@ const Stones = () => {
                     max={10000}
                   />
                   <div className='apply'>
-                    <span>{value[0]} - {value[1]}</span> <Button onClick={handleRangePrice}>Apply</Button>
+                    <span>{filterValue[0]} - {filterValue[1]}</span> <Button onClick={handleRangePrice}>Apply</Button>
                   </div>
                 </div>
               </div>

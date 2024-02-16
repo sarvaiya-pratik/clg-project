@@ -26,6 +26,12 @@ const userShema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'rattings'
     }],
+    token:{
+        type:String
+    },
+    tokenExpires:{
+        type:Date
+    },
     createdAt: {
         type: Date,
         default: Date.now()

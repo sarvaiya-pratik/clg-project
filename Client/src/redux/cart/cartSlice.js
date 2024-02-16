@@ -48,7 +48,6 @@ const cartSlice = createSlice({
 
         builder.addCase(deleteCartItem.pending, (state, action) => {
             state.loading = true
-
         })
             .addCase(deleteCartItem.fulfilled, (state, action) => {
                 state.loading = false

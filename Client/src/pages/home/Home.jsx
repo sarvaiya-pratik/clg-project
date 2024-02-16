@@ -46,7 +46,7 @@ const Home = () => {
   return (
     <>
 
-      <div id="home" ref={scrollRef} className='scroll-container'>
+      <div id="home" ref={scrollRef} className='scroll-container container-max' >
         {/* backgroud with title   */}
         <div className="top-bg">
           <video type="video/mp4" muted autoPlay loop ><source src={topbg}></source></video>

@@ -1,32 +1,40 @@
 import React, { useState } from 'react'
 import "./style.css"
 import axios from 'axios'
-import toast, { Toaster } from "react-hot-toast"
+import {toast} from "react-toastify"
 
 import { useNavigate } from "react-router-dom"
 import { AiFillEye, AiFillEyeInvisible, AiOutlineUser, AiOutlineMail, AiOutlinePhone, AiOutlineLock } from "react-icons/ai"
 import Loader from '../../common/Loader/Loader'
-const GetOtp = () => {
-  const [ForgateData, setForgateData] = useState({})
+const ForgotPass = () => {
+  const [ForgateData, setForgateData] = useState()
   const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate();
+  
   function handleLoginSubmit(e) {
     e.preventDefault()
     setLoading(true)
 
-    axios.post("/users/auth/forgot", { email: ForgateData })
+    axios.post("/users/forgot-password", { email: ForgateData })
       .then((r) => {
-        if (r.data.code == 200) {
+        if (r.status == 200) {
           setLoading(false)
-          toast.success(r.data.message)
-          navigate("/login/reset-password/varify")
+          navigate('/checkmail',{state:{email:ForgateData}})
         }
         else {
           setLoading(false)
           toast.error(r.data.message)
         }
+      }
+      
+      )
+      .catch((err)=>{
+        console.log(err)
+        setLoading(false)
+        toast.error(err.response.data.message)
       })
+      
 
   }
 
@@ -54,7 +62,7 @@ const GetOtp = () => {
                 />
               </div>
 
-              <div className="forgate-password">go back ? <span onClick={() => navigate("/login")} >click here</span></div>
+              <div className="forgate-password"> <span onClick={() => navigate("/login")} >Back Login page</span></div>
 
               <div className="submit-container">
                 <button type='submit' className="submit">Submit</button>
@@ -68,4 +76,4 @@ const GetOtp = () => {
   )
 }
 
-export default GetOtp;
+export default ForgotPass;

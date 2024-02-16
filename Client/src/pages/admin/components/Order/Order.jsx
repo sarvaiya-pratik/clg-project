@@ -163,7 +163,7 @@ const Order = () => {
                   renderPageData()
                 }
               </ul>
-              <div className="pagination">
+              <div className="pagination" style={{display:'flex',justifyContent:'center'}}>
                 <Pagination size='large' color="primary" count={Math.ceil(order?.length / pageSize)} onChange={handlePageChange} />
               </div>
             </div>

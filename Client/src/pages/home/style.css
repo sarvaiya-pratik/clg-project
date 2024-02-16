@@ -1,6 +1,7 @@
 #home {
     width: 100%;
     height: 100%;
+    position: relative;
     /* font-family: 'Ysabeau SC', sans-serif; */
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
@@ -22,11 +23,13 @@
     .heading-banner {
         text-align: center;
         position: absolute;
-        top: 50%;
+        top: 30%;
+  
         align-self: center;
         /* left: 27%; */
         letter-spacing: 4px;
         width: 100%;
+        margin: 0 auto;
         text-align: center;
         /* color: white; */
         color: var(--bg-primary);

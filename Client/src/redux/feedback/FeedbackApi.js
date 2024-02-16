@@ -2,7 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
-
 export const createReview = createAsyncThunk('review', async ({ formdata, pid }) => {
     try {
         const response = await axios.post(`/feedback/review/${pid}`, formdata, { withCredentials: true })

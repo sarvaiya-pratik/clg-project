@@ -1,4 +1,5 @@
 import { generateToken } from "../config/tokenProvider.js"
+import jwt from "jsonwebtoken"
 import Cart from "../models/cart.model.js"
 import User from "../models/user.model.js"
 import dotenv from 'dotenv'
@@ -6,8 +7,8 @@ dotenv.config()
 import { generateHashPass, validateEmail, validateHashPass, validatemobile } from "../utils/validationProvider.js"
 import nodemailer from "nodemailer"
 import smtpTransport from "nodemailer-smtp-transport"
-import generateOTP from "../utils/otpGenerate.js"
-import { ApiError } from "../utils/ApiError.js"
+import randomString from 'randomstring'
+
 
 const transport = nodemailer.createTransport(
     smtpTransport({
@@ -38,7 +39,7 @@ const register = async (req, res) => {
         }
 
         if (password !== cpassword) {
-            return res.status(400).json({ success: false, message: "Password and Conform Password not matched !" })
+            return res.status(400).json({ success: false, message: "Password and Confirm Password not matched !" })
             // throw new ApiError(400, "Password and Conform Password not matched !")
         }
 
@@ -144,31 +145,73 @@ const login = async (req, res) => {
 
 
 // FORGATE PASSWORD
+// const forgatePassword = async (req, res) => {
+//     try {
+//         const { email } = req.body
+//         console.log("email: " + email)
+//         otpemail = email
+//         const user = await User.findOne({ email })
+//         if (!user) {
+//             return res.status(400).json({ success: false, message: "Enter valid Email" })
+//         }
 
-let MYOTP = 0
-let flag = true
-let otpemail = ""
+//         const isGoogleLogin = await User.find({$and:[{email},{googleId:{$exists:true}}]})
+//         if(isGoogleLogin){
+//             return res.status(400).json({success:false,message:"Please login with another method !"})
+//         }
+
+//         MYOTP = generateOTP(4)
+
+//         const mailOptions = {
+//             from: process.env.ADMIN_EMAIL,
+//             to: email,
+//             subject: 'RESET PASSWORD !',
+//             html: `<h3>OTP is : ${MYOTP} </h3>`,
+//             text: "Plase Enter this otp and Reset your password ! Thank you from MRP diamonds.."
+//         };
+
+//         transport.sendMail(mailOptions, (error, info) => {
+//             if (error) {
+//                 console.error('Error sending email:', error);
+//                 return res.status(500).json({ success: false, message: "Error sending email" });
+//             } else {
+//                 console.log('Email sent:', info.response);
+//                 otpemail = email
+//                 return res.status(200).json({ success: true, message: "OTP sent successfully" })
+//             }
+//         })
+//     } catch (error) {
+//         return res.status(500).json({ success: false, message: error.message })
+//     }
+
+// }
 
 
-const forgatePassword = async (req, res) => {
+const forgotPassword = async (req, res) => {
+    const email = req.body.email
+    console.log(email)
     try {
-        const { email } = req.body
-        console.log("email: " + email)
-        otpemail = email
-        const user = await User.findOne({ email })
-        if (!user) {
-            return res.status(400).json({ success: false, message: "Enter valid Email" })
+        const oldUser = await User.findOne({ email })
 
+        if (!oldUser) {
+            return res.status(404).json({ success: false, message: "User not found  !" })
         }
 
-        MYOTP = generateOTP(4)
+        const token = randomString.generate()
+
+        oldUser.token = token
+        oldUser.tokenExpires = Date.now() + 3600000;
+
+        await oldUser.save()
+        let link = `http://localhost:5173/reset-password/${token}`
+        console.log(link)
+
 
         const mailOptions = {
             from: process.env.ADMIN_EMAIL,
             to: email,
+            html: `<h2>For reset password <a href=${link}> click here </a></h2>  <p> Plase reset your password using above link ! Thank you from MRP diamonds.. </p>`,
             subject: 'RESET PASSWORD !',
-            html: `<h3>OTP is : ${MYOTP} </h3>`,
-            text: "Plase Enter this otp and Reset your password ! Thank you from MRP diamonds.."
         };
 
         transport.sendMail(mailOptions, (error, info) => {
@@ -177,66 +220,12 @@ const forgatePassword = async (req, res) => {
                 return res.status(500).json({ success: false, message: "Error sending email" });
             } else {
                 console.log('Email sent:', info.response);
-                otpemail = email
-                return res.status(200).json({ success: true, message: "OTP sent successfully" })
+                return res.status(200).json({ success: true, message: "Email sent succesfully!" })
             }
         })
-    } catch (error) {
-        return res.status(500).json({ success: false, message: error.message })
-    }
 
-}
-// RESENT OTP 
-const resentOtp = async (req, res) => {
-    console.log("resent")
-    try {
-        let email = otpemail;
-        const user = await User.findOne({ email })
-        if (!user) {
-            return res.status(400).json({ success: false, message: "Error in Email" })
-        }
 
-        MYOTP = generateOTP(4)
-        const mailOptions = {
-            from: process.env.ADMIN_EMAIL,
-            to: email,
-            subject: 'RESET PASSWORD (RESENT) !',
-            html: `<h3>OTP is : ${MYOTP} </h3>`,
-            text: "Plase Enter this otp and Reset your password ! Thank you from MRP diamonds.."
-        };
 
-        transport.sendMail(mailOptions, async (error, info) => {
-            if (error) {
-                console.error('Error sending email:', error);
-                return res.status(400).json({ success: false, message: "Error in sending email" });
-            }
-            console.log('Email sent:', info.response);
-            otpemail = email
-            return res.status(200).json({ success: true, message: "OTP sent successfully" })
-        })
-
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: error.message
-        })
-    }
-}
-
-const varifyOtp = async (req, res) => {
-    try {
-        const { digits } = req.body
-        const otp = digits[0] + digits[1] + digits[2] + digits[3]
-        console.log(otp, MYOTP)
-        if (!otp) {
-            return res.status(400).json({ success: false, message: "Please Enter OTP !" })
-        }
-
-        if (otp == MYOTP) {
-            flag = true
-            return res.status(200).json({ success: true, message: "Otp is Varify" })
-        }
-        return res.status(401).json({ success: false, message: "Wrong Otp" })
 
 
     } catch (error) {
@@ -245,52 +234,30 @@ const varifyOtp = async (req, res) => {
 }
 
 const resetPassword = async (req, res) => {
-    const { password } = req.body
-    console.log("pass", password)
-    let email = otpemail
-    if (!password) {
-        res.status(400).json({ success: false, message: "Enter Password !" })
-    }
-
-    if (flag) {
-        try {
-            const hash = await generateHashPass(password)
-            const doc = await User.findOneAndUpdate({ email }, { $set: { password: hash } })
-            await doc.save()
-            flag = false
-            otpemail = ""
-            const mailOptions = {
-                from: process.env.ADMIN_EMAIL,
-                to: email,
-                subject: 'RESET PASSWORD !',
-                html: `<h3>Reset Password Successfully </h3><br><p>Your Password is : <b> ${password}</b> Thank you from MRP diamonds..</p>`
-            };
-
-            transport.sendMail(mailOptions, async (error, info) => {
-                if (error) {
-                    console.error('Error sending email:', error);
-                    return res.status(400).json({ success: false, message: "Error in sending email" });
-                } else {
-                    console.log('Email sent:', info.response);
-                    otpemail = email
-                    return res.status(200).json({ success: true, message: "Password Reset succesfully !" })
-                }
-            })
-
-            // res.json({ code: 200, message: "Password Reset succesfully !" })
-        } catch (error) {
-            console.log(error)
-            res.status(500).json({ success: false, message: error.message })
+    console.log("RESET")
+    const { token } = req.params;
+    const { newPassword } = req.body;
+    console.log("token", token)
+    console.log("newPAss", req.body.newPassword)
+    try {
+        const user = await User.findOne({ token, tokenExpires: { $gt: Date.now() } })
+        if (!user) {
+            console.log("user not found")
+            return res.status(404).json({ success: false, message: "User not found !" })
         }
-    }
+        const hashPassword = await generateHashPass(newPassword)
 
-    else {
-        return res.status(404).json({ success: false, messgae: "Unauthorization !" })
+        user.password = hashPassword
+        user.token = undefined
+        user.tokenExpires = undefined
+        await user.save()
+        return res.status(200).json({ success: true, message: "Password Reset succesfully !" })
+    } catch (error) {
+        return res.status(500).json({ success: false, message: error.message })
     }
-
 
 }
 
 
 
-export { register, login, forgatePassword, resentOtp, resetPassword, varifyOtp }
+export { register, login, forgotPassword, resetPassword }

@@ -22,7 +22,6 @@ export const addCartToUser = createAsyncThunk('addcart', async ({  productId,qua
 export const deleteCartItem = createAsyncThunk('deletecart', async (id) => {
   try {
       const response = await axios.delete(`/cart/delete/${id}`,{withCredentials:true})
-     
       return response.data
   } catch (error) {
         throw error.response.data

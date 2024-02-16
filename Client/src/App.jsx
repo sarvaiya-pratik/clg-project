@@ -6,11 +6,12 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import { Suspense, lazy } from "react"
 
 import Feedback from "./pages/profile/Reviews/Feedback";
-import GetOtp from "./pages/login/GetOtp";
-import { VarifyOtp } from "./pages/login/VarifyOtp";
+import ForgotPass from "./pages/login/ForgotPass";
+import  CheckMail  from "./pages/login/CheckMail";
 import ResetPass from "./pages/login/ResetPass";
 // import OrderDetails from "./pages/profile/OrderDetails";
-
+import Lagacy from "../src/pages/home/Features_mrp/Legacy/Legacy"
+import Legacy from "../src/pages/home/Features_mrp/Legacy/Legacy";
 const OrderDetails = lazy(() => import("./pages/profile/Order/OrderDetails"))
 const Home = lazy(() => import("./pages/home/Home"))
 const Login = lazy(() => import("./pages/login/Login"))
@@ -56,17 +57,17 @@ const App = () => {
 
         },
         {
-          path: 'login/reset-password',
-          element: <GetOtp />,
+          path: 'forgot-password',
+          element: <ForgotPass />,
 
         },
         {
-          path: 'login/reset-password/varify',
-          element: <VarifyOtp />,
+          path: 'checkmail',
+          element: <CheckMail />,
 
         },
         {
-          path: 'login/reset-password/reset',
+          path: 'reset-password/:token',
           element: <ResetPass />,
 
         },
@@ -90,6 +91,10 @@ const App = () => {
         {
           path: 'orders/review/:pid',
           element: <Feedback />
+        },
+        {
+          path:'lagacy',
+          element:<Legacy/>
         },
         {
           path: 'profile',

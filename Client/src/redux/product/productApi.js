@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-
 export const getproductall = createAsyncThunk('products', async () => {
     try {
         const res = await axios.get('/products', { withCredentials: true })
@@ -11,6 +10,7 @@ export const getproductall = createAsyncThunk('products', async () => {
         throw error
     }
 })
+
 
 export const getProductById = createAsyncThunk('getproduct-by-id', async (pid) => {
     const response = await axios.get(`/products/${pid}`, { withCredentials: true })

@@ -15,7 +15,6 @@
 
   /* --gold: #ffb338; */
   --gold: white;
-
   --light-shadow: #77571d;
   --dark-shadow: #3e2904;
 }
@@ -27,11 +26,18 @@
   user-select: none;
 }
 
+.container-max{
+  max-width: 1580px !important;
+  width: 100%;
+  margin: 0 auto;
+}
+
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
   /* font-family: 'Cabin', sans-serif !important; */
   scroll-snap-type: proximity;
 }
+
 ::-webkit-scrollbar{
   width: 10px;
 }

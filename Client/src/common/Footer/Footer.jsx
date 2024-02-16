@@ -19,7 +19,6 @@ const Footer = () => {
         if (r.status === 201) {
           toast.success("Feedback send succesfully !")
           document.location.reload()
-
         }
         else {
           toast.error(r.data.message)
@@ -34,7 +33,7 @@ const Footer = () => {
     <>
       <Toaster />
       <motion.hr whileInView={{ marginLeft: '0' }} style={{ margin: '0', color: 'black', marginLeft: '100%', transition: 'all 1s' }} />
-      <div className="wave-container">
+      <div className="wave-container container-max">
         <div id="footer">
           <div className="address">
             <h2 className='heading' style={{ fontWeight: '500' }}>MRP DIAMONDS</h2>

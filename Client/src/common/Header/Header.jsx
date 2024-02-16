@@ -5,8 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 import { Link as NavLink } from 'react-router-dom'
 import axios from 'axios'
 import logo from "./mrps.png"
-import toast from 'react-hot-toast'
-import Cookies from 'js-cookie';
+
 
 
 import Badge from '@mui/material/Badge';
@@ -27,7 +26,6 @@ const Header = () => {
 
     const isHomePage = location.pathname === '/';
     useEffect(() => {
-
         const searchParams = new URLSearchParams(location.search);
 
         const from = searchParams.get('from');
@@ -103,7 +101,7 @@ const Header = () => {
     }
     return (
         <>
-            <header id='mynav' className={cls}>
+            <header id='mynav' className={`${cls} `}>
                 <div className='left' >
                     <img src={logo} alt="" style={{ width: '120px', height: '80px' }} onClick={() => navigate("/")} />
                 </div>

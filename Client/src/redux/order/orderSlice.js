@@ -44,7 +44,7 @@ const orderSlice = createSlice({
             .addCase(getUserOrderData.rejected, (state, action) => {
                 state.loading = false
                 state.order = null,
-                    state.loading = false
+                state.loading = false
             })
 
             .addCase(getOrderById.pending, (state, action) => {
@@ -58,7 +58,7 @@ const orderSlice = createSlice({
             .addCase(getOrderById.rejected, (state, action) => {
                 state.loading = false
                 state.order = null,
-                    state.loading = false
+                state.loading = false
             })
 
             .addCase(updateOrderStatus.pending, (state, action) => {
@@ -85,7 +85,7 @@ const orderSlice = createSlice({
             .addCase(deleteOrder.rejected, (state, action) => {
                 state.loading = false
                 state.order = null,
-                    state.loading = false
+                state.loading = false
             })
 
     }

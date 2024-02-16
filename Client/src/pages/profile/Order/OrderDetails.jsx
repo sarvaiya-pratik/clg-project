@@ -1,10 +1,12 @@
-import React, { useDeferredValue, useEffect } from 'react'
+import React, { useDeferredValue, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { getOrderById } from '../../../redux/order/orderApi'
 import OrderSteps from './OrderSteps'
 import { Badge, Chip } from '@mui/material'
 import { FaStar } from "react-icons/fa";
+import { FaPrint } from "react-icons/fa6";
+import InvoiceToPrint from './InvoiceToPrint'
 
 const OrderDetails = () => {
     const { id, oid } = useParams()
@@ -70,6 +72,12 @@ const OrderDetails = () => {
 export default OrderDetails
 
 export const OrderBox = ({ imgUrl, pname, carat, qty, price, orderNo, paymentMethod, productId, orderDate, orderStatus }) => {
+    const navigate = useNavigate()
+    const invoiceRef = useRef()
+
+    const handleToPrint=()=>{
+        window.print()
+    }
     return (<>
 
         <div className="order-info-container">
@@ -93,11 +101,23 @@ export const OrderBox = ({ imgUrl, pname, carat, qty, price, orderNo, paymentMet
                 orderStatus == 'delivered' &&
 
                 <div className="four">
-                    <NavLink to={`/orders/review/${productId}`}>
-                        <FaStar /> <span>Rate & Review Product</span>
-                    </NavLink>
+                    {/* <NavLink to={`/orders/review/${productId}`}> */}
+                        <main >
+
+                            <div onClick={()=>navigate(`/orders/review/${productId}`)} style={{cursor:'pointer'}}>
+                                <FaStar /> <span>Rate & Review Product</span>
+                            </div>
+                          
+                           
+                        
+                            
+                            {/* <button className='invoice-btn' ><FaPrint style={{marginRight:'8px'}}/>Print/Download Invoice</button> */}
+                            
+                        </main>
+                    {/* </NavLink> */}
                 </div>
             }
         </div>
+     
     </>)
 }

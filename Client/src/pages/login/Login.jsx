@@ -118,7 +118,7 @@ const Login = () => {
 
 
               </p>
-              <div className="forgate-password" >Lost password ? <span onClick={() => navigate("/login/reset-password")} >click here</span></div>
+              <div className="forgate-password" > <span onClick={() => navigate("/forgot-password")} >Forgot password?</span></div>
 
               <div className="submit-container">
                 <button type='submit' className="submit"

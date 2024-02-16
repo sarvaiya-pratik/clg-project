@@ -23,9 +23,12 @@
 
         /* margin-top: 5rem; */
         display: flex;
+        flex-wrap: wrap;
         background-color: aliceblue;
         align-items: center;
         padding: 1rem;
+        justify-content: space-around;
+
         margin-bottom: 1rem;
 
         >.first {
@@ -84,7 +87,30 @@
                 }
             
             }
+            .invoice-btn{
+                border: none;
+                outline: none;
+                padding: 10px;
+                background-color: var(--third-color);
+                border-radius: 7px;
+                color: white;
+                margin-top: 10px;
+                display: flex;
+                align-items: center;
+                transition: 0.3s;
+
+                &:hover{
+                    background-color: #054357;
+                    scale: 1.02;
+                }
+            }
 
         }
+    }
+}
+
+@media only screen and (max-width:768px){
+    #orderdetails{
+        padding: 6rem 1rem;
     }
 }
