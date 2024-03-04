@@ -122,7 +122,7 @@ const Header = () => {
 
                         <NavLink to="/">
 
-                            <span className="btn-txt"> Home</span>
+                            <span className="btn-txt"> Home a</span>
 
                         </NavLink>
                     </li>
