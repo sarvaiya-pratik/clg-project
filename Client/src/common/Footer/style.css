@@ -4,135 +4,143 @@
   padding-bottom: 6rem;
   width: 100%;
   background-color: var(--secondary-color);
+  padding-top: 2rem;
   /* border-top: 1px solid black; */
+  margin-top: -2px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
   #footer {
-   
- 
+    /* border-top: 1px solid ; */
+   overflow: hidden;
     display: flex;
     width: 100%;
     height: 100%;
     justify-content: center;
+    
 
     >.address {
-    width: 30%;
-    display: flex;
-    padding-left: 2rem;
+      width: 30%;
+      display: flex;
+      padding-left: 2rem;
     }
 
-    .feedback{
+    .feedback {
       width: 35%;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     
-    >.subscribe {
-      position: relative;
-      height: 140px;
-      width: 240px;
-      padding: 20px;
-      background-color: #FFF;
-      border-radius: 4px;
-      color: #333;
-      box-shadow: 0px 0px 60px 5px rgba(0, 0, 0, 0.4);
-    }
-    
-    .subscribe:after {
-      position: absolute;
-      content: "";
-      right: -10px;
-      bottom: 18px;
-      width: 0;
-      height: 0;
-      border-left: 0px solid transparent;
-      border-right: 10px solid transparent;
-      border-bottom: 10px solid var(--bg-primary);
-    
-    }
-    
-    .subscribe p {
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-      letter-spacing: 4px;
-      line-height: 28px;
-    }
-    
-    .subscribe input {
-      color: black;
-      position: absolute;
-      bottom: 30px;
-      border: none;
-      border-bottom: 1px solid #d4d4d4;
-      padding: 10px;
-      width: 82%;
-      background: transparent;
-      transition: all .25s ease;
-    }
-    
-    .subscribe input:focus {
-      outline: none;
-      border-bottom: 1px solid var(--bg-primary);
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', 'sans-serif';
-    }
-    
-    .subscribe .submit-btn {
-      position: absolute;
-      border-radius: 30px;
-      border-bottom-right-radius: 0;
-      border-top-right-radius: 0;
-      /* background-color: #0f0092; */
-      background-color: var(--bg-primary);
-      color: #FFF;
-      padding: 12px 25px;
-      display: inline-block;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 5px;
-      right: -10px;
-      bottom: -20px;
-      cursor: pointer;
-      transition: all .25s ease;
-      box-shadow: -5px 6px 20px 0px rgba(26, 26, 26, 0.4);
-    }
-    
-    .subscribe .submit-btn:hover {
-      /* background-color: #07013d; */
-      background-color:darkgoldenrod ;
-      box-shadow: -5px 6px 20px 0px rgba(88, 88, 88, 0.569);
-    }
-   
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      >.subscribe {
+        position: relative;
+        height: 140px;
+        width: 240px;
+        padding: 20px;
+        background-color: #FFF;
+        border-radius: 4px;
+        color: #333;
+        box-shadow: 0px 0px 60px 5px rgba(0, 0, 0, 0.4);
+      }
+
+      .subscribe:after {
+        position: absolute;
+        content: "";
+        right: -10px;
+        bottom: 18px;
+        width: 0;
+        height: 0;
+        border-left: 0px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid var(--bg-primary);
+
+      }
+
+      .subscribe p {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 4px;
+        line-height: 28px;
+      }
+
+      .subscribe input {
+        color: black;
+        position: absolute;
+        bottom: 30px;
+        border: none;
+        border-bottom: 1px solid #d4d4d4;
+        padding: 10px;
+        width: 82%;
+        background: transparent;
+        transition: all .25s ease;
+      }
+
+      .subscribe input:focus {
+        outline: none;
+        border-bottom: 1px solid var(--bg-primary);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', 'sans-serif';
+      }
+
+      .subscribe .submit-btn {
+        position: absolute;
+        border-radius: 30px;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        /* background-color: #0f0092; */
+        background-color: var(--bg-primary);
+        color: #FFF;
+        padding: 12px 25px;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 5px;
+        right: -10px;
+        bottom: -20px;
+        cursor: pointer;
+        transition: all .25s ease;
+        box-shadow: -5px 6px 20px 0px rgba(26, 26, 26, 0.4);
+      }
+
+      .subscribe .submit-btn:hover {
+        /* background-color: #07013d; */
+        background-color: darkgoldenrod;
+        box-shadow: -5px 6px 20px 0px rgba(88, 88, 88, 0.569);
+      }
 
 
-  }
+
+    }
+
     >.social {
-    width: 35%;
+      width: 35%;
       display: flex;
       flex-direction: column;
       gap: 0.3em;
       /* justify-content: center; */
 
       align-items: center;
-     margin-top: 0.3em;
+      margin-top: 0.3em;
 
-     
-      .instagram,.twitter,.linkedin,.facebook{
+
+      .instagram,
+      .twitter,
+      .linkedin,
+      .facebook {
         font-size: 1.4rem;
       }
-      
+
       .up {
         display: flex;
         flex-direction: row;
         gap: 0.5em;
       }
-      
+
       .down {
         display: flex;
         flex-direction: row;
         gap: 0.5em;
       }
-      
+
       .card1 {
         width: 90px;
         height: 90px;
@@ -142,12 +150,13 @@
         border-radius: 90px 5px 5px 5px;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
         transition: .2s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-      
-      .instagram {
-       
-      }
-      
+
+      .instagram {}
+
       .card2 {
         width: 90px;
         height: 90px;
@@ -157,10 +166,13 @@
         border-radius: 5px 90px 5px 5px;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
         transition: .2s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-      
-     
-      
+
+
+
       .card3 {
         width: 90px;
         height: 90px;
@@ -170,10 +182,13 @@
         border-radius: 5px 5px 5px 90px;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
         transition: .2s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-      
-    
-      
+
+
+
       .card4 {
         width: 90px;
         height: 90px;
@@ -183,51 +198,54 @@
         border-radius: 5px 5px 90px 5px;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
         transition: .2s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-      
-    
-      
+
+
+
       .card1:hover {
         cursor: pointer;
         scale: 1.1;
         background-color: #3b5998;
       }
-      
+
       .card1:hover .facebook {
         fill: white;
       }
-      
+
       .card2:hover {
         cursor: pointer;
         scale: 1.1;
         background-color: #03A9F4;
       }
-      
+
       .card2:hover .twitter {
         fill: white;
       }
-      
+
       .card3:hover {
         cursor: pointer;
         scale: 1.1;
-        background-color: #0A66C2 ;
+        background-color: #0A66C2;
       }
-      
+
       .card3:hover .linkedin {
         fill: white;
       }
-      
+
       .card4:hover {
         cursor: pointer;
         scale: 1.1;
         background-color: #E1306C;
       }
-      
+
       .card4:hover .instagram {
         fill: white;
       }
-      
-      
+
+
     }
 
     >.address,
@@ -238,7 +256,7 @@
 
 
       /* justify-content: center; */
-     
+
 
       .box {
         display: flex;
@@ -318,13 +336,16 @@
 
       flex-direction: column;
       gap: 2rem;
-      
-      .address,.social,.feedback{
-        >h2{
+
+      .address,
+      .social,
+      .feedback {
+        >h2 {
           align-self: center;
         }
+
         width: 100%;
-        
+
       }
     }
 
