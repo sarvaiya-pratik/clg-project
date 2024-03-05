@@ -1,5 +1,5 @@
 import express from 'express'
-import { forgotPassword, login, register ,resetPassword} from '../controllers/auth.controller.js'
+import { forgotPassword, login, register, resetPassword } from '../controllers/auth.controller.js'
 import { deleteUser, getAllUser, getCurrentUser, getUserById, updateAdress, updateUser } from '../controllers/user.controller.js'
 import passport from 'passport'
 import { authUser } from '../middleware/authUser.js'
@@ -17,7 +17,7 @@ router.get('/ID/:id', getUserById)
 // FORGATE PASSWORD
 
 router.post('/forgot-password', forgotPassword)
-router.post('/reset-password/:token',resetPassword )
+router.post('/reset-password/:token', resetPassword)
 // router.post('/auth/verify', varifyOtp)
 // router.post('/auth/reset', resetPassword)
 

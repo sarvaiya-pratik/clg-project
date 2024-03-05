@@ -13,18 +13,17 @@ const addProduct = async (req, res) => {
 
             const existproduct = await Product.findOne({ title })
             if (existproduct) {
-                return res.status(400).json({success:false, message: "Product name alredy exist" })
+                return res.status(400).json({ success: false, message: "Product name alredy exist" })
             }
 
-
             if (!req.file) {
-                return res.status(400).json({success:false, message: "Image must be sent" })
+                return res.status(400).json({ success: false, message: "Image must be sent" })
             }
 
             const response = await uploadFile(req.file.path)
 
             if (!response) {
-                return res.status(400).json({success:true, message: "Error in cloudanary" })
+                return res.status(400).json({ success: true, message: "Error in cloudanary" })
             }
 
             const newproduct = new Product({ title, catagory, imgUrl: response.url, shape, price, carat, colour, clarity, cut, polish, symmetry, fluorescence, table, depth, ratio, crownangle, crownheight, quantity })
@@ -41,20 +40,18 @@ const addProduct = async (req, res) => {
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ success: false, message: error.message })
-
     }
 }
 
 const getProductById = async (req, res) => {
     const { productId } = req.params;
     try {
-
         const product = await Product.findById(productId).populate("reviews").populate("shape")
         return res.status(200).json({
             success: true,
             product
         })
-
+        
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ success: false, message: error.message })
@@ -62,7 +59,6 @@ const getProductById = async (req, res) => {
 
 }
 const getAllProduct = async (req, res) => {
-
     try {
         const products = await Product.find().populate("shape")
         // const products = await Product.find()
