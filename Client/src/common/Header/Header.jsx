@@ -4,7 +4,8 @@ import { Link, scroller } from "react-scroll"
 import { useLocation, useNavigate } from "react-router-dom"
 import { Link as NavLink } from 'react-router-dom'
 import axios from 'axios'
-import logo from "./mrps.png"
+import logo from "./new.png"
+
 
 import Badge from '@mui/material/Badge';
 import { Avatar } from '@mui/material'
@@ -120,7 +121,7 @@ const Header = () => {
 
                         <NavLink to="/">
 
-                            <span className="btn-txt"> Home a</span>
+                            <span className="btn-txt"> Home</span>
 
                         </NavLink>
                     </li>
