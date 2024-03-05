@@ -43,9 +43,8 @@ const MyOrder = () => {
     });
   }
 
-  const handleClick = (orderNo, orderItemId) => {
-    navigate(`/orders/${orderNo}/${orderItemId}`)
-
+  const handleClick = (orderNo) => {
+    navigate(`/orders/${orderNo}`)
   }
   return (
     <>
@@ -55,7 +54,7 @@ const MyOrder = () => {
         </div>
 
         <div className="my-orders">
-          {
+          {/* {
             transformedData.length > 0 ?
             transformedData?.map((item) => {
               return (
@@ -73,6 +72,24 @@ const MyOrder = () => {
                 />)
             })
             : <h3>Order Not Available...</h3>
+          } */}
+
+          {
+            Array.isArray(order) &&
+            order?.map((item) => {
+              return (<OrderCard
+                orderNo={item._id}
+                orderItem={item.orderItems}
+                getOrderDate={getOrderDate}
+                exdate={item.deliveryDate}
+                navigate={navigate}
+                totalPrice={item.totalPrice}
+                totalItem={item.totalItem}
+                handleClick={handleClick}
+                orderStatus={item.orderStatus}
+                orderDate={item.orderDate}
+              />)
+            })
           }
 
         </div>
@@ -84,35 +101,49 @@ const MyOrder = () => {
 export default MyOrder
 
 
-const OrderCard = ({ handleClick, orderNo, imgUrl, pname, qty, carat, price, exdate, orderItemId,orderStatus }) => {
+const OrderCard = ({ handleClick, orderNo, orderDate, exdate, orderItem, orderStatus, getOrderDate, totalItem, totalPrice }) => {
   return (
     <>
-      <div className="orders-container" onClick={() => handleClick(orderNo, orderItemId)}>
+      <div className="orders-container" onClick={() => handleClick(orderNo)}>
         <div className="orderno">
           {orderNo}
         </div>
         <div className="first">
-          <iframe src={imgUrl} frameborder="0"></iframe>
+
+          {
+            orderItem.map((i) => {
+              return (
+
+                <iframe src={i.imgUrl} frameborder="0"></iframe>
+
+              )
+            })
+          }
         </div>
+
         <div className="second">
-          <p>{pname}</p>
-          <p>Qty : {qty}</p>
-          <p>Carat : {carat} </p>
-        </div>
-        <div className="third">
           <p>
-            ₹ {price}
+            ({totalItem} items)
+            {/* mistake here/ */}
           </p>
+        </div>
+
+        <div className="third">
+
+          <p>Total : ₹ {totalPrice} </p>
         </div>
         <div className="four">
           {/* <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Green_Dot_%28Active%29.png" alt="" /> */}
           <p>
+            
             {
               orderStatus == "delivered" ?
-              <span>Order Complated !</span> : <span> Delivery expected by {exdate} </span>
-              
+                // <span> Delivery expected by {getOrderDate(exdate)} </span>
+                <span> Order Complated ! </span>
+                :
+                <span> Ordered on {getOrderDate(orderDate)} </span>
             }
-            
+
           </p>
         </div>
         <div className="five">

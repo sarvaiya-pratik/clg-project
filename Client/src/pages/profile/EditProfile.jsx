@@ -119,6 +119,8 @@ const EditProfile = () => {
                                     <FormControlLabel value="male" control={<Radio />} label="Male" />
                                     <FormControlLabel value="other" control={<Radio />} label="Other" />
                                 </RadioGroup>
+                               
+
                             </FormControl>
                             <FormControl>
                                 <FormLabel>Date of Birth</FormLabel>

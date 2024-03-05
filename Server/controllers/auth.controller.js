@@ -59,7 +59,6 @@ const register = async (req, res) => {
         const hashPass = await generateHashPass(password)
         const user = new User({ name, email, password: hashPass, phone })
         await user.save()
-
         const createCart = new Cart({ userId: user._id })
         await createCart.save()
 
