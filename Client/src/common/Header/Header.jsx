@@ -25,8 +25,8 @@ const Header = () => {
 
     const isHomePage = location.pathname === '/';
     useEffect(() => {
-        const searchParams = new URLSearchParams(location.search);
 
+        const searchParams = new URLSearchParams(location.search);
         const from = searchParams.get('from');
         const section = searchParams.get('section');
 

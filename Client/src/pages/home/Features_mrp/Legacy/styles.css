@@ -1,5 +1,11 @@
 #lagacy {
 
+    .top-con{
+        h2{
+           text-align: center;
+        }
+    }
+
     .image-slider {
         position: relative;
         height: 400px;
@@ -44,12 +50,13 @@
     }
 
     .auto-play-toggle {
+
         position: absolute;
         bottom: 1rem;
         left: 50%;
         transform: translateX(-50%);
         font-size: 1rem;
-        color: blue;
+        color: rgb(18, 181, 37);
         cursor: pointer;
     }
 
@@ -95,10 +102,10 @@
         font-size: 1rem;
     }
 
-    h2 {
+    /* h2 {
         text-align: center;
         margin-bottom: 1rem;
         color: blue;
-    }
+    } */
 
 }

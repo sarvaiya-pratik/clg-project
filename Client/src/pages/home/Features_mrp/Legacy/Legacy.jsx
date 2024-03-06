@@ -7,7 +7,7 @@ import "./styles.css";
 function Legacy() {
     const sliderImages = [
         {
-            url: "https://encryptedtbn0.gstatic.com/images?q=tbn:ANd9GcTdUmK6fRPfPQIMyOxUOjiTnR2VYizvkkWUxLhGoVJNobm5Id3fpRhsIGtPj3H06ujPb4&usqp=CAU",
+            url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM6xjf2DCM0MmPNK5s4K465VIAkQy6SQ4ojAKi81_vYw&s",
         },
         {
             url: "https://encryptedtbn0.gstatic.com/images?q=tbn:ANd9GcQduUpBWhSdgkWqqIrSmw5MMU697Xlx3SCjlB4eZSv0Q&s",
@@ -62,7 +62,11 @@ function Legacy() {
 
     return (
         <div id="lagacy">
-            <h2>Creating the image slider from scratch in ReactJS</h2>
+
+           <section className="top-con">
+                <h2>Our Lagacy</h2>
+           </section>
+
             <section className="image-slider">
                 <div className="left" onClick={prevSlide}>
                     <ArrowBackIosIcon />
@@ -70,9 +74,9 @@ function Legacy() {
                 <div className="right" onClick={nextSlide}>
                     <ArrowForwardIosIcon />
                 </div>
-                <div className="auto-play-toggle" onClick={toggleAutoPlay}>
+                {/* <div className="auto-play-toggle" onClick={toggleAutoPlay}>
                     {autoPlay ? "Pause" : "Play"}
-                </div>
+                </div> */}
                 <div className="slider-container">
                     {sliderImages.map((currentSlide, ind) => (
                         <div
