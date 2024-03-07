@@ -63,9 +63,9 @@ function Legacy() {
     return (
         <div id="lagacy">
 
-           <section className="top-con">
+            <section className="top-con">
                 <h2>Our Lagacy</h2>
-           </section>
+            </section>
 
             <section className="image-slider">
                 <div className="left" onClick={prevSlide}>
