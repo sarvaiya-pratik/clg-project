@@ -2,7 +2,7 @@ import express from 'express'
 import { forgotPassword, login, register, resetPassword } from '../controllers/auth.controller.js'
 import { deleteUser, getAllUser, getCurrentUser, getUserById, updateAdress, updateUser } from '../controllers/user.controller.js'
 import passport from 'passport'
-import { authUser } from '../middleware/authUser.js'
+import {authUser} from '../middleware/AuthUser.js'
 
 const router = express.Router()
 router.post('/auth/signup', register)
