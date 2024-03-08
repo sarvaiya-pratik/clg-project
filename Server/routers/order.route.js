@@ -1,7 +1,7 @@
 import express from 'express'
 import { checkout, createOrder, deleteOrder, getOrderById, getOrderData, getUserOrderData, paymentVarification, updateOrderStatus } from '../controllers/order.controller.js'
 import dotenv from "dotenv"
-import { authUser } from '../middleware/authUser.js'
+import { authUser } from '../middleware/AuthUser.js'
 dotenv.config()
 const router = express.Router()
 
