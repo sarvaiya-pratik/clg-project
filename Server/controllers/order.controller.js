@@ -1,12 +1,12 @@
 import { razorpay } from "../index.js"
 import crypto from "crypto"
-
 import Cart from "../models/cart.model.js";
 import { OrderItem } from "../models/orderItem.model.js";
 import Order from "../models/order.model.js";
 import User from "../models/user.model.js";
 import CartItem from "../models/cartItem.model.js";
 import Product from "../models/product.model.js";
+
 
 export const createOrder = async (req, res) => {
     const amount = req.body.amount;
@@ -87,7 +87,6 @@ export const checkout = async (req, res) => {
 };
 
 
-
 export const paymentVarification = async (req, res) => {
     try {
         const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body
@@ -101,7 +100,7 @@ export const paymentVarification = async (req, res) => {
         const expectedSignature = crypto
             .createHmac("sha256", process.env.RAZORPAY_API_SECRET)
             .update(body.toString())
-            .digest("hex");
+            .digest("hex"); 
 
         const isAuthentic = expectedSignature === razorpay_signature;
 

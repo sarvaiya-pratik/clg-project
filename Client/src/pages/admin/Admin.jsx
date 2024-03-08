@@ -27,7 +27,7 @@ const Admin = ({ data }) => {
       <div id="admin">
         <div className='adminheader'>
           <div className="left">
-            
+
             <input id="checkbox" type="checkbox" onChange={() => setSlider(!slider)} checked={slider} />
             <label class="toggle" for="checkbox">
               <div id="bar1" class="bars"></div>
@@ -38,7 +38,7 @@ const Admin = ({ data }) => {
             <BiMenuAltLeft onClick={() => setSlider(!slider)} className='adminmenuicon' />
             {/* <img src={logo} alt="" width="40px"  /> */}
             <IoDiamondOutline color='white' />
-            
+
           </div>
           <div className="centers">
             <div class="head-wrapper">
@@ -55,7 +55,7 @@ const Admin = ({ data }) => {
             </div> */}
 
 
-            <Avatar src={admin?.image}  alt=" " />
+            <Avatar src={admin?.image} alt=" " />
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export const AdminSlide = ({ slider, setSlider }) => {
         <NavLink to="/admin/diamonds" onClick={() => setSlider(!slider)}><BiDiamond />Diamonds</NavLink>
         <NavLink to="/admin/order" onClick={() => setSlider(!slider)}><BiStore />Orders</NavLink>
         <NavLink to="/admin/feedback" onClick={() => setSlider(!slider)}><BiMessage />Feedback</NavLink>
-        <NavLink to="/admin/category" onClick={() => setSlider(!slider)}>< BiCategory  />Shapes</NavLink>
+        <NavLink to="/admin/category" onClick={() => setSlider(!slider)}>< BiCategory />Shapes</NavLink>
         {/* <NavLink to="/admin/invoice"><FaFileInvoiceDollar />Invoice</NavLink> */}
         {/* <NavLink to="/admins/faq"><BiQuestionMark />FAQ</NavLink> */}
         <NavLink to="/admin/addproduct" onClick={() => setSlider(!slider)}><BiPlus />Add Diamond</NavLink>
