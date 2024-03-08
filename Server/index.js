@@ -19,8 +19,12 @@ import FeedbackRouter from './routers/feedback.route.js'
 
 app.use(express.urlencoded({ extended: true }));
 
+// app.use(cors({
+//     origin: 'http://localhost:5173',
+//     credentials: true
+// }))
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://clg-project-3c5q.vercel.app',
     credentials: true
 }))
 
