@@ -102,7 +102,7 @@ const Header = () => {
         <>
             <header id='mynav' className={`${cls} `}>
                 <div className='left' >
-                    <img src={logo} alt="" style={{ width: '120px', height: '80px' }} onClick={() => navigate("/")} />
+                    <img src={logo} alt="" style={{ width: '82px', height: '60px' }} onClick={() => navigate("/")} />
                 </div>
                 <div className="mobile-nav">
 

@@ -143,7 +143,7 @@ const Stones = () => {
       data
         ?.filter(val => search == "" ? val : val.title.toLowerCase().includes(search.toLowerCase()))
         .slice(startIndex, endIndex).map((item, index) => (
-          <Typography key={index} variant="body1" gutterBottom>
+          // <Typography key={index} variant="body1" gutterBottom>
             <div className='diamond-card' style={{ cursor: 'pointer' }}>
 
               {
@@ -171,7 +171,7 @@ const Stones = () => {
                 }
               </div>
             </div>
-          </Typography>
+          // </Typography>
         ));
   };
 
@@ -190,7 +190,7 @@ const Stones = () => {
     <>
       {loading ? <Loader /> :
         <div id='stones'>
-          <h2 className='heading'>MRP STONES</h2>
+          <h2 className='heading'>STONES</h2>
 
           <main>
             <div className="searchbox" >

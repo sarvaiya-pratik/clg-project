@@ -1,7 +1,6 @@
 import "react-toastify/dist/ReactToastify.css";
 import "./app.css"
 
-
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import { Suspense, lazy } from "react"
 

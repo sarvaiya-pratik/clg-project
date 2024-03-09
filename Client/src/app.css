@@ -2,7 +2,9 @@
 
 :root {
   /* --primary-color : #b34141; */
-  --bg-primary: goldenrod;
+  /* --bg-primary: goldenrod; */
+  --bg-primary: #c8922F;
+
   /* --bg-primary:rgb(32, 175, 218); */
   --bg-secondary: #2f3037;
   --black-color: #000000;

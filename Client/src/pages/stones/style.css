@@ -134,7 +134,7 @@
             >.diamond-container {
                 padding: 0 2rem;
                 width: calc(100% - 300px);
-
+                /* border: 2px solid gray; */
                 >.top-side {
                     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 5px, rgba(33, 142, 188, 0.12) 0px -12px 30px, rgba(21, 75, 122, 0.12) 0px 4px 6px, rgba(29, 94, 146, 0.17) 0px 12px 13px, rgba(37, 144, 171, 0.09) 0px -3px 5px;
                     border: 1px solid var(--third-color);
@@ -180,17 +180,24 @@
 
                 >.diamonds {
                     display: flex;
-                    justify-content: space-around;
+                    justify-content: space-between;
                     flex-wrap: wrap;
+                    padding: 15px;
+                    width: 100%;
                     background-color: transparent;
                     border: 1px solid var(--third-color);
                     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 55px, rgba(33, 142, 188, 0.12) 0px -12px 30px, rgba(21, 75, 122, 0.12) 0px 4px 6px, rgba(29, 94, 146, 0.17) 0px 12px 13px, rgba(37, 144, 171, 0.09) 0px -3px 5px;
                     border-radius: 10px;
+                    
 
                     .diamond-card {
-                        width: 250px;
-                        border-radius: 10px;
-                        margin: 1rem;
+                        /* width: 250px; */
+                        flex-basis: 32%;
+                        min-width: 250px;
+                        height: auto;
+                        /* width: 30%; */
+                        border-radius: 5px;
+                        margin-bottom: 1.2rem;
                         background-color: #fff;
                         box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
@@ -203,8 +210,10 @@
                         >iframe {
                             border-radius: 10px;
                             margin-bottom: 12px;
-                            width: 250px;
-                            height: 250px;
+                            width: 100%;
+                            /* width: 100%; */
+                            object-fit: cover;
+                            height: 340px;
                         }
 
                         >.card-body {
@@ -259,14 +268,109 @@
 
     }
 }
+@media all and (max-width:1400px) {
 
-@media all and (max-width:960px) {
+    #stones {
+       >main{
+        >.main-container{
+            >.diamond-container{
+                >.diamonds{
+                    .diamond-card{
+                        flex-basis: 48%;
+
+                        >iframe {
+                            border-radius: 10px;
+                            margin-bottom: 12px;
+                            width: 100%;
+                            /* width: 100%; */
+                            object-fit: cover;
+                            height: 300px;
+                        }
+                    }
+                }
+            }
+        }
+       }
+    }
+}
+@media all and (max-width:1350px) {
+
+    #stones {
+       >main{
+        >.main-container{
+            >.diamond-container{
+                >.diamonds{
+                    .diamond-card{
+                        flex-basis: 48%;
+
+                        >iframe {
+                            border-radius: 10px;
+                            margin-bottom: 12px;
+                            width: 100%;
+                            /* width: 100%; */
+                            object-fit: cover;
+                            height: 400px;
+                        }
+                    }
+                }
+            }
+        }
+       }
+    }
+}
+@media all and (max-width:1200px) {
+
+    #stones {
+       >main{
+        >.main-container{
+            >.diamond-container{
+                >.diamonds{
+                    .diamond-card{
+                        flex-basis: 48%;
+
+                        >iframe {
+                            border-radius: 10px;
+                            margin-bottom: 12px;
+                            width: 100%;
+                            /* width: 100%; */
+                            object-fit: cover;
+                            height: 330px;
+                        }
+                    }
+                }
+            }
+        }
+       }
+    }
+}
+
+
+
+
+@media all and (max-width:980px) {
 
     #stones {
         >main {
 
             >.main-container {
                 padding: 1rem 1rem;
+
+                >.diamond-container{
+                    >.diamonds{
+                        .diamond-card{
+                            flex-basis: 48%;
+    
+                            >iframe {
+                                border-radius: 10px;
+                                margin-bottom: 12px;
+                                width: 100%;
+                                /* width: 100%; */
+                                object-fit: cover;
+                                height: 420px;
+                            }
+                        }
+                    }
+                }
 
                 >.filter-slide {
                     /* display: none; */
@@ -293,6 +397,135 @@
                 }
             }
         }
+    }
+}
+@media all and (max-width:800px) {
+
+    #stones {
+       >main{
+        >.main-container{
+            >.diamond-container{
+                >.diamonds{
+                    .diamond-card{
+                        flex-basis: 48%;
+
+                        >iframe {
+                            border-radius: 10px;
+                            margin-bottom: 12px;
+                            width: 100%;
+                            /* width: 100%; */
+                            object-fit: cover;
+                            height: 350px;
+                        }
+                    }
+                }
+            }
+        }
+       }
+    }
+}
+@media all and (max-width:720px) {
+
+    #stones {
+       >main{
+        >.main-container{
+            >.diamond-container{
+                >.diamonds{
+                    .diamond-card{
+                        flex-basis: 48%;
+
+                        >iframe {
+                            border-radius: 10px;
+                            margin-bottom: 12px;
+                            width: 100%;
+                            /* width: 100%; */
+                            object-fit: cover;
+                            height: 300px;
+                        }
+                    }
+                }
+            }
+        }
+       }
+    }
+}
+@media all and (max-width:600px) {
+
+    #stones {
+       >main{
+        >.main-container{
+            >.diamond-container{
+                >.diamonds{
+                    .diamond-card{
+                        flex-basis: 100%;
+                        margin-bottom: 30px;
+
+                        >iframe {
+                            border-radius: 10px;
+                            margin-bottom: 12px;
+                            align-self: center;
+                            /* width: 100%; */
+                            object-fit: cover;
+                            height: 490px;
+                        }
+                    }
+                }
+            }
+        }
+       }
+    }
+}
+
+@media all and (max-width:500px) {
+
+    #stones {
+       >main{
+        >.main-container{
+            >.diamond-container{
+                >.diamonds{
+                    .diamond-card{
+                        flex-basis: 100%;
+                        margin-bottom: 30px;
+
+                        >iframe {
+                            border-radius: 10px;
+                            margin-bottom: 12px;
+                            align-self: center;
+                            /* width: 100%; */
+                            object-fit: cover;
+                            height: 430px;
+                        }
+                    }
+                }
+            }
+        }
+       }
+    }
+}
+@media all and (max-width:420px) {
+
+    #stones {
+       >main{
+        >.main-container{
+            >.diamond-container{
+                >.diamonds{
+                    .diamond-card{
+                        flex-basis: 100%;
+                        margin-bottom: 30px;
+
+                        >iframe {
+                            border-radius: 10px;
+                            margin-bottom: 12px;
+                            align-self: center;
+                            /* width: 100%; */
+                            object-fit: cover;
+                            height: 360px;
+                        }
+                    }
+                }
+            }
+        }
+       }
     }
 }
 

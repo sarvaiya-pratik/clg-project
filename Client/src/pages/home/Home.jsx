@@ -42,7 +42,7 @@ const Home = () => {
       x: 100,
     }
   }
-  
+
   return (
     <>
 
@@ -54,7 +54,7 @@ const Home = () => {
 
         <div className='heading-banner' >
           <Typewriter
-            words={[`${localStorage.getItem('uname') ? localStorage.getItem('uname').toUpperCase() : ""}${localStorage.getItem("uname") ? "," : ""} WELCOME TO MRP DIAMONDS`]}
+            words={[`${localStorage.getItem('uname') ? localStorage.getItem('uname').toUpperCase() : ""}${localStorage.getItem("uname") ? "," : ""} WELCOME TO STEIN GEMS`]}
             loop
             deleteDelay='100%'
           />
@@ -69,7 +69,7 @@ const Home = () => {
           <div className="main">
             <motion.div className="left">
               <motion.h2 initial={{ x: -200 }} whileInView={{ x: 0 }}>
-                FACTS OF STEIN 
+                FACTS OF STEIN
               </motion.h2>
               <motion.p variants={container} initial="hidden" animate="visible">
                 {

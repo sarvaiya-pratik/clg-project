@@ -7,6 +7,8 @@ header {
     position: fixed;
     top: 0;
     z-index: 200;
+    /* padding-inline: 200px; */
+    padding-block: 1.1rem;
     /* background-color: var(--secondary-color); */
     /* background-color: #1d1e23; */
 

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Arapey&family=Assistant&family=Bebas+Neue&family=Belanosima&family=Cherry+Bomb+One&family=Playfair+Display&family=Roboto&family=Rubik:ital@1&family=Ysabeau+SC&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
 #admin {
     font-family: 'Assistant', sans-serif;
     font-weight: 500;
@@ -128,13 +128,15 @@
                             var(--dark-shadow) 5%,
                             var(--gold) 70%);
                     /* color: transparent; */
-                    color: white;
+                    color: rgb(254, 254, 254);
                     /* filter: drop-shadow(5px 15px 15px black); */
                     filter: drop-shadow(3px -5px 2px rgb(6, 5, 5));
                     font-size: 40.3px !important;
                     transform: scaleY(1.04);
                     transform: scaleX();
-                    
+                    font-family: "Protest Guerrilla", sans-serif;
+                    letter-spacing: 5px;
+                    font-weight: 100;
                     /* transform: scaleY(1); */
                     transform-origin: top;
                     /* transform: scaleZ(22); */

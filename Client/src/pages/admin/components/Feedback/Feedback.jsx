@@ -139,7 +139,7 @@ const Feedback = () => {
                     <div className="col col-2">Product Name</div>
                     <div className="col col-3">Description</div>
                     <div className="col col-4">Title</div>
-                    <div className="col col-5">Rattig</div>
+                    <div className="col col-5">Ratting</div>
                     <div className="col col-6">User</div>
                     <div className="col col-7">Actions</div>
                   </li>

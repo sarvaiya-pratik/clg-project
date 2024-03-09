@@ -36,7 +36,7 @@ const Footer = () => {
       <div className="wave-container container-max">
         <div id="footer">
           <div className="address">
-            <h2 className='heading' style={{ fontWeight: '500' }}>MRP DIAMONDS</h2>
+            <h2 className='heading' style={{ fontWeight: '500' }}>STEIN GEMS</h2>
             <div className="box">
               <GrLocation />
               <p>NEAR GIRDHAR CIRCLE NEAR VED VESU SURAT - 395678</p>
