@@ -7,8 +7,8 @@ import axios from 'axios'
 
 const Loader = lazy(() => import('./common/Loader/Loader.jsx'))
 
-// axios.defaults.baseURL = "http://localhost:5050"
-axios.defaults.baseURL = "https://clg-project-04w9.onrender.com"
+axios.defaults.baseURL = "http://localhost:5050"
+// axios.defaults.baseURL = "https://clg-project-04w9.onrender.com"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <>
