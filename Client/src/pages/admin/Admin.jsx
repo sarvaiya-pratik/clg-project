@@ -42,8 +42,8 @@ const Admin = ({ data }) => {
           </div>
           <div className="centers">
             <div class="head-wrapper">
-              <div class="bg"> MRP DIAMONDS</div>
-              <div class="fg"> MRP DIAMONDS</div>
+              <div class="bg"> STEIN GEMS</div>
+              <div class="fg"> STEIN GEMS</div>
             </div>
           </div>
 

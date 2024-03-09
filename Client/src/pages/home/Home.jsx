@@ -10,7 +10,6 @@ import Header from "../../common/Header/Header"
 import Footer from "../../common/Footer/Footer"
 import LocomotiveScroll from 'locomotive-scroll'
 
-
 const Home = () => {
 
   const scrollRef = useRef(null)
@@ -23,7 +22,7 @@ const Home = () => {
   // })
 
 
-  const mypara = "MRP Diamonds is a prominent online diamond company specializing in the sale of exquisite diamonds. Our collection boasts a diverse array of diamond shapes, catering to varied preferences. To enhance your shopping experience, we offer 360-degree images that enable you to effortlessly examine our diamonds from every angle. We pride ourselves on providing flexible payment options, encompassing both secure online transactions and the convenience of cash on delivery. Our website's core focus revolves around facilitating seamless online transactions for uncut diamonds. "
+  const mypara = "STEIN GEMS is a prominent online diamond company specializing in the sale of exquisite diamonds. Our collection boasts a diverse array of diamond shapes, catering to varied preferences. To enhance your shopping experience, we offer 360-degree images that enable you to effortlessly examine our diamonds from every angle. We pride ourselves on providing flexible payment options, encompassing both secure online transactions and the convenience of cash on delivery. Our website's core focus revolves around facilitating seamless online transactions for uncut diamonds. "
   const words = mypara.split("");
 
   const container = {
@@ -70,7 +69,7 @@ const Home = () => {
           <div className="main">
             <motion.div className="left">
               <motion.h2 initial={{ x: -200 }} whileInView={{ x: 0 }}>
-                FACTS OF MRP
+                FACTS OF STEIN 
               </motion.h2>
               <motion.p variants={container} initial="hidden" animate="visible">
                 {
