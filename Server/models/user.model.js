@@ -32,6 +32,10 @@ const userShema = new mongoose.Schema({
     tokenExpires: {
         type: Date
     },
+    active:{
+        type: Boolean,
+        default: true
+    },
     createdAt: {
         type: Date,
         default: Date.now()

@@ -13,7 +13,8 @@ import { confirmAlert } from 'react-confirm-alert';
 import Loader from '../../../../common/Loader/Loader';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { FiUser } from 'react-icons/fi';
-
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 // axios.defaults.baseURL = "http://localhost:4001"
 const Customer = () => {
 
@@ -64,8 +65,8 @@ const Customer = () => {
   }
   const handleDelete = (id) => {
     confirmAlert({
-      title: 'Confirm to Delete',
-      message: 'Are you sure to delete this user ?',
+      title: 'Confirm to Block',
+      message: 'Are you sure to block this user ?',
       buttons: [
         {
           label: 'Yes',
@@ -97,11 +98,12 @@ const Customer = () => {
             <div className="col col-4" >{item.phone}</div>
             <div className="col col-5" >{item.gender}</div>
             <div className="col col-6" >{item.isAdmin ? "Admin" : "user"}</div>
-            <div className="col col-7 "   >
+            <div className="col col-7" >{item.active ? <span style={{color:'green',fontWeight:'600'}}>Active</span> : <span>Block</span>}</div>
+            <div className="col col-8 "   >
 
               <MdOutlineEdit onClick={() => handleDrawer(item._id)} />
 
-              <RiDeleteBinFill onClick={() => handleDelete(item._id)} />
+              <FaEye onClick={() => handleDelete(item._id)} />
 
             </div>
           </li>
@@ -151,7 +153,8 @@ const Customer = () => {
                   <div className="col col-4">Phone</div>
                   <div className="col col-5">Gender</div>
                   <div className="col col-6">Role</div>
-                  <div className="col col-7">Actions</div>
+                  <div className="col col-7">Status</div>
+                  <div className="col col-8">Actions</div>
                 </li>
 
                 {

@@ -652,13 +652,17 @@ input:checked~.slider {
         }
 
         .col-6 {
-            width: 14%;
+            width: 7%;
+            /* width:30px ; */
+        }
+        .col-7 {
+            width: 9%;
             /* width:30px ; */
         }
 
-        .col-7 {
+        .col-8 {
 
-            width: 8%;
+            width: 6%;
             text-align: center;
             gap: 1rem;
             display: flex;

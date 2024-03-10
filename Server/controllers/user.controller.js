@@ -28,7 +28,7 @@ const getCurrentUser = async (req, res) => {
             return res.status(200).json({ user: user, success: true })
         }
 
-        return res.status(404).json({success:false,message:"User not found !"})
+        return res.status(404).json({ success: false, message: "User not found !" })
 
     } catch (error) {
         console.error('Error:', error);
@@ -43,7 +43,7 @@ const updateUser = async (req, res) => {
         const userId = req.params.uid
 
         if (!userId) {
-            return res.status(404).json({success:false,message:"UserId not found !"})
+            return res.status(404).json({ success: false, message: "UserId not found !" })
         }
 
         const user = await User.findByIdAndUpdate(userId, { name, phone, dob, gender, dob, isAdmin }, { new: true })
@@ -142,18 +142,24 @@ const getUserById = async (req, res) => {
 const deleteUser = async (req, res) => {
 
     const userId = req.params.id
-
+    
     try {
 
-        await User.findByIdAndDelete(userId)
-        const user = await User.find().populate("address")
-
+        // await User.findByIdAndDelete(userId)
+        // await User.findByIdAndUpdate(userId,{active: !active})
+        // const user = await User.findByIdAndUpdate(userId, { $set: { active: { $ne: true } } }, { new: true })
+        const user = await User.findById(userId);
+        user.active = !user.active;
+        await user.save()
+        
+        console.log(user);
         res.status(200).json({ success: true, message: "Deleted Succesfully", user })
+        // const user = await User.find().populate("address")
+        console.log(user)
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ success: false, message: error.message })
     }
-
 }
 
 

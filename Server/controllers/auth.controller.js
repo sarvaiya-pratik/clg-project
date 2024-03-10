@@ -209,7 +209,7 @@ const forgotPassword = async (req, res) => {
         const mailOptions = {
             from: process.env.ADMIN_EMAIL,
             to: email,
-            html: `<h2>For reset password <a href=${link}> click here </a></h2>  <p> Plase reset your password using above link ! Thank you from MRP diamonds.. </p>`,
+            html: `<h2>For reset password <a href=${link}> click here </a></h2>  <p> Plase reset your password using above link ! Thank you from Stein Gems.. </p>`,
             subject: 'RESET PASSWORD !',
         };
 
