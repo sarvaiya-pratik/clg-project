@@ -54,7 +54,7 @@
   "ratio": 0.98,
   "crownangle": 38.6,
   "crownheight": 17.5,
-  "quantity": 100
+  "quantity": 99
 },
 {
   "_id": {
@@ -79,7 +79,7 @@
   "ratio": 0.99,
   "crownangle": 38,
   "crownheight": 38,
-  "quantity": 5,
+  "quantity": 2,
   "reviews": [
     {
       "$oid": "65b356f2c75544551fc4de71"
@@ -139,7 +139,7 @@
   "ratio": 0.88,
   "crownangle": 37.8,
   "crownheight": 16.5,
-  "quantity": 10
+  "quantity": 9
 },
 {
   "_id": {
@@ -157,14 +157,19 @@
   "clarity": "SI1",
   "cut": "None",
   "polish": "VG",
-  "symmetry": "VG",
+  "symmetry": "Excellent",
   "fluorescence": "None",
-  "table": "60.00",
-  "depth": "53.60",
-  "ratio": "0.48",
-  "crownangle": "41.8",
-  "crownheight": "26.50",
-  "quantity": 5
+  "table": 60,
+  "depth": 53.6,
+  "ratio": 0.48,
+  "crownangle": 41.8,
+  "crownheight": 26.5,
+  "quantity": 4,
+  "reviews": [
+    {
+      "$oid": "65ec1467e8a97e52b6312c3f"
+    }
+  ]
 },
 {
   "_id": {
@@ -416,6 +421,37 @@
   "ratting": [],
   "createdAt": {
     "$date": "2024-01-25T12:13:14.373Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65cc4e8a3f84ffdf701da670"
+  },
+  "title": "latest pear ",
+  "catagory": "natural",
+  "imgUrl": "http://res.cloudinary.com/pratik-rajput/image/upload/v1707888268/rueymikc0zutsezqy9zz.png",
+  "shape": {
+    "$oid": "65ab6059962ca224a80df1ae"
+  },
+  "price": 2000,
+  "carat": "2",
+  "colour": "E",
+  "clarity": "VVS2",
+  "cut": "Very good",
+  "polish": "GD",
+  "symmetry": "Very good",
+  "fluorescence": "Medium",
+  "table": 122,
+  "depth": 22,
+  "ratio": 12,
+  "crownangle": 12,
+  "crownheight": 122,
+  "quantity": 12,
+  "reviews": [],
+  "ratting": [],
+  "createdAt": {
+    "$date": "2024-02-14T05:08:32.324Z"
   },
   "__v": 0
 }]

@@ -164,7 +164,7 @@ const Dashboard = ({ slider }) => {
             <SaleChart totalSalesByMonth={totalSalesByMonth} />
           </div>
           <div className="chart2">
-            <PaymentChart whatPayment={whatPayment} />
+            <PaymentChart whatPayment={whatPayment}  />
           </div>
         </div>
 

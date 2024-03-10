@@ -11,6 +11,12 @@ const AddDiamond = ({ slider }) => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [load, setLoad] = useState(false)
     const [listCategory, setListCategory] = useState([]);
+    const [color, setColor] = useState([])
+    const [clarity, setClarity] = useState([])
+    const [cut, setCut] = useState([])
+    const [polish, setPolish] = useState([])
+    const [summetry, setSummetry] = useState([])
+
     useEffect(() => {
         axios.get('/products/category/all').then((r) => {
             setListCategory(r.data.category);
@@ -18,6 +24,39 @@ const AddDiamond = ({ slider }) => {
         }).catch((err) => {
             console.log(err)
         });
+
+        axios.get('/other/color').then((r) => {
+            setColor(r.data.color[0].color);
+
+        }).catch((err) => {
+            console.log(err)
+        });
+        axios.get('/other/clarity').then((r) => {
+            setClarity(r.data.color[0].clarity);
+
+        }).catch((err) => {
+            console.log(err)
+        });
+        axios.get('/other/cut').then((r) => {
+            setCut(r.data.color[0].cut);
+
+        }).catch((err) => {
+            console.log(err)
+        });
+        axios.get('/other/polish').then((r) => {
+            setPolish(r.data.color[0].polish);
+
+        }).catch((err) => {
+            console.log(err)
+        });
+        axios.get('/other/summetry').then((r) => {
+            setSummetry(r.data.color[0].summetry);
+
+        }).catch((err) => {
+            console.log(err)
+        });
+
+
     }, []);
 
     const handlechange = (e) => {
@@ -107,8 +146,15 @@ const AddDiamond = ({ slider }) => {
                                 <div className="form-con">
                                     <span>Color</span>
                                     <select name="colour" id="" onChange={handlechange}>
+
                                         <option value='none'>Select Color</option>
-                                        <option value="D">D</option>
+                                        {
+                                            color.map((e) => {
+                                                return (<option value={e}>{e}</option>)
+                                            })
+                                        }
+
+                                        {/* <option value="D">D</option>
                                         <option value="E">E</option>
                                         <option value="F">F </option>
                                         <option value="G">G</option>
@@ -121,14 +167,20 @@ const AddDiamond = ({ slider }) => {
                                         <option value="QR"> QR </option>
                                         <option value="ST"> ST </option>
                                         <option value="UV"> UV </option>
-                                        <option value="WX"> WX </option>
+                                        <option value="WX"> WX </option> */}
                                     </select>
                                 </div>
                                 <div className="form-con">
                                     <span>Clarity</span>
                                     <select name="clarity" id="" onChange={handlechange}>
                                         <option value='none'>Select Clarity</option>
-                                        <option value="FL">FL</option>
+                                        {
+                                             clarity.map((e) => {
+                                                 return (<option value={e}>{e}</option>)
+                                             })
+                                         
+                                        }
+                                        {/* <option value="FL">FL</option>
                                         <option value="IF">IF</option>
                                         <option value="VVS1">VVS1 </option>
                                         <option value="VVS2">VVS2</option>
@@ -138,43 +190,58 @@ const AddDiamond = ({ slider }) => {
                                         <option value="SI2">SI2 </option>
                                         <option value="I1"> I1 </option>
                                         <option value="I2"> I2 </option>
-                                        <option value="I3"> I3 </option>
+                                        <option value="I3"> I3 </option> */}
                                     </select>
                                 </div>
                                 <div className="form-con">
                                     <span>Cut</span>
                                     <select name="cut" id="" onChange={handlechange}>
                                         <option value='none'>Select Cut</option>
-                                        <option value="Ideal">Ideal</option>
+                                        {
+                                            cut.map((e) => {
+                                                return (<option value={e}>{e}</option>)
+                                            })
+                                        }
+                                        {/* <option value="Ideal">Ideal</option>
                                         <option value="Excellent">Excellent </option>
                                         <option value="Very good">Very good </option>
                                         <option value="Good">Good</option>
                                         <option value="Fair">Fair  </option>
                                         <option value="Poor"> Poor </option>
-                                        <option value="8x"> 8x </option>
+                                        <option value="8x"> 8x </option> */}
                                     </select>
                                 </div>
                                 <div className="form-con">
                                     <span>Polish</span>
                                     <select name="polish" id="" onChange={handlechange}>
                                         <option value='none'>Select Polish</option>
-                                        <option value="GD">GD</option>
+                                        {
+                                            polish.map((e) => {
+                                                return (<option value={e}>{e}</option>)
+                                            })
+                                        }
+                                        {/* <option value="GD">GD</option>
                                         <option value="VG">VG</option>
-                                        <option value="EX">EX</option>
+                                        <option value="EX">EX</option> */}
                                     </select>
                                 </div>
                                 <div className="form-con">
                                     <span>Summetry</span>
                                     <select name="symmetry" id="" onChange={handlechange}>
                                         <option value='none'>Select Summetry</option>
-                                        <option value="Excellent">Excellent</option>
+                                        {
+                                            summetry.map((e) => {
+                                                return (<option value={e}>{e}</option>)
+                                            })
+                                        }
+                                        {/* <option value="Excellent">Excellent</option>
                                         <option value="Very good">Very good </option>
                                         <option value="Good"> Good </option>
                                         <option value="Fair">Fair  </option>
-                                        <option value="Poor"> Poor </option>
+                                        <option value="Poor"> Poor </option> */}
                                     </select>
                                 </div>
-                                <div className="form-con">
+                                {/* <div className="form-con">
                                     <span>Fluorescence </span>
                                     <select name="fluorescence" id="" onChange={handlechange}>
                                         <option value='none'>Select Fluorescence</option>
@@ -184,7 +251,7 @@ const AddDiamond = ({ slider }) => {
                                         <option value="Very strong">Very strong  </option>
 
                                     </select>
-                                </div>
+                                </div> */}
                                 <div className="form-con">
                                     <span >Table</span>
                                     <input type="number" name='table' onChange={handlechange} />

@@ -585,14 +585,27 @@ input:checked~.slider {
     .chart-container {
         margin-top: 5rem;
         padding: 0 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 2px solid black; */
+        width: 100%;
 
-        >.chart1 {}
+        >.chart1 {
+            width: 60%;
+            display: flex;
+            justify-content: center;
+        }
 
         >.chart2 {
-            width: 100%;
-            max-width: 500px;
+            /* border: 10px solid black; */
+            width: 40%;
 
-            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            height: 350px;
+
+
         }
     }
 }

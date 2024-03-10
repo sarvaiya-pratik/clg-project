@@ -11,6 +11,11 @@ import ResetPass from "./pages/login/ResetPass";
 // import OrderDetails from "./pages/profile/OrderDetails";
 import Lagacy from "../src/pages/home/Features_mrp/Legacy/Legacy"
 import Legacy from "../src/pages/home/Features_mrp/Legacy/Legacy";
+import Color from "./pages/admin/components/other/Color";
+import Clarity from "./pages/admin/components/other/Clarity";
+import Cut from "./pages/admin/components/other/Cut";
+import Polish from "./pages/admin/components/other/Polish";
+import Summetry from "./pages/admin/components/other/Summetry";
 const OrderDetails = lazy(() => import("./pages/profile/Order/OrderDetails"))
 const Home = lazy(() => import("./pages/home/Home"))
 const Login = lazy(() => import("./pages/login/Login"))
@@ -170,7 +175,29 @@ const App = () => {
         {
           path: 'category',
           element: <Category />
-        }
+        },
+        {
+          path: 'color',
+          element: <Color />
+        },
+        {
+          path: 'clarity',
+          element: <Clarity />
+        },
+        {
+          path: 'cut',
+          element: <Cut />
+        },
+        {
+          path: 'polish',
+          element: <Polish />
+        },
+        {
+          path: 'summetry',
+          element: <Summetry />
+        },
+
+
 
       ]
 

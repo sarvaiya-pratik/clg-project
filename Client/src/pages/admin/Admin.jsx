@@ -4,8 +4,11 @@ import { BiSolidDiamond, BiLogOut, BiPlus, BiMessage, BiGridAlt, BiStore, BiSear
 import { FaFileInvoiceDollar } from "react-icons/fa6";
 import { IoDiamondOutline } from "react-icons/io5";
 import { NavLink, Outlet } from 'react-router-dom'
-
-
+import { IoMdColorPalette } from "react-icons/io";
+import { GiCutDiamond } from "react-icons/gi";
+import { GiFloorPolisher } from "react-icons/gi";
+import { FiSunset } from "react-icons/fi";
+import { FaAsymmetrik } from "react-icons/fa";
 // import admin from "./admin.jpeg"
 import logo from "./diamond_logo.png"
 import { ToastContainer, toast } from 'react-toastify'
@@ -23,7 +26,7 @@ const Admin = ({ data }) => {
 
   return (
     <>
-      <ToastContainer position="bottom-right" />
+      <ToastContainer position="bottom-right" autoClose={400} />
       <div id="admin">
         <div className='adminheader'>
           <div className="left">
@@ -93,6 +96,12 @@ export const AdminSlide = ({ slider, setSlider }) => {
         <NavLink to="/admin/order" onClick={() => setSlider(!slider)}><BiStore />Orders</NavLink>
         <NavLink to="/admin/feedback" onClick={() => setSlider(!slider)}><BiMessage />Feedback</NavLink>
         <NavLink to="/admin/category" onClick={() => setSlider(!slider)}>< BiCategory />Shapes</NavLink>
+        <NavLink to="/admin/color" onClick={() => setSlider(!slider)}>< IoMdColorPalette />Colors</NavLink>
+        <NavLink to="/admin/clarity" onClick={() => setSlider(!slider)}>< FiSunset />Clarity</NavLink>
+        <NavLink to="/admin/cut" onClick={() => setSlider(!slider)}>< GiCutDiamond />Cut</NavLink>
+        <NavLink to="/admin/polish" onClick={() => setSlider(!slider)}>< GiFloorPolisher />Polish</NavLink>
+        <NavLink to="/admin/summetry" onClick={() => setSlider(!slider)}>< FaAsymmetrik />Summetry</NavLink>
+        {/* <NavLink to="/admin/fluorescence" onClick={() => setSlider(!slider)}>< IoMdColorPalette />Fluorescence</NavLink> */}
         {/* <NavLink to="/admin/invoice"><FaFileInvoiceDollar />Invoice</NavLink> */}
         {/* <NavLink to="/admins/faq"><BiQuestionMark />FAQ</NavLink> */}
         <NavLink to="/admin/addproduct" onClick={() => setSlider(!slider)}><BiPlus />Add Diamond</NavLink>

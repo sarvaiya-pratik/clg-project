@@ -43,6 +43,7 @@ const addProduct = async (req, res) => {
     }
 }
 
+
 const getProductById = async (req, res) => {
     const { productId } = req.params;
     try {
@@ -51,7 +52,7 @@ const getProductById = async (req, res) => {
             success: true,
             product
         })
-        
+
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ success: false, message: error.message })

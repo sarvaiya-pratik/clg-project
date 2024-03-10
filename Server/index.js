@@ -16,7 +16,7 @@ import productRouter from './routers/product.route.js'
 import cartRouter from "./routers/cart.route.js"
 import orderRouter from "./routers/order.route.js"
 import FeedbackRouter from './routers/feedback.route.js'
-
+import otherRouter from './routers/other.route.js'
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
@@ -61,6 +61,8 @@ app.use('/products', productRouter)
 app.use('/cart', cartRouter)
 app.use('/order', orderRouter)
 app.use('/feedback', FeedbackRouter)
+app.use('/other', otherRouter)
+
 
 const runServer = async () => {
     try {
