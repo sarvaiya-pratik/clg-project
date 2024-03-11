@@ -144,33 +144,33 @@ const Stones = () => {
         ?.filter(val => search == "" ? val : val.title.toLowerCase().includes(search.toLowerCase()))
         .slice(startIndex, endIndex).map((item, index) => (
           // <Typography key={index} variant="body1" gutterBottom>
-            <div className='diamond-card' style={{ cursor: 'pointer' }}>
+          <div className='diamond-card' style={{ cursor: 'pointer' }}>
 
-              {
-                item.imgUrl.startsWith('http://res.cloudinary.com') ?
-                  <img src={item.imgUrl} width="250px" height="250px"  ></img> :
-                  <iframe src={item.imgUrl} width="250px" height="250px"></iframe>
-              }
+            {
+              item.imgUrl.startsWith('http://res.cloudinary.com') ?
+                <img src={item.imgUrl} width="250px" height="250px"  ></img> :
+                <iframe src={item.imgUrl} width="250px" height="250px"></iframe>
+            }
 
-              <div className="card-body" >
-                <NavLink to={`/stones/${item._id}`}>
-                  <h5>{item.title}</h5>
-                  <hr />
-                  <p style={{ textAlign: 'center', fontWeight: '600', color: "green" }}>{item.price} $</p>
-                  <div className="mid">
-                    <p>T:{item.table}%</p>  <p>D:{item.depth}%</p>  <p>R:{item.ratio}%</p>
-                  </div>
-                </NavLink>
+            <div className="card-body" >
+              <NavLink to={`/stones/${item._id}`}>
+                <h5>{item.title}</h5>
                 <hr />
-                {/* <p>Available</p> */}
-                {
-                  item.quantity > 0 ?
-                    <button className='addToCart' onClick={() => handleAddToCart(item._id)}><BsCartPlus />Add To Cart</button>
-                    :
-                    <button className='Unavailble'><BsCartPlus />Not Availbale</button>
-                }
-              </div>
+                <p style={{ textAlign: 'center', fontWeight: '600', color: "green" }}>{item.price} $</p>
+                <div className="mid">
+                  <p>T:{item.table}%</p>  <p>D:{item.depth}%</p>  <p>R:{item.ratio}%</p>
+                </div>
+              </NavLink>
+              <hr />
+              {/* <p>Available</p> */}
+              {
+                item.quantity > 0 ?
+                  <button className='addToCart' onClick={() => handleAddToCart(item._id)}><BsCartPlus />Add To Cart</button>
+                  :
+                  <button className='Unavailble'><BsCartPlus />Not Availbale</button>
+              }
             </div>
+          </div>
           // </Typography>
         ));
   };

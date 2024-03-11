@@ -88,6 +88,8 @@ const register = async (req, res) => {
     }
 }
 
+
+
 const login = async (req, res) => {
     const { email, password } = req.body
 
@@ -115,6 +117,10 @@ const login = async (req, res) => {
             // throw new ApiError(409, "Please Login with Google")
         }
 
+        if(!isExistUser.active){
+            return res.status(402).json({ success: false, message: "your account blocked by admin" })
+            // throw new ApiError(409, "Please activate your account")
+        }
         const isvalidPass = await validateHashPass(password, isExistUser.password)
         if (!isvalidPass) {
             return res.status(400).json({ success: false, message: "Enter valid password" })

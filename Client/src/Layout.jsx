@@ -8,11 +8,11 @@ import ScrollToTop from './common/scroll/ScrollToTop'
 const Layout = () => {
   return (
     <>
-    <ToastContainer position="bottom-right" autoClose={400}/>
-        <Header/>
-        <ScrollToTop/>
-        <Outlet/>
-        <Footer/>
+      <ToastContainer position="bottom-right" autoClose={400} />
+      <Header />
+      <ScrollToTop />
+      <Outlet />
+      <Footer />
     </>
   )
 }
