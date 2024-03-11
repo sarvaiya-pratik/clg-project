@@ -1,0 +1,50 @@
+[{
+  "_id": {
+    "$oid": "65ec8ec50ce73c3be7aa86ab"
+  },
+  "color": [
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "J",
+    "K",
+    "OP"
+  ],
+  "clarity": [
+    "FL",
+    "IF",
+    "VVS1",
+    "VVS2",
+    "VS1",
+    "VS2"
+  ],
+  "cut": [
+    "Ideal",
+    "Excellent",
+    "Good",
+    "Fair",
+    "Poor",
+    "Very good"
+  ],
+  "polish": [
+    "GD",
+    "VG",
+    "EX"
+  ],
+  "summetry": [
+    "Very good",
+    "Good",
+    "Fair",
+    "Poor"
+  ],
+  "Fluorescence": [],
+  "createdAt": {
+    "$date": "2024-03-09T16:31:01.829Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-10T05:49:34.067Z"
+  },
+  "__v": 0
+}]

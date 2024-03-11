@@ -66,12 +66,12 @@ const AddDiamond = ({ slider }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoad(true)
-        const formData = new FormData()
-        formData.append('imguri', selectedFile)
+            const formData = new FormData()
+            formData.append('imguri', selectedFile)
 
-        Object.keys(ddata).forEach((key) => {
-            formData.append(key, ddata[key])
-        })
+            Object.keys(ddata).forEach((key) => {
+                formData.append(key, ddata[key])
+            })
 
         try {
 
