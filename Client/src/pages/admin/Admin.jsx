@@ -14,7 +14,12 @@ import logo from "./diamond_logo.png"
 import { ToastContainer, toast } from 'react-toastify'
 import { Avatar } from '@mui/material';
 import { AiFillSetting } from 'react-icons/ai';
-
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Fade from '@mui/material/Fade';
 const Admin = ({ data }) => {
   const [slider, setSlider] = useState(false)
   const [admin, setAdmin] = useState()
@@ -85,6 +90,13 @@ const Admin = ({ data }) => {
 }
 
 export const AdminSlide = ({ slider, setSlider }) => {
+
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleExpansion = () => {
+    setExpanded((prevExpanded) => !prevExpanded);
+  };
+
   return (<>
     <div className="left-side" id={slider && 'showslide'} >
 
@@ -95,16 +107,47 @@ export const AdminSlide = ({ slider, setSlider }) => {
         <NavLink to="/admin/diamonds" onClick={() => setSlider(!slider)}><BiDiamond />Diamonds</NavLink>
         <NavLink to="/admin/order" onClick={() => setSlider(!slider)}><BiStore />Orders</NavLink>
         <NavLink to="/admin/feedback" onClick={() => setSlider(!slider)}><BiMessage />Feedback</NavLink>
-        <NavLink to="/admin/category" onClick={() => setSlider(!slider)}>< BiCategory />Shapes</NavLink>
-        <NavLink to="/admin/color" onClick={() => setSlider(!slider)}>< IoMdColorPalette />Colors</NavLink>
-        <NavLink to="/admin/clarity" onClick={() => setSlider(!slider)}>< FiSunset />Clarity</NavLink>
-        <NavLink to="/admin/cut" onClick={() => setSlider(!slider)}>< GiCutDiamond />Cut</NavLink>
-        <NavLink to="/admin/polish" onClick={() => setSlider(!slider)}>< GiFloorPolisher />Polish</NavLink>
-        <NavLink to="/admin/summetry" onClick={() => setSlider(!slider)}>< FaAsymmetrik />Summetry</NavLink>
+        <NavLink to="/admin/addproduct" onClick={() => setSlider(!slider)}><BiPlus />Add Diamond</NavLink>
+
+
+        <Accordion
+          expanded={expanded}
+          onChange={handleExpansion}
+          slots={{ transition: Fade }}
+          slotProps={{ transition: { timeout: 400 } }}
+          sx={{
+            '& .MuiAccordion-region': { height: expanded ? 'auto' : 0 },
+            '& .MuiAccordionDetails-root': { display: expanded ? 'block' : 'none' },
+            backgroundColor:'rgb(214, 225, 235)',
+            width:'100%',
+            boxShadow:'none',
+          }}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1-content"
+            id="panel1-header"
+          >
+            <Typography>More Add</Typography>
+          </AccordionSummary>
+          <AccordionDetails style={{display:'flex',flexDirection:'column',gap:'0.7rem'}}>
+            {/* <Typography> */}
+        <NavLink to="/admin/category" className='other'  onClick={() => setSlider(!slider)}>< BiCategory />Shapes</NavLink>
+        <NavLink to="/admin/color" className='other'  onClick={() => setSlider(!slider)}>< IoMdColorPalette />Colors</NavLink>
+        <NavLink to="/admin/clarity" className='other'   onClick={() => setSlider(!slider)}>< FiSunset />Clarity</NavLink>
+        <NavLink to="/admin/cut" className='other'   onClick={() => setSlider(!slider)}>< GiCutDiamond />Cut</NavLink>
+        <NavLink to="/admin/polish" className='other'  onClick={() => setSlider(!slider)}>< GiFloorPolisher />Polish</NavLink>
+        <NavLink to="/admin/summetry" className='other'  onClick={() => setSlider(!slider)}>< FaAsymmetrik />Summetry</NavLink>
+            {/* </Typography> */}
+          </AccordionDetails>
+        </Accordion>
+        
+
+        
         {/* <NavLink to="/admin/fluorescence" onClick={() => setSlider(!slider)}>< IoMdColorPalette />Fluorescence</NavLink> */}
         {/* <NavLink to="/admin/invoice"><FaFileInvoiceDollar />Invoice</NavLink> */}
         {/* <NavLink to="/admins/faq"><BiQuestionMark />FAQ</NavLink> */}
-        <NavLink to="/admin/addproduct" onClick={() => setSlider(!slider)}><BiPlus />Add Diamond</NavLink>
+       
         <NavLink to="/" style={{ marginTop: '2rem' }} onClick={() => setSlider(!slider)}><BiLogOut />Logout</NavLink>
 
       </div>

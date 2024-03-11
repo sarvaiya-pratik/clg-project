@@ -241,11 +241,13 @@
                 padding-top: 1.5rem;
                 position: sticky;
                 top: 65px;
-                height: calc(100vh - 60px);
+                min-height:calc(100vh - 70px) ;
+                /* height: calc(100vh - 60px); */
                 box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(33, 142, 188, 0.12) 0px -12px 30px, rgba(21, 75, 122, 0.12) 0px 4px 6px, rgba(29, 94, 146, 0.17) 0px 12px 13px, rgba(37, 144, 171, 0.09) 0px -3px 5px;
                 background-color: var(--secondary-color);
                 border: 0.1px solid #222;
                 border-radius: 10px;
+                /* overflow: scroll; */
 
                 .active {
                     background-color: rgb(148, 191, 228);
@@ -273,6 +275,15 @@
 
 
 
+    }
+
+    .other{
+        text-decoration: none;
+        color: black;
+        padding:3px 5px;
+        &:hover{
+            background-color: rgb(148, 191, 228);
+        }
     }
 }
 

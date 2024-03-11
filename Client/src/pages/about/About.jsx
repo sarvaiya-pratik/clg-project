@@ -23,7 +23,7 @@ const About = () => {
           title="LEGACY"
           navigate={navigate}
           subTitle="ELEGANCE | ETHICS | VISION"
-          para="Built on the legacy of trust, ethics and more than 4 decades of excellence, MRP is synonymous to competence and innovation in diamond manufacturing"
+          para="Built on the legacy of trust, ethics and more than 4 decades of excellence, stein  is synonymous to competence and innovation in diamond manufacturing"
           myimg="https://akm-img-a-in.tosshub.com/indiatoday/diamond-mar19-1_647_030818060550.jpg?size=690:388"
         />
 

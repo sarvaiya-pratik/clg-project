@@ -35,7 +35,7 @@ const OrderDetails = () => {
 
         // Set up the document
         doc.setFontSize(12);
-        doc.text('MRP DIAMONDS', 85, 10);
+        doc.text('STEIN GEMS', 85, 10);
 
         // Add customer information
         doc.text(`Customer: ${order && order?.userId?.name}`, 10, 20);

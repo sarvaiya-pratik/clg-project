@@ -50,7 +50,7 @@ const Service = () => {
         </main>
         <main className='box'>
           <img src="https://cdn.siasat.com/wp-content/uploads/2021/07/E-Auction.jpg" alt="" />
-          <h2>MRP AUCTION</h2>
+          <h2>STEIN AUCTION</h2>
           <p>The modern round brilliant cut was revolutionary but remained largely unchallenged until the turn of this century. Now, when the consumer is more informed like never before, they need differentiated product that have exceptional brilliance, beauty, unique story to tell.</p>
           <p className="read-more">READ MORE</p>
         </main>

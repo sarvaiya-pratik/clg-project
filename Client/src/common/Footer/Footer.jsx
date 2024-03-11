@@ -51,7 +51,7 @@ const Footer = () => {
             </div>
             <div className="box">
               <AiOutlineMail />
-              <p><a href="mailto:">mrpdiamond45@gmail.com</a></p>
+              <p><a href="mailto:">steingems45@gmail.com</a></p>
             </div>
           </div>
 

@@ -63,7 +63,7 @@ const Home = () => {
         {/* End : backgroud with title  */}
 
 
-        {/*Section : Facts of MRP  */}
+        {/*Section : Facts of STEIN  */}
 
         <div className='second-banner'>
           <div className="main">
