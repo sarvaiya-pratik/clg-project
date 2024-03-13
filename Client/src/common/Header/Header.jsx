@@ -36,7 +36,6 @@ const Header = () => {
                 duration: 400,
                 delay: 0,
                 smooth: 'easeInOutQuart'
-
             });
         }
         scroller.scrollTo("home", {

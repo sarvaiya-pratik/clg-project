@@ -65,7 +65,7 @@ export const LegacyAbout = ({ title, subTitle, para, myimg, navigate }) => {
         <h4>{subTitle}</h4>
         <h2>{title}</h2>
         <p>{para}</p>
-        <button className='commBtn' onClick={() => navigate("/lagacy")}>EXPLORE <BsArrowRight /></button>
+        <button className='commBtn' >EXPLORE <BsArrowRight /></button>
       </motion.div>
       <div className="right">
         <img src={myimg} alt="" />

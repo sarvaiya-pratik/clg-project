@@ -85,7 +85,7 @@ const Order = () => {
     const endIndex = startIndex + pageSize;
     return Array.isArray(order) &&
       order
-        ?.filter(val => search == "" ? val : val.title.toLowerCase().includes(search.toLowerCase()))
+        ?.filter(val => search == "" ? val : val?.orderStatus?.toLowerCase()?.includes(search.toLowerCase()))
         .slice(startIndex, endIndex).map((item, index) => (
           <li className="table-row" key={index}>
             <div className="col col-1" >{item?.razorpay_order_id}</div>
@@ -163,7 +163,7 @@ const Order = () => {
                   renderPageData()
                 }
               </ul>
-              <div className="pagination" style={{display:'flex',justifyContent:'center'}}>
+              <div className="pagination" style={{ display: 'flex', justifyContent: 'center' }}>
                 <Pagination size='large' color="primary" count={Math.ceil(order?.length / pageSize)} onChange={handlePageChange} />
               </div>
             </div>

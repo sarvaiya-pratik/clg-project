@@ -5,10 +5,8 @@ import { authUser } from '../middleware/AuthUser.js'
 dotenv.config()
 const router = express.Router()
 
-
 router.get("/",getOrderData)
 router.get("/cuurent",authUser, getUserOrderData)
-
 router.post("/createorder",authUser, createOrder)
 router.post("/checkout",authUser, checkout)
 router.post("/paymentvarify",authUser, paymentVarification)
