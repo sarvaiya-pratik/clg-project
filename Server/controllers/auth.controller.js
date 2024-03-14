@@ -133,6 +133,7 @@ const login = async (req, res) => {
         }
 
         const accesToken = generateToken(isExistUser._id)
+        
         return res.cookie('token', accesToken, option)
             .status(200).json({
                 success: true,
