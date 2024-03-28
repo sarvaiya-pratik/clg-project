@@ -132,12 +132,12 @@ export const AdminSlide = ({ slider, setSlider }) => {
           </AccordionSummary>
           <AccordionDetails style={{display:'flex',flexDirection:'column',gap:'0.7rem'}}>
             {/* <Typography> */}
-        <NavLink to="/admin/category" className='other'  onClick={() => setSlider(!slider)}>< BiCategory />Shapes</NavLink>
-        <NavLink to="/admin/color" className='other'  onClick={() => setSlider(!slider)}>< IoMdColorPalette />Colors</NavLink>
-        <NavLink to="/admin/clarity" className='other'   onClick={() => setSlider(!slider)}>< FiSunset />Clarity</NavLink>
-        <NavLink to="/admin/cut" className='other'   onClick={() => setSlider(!slider)}>< GiCutDiamond />Cut</NavLink>
-        <NavLink to="/admin/polish" className='other'  onClick={() => setSlider(!slider)}>< GiFloorPolisher />Polish</NavLink>
-        <NavLink to="/admin/summetry" className='other'  onClick={() => setSlider(!slider)}>< FaAsymmetrik />Summetry</NavLink>
+        <NavLink to="/admin/category" className='other'  onClick={() => setSlider(!slider)}>< BiCategory style={{marginRight:'10px'}} />Shapes</NavLink>
+        <NavLink to="/admin/color" className='other'  onClick={() => setSlider(!slider)}>< IoMdColorPalette style={{marginRight:'10px'}} />Colors</NavLink>
+        <NavLink to="/admin/clarity" className='other'   onClick={() => setSlider(!slider)}>< FiSunset style={{marginRight:'10px'}}/>Clarity</NavLink>
+        <NavLink to="/admin/cut" className='other'   onClick={() => setSlider(!slider)}>< GiCutDiamond style={{marginRight:'10px'}}/>Cut</NavLink>
+        <NavLink to="/admin/polish" className='other'  onClick={() => setSlider(!slider)}>< GiFloorPolisher style={{marginRight:'10px'}} />Polish</NavLink>
+        <NavLink to="/admin/summetry" className='other'  onClick={() => setSlider(!slider)}>< FaAsymmetrik style={{marginRight:'10px'}} />Summetry</NavLink>
             {/* </Typography> */}
           </AccordionDetails>
         </Accordion>

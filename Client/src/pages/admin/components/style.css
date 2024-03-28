@@ -531,7 +531,7 @@ input:checked~.slider {
             display: flex;
             background-color: white;
             width: 280px;
-            height: 150px;
+            height: 160px;
             border-radius: 10px;
             justify-content: space-evenly;
 
