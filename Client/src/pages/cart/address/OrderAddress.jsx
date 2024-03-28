@@ -5,9 +5,9 @@ import Header from "../../../common/Header/Header"
 import Footer from "../../../common/Footer/Footer"
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 const OrderAddress = () => {
-const navigate = useNavigate()
+    const navigate = useNavigate()
     const [orderData, setOrderData] = useState({})
 
     const handleChange = (e) => {
@@ -35,7 +35,7 @@ const navigate = useNavigate()
     }
     return (
         <>
-           
+
             <div id="address">
                 <div className="main-con">
                     <div className="left-con">
@@ -84,7 +84,7 @@ const navigate = useNavigate()
                     </div>
                 </div>
             </div>
-        
+
         </>
     )
 }

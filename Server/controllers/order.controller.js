@@ -7,7 +7,6 @@ import User from "../models/user.model.js";
 import CartItem from "../models/cartItem.model.js";
 import Product from "../models/product.model.js";
 
-
 export const createOrder = async (req, res) => {
     const amount = req.body.amount;
     const userId = req.user._id;
@@ -40,10 +39,9 @@ export const createOrder = async (req, res) => {
             let productName = cartItem.productName
             let imgUrl = cartItem.imgUrl
             let carat = cartItem.carat
-
             // Update the product quantity using await
             await Product.findByIdAndUpdate(productId, { $inc: { quantity: -Number(quantity) } })
-
+            w
             return {
                 productId, price, quantity, userId, productName, imgUrl, carat
             }
@@ -64,6 +62,8 @@ export const createOrder = async (req, res) => {
         res.status(500).json({ success: false, message: error.message })
     }
 };
+
+
 // res.status(200).json({ success: true, order: response, myorder: order });
 
 export const checkout = async (req, res) => {
@@ -100,7 +100,7 @@ export const paymentVarification = async (req, res) => {
         const expectedSignature = crypto
             .createHmac("sha256", process.env.RAZORPAY_API_SECRET)
             .update(body.toString())
-            .digest("hex"); 
+            .digest("hex");
 
         const isAuthentic = expectedSignature === razorpay_signature;
 

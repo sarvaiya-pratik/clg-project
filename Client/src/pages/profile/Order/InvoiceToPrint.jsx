@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
   },
 });
 
-
 const InvoiceToPrint = ({ invoiceRef }) => {
   return (
     <>

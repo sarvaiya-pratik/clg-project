@@ -38,7 +38,7 @@ const DeliveryAddress = () => {
  
 
     const handleChange = (e) => {
-        setAddressData({ ...addressData, [e.target.name]: e.target.value })
+        setAddressData({ ...addressDaxta, [e.target.name]: e.target.value })
     }
 
   

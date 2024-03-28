@@ -119,6 +119,7 @@ const Login = () => {
 
               </p>
               <div className="forgate-password" > <span onClick={() => navigate("/forgot-password")} >Forgot password?</span></div>
+              {/* <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro illum incidunt quibusdam consectetur amet tempora placeat nesciunt pariatur modi adipisci, consequatur cumque qui.</h2> */}
 
               <div className="submit-container">
                 <button type='submit' className="submit"
@@ -169,6 +170,7 @@ const Login = () => {
                   value={regData.password}
                   onChange={handleReg} />
               </div>
+
               <div className="input">
                 <AiOutlineLock />
                 <input type={showPass ? "text" : "password"} placeholder='Confirm Password'
