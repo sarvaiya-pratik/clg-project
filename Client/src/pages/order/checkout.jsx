@@ -123,7 +123,7 @@ const checkout = () => {
                                                         <TextField id="outlined-basic" label="Last Name" variant="standard" name='lastname' value={addressData.lastname} onChange={handleChange} />
                                                         <TextField id="outlined-basic" label="Address (Area and Street)" variant="standard" name='street' value={addressData.street} onChange={handleChange} />
                                                         <TextField id="outlined-basic" label="City" variant="standard" name='city' value={addressData.city} onChange={handleChange} />
-                                                        <TextField id="outlined-basic" label="Pin Code" variant="standard" name='pincode' value={addressData.pincode} onChange={handleChange} />
+                                                        <TextField type='number' id="outlined-basic" label="Pin Code" variant="standard" name='pincode' value={addressData.pincode} onChange={handleChange} />
                                                         {/* <TextField id="outlined-basic" label="State" variant="standard" name='email' onChange={handleChange} /> */}
                                                         <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                                                             <InputLabel id="demo-simple-select-standard-label">State</InputLabel>
@@ -167,8 +167,8 @@ const checkout = () => {
                                     <TextField id="outlined-basic" label="First Name" variant="standard" name='firstname' onChange={handleChange} />
                                     <TextField id="outlined-basic" label="Last Name" variant="standard" name='lastname' onChange={handleChange} />
                                     <TextField id="outlined-basic" label="Address (Area and Street)" variant="standard" name='street' onChange={handleChange} />
-                                    <TextField id="outlined-basic" label="City" variant="standard" name='city' onChange={handleChange} />
-                                    <TextField id="outlined-basic" label="Pin Code" variant="standard" name='pincode' onChange={handleChange} />
+                                    <TextField type='text' id="outlined-basic" label="City" variant="standard" name='city' onChange={handleChange} />
+                                    <TextField type='number' id="outlined-basic" label="Pin Code" variant="standard" name='pincode' onChange={handleChange} />
                                     {/* <TextField id="outlined-basic" label="State" variant="standard" name='email' onChange={handleChange} /> */}
                                     <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                                         <InputLabel id="demo-simple-select-standard-label">State</InputLabel>

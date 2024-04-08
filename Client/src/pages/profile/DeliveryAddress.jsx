@@ -38,7 +38,7 @@ const DeliveryAddress = () => {
  
 
     const handleChange = (e) => {
-        setAddressData({ ...addressDaxta, [e.target.name]: e.target.value })
+        setAddressData({ ...addressData, [e.target.name]: e.target.value })
     }
 
   
@@ -83,7 +83,7 @@ const DeliveryAddress = () => {
                             <TextField id="outlined-basic" label="Last Name" variant="standard" name='lastname' value={addressData.lastname} onChange={handleChange} />
                             <TextField id="outlined-basic" label="Address (Area and Street)" variant="standard" value={addressData.street} name='street' onChange={handleChange} />
                             <TextField id="outlined-basic" label="City" variant="standard" name='city' value={addressData.city} onChange={handleChange} />
-                            <TextField id="outlined-basic" label="Pin Code" variant="standard" name='pincode' value={addressData.pincode} onChange={handleChange} />
+                            <TextField id="outlined-basic" label="Pin Codes" variant="standard" name='pincode' value={addressData.pincode} onChange={handleChange} />
                             {/* <TextField id="outlined-basic" label="State" variant="standard" name='email' onChange={handleChange} /> */}
                             <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                                 <InputLabel id="demo-simple-select-standard-label">State</InputLabel>

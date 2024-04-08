@@ -6,7 +6,7 @@ import { Suspense, lazy } from "react"
 
 import Feedback from "./pages/profile/Reviews/Feedback";
 import ForgotPass from "./pages/login/ForgotPass";
-import  CheckMail  from "./pages/login/CheckMail";
+import CheckMail from "./pages/login/CheckMail";
 import ResetPass from "./pages/login/ResetPass";
 // import OrderDetails from "./pages/profile/OrderDetails";
 import Lagacy from "../src/pages/home/Features_mrp/Legacy/Legacy"
@@ -16,6 +16,8 @@ import Clarity from "./pages/admin/components/other/Clarity";
 import Cut from "./pages/admin/components/other/Cut";
 import Polish from "./pages/admin/components/other/Polish";
 import Summetry from "./pages/admin/components/other/Summetry";
+import AdminLogin from "./pages/admin/AdminLogin";
+import Admin from "./pages/admin/Admin";
 const OrderDetails = lazy(() => import("./pages/profile/Order/OrderDetails"))
 const Home = lazy(() => import("./pages/home/Home"))
 const Login = lazy(() => import("./pages/login/Login"))
@@ -35,7 +37,7 @@ const Payment = lazy(() => import("./pages/order/Payment"))
 
 // admin
 
-const Category = lazy(()=>import("./pages/admin/components/Category/Category"))
+const Category = lazy(() => import("./pages/admin/components/Category/Category"))
 const Dashboard = lazy(() => import("./pages/admin/components/Dashboard"))
 const Diamonds = lazy(() => import("./pages/admin/components/Diamonds/Diamonds"))
 const Reviews = lazy(() => import("./pages/admin/components/Feedback/Feedback"))
@@ -60,6 +62,7 @@ const App = () => {
           element: <Login />,
 
         },
+
         {
           path: 'forgot-password',
           element: <ForgotPass />,
@@ -97,8 +100,8 @@ const App = () => {
           element: <Feedback />
         },
         {
-          path:'lagacy',
-          element:<Legacy/>
+          path: 'lagacy',
+          element: <Legacy />
         },
         {
           path: 'profile',
@@ -112,7 +115,6 @@ const App = () => {
               path: 'orders',
               element: <MyOrder />
             },
-
             {
               path: 'address',
               element: <DeliveryAddress />
@@ -139,7 +141,10 @@ const App = () => {
       ]
     },
 
-
+    {
+      path: '/adminlogin',
+      element: <AdminLogin />
+    },
     {
       path: "/admin",
       element: <AdminRoute />,

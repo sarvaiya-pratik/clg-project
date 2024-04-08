@@ -1,11 +1,14 @@
 import express from 'express'
-import { forgotPassword, login, register, resetPassword } from '../controllers/auth.controller.js'
+import { adminLogin, forgotPassword, login, register, resetPassword } from '../controllers/auth.controller.js'
 import { deleteUser, getAllUser, getCurrentUser, getUserById, updateAdress, updateUser } from '../controllers/user.controller.js'
 import passport from 'passport'
 import { authUser } from '../middleware/AuthUser.js'
+import { authAdmin } from '../middleware/AuthAdmin.js'
 
 
 const router = express.Router()
+
+
 router.post('/auth/signup', register)
 router.post('/auth/signin', login)
 router.put('/update/:uid', updateUser)
@@ -14,6 +17,9 @@ router.get('/currentuser', authUser, getCurrentUser)
 router.get('/', getAllUser)
 router.delete('/remove/:id', deleteUser)
 router.get('/ID/:id', getUserById)
+// Admin
+router.post('/admin',adminLogin)
+router.get('/checkadmin',authAdmin)
 
 // FORGATE PASSWORD
 router.post('/forgot-password', forgotPassword)

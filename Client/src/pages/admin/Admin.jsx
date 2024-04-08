@@ -20,6 +20,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Fade from '@mui/material/Fade';
+import axios from "axios";
 const Admin = ({ data }) => {
   const [slider, setSlider] = useState(false)
   const [admin, setAdmin] = useState()
@@ -51,16 +52,12 @@ const Admin = ({ data }) => {
           <div className="centers">
             <div class="head-wrapper">
               <div class="bg">STEIN GEMS</div>
-              {/* <div class="fg">STEIN GEMS</div> */}
+
             </div>
           </div>
 
           <div className="right">
 
-            {/* <div className="search">
-              <input placeholder="Search..." type="text" />
-              <button type="submit">Go</button>
-            </div> */}
 
 
             <Avatar src={admin?.image} alt=" " />
@@ -70,17 +67,7 @@ const Admin = ({ data }) => {
         <main>
           <AdminSlide slider={slider} setSlider={setSlider} />
           <Outlet />
-          {/* <Routes>
-            <Route path="/admin/dashboard" element={<Dashboard slider={slider} />}></Route>
-            <Route path="/managediamond" element={<AddDiamond slider={slider} />}></Route>
-            <Route path="/order" element={<Order slider={slider} />}></Route>
-            <Route path="/faq" element={<Faq slider={slider} />}></Route>
-            <Route path="/customer" element={<Cutomer slider={slider} />}></Route>
-            <Route path="/diamonds" element={<Diamonds slider={slider} data={data} />}></Route>
-            <Route path="/message" element={< Message slider={slider} />}></Route>
-            <Route path="/report" element={< Report slider={slider} />}></Route>
-            <Route path="/addproduct" element={< AddDiamond slider={slider} />}></Route>
-          </Routes> */}
+
         </main>
       </div>
 
@@ -97,6 +84,12 @@ export const AdminSlide = ({ slider, setSlider }) => {
     setExpanded((prevExpanded) => !prevExpanded);
   };
 
+  const handleLogout = () => {
+    axios.get('/admin/logout',{withCredentials:true})
+    setSlider(!slider)
+    window.location.reload()
+    
+  }
   return (<>
     <div className="left-side" id={slider && 'showslide'} >
 
@@ -118,9 +111,9 @@ export const AdminSlide = ({ slider, setSlider }) => {
           sx={{
             '& .MuiAccordion-region': { height: expanded ? 'auto' : 0 },
             '& .MuiAccordionDetails-root': { display: expanded ? 'block' : 'none' },
-            backgroundColor:'rgb(214, 225, 235)',
-            width:'100%',
-            boxShadow:'none',
+            backgroundColor: 'rgb(214, 225, 235)',
+            width: '100%',
+            boxShadow: 'none',
           }}
         >
           <AccordionSummary
@@ -130,25 +123,25 @@ export const AdminSlide = ({ slider, setSlider }) => {
           >
             <Typography>More Add</Typography>
           </AccordionSummary>
-          <AccordionDetails style={{display:'flex',flexDirection:'column',gap:'0.7rem'}}>
+          <AccordionDetails style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
             {/* <Typography> */}
-        <NavLink to="/admin/category" className='other'  onClick={() => setSlider(!slider)}>< BiCategory style={{marginRight:'10px'}} />Shapes</NavLink>
-        <NavLink to="/admin/color" className='other'  onClick={() => setSlider(!slider)}>< IoMdColorPalette style={{marginRight:'10px'}} />Colors</NavLink>
-        <NavLink to="/admin/clarity" className='other'   onClick={() => setSlider(!slider)}>< FiSunset style={{marginRight:'10px'}}/>Clarity</NavLink>
-        <NavLink to="/admin/cut" className='other'   onClick={() => setSlider(!slider)}>< GiCutDiamond style={{marginRight:'10px'}}/>Cut</NavLink>
-        <NavLink to="/admin/polish" className='other'  onClick={() => setSlider(!slider)}>< GiFloorPolisher style={{marginRight:'10px'}} />Polish</NavLink>
-        <NavLink to="/admin/summetry" className='other'  onClick={() => setSlider(!slider)}>< FaAsymmetrik style={{marginRight:'10px'}} />Summetry</NavLink>
+            <NavLink to="/admin/category" className='other' onClick={() => setSlider(!slider)}>< BiCategory style={{ marginRight: '10px' }} />Shapes</NavLink>
+            <NavLink to="/admin/color" className='other' onClick={() => setSlider(!slider)}>< IoMdColorPalette style={{ marginRight: '10px' }} />Colors</NavLink>
+            <NavLink to="/admin/clarity" className='other' onClick={() => setSlider(!slider)}>< FiSunset style={{ marginRight: '10px' }} />Clarity</NavLink>
+            <NavLink to="/admin/cut" className='other' onClick={() => setSlider(!slider)}>< GiCutDiamond style={{ marginRight: '10px' }} />Cut</NavLink>
+            <NavLink to="/admin/polish" className='other' onClick={() => setSlider(!slider)}>< GiFloorPolisher style={{ marginRight: '10px' }} />Polish</NavLink>
+            <NavLink to="/admin/summetry" className='other' onClick={() => setSlider(!slider)}>< FaAsymmetrik style={{ marginRight: '10px' }} />Summetry</NavLink>
             {/* </Typography> */}
           </AccordionDetails>
         </Accordion>
-        
 
-        
+
+
         {/* <NavLink to="/admin/fluorescence" onClick={() => setSlider(!slider)}>< IoMdColorPalette />Fluorescence</NavLink> */}
         {/* <NavLink to="/admin/invoice"><FaFileInvoiceDollar />Invoice</NavLink> */}
         {/* <NavLink to="/admins/faq"><BiQuestionMark />FAQ</NavLink> */}
-       
-        <NavLink to="/" style={{ marginTop: '2rem' }} onClick={() => setSlider(!slider)}><BiLogOut />Logout</NavLink>
+
+        <NavLink to="/admin" style={{ marginTop: '2rem' }} onClick={handleLogout}><BiLogOut />Logout</NavLink>
 
       </div>
     </div>

@@ -62,6 +62,17 @@ app.use('/cart', cartRouter)
 app.use('/order', orderRouter)
 app.use('/feedback', FeedbackRouter)
 app.use('/other', otherRouter)
+app.get('/admin/logout', (req, res) => {
+
+    const option = {
+        expires: new Date(0), // Set expiration date to a past date to immediately expire the cookie
+        httpOnly: true,
+        secure: true
+    }
+    res.clearCookie('admintoken', option)
+    res.end()
+
+})
 
 
 const runServer = async () => {

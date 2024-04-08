@@ -20,6 +20,71 @@ const transport = nodemailer.createTransport(
     })
 )
 
+const adminLogin = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        if (!(email && password)) {
+            // throw new ApiError(400, "All fiels are required")
+            return res.status(400).json({ success: false, message: "All fields are reauired" })
+        }
+
+        const isvalidEmail = validateEmail(email)
+
+        if (!isvalidEmail) {
+            return res.status(400).json({ success: false, message: "Invalid Patten of your email" })
+            // throw new ApiError(400, "Invalid Patten of your email")
+        }
+
+        const isExistUser = await User.findOne({ email })
+        if (!isExistUser) {
+            return res.status(409).json({ success: false, message: "You have't permission" })
+            // throw new ApiError(409, "Please register first")
+        }
+
+
+        if (!isExistUser.isAdmin) {
+            return res.status(402).json({ success: false, message: "You have't permission" })
+            // throw new ApiError(409, "Please activate your account")
+        }
+
+        const isvalidPass = await validateHashPass(password, isExistUser.password)
+        if (!isvalidPass) {
+            return res.status(400).json({ success: false, message: "Enter valid password" })
+            // throw new ApiError(409, "Enter valid password")
+        }
+        const oneHour = 3600 * 1000; // 1 hour in milliseconds
+        const expiryDate = new Date(Date.now() + oneHour);
+
+
+        const option = {
+            expires: expiryDate,
+            httpOnly: true,
+            secure: true
+
+        }
+
+        const accesToken = generateToken(isExistUser._id)
+        console.log('token', accesToken)
+        return res.cookie('admintoken', accesToken, option)
+            .status(200).json({
+                success: true,
+                user: isExistUser,
+                message: "Login succesfully !"
+            })
+
+
+    } catch (error) {
+        // if (error instanceof ApiError) {
+        //     return res.status(error.statusCode).send(error.message);
+        // } else {
+        res.status(500).json({ success: false, message: error.message })
+        // }
+    }
+
+}
+
+
 const register = async (req, res) => {
     console.log("REG")
     try {
@@ -92,7 +157,6 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
     const { email, password } = req.body
-
     try {
 
         if (!(email && password)) {
@@ -117,7 +181,7 @@ const login = async (req, res) => {
             // throw new ApiError(409, "Please Login with Google")
         }
 
-        if(!isExistUser.active){
+        if (!isExistUser.active) {
             return res.status(402).json({ success: false, message: "your account blocked by admin" })
             // throw new ApiError(409, "Please activate your account")
         }
@@ -133,7 +197,7 @@ const login = async (req, res) => {
         }
 
         const accesToken = generateToken(isExistUser._id)
-        
+
         return res.cookie('token', accesToken, option)
             .status(200).json({
                 success: true,
@@ -266,4 +330,4 @@ const resetPassword = async (req, res) => {
 
 
 
-export { register, login, forgotPassword, resetPassword }
+export { register, login, forgotPassword, resetPassword, adminLogin }

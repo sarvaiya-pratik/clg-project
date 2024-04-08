@@ -4,6 +4,8 @@ import Address from "../models/address.model.js"
 import User from "../models/user.model.js"
 
 
+
+
 const getAllUser = async (req, res) => {
     try {
         const user = await User.find().populate('address')
@@ -86,7 +88,7 @@ const updateAdress = async (req, res) => {
             // existingAddress.state = state
             // await existingAddress.save();
 
-            res.status(200).json({ success: true, message: "Address updated", user })
+          return  res.status(200).json({ success: true, message: "Address updated", user })
 
 
 
@@ -115,11 +117,11 @@ const updateAdress = async (req, res) => {
         const updatedUser = await user.save();
 
         console.log('User updated with new address:', updatedUser);
-        res.status(200).json({ success: true, message: "Address updated", user: updatedUser })
+      return  res.status(200).json({ success: true, message: "Address updated", user: updatedUser })
 
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json({ success: false, message: error.message })
+       return res.status(500).json({ success: false, message: error.message })
     }
 }
 
@@ -142,7 +144,7 @@ const getUserById = async (req, res) => {
 const deleteUser = async (req, res) => {
 
     const userId = req.params.id
-    
+
     try {
 
         // await User.findByIdAndDelete(userId)
@@ -151,7 +153,7 @@ const deleteUser = async (req, res) => {
         const user = await User.findById(userId);
         user.active = !user.active;
         await user.save()
-        
+
         console.log(user);
         res.status(200).json({ success: true, message: "Deleted Succesfully", user })
         // const user = await User.find().populate("address")
