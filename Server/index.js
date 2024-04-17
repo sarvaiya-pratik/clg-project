@@ -10,7 +10,6 @@ const app = express()
 app.use(cookieParser())
 
 import Razorpay from 'razorpay'
-
 import userRouter from './routers/user.route.js'
 import productRouter from './routers/product.route.js'
 import cartRouter from "./routers/cart.route.js"

@@ -41,7 +41,7 @@ export const createOrder = async (req, res) => {
             let carat = cartItem.carat
             // Update the product quantity using await
             await Product.findByIdAndUpdate(productId, { $inc: { quantity: -Number(quantity) } })
-            w
+
             return {
                 productId, price, quantity, userId, productName, imgUrl, carat
             }
@@ -54,12 +54,12 @@ export const createOrder = async (req, res) => {
         await CartItem.deleteMany({ cart: cart._id })
         cart.items = []
         cart.save()
-
-        res.status(200).json({ success: true, redirectUrl: `http://localhost:5173/payment/paymentsuccess?reference=${response.id}` })
+        console.log("ORder ")
+        return res.status(200).json({ success: true, redirectUrl: `http://localhost:5173/payment/paymentsuccess?reference=${response.id}` })
 
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json({ success: false, message: error.message })
+        return res.status(500).json({ success: false, message: error.message })
     }
 };
 

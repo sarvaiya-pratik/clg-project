@@ -20,13 +20,13 @@ const Payment = () => {
     const handleChosePayment = (e) => {
         setMethod(e.target.value)
     }
-    
+
 
     const handleCodCheckout = async (amount) => {
 
-        const result = await dispatch(createOrder(amount))
+        const result =await  dispatch(createOrder(amount))
 
-        console.log("result", result.payload.redirectUrl)
+        
         window.location.href = result.payload.redirectUrl
 
     }

@@ -87,7 +87,6 @@ const orderSlice = createSlice({
                 state.order = null,
                 state.loading = false
             })
-
     }
 })
 

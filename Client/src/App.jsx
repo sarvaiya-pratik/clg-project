@@ -60,18 +60,14 @@ const App = () => {
         {
           path: 'login',
           element: <Login />,
-
         },
-
         {
           path: 'forgot-password',
           element: <ForgotPass />,
-
         },
         {
           path: 'checkmail',
           element: <CheckMail />,
-
         },
         {
           path: 'reset-password/:token',

@@ -53,18 +53,18 @@ const Dashboard = ({ slider }) => {
 
   const calculateTotalSalesByMonth = (orders) => {
     const totalSalesByMonth = {};
+    orders &&
+      orders.forEach((order) => {
+        const orderDate = new Date(order.orderDate);
+        const month = orderDate.getMonth() + 1
 
-    orders.forEach((order) => {
-      const orderDate = new Date(order.orderDate);
-      const month = orderDate.getMonth() + 1
-
-      // Add sales to the corresponding month
-      if (totalSalesByMonth[month]) {
-        totalSalesByMonth[month] += order.totalPrice;
-      } else {
-        totalSalesByMonth[month] = order.totalPrice;
-      }
-    });
+        // Add sales to the corresponding month
+        if (totalSalesByMonth[month]) {
+          totalSalesByMonth[month] += order.totalPrice;
+        } else {
+          totalSalesByMonth[month] = order.totalPrice;
+        }
+      });
     const salesArray = [];
     for (let month = 1; month <= 12; month++) {
       // If sales data exists for the month, use it, otherwise default to 0
@@ -164,7 +164,7 @@ const Dashboard = ({ slider }) => {
             <SaleChart totalSalesByMonth={totalSalesByMonth} />
           </div>
           <div className="chart2">
-            <PaymentChart whatPayment={whatPayment}  />
+            <PaymentChart whatPayment={whatPayment} />
           </div>
         </div>
 

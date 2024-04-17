@@ -88,7 +88,7 @@ const updateAdress = async (req, res) => {
             // existingAddress.state = state
             // await existingAddress.save();
 
-          return  res.status(200).json({ success: true, message: "Address updated", user })
+            return res.status(200).json({ success: true, message: "Address updated", user })
 
 
 
@@ -117,11 +117,11 @@ const updateAdress = async (req, res) => {
         const updatedUser = await user.save();
 
         console.log('User updated with new address:', updatedUser);
-      return  res.status(200).json({ success: true, message: "Address updated", user: updatedUser })
+        return res.status(200).json({ success: true, message: "Address updated", user: updatedUser })
 
     } catch (error) {
         console.error('Error:', error);
-       return res.status(500).json({ success: false, message: error.message })
+        return res.status(500).json({ success: false, message: error.message })
     }
 }
 

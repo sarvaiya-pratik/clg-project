@@ -9,7 +9,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa"
 import { motion } from "framer-motion"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-
+import { LuCalendarDays } from "react-icons/lu";
 const Footer = () => {
   const [feedback, setFeedback] = useState({})
   const navigate = useNavigate()
@@ -88,13 +88,22 @@ const Footer = () => {
           </div>
           <div className="feedback">
 
-            <h2 className='heading' style={{ fontWeight: '500' }}>FEEDBACK !</h2>
-            <div className="subscribe">
+            <h2 className='heading' style={{ fontWeight: '500' }}>Opening Times</h2>
+            {/* <div className="subscribe">
               <p className=''>Write here...</p>
               <input placeholder="Give your feedback !" className="subscribe-input" name="feedback" type="text" onChange={(e) => setFeedback({ ...feedback, [e.target.name]: e.target.value })} />
               <br />
               <div className="submit-btn" onClick={handleSubmit}>SUBMIT</div>
-            </div>
+            </div> */}
+            <ul style={{lineHeight:'30px',listStyle:'none'}}>
+              <li><LuCalendarDays style={{marginRight:'10px'}}/> MONDAY - 10:00-22:00  </li>
+              <li> <LuCalendarDays style={{marginRight:'10px'}}/>TUESDAY - 10:00-22:00  </li>
+              <li> <LuCalendarDays style={{marginRight:'10px'}}/>WEDNESDAY - 10:00-22:00  </li>
+              <li> <LuCalendarDays style={{marginRight:'10px'}}/>THURSDAY - 10:00-22:00  </li>
+              <li> <LuCalendarDays style={{marginRight:'10px'}}/>FRIDAY - 10:00-22:00  </li>
+              <li> <LuCalendarDays style={{marginRight:'10px'}}/>SATURDAY - 10:00-22:00  </li>
+              <li> <LuCalendarDays style={{marginRight:'10px'}}/>SATURDAY - holiday  </li>
+            </ul>
           </div>
         </div>
 
