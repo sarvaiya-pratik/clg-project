@@ -1,0 +1,91 @@
+[{
+  "_id": {
+    "$oid": "65ab5fce962ca224a80df196"
+  },
+  "category": "Round",
+  "createdAt": {
+    "$date": "2024-01-20T05:53:18.531Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-20T05:53:18.531Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ab5fd5962ca224a80df199"
+  },
+  "category": "Heart",
+  "createdAt": {
+    "$date": "2024-01-20T05:53:25.723Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-20T14:29:24.238Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ab604b962ca224a80df1a8"
+  },
+  "category": "Emerald",
+  "createdAt": {
+    "$date": "2024-01-20T05:55:23.720Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-20T05:55:23.720Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ab6054962ca224a80df1ab"
+  },
+  "category": "Marquise",
+  "createdAt": {
+    "$date": "2024-01-20T05:55:32.843Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-20T05:55:32.843Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ab6059962ca224a80df1ae"
+  },
+  "category": "Pear",
+  "createdAt": {
+    "$date": "2024-01-20T05:55:37.576Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-20T05:55:37.576Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ab6063962ca224a80df1b1"
+  },
+  "category": "Asscher",
+  "createdAt": {
+    "$date": "2024-01-20T05:55:47.422Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-20T05:55:47.422Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b268c43407e5874b73f264"
+  },
+  "category": "Rose",
+  "createdAt": {
+    "$date": "2024-01-25T13:57:24.030Z"
+  },
+  "updatedAt": {
+    "$date": "2024-01-25T13:57:24.030Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,457 @@
+[{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b3316665"
+  },
+  "catagory": "lab grown",
+  "title": "Round 1.00ct H VS1 VG VG VG None",
+  "imgUrl": "https://loupe360.com/diamond/587300772/video",
+  "shape": {
+    "$oid": "65ab5fce962ca224a80df196"
+  },
+  "price": 1200,
+  "carat": "22ct",
+  "colour": "J",
+  "clarity": "FL",
+  "cut": "Ideal",
+  "polish": "VG",
+  "symmetry": "Very good",
+  "fluorescence": "Very strong",
+  "table": 57,
+  "depth": 65.32,
+  "ratio": 56,
+  "crownangle": 35,
+  "crownheight": 15.5,
+  "quantity": 0,
+  "reviews": [
+    {
+      "$oid": "65a5361705324fd0f1638e66"
+    },
+    {
+      "$oid": "65a55aa2df8207815a312164"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b3316666"
+  },
+  "catagory": "natural",
+  "title": "Round 1.00ct H VS2 VG EX VG None",
+  "imgUrl": "https://loupe360.com/diamond/1701158124/video",
+  "shape": {
+    "$oid": "65ab5fce962ca224a80df196"
+  },
+  "price": 1000,
+  "carat": "1ct",
+  "colour": "H",
+  "clarity": "VS2",
+  "cut": "None",
+  "polish": "EX",
+  "symmetry": "Good",
+  "fluorescence": "None",
+  "table": 56,
+  "depth": 64.8,
+  "ratio": 0.98,
+  "crownangle": 38.6,
+  "crownheight": 17.5,
+  "quantity": 99
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b3316668"
+  },
+  "catagory": "natural",
+  "title": "Round 1.00ct F VS1 VG EX VG Medium",
+  "imgUrl": "https://loupe360.com/diamond/557222765/video",
+  "shape": {
+    "$oid": "65ab5fce962ca224a80df196"
+  },
+  "price": 1090,
+  "carat": "1.00ct",
+  "colour": "F",
+  "clarity": "VS1",
+  "cut": "None",
+  "polish": "EX",
+  "symmetry": "VG",
+  "fluorescence": "Medium",
+  "table": 57,
+  "depth": 64.9,
+  "ratio": 0.99,
+  "crownangle": 38,
+  "crownheight": 38,
+  "quantity": 2,
+  "reviews": [
+    {
+      "$oid": "65b356f2c75544551fc4de71"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b331666b"
+  },
+  "catagory": "natural",
+  "title": "Emerald 1.02ct H SI2 EX EX None",
+  "imgUrl": "https://loupe360.com/diamond/cdinesh223012301/video",
+  "shape": {
+    "$oid": "65ab604b962ca224a80df1a8"
+  },
+  "price": 2111,
+  "carat": "1.02ct",
+  "colour": "H",
+  "clarity": "SI2",
+  "cut": "None",
+  "polish": "EX",
+  "symmetry": "Excellent",
+  "fluorescence": "None",
+  "table": 62.5,
+  "depth": 72.9,
+  "ratio": 1.45,
+  "crownangle": 32.2,
+  "crownheight": 15,
+  "quantity": 13,
+  "reviews": [
+    {
+      "$oid": "65a5658900ee3a3b07934226"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b331666c"
+  },
+  "catagory": "natural",
+  "title": "Heart 1.00ct G SI2 GD VG VG None",
+  "imgUrl": "https://loupe360.com/diamond/1479042036/video",
+  "shape": {
+    "$oid": "65ab5fd5962ca224a80df199"
+  },
+  "price": 2142,
+  "carat": "1.00ct",
+  "colour": "G",
+  "clarity": "SI2",
+  "cut": "None",
+  "polish": "VG",
+  "symmetry": "VG",
+  "fluorescence": "None",
+  "table": 56,
+  "depth": 59.6,
+  "ratio": 0.88,
+  "crownangle": 37.8,
+  "crownheight": 16.5,
+  "quantity": 9
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b331666d"
+  },
+  "catagory": "natural",
+  "title": "Heart 0.71ct E SI1 VG VG Faint",
+  "imgUrl": "https://loupe360.com/diamond/1467761468/video",
+  "shape": {
+    "$oid": "65ab5fd5962ca224a80df199"
+  },
+  "price": 3133,
+  "carat": "0.71ct",
+  "colour": "E",
+  "clarity": "SI1",
+  "cut": "None",
+  "polish": "VG",
+  "symmetry": "Excellent",
+  "fluorescence": "None",
+  "table": 60,
+  "depth": 53.6,
+  "ratio": 0.48,
+  "crownangle": 41.8,
+  "crownheight": 26.5,
+  "quantity": 4,
+  "reviews": [
+    {
+      "$oid": "65ec1467e8a97e52b6312c3f"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b331666e"
+  },
+  "catagory": "natural",
+  "title": "Marquise 1.00ct J I1 VG EX GD Strong",
+  "imgUrl": "https://loupe360.com/diamond/GT13709811/img",
+  "shape": {
+    "$oid": "65ab6054962ca224a80df1ab"
+  },
+  "price": 3127,
+  "carat": "1.00ct",
+  "colour": "J",
+  "clarity": "I1",
+  "cut": "None",
+  "polish": "EX",
+  "symmetry": "GD",
+  "fluorescence": "Strong",
+  "table": "57.00",
+  "depth": "51.30",
+  "ratio": "1.80",
+  "crownangle": "26.80",
+  "crownheight": "11.50",
+  "quantity": 5,
+  "reviews": [
+    {
+      "$oid": "65a5611fdf8207815a3123a6"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b331666f"
+  },
+  "catagory": "natural",
+  "title": "Marquise 1.00ct J SI2 GD VG VG Faint",
+  "imgUrl": "https://loupe360.com/diamond/127409042/img",
+  "shape": {
+    "$oid": "65ab6054962ca224a80df1ab"
+  },
+  "price": 2137,
+  "carat": "1.00ct",
+  "colour": "J",
+  "clarity": "SI2",
+  "cut": "None",
+  "polish": "VG",
+  "symmetry": "VG",
+  "fluorescence": "Faint",
+  "table": "59.00",
+  "depth": "52.60",
+  "ratio": "0.48",
+  "crownangle": "43.80",
+  "crownheight": "18.50",
+  "quantity": 5
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b3316670"
+  },
+  "catagory": "natural",
+  "title": "Pear 0.69ct J SI1 VG VG None",
+  "imgUrl": "https://loupe360.com/diamond/mausamandpallifestylePear0226/img",
+  "shape": {
+    "$oid": "65ab6059962ca224a80df1ae"
+  },
+  "price": 2186,
+  "carat": "0.69ct",
+  "colour": "J",
+  "clarity": "SI1",
+  "cut": "None",
+  "polish": "VG",
+  "symmetry": "VG",
+  "fluorescence": "None",
+  "table": 59,
+  "depth": 61.6,
+  "ratio": 1.48,
+  "crownangle": 0,
+  "crownheight": 0,
+  "quantity": 5,
+  "reviews": [
+    {
+      "$oid": "65a514b534f7ca59ae80b04f"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b3316671"
+  },
+  "catagory": "natural",
+  "title": "Asscher 1.01ct F SI1 EX VG Faint",
+  "imgUrl": "https://loupe360.com/diamond/591362629/video",
+  "shape": {
+    "$oid": "65ab6063962ca224a80df1b1"
+  },
+  "price": 3210,
+  "carat": "1.01ct",
+  "colour": "F",
+  "clarity": "SI1",
+  "cut": "None",
+  "polish": "EX",
+  "symmetry": "VG",
+  "fluorescence": "Faint",
+  "table": "68.00",
+  "depth": "71.60",
+  "ratio": "1.01",
+  "crownangle": "0.00",
+  "crownheight": "0.00",
+  "quantity": 12
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b3316672"
+  },
+  "catagory": "natural",
+  "title": "Rose 1.11ct I VS1 EX VG Faint",
+  "imgUrl": "https://loupe360.com/diamond/1478011292/video",
+  "shape": {
+    "$oid": "65ab6067962ca224a80df1b4"
+  },
+  "price": 1300,
+  "carat": "1.11ct",
+  "colour": "I",
+  "clarity": "VS1",
+  "cut": "None",
+  "polish": "EX",
+  "symmetry": "VG",
+  "fluorescence": "Faint",
+  "table": "75.00",
+  "depth": "35.60",
+  "ratio": "1.01",
+  "crownangle": "0.00",
+  "crownheight": "0.00",
+  "quantity": 10
+},
+{
+  "_id": {
+    "$oid": "64d4e8394b7ba5f6b3316673"
+  },
+  "catagory": "natural",
+  "title": "Rose 1.70ct E VS2 VG GD None",
+  "imgUrl": "https://loupe360.com/diamond/cdinesh220100801/video",
+  "shape": {
+    "$oid": "65ab6067962ca224a80df1b4"
+  },
+  "price": 2000,
+  "carat": "1.70ct",
+  "colour": "E",
+  "clarity": "VS2",
+  "cut": "None",
+  "polish": "VG",
+  "symmetry": "GD",
+  "fluorescence": "None",
+  "table": 73,
+  "depth": 32.6,
+  "ratio": 1.31,
+  "crownangle": 0,
+  "crownheight": 0,
+  "quantity": 5
+},
+{
+  "_id": {
+    "$oid": "65a55f1adf8207815a31227b"
+  },
+  "title": "Pear Latest 1ct ",
+  "catagory": "natural",
+  "imgUrl": "http://res.cloudinary.com/pratik-rajput/image/upload/v1705336601/bmf5tdxakjlje0mojpnp.webp",
+  "shape": {
+    "$oid": "65ab6059962ca224a80df1ae"
+  },
+  "price": 2000,
+  "carat": "1",
+  "colour": "E",
+  "clarity": "IF",
+  "cut": "Ideal",
+  "polish": "GD",
+  "symmetry": "Very good",
+  "fluorescence": "Strong",
+  "table": 12,
+  "depth": 12,
+  "ratio": 21,
+  "crownangle": 12,
+  "crownheight": 23,
+  "quantity": 12,
+  "reviews": [],
+  "ratting": [],
+  "createdAt": {
+    "$date": "2024-01-15T16:10:47.441Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ab6395216e8b8c121b05d4"
+  },
+  "title": "OK",
+  "catagory": "natural",
+  "imgUrl": "http://res.cloudinary.com/pratik-rajput/image/upload/v1705730965/gp0pahekmdfxrh0dwqdv.webp",
+  "shape": {
+    "$oid": "65ab5fd5962ca224a80df199"
+  },
+  "price": 2000,
+  "carat": "2.00",
+  "colour": "E",
+  "clarity": "VVS2",
+  "cut": "Ideal",
+  "polish": "GD",
+  "symmetry": "Excellent",
+  "fluorescence": "Faint",
+  "table": 56,
+  "depth": 56,
+  "ratio": 56,
+  "crownangle": 56,
+  "crownheight": 56,
+  "quantity": 65,
+  "reviews": [],
+  "ratting": [],
+  "createdAt": {
+    "$date": "2024-01-20T06:07:40.830Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65b267e13407e5874b73e7aa"
+  },
+  "title": "try bro",
+  "catagory": "natural",
+  "imgUrl": "http://res.cloudinary.com/pratik-rajput/image/upload/v1706190817/footootru15ruuxyhpwe.jpg",
+  "shape": {
+    "$oid": "65ab5fce962ca224a80df196"
+  },
+  "price": 12200,
+  "carat": "1.00",
+  "colour": "D",
+  "clarity": "VVS1",
+  "cut": "Ideal",
+  "polish": "GD",
+  "symmetry": "Excellent",
+  "fluorescence": "Faint",
+  "table": 23,
+  "depth": 23,
+  "ratio": 65,
+  "crownangle": 89,
+  "crownheight": 78,
+  "quantity": 78,
+  "reviews": [],
+  "ratting": [],
+  "createdAt": {
+    "$date": "2024-01-25T12:13:14.373Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65cc4e8a3f84ffdf701da670"
+  },
+  "title": "latest pear ",
+  "catagory": "natural",
+  "imgUrl": "http://res.cloudinary.com/pratik-rajput/image/upload/v1707888268/rueymikc0zutsezqy9zz.png",
+  "shape": {
+    "$oid": "65ab6059962ca224a80df1ae"
+  },
+  "price": 2000,
+  "carat": "2",
+  "colour": "E",
+  "clarity": "VVS2",
+  "cut": "Very good",
+  "polish": "GD",
+  "symmetry": "Very good",
+  "fluorescence": "Medium",
+  "table": 122,
+  "depth": 22,
+  "ratio": 12,
+  "crownangle": 12,
+  "crownheight": 122,
+  "quantity": 12,
+  "reviews": [],
+  "ratting": [],
+  "createdAt": {
+    "$date": "2024-02-14T05:08:32.324Z"
+  },
+  "__v": 0
+}]

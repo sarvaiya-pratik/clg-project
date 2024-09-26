@@ -1,82 +1,223 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import "react-toastify/dist/ReactToastify.css";
 import "./app.css"
 
-import Home from "./pages/home/Home"
-import About from "./pages/about/About"
-import Service from "./pages/service/Service"
-import Stones from "./pages/stones/Stones"
-import Login from "./pages/login/Login"
-import GetOtp from "./pages/login/GetOtp"
-import { VarifyOtp } from "./pages/login/VarifyOtp"
-import { useEffect, useState } from "react"
-import { Toaster } from "react-hot-toast"
-import StoneDetail from "./pages/stones/StoneDetail"
-import Admin from "./pages/admin/Admin"
-import axios from "axios"
-import AdminLogin from "./pages/admin/AdminLogin/AdminLogin"
-import ResetPass from "./pages/login/ResetPass"
-import Loader from "./common/Loader/Loader"
-import Cart from "./pages/cart/Cart"
-import Spinner from "./pages/login/Spinner"
-import Order from "./pages/cart/address/Order"
-import  RefreshContextProvider from "./context/RefreshContextProvider"
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import { Suspense, lazy } from "react"
 
-// axios.defaults.baseURL = "https://clg-server.onrender.com"
-axios.defaults.baseURL = "clg-project-server.vercel.app"
+import Feedback from "./pages/profile/Reviews/Feedback";
+import ForgotPass from "./pages/login/ForgotPass";
+import CheckMail from "./pages/login/CheckMail";
+import ResetPass from "./pages/login/ResetPass";
+// import OrderDetails from "./pages/profile/OrderDetails";
+import Lagacy from "../src/pages/home/Features_mrp/Legacy/Legacy"
+import Legacy from "../src/pages/home/Features_mrp/Legacy/Legacy";
+import Color from "./pages/admin/components/other/Color";
+import Clarity from "./pages/admin/components/other/Clarity";
+import Cut from "./pages/admin/components/other/Cut";
+import Polish from "./pages/admin/components/other/Polish";
+import Summetry from "./pages/admin/components/other/Summetry";
+import AdminLogin from "./pages/admin/AdminLogin";
+import Admin from "./pages/admin/Admin";
+const OrderDetails = lazy(() => import("./pages/profile/Order/OrderDetails"))
+const Home = lazy(() => import("./pages/home/Home"))
+const Login = lazy(() => import("./pages/login/Login"))
+const Stones = lazy(() => import("./pages/stones/Stones"))
+const StoneDetail = lazy(() => import("./pages/stones/StoneDetail"))
+const Cart = lazy(() => import("./pages/cart/Cart"))
+const Profile = lazy(() => import("./pages/profile/Profile"))
+const Notfound = lazy(() => import("./common/Error/Notfound"))
+const Layout = lazy(() => import("./Layout"))
+const Checkout = lazy(() => import("./pages/order/checkout"))
+const SuccessPayment = lazy(() => import("./pages/order/SuccessPayment"))
+const EditProfile = lazy(() => import("./pages/profile/EditProfile"))
+const MyOrder = lazy(() => import("./pages/profile/Order/MyOrder"))
+const DeliveryAddress = lazy(() => import("./pages/profile/DeliveryAddress"))
+const SuccessOrder = lazy(() => import("./pages/order/SuccessOrder"))
+const Payment = lazy(() => import("./pages/order/Payment"))
 
-// axios.defaults.baseURL = "http://localhost:4001"
+// admin
 
-
+const Category = lazy(() => import("./pages/admin/components/Category/Category"))
+const Dashboard = lazy(() => import("./pages/admin/components/Dashboard"))
+const Diamonds = lazy(() => import("./pages/admin/components/Diamonds/Diamonds"))
+const Reviews = lazy(() => import("./pages/admin/components/Feedback/Feedback"))
+const Order = lazy(() => import("./pages/admin/components/Order/Order"))
+const Customer = lazy(() => import("./pages/admin/components/Customer/Customer"))
+const AddDiamond = lazy(() => import("./pages/admin/components/AddDiamond"))
+const AdminRoute = lazy(() => import("./pages/admin/AdminRoute"))
 const App = () => {
-  // const [user, setLoginUser] = useState({ _id: 12 })
-  const [jdata, setJdata] = useState([])
-  const [load, setLoad] = useState(false)
 
-  useEffect(() => {
-    setLoad(true)
-    callapi()
-   
-  }, [])
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
 
-  const callapi = async () => {
-    await axios.get("/product")
-      .then((res) => {
-        setJdata(res.data)
-        setLoad(false)
-      })
-      .catch(err => "Error in json data(Pratik)" + err)
-  }
+      children: [
+        {
+          path: '/',
+          element: <Home />
+        },
+        {
+          path: 'login',
+          element: <Login />,
+        },
+        {
+          path: 'forgot-password',
+          element: <ForgotPass />,
+        },
+        {
+          path: 'checkmail',
+          element: <CheckMail />,
+        },
+        {
+          path: 'reset-password/:token',
+          element: <ResetPass />,
+
+        },
+
+        {
+          path: 'stones',
+          element: <Stones />
+        },
+        {
+          path: 'stones/:pid',
+          element: <StoneDetail />
+        },
+        {
+          path: 'cart',
+          element: <Cart />
+        },
+        {
+          path: 'orders/:id',
+          element: <OrderDetails />
+        },
+        {
+          path: 'orders/review/:pid',
+          element: <Feedback />
+        },
+        {
+          path: 'lagacy',
+          element: <Legacy />
+        },
+        {
+          path: 'profile',
+          element: <Profile />,
+          children: [
+            {
+              path: '',
+              element: <EditProfile />
+            },
+            {
+              path: 'orders',
+              element: <MyOrder />
+            },
+            {
+              path: 'address',
+              element: <DeliveryAddress />
+            }
+          ]
+        },
+        {
+          path: 'order/checkout',
+          element: <Checkout />
+        },
+        {
+          path: 'order/checkout/payment',
+          element: <Payment />
+        },
+        {
+          path: 'payment/paymentsuccess',
+          element: <SuccessPayment />
+        },
+        {
+          path: 'order/ordersuccess/:reference',
+          element: <SuccessOrder />
+        },
+
+      ]
+    },
+
+    {
+      path: '/adminlogin',
+      element: <AdminLogin />
+    },
+    {
+      path: "/admin",
+      element: <AdminRoute />,
+      children: [
+        {
+          path: "",
+          element: <Dashboard />
+        },
+        {
+          path: 'dashboard',
+          element: <Dashboard />
+        },
+        {
+          path: 'users',
+          element: <Customer />
+        },
+        {
+          path: 'diamonds',
+          element: <Diamonds />
+        },
+        {
+          path: 'feedback',
+          element: <Reviews />
+        },
+        {
+          path: 'order',
+          element: <Order />
+        },
+        {
+          path: 'addproduct',
+          element: <AddDiamond />
+        },
+        {
+          path: 'category',
+          element: <Category />
+        },
+        {
+          path: 'color',
+          element: <Color />
+        },
+        {
+          path: 'clarity',
+          element: <Clarity />
+        },
+        {
+          path: 'cut',
+          element: <Cut />
+        },
+        {
+          path: 'polish',
+          element: <Polish />
+        },
+        {
+          path: 'summetry',
+          element: <Summetry />
+        },
+
+
+
+      ]
+
+    },
+
+    {
+      path: "*",
+      element: <Notfound />
+    }
+
+  ])
 
   return (
-    <>
-    <RefreshContextProvider>
-      <Toaster />
-      {/* {load ? <Loader /> : */}
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />}>
-            </Route>
 
-            <Route path="/login/reset-password/getotp" element={<GetOtp />}></Route>
-            <Route path="/login/reset-password/varify" element={<VarifyOtp />}></Route>
-            <Route path="/login/reset-password/reset" element={<ResetPass />}></Route>
+    <RouterProvider router={router}>
 
-            <Route path="/stones" element={<Stones />}></Route>
-            <Route path="/stones/:id" element={<StoneDetail  />}></Route>
-            <Route path="/admin" element={< AdminLogin />} />
-            <Route path="/admins/*" element={<Admin data={jdata} />}></Route>
-            <Route path="/cart" element={<Cart />}></Route>
-            <Route path="/spi" element={<Spinner />}></Route>
-            <Route path="/order" element={<Order />}></Route>
-          </Routes>
 
-        </Router>
-        
+    </RouterProvider>
 
-      {/* } */}
-      </RefreshContextProvider>
-    </>
   )
 }
 

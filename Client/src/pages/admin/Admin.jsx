@@ -1,78 +1,73 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./style.css";
-import { BiSolidDiamond, BiLogOut, BiPlus, BiMessage, BiGridAlt, BiStore, BiSearch, BiUser, BiXCircle, BiMenuAltLeft, BiSolidDashboard, BiStats, BiQuestionMark } from "react-icons/bi"
-import { GoReport } from "react-icons/go"
-import { AiFillSetting } from "react-icons/ai"
-import { NavLink } from 'react-router-dom'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Dashboard from './components/Dashboard';
-import AddDiamond from './components/AddDiamond';
-import Order from './components/Order';
-import Faq from './components/Faq';
-import Diamonds from './components/Diamonds';
-import Message from './components/Message';
-import Report from "./components/Report"
-import Cutomer from './components/Cutomer';
-import admin from "./admin.jpeg"
+import { BiSolidDiamond, BiLogOut, BiPlus, BiMessage, BiGridAlt, BiStore, BiSearch, BiUser, BiXCircle, BiMenuAltLeft, BiSolidDashboard, BiStats, BiQuestionMark, BiDiamond, BiCategory } from "react-icons/bi"
+import { FaFileInvoiceDollar } from "react-icons/fa6";
+import { IoDiamondOutline } from "react-icons/io5";
+import { NavLink, Outlet } from 'react-router-dom'
+import { IoMdColorPalette } from "react-icons/io";
+import { GiCutDiamond } from "react-icons/gi";
+import { GiFloorPolisher } from "react-icons/gi";
+import { FiSunset } from "react-icons/fi";
+import { FaAsymmetrik } from "react-icons/fa";
+// import admin from "./admin.jpeg"
 import logo from "./diamond_logo.png"
-
+import { ToastContainer, toast } from 'react-toastify'
+import { Avatar } from '@mui/material';
+import { AiFillSetting } from 'react-icons/ai';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Fade from '@mui/material/Fade';
+import axios from "axios";
 const Admin = ({ data }) => {
-  const [search, setSearch] = useState(true)
   const [slider, setSlider] = useState(false)
+  const [admin, setAdmin] = useState()
 
-
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'))
+    setAdmin(user)
+  }, [])
 
   return (
     <>
-
-
+      <ToastContainer position="bottom-right" autoClose={400} />
       <div id="admin">
-        <header>
+        <div className='adminheader'>
           <div className="left">
-            {/* <BiMenuAltLeft onClick={() => setSlider(!slider)} /> */}
-            <input id="checkbox" type="checkbox" onChange={()=>setSlider(!slider)} checked={slider}/>
-    <label class="toggle" for="checkbox">
-        <div id="bar1" class="bars"></div>
-        <div id="bar2" class="bars"></div>
-        <div id="bar3" class="bars"></div>
-    </label>
-            
+
+            <input id="checkbox" type="checkbox" onChange={() => setSlider(!slider)} checked={slider} />
+            <label class="toggle" for="checkbox">
+              <div id="bar1" class="bars"></div>
+              <div id="bar2" class="bars"></div>
+              <div id="bar3" class="bars"></div>
+            </label>
+
+            <BiMenuAltLeft onClick={() => setSlider(!slider)} className='adminmenuicon' />
+            {/* <img src={logo} alt="" width="40px"  /> */}
+            <IoDiamondOutline color='white' />
+
           </div>
           <div className="centers">
-          <img src={logo} alt="" width="40px" />
-            <button data-text="Awesome" class="admin-heding-btn">
-              <span class="actual-text">&nbsp;MRP DIAMONDS &nbsp;</span>
-              
-            </button>
+            <div class="head-wrapper">
+              <div class="bg">STEIN GEMS</div>
+
+            </div>
           </div>
-          {/* <div className="cen">
-           
-          </div> */}
+
           <div className="right">
 
-            {/* <div className="search">
-              <input placeholder="Search..." type="text" />
-              <button type="submit">Go</button>
-            </div> */}
 
 
-            <img src={admin} alt=" " />
+            <Avatar src={admin?.image} alt=" " />
           </div>
-        </header>
+        </div>
 
         <main>
           <AdminSlide slider={slider} setSlider={setSlider} />
-          <Routes>
-            <Route path="/dashboard" element={<Dashboard slider={slider} />}></Route>
-            <Route path="/managediamond" element={<AddDiamond slider={slider} />}></Route>
-            <Route path="/order" element={<Order slider={slider} />}></Route>
-            <Route path="/faq" element={<Faq slider={slider} />}></Route>
-            <Route path="/customer" element={<Cutomer slider={slider} />}></Route>
-            <Route path="/diamonds" element={<Diamonds slider={slider} data={data} />}></Route>
-            <Route path="/message" element={< Message slider={slider} />}></Route>
-            <Route path="/report" element={< Report slider={slider} />}></Route>
-            <Route path="/addproduct" element={< AddDiamond slider={slider} />}></Route>
-          </Routes>
+          <Outlet />
+
         </main>
       </div>
 
@@ -81,22 +76,72 @@ const Admin = ({ data }) => {
   )
 }
 
-const AdminSlide = ({ slider,setSlider }) => {
+export const AdminSlide = ({ slider, setSlider }) => {
+
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleExpansion = () => {
+    setExpanded((prevExpanded) => !prevExpanded);
+  };
+
+  const handleLogout = () => {
+    axios.get('/admin/logout',{withCredentials:true})
+    setSlider(!slider)
+    window.location.reload()
+    
+  }
   return (<>
     <div className="left-side" id={slider && 'showslide'} >
 
       <div className='slide-container'>
 
-        <NavLink to="/admins/dashboard" onClick={()=>setSlider(!slider)} > <BiSolidDashboard />Dashboard</NavLink>
-        <NavLink to="/admins/customer" onClick={()=>setSlider(!slider)}>< BiUser />Customer</NavLink>
-        <NavLink to="/admins/diamonds" onClick={()=>setSlider(!slider)}><BiSolidDiamond />Diamonds</NavLink>
-        <NavLink to="/admins/message" onClick={()=>setSlider(!slider)}><BiMessage />Feedback</NavLink>
-        <NavLink to="/admins/order" onClick={()=>setSlider(!slider)}><BiStore />Orders</NavLink>
-        {/* <NavLink to="/admins/report">< GoReport />Reports</NavLink> */}
-        {/* <NavLink to="/admins/setting"><AiFillSetting />Settings</NavLink> */}
+        <NavLink to="/admin/dashboard" onClick={() => setSlider(!slider)} > <BiSolidDashboard />Dashboard</NavLink>
+        <NavLink to="/admin/users" onClick={() => setSlider(!slider)}>< BiUser />Users</NavLink>
+        <NavLink to="/admin/diamonds" onClick={() => setSlider(!slider)}><BiDiamond />Diamonds</NavLink>
+        <NavLink to="/admin/order" onClick={() => setSlider(!slider)}><BiStore />Orders</NavLink>
+        <NavLink to="/admin/feedback" onClick={() => setSlider(!slider)}><BiMessage />Feedback</NavLink>
+        <NavLink to="/admin/addproduct" onClick={() => setSlider(!slider)}><BiPlus />Add Diamond</NavLink>
+
+
+        <Accordion
+          expanded={expanded}
+          onChange={handleExpansion}
+          slots={{ transition: Fade }}
+          slotProps={{ transition: { timeout: 400 } }}
+          sx={{
+            '& .MuiAccordion-region': { height: expanded ? 'auto' : 0 },
+            '& .MuiAccordionDetails-root': { display: expanded ? 'block' : 'none' },
+            backgroundColor: 'rgb(214, 225, 235)',
+            width: '100%',
+            boxShadow: 'none',
+          }}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1-content"
+            id="panel1-header"
+          >
+            <Typography>More Add</Typography>
+          </AccordionSummary>
+          <AccordionDetails style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
+            {/* <Typography> */}
+            <NavLink to="/admin/category" className='other' onClick={() => setSlider(!slider)}>< BiCategory style={{ marginRight: '10px' }} />Shapes</NavLink>
+            <NavLink to="/admin/color" className='other' onClick={() => setSlider(!slider)}>< IoMdColorPalette style={{ marginRight: '10px' }} />Colors</NavLink>
+            <NavLink to="/admin/clarity" className='other' onClick={() => setSlider(!slider)}>< FiSunset style={{ marginRight: '10px' }} />Clarity</NavLink>
+            <NavLink to="/admin/cut" className='other' onClick={() => setSlider(!slider)}>< GiCutDiamond style={{ marginRight: '10px' }} />Cut</NavLink>
+            <NavLink to="/admin/polish" className='other' onClick={() => setSlider(!slider)}>< GiFloorPolisher style={{ marginRight: '10px' }} />Polish</NavLink>
+            <NavLink to="/admin/summetry" className='other' onClick={() => setSlider(!slider)}>< FaAsymmetrik style={{ marginRight: '10px' }} />Summetry</NavLink>
+            {/* </Typography> */}
+          </AccordionDetails>
+        </Accordion>
+
+
+
+        {/* <NavLink to="/admin/fluorescence" onClick={() => setSlider(!slider)}>< IoMdColorPalette />Fluorescence</NavLink> */}
+        {/* <NavLink to="/admin/invoice"><FaFileInvoiceDollar />Invoice</NavLink> */}
         {/* <NavLink to="/admins/faq"><BiQuestionMark />FAQ</NavLink> */}
-        <NavLink to="/admins/addproduct" onClick={()=>setSlider(!slider)}><BiPlus />Add Diamond</NavLink>
-        <NavLink to="/admin" style={{ marginTop: '2rem' }} onClick={()=>setSlider(!slider)}><BiLogOut />Logout</NavLink>
+
+        <NavLink to="/admin" style={{ marginTop: '2rem' }} onClick={handleLogout}><BiLogOut />Logout</NavLink>
 
       </div>
     </div>

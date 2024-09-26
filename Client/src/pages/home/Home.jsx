@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import "./style.css"
 import topbg from "./bg/video-diamond.mp4"
 import { FaHandHoldingHeart, FaHandHoldingMedical, FaHandHoldingWater, FaHandHoldingUsd } from "react-icons/fa"
@@ -8,11 +8,21 @@ import About from '../about/About'
 import Service from '../service/Service'
 import Header from "../../common/Header/Header"
 import Footer from "../../common/Footer/Footer"
-
+import LocomotiveScroll from 'locomotive-scroll'
 
 const Home = () => {
 
-  const mypara = "MRP Diamonds is a prominent online diamond company specializing in the sale of exquisite diamonds. Our collection boasts a diverse array of diamond shapes, catering to varied preferences. To enhance your shopping experience, we offer 360-degree images that enable you to effortlessly examine our diamonds from every angle. We pride ourselves on providing flexible payment options, encompassing both secure online transactions and the convenience of cash on delivery. Our website's core focus revolves around facilitating seamless online transactions for uncut diamonds. "
+  const scrollRef = useRef(null)
+
+  // useEffect(()=>{
+  //   const scroll = new LocomotiveScroll({
+  //     el:scrollRef.current,
+  //     smooth:true,
+  //   })
+  // })
+
+
+  const mypara = "STEIN GEMS is a prominent online diamond company specializing in the sale of exquisite diamonds. Our collection boasts a diverse array of diamond shapes, catering to varied preferences. To enhance your shopping experience, we offer 360-degree images that enable you to effortlessly examine our diamonds from every angle. We pride ourselves on providing flexible payment options, encompassing both secure online transactions and the convenience of cash on delivery. Our website's core focus revolves around facilitating seamless online transactions for uncut diamonds. "
   const words = mypara.split("");
 
   const container = {
@@ -32,11 +42,11 @@ const Home = () => {
       x: 100,
     }
   }
+
   return (
     <>
-      <Header />
-      <div id="home">
 
+      <div id="home" ref={scrollRef} className='scroll-container container-max' >
         {/* backgroud with title   */}
         <div className="top-bg">
           <video type="video/mp4" muted autoPlay loop ><source src={topbg}></source></video>
@@ -44,7 +54,7 @@ const Home = () => {
 
         <div className='heading-banner' >
           <Typewriter
-            words={[`${localStorage.getItem('uname') ? localStorage.getItem('uname').toUpperCase() : ""}${localStorage.getItem("uname") ? "," : ""} WELCOME TO MRP DIAMONDS`]}
+            words={[`${localStorage.getItem('uname') ? localStorage.getItem('uname').toUpperCase() : ""}${localStorage.getItem("uname") ? "," : ""} WELCOME TO STEIN GEMS`]}
             loop
             deleteDelay='100%'
           />
@@ -53,13 +63,13 @@ const Home = () => {
         {/* End : backgroud with title  */}
 
 
-        {/*Section : Facts of MRP  */}
+        {/*Section : Facts of STEIN  */}
 
         <div className='second-banner'>
           <div className="main">
             <motion.div className="left">
               <motion.h2 initial={{ x: -200 }} whileInView={{ x: 0 }}>
-                FACTS OF MRP
+                FACTS OF STEIN
               </motion.h2>
               <motion.p variants={container} initial="hidden" animate="visible">
                 {
@@ -97,7 +107,7 @@ const Home = () => {
       </div>
       <About />
       <Service />
-      <Footer />
+
     </>
   )
 }

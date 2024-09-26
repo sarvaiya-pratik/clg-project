@@ -1,16 +1,24 @@
 header {
     display: flex;
+    /* width: 100vw; */
     width: 100%;
     align-items: center;
     color: aliceblue;
     position: fixed;
     top: 0;
     z-index: 200;
-    background: rgba(0, 0, 0, 0.2);
+    /* padding-inline: 200px; */
+    padding-block: 1.1rem;
+    /* background-color: var(--secondary-color); */
+    /* background-color: #1d1e23; */
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px 512px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px 18px inset;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; */
 }
 
 .visible {
     /* display: flex; */
+
     top: 0;
     transition: top 0.4s ease-out;
 }
@@ -20,7 +28,6 @@ header {
     top: -80px;
     transition: top 0.4s ease-out;
 }
-
 
 header .left {
     flex-basis: 20%;
@@ -62,12 +69,12 @@ header .left {
 
 
     >.cartBtn {
-            
-            background-color: transparent;
+
+        background-color: transparent;
         border-radius: 50%;
         padding: 0.4rem;
         border: none;
-        
+
 
         >a {
             text-decoration: none;
@@ -205,36 +212,40 @@ header .left {
     flex-direction: column;
     transform: translateX(-200%);
     transition: all 0.4s;
-
-    background-color: var(--bg-secondary);
-
-
+    background-color: black;
+    padding-top: 2rem;
 
     >.middle {
+        display: flex;
         flex-direction: column;
-        margin-top: 3rem;
-        align-items: center;
         justify-content: center;
-        text-transform: uppercase;
+        align-items: center;
 
-        >li {
-            line-height: 0;
+
+        >.btn-txt {
+            font-size: 1.5rem;
         }
+
+        a {
+            text-decoration: none;
+        }
+
+
+
     }
 
     >.right {
-        border-top: 1px solid white;
-        padding: 5rem;
-        gap: 1rem;
 
-        >li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-            >a {
-                text-decoration: none;
-
-            }
+        a {
+            text-decoration: none;
         }
     }
+
 
 
 
@@ -274,9 +285,10 @@ header .left {
 
     #join-btn {
         display: none !important;
-       
+
     }
-    .rights{
+
+    .rights {
         display: none;
     }
 }
@@ -286,4 +298,3 @@ header .left {
     align-self: center;
     justify-content: center;
 }
-

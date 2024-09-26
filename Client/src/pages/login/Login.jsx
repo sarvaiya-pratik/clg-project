@@ -1,19 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./style.css"
-import axios from 'axios'
-import toast, { Toaster } from "react-hot-toast"
-import Header from '../../common/Header/Header'
-import Footer from '../../common/Footer/Footer'
+
+import { toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
-import Loader from '../../common/Loader/Loader'
-import { AiFillEye, AiFillEyeInvisible, AiOutlineUser, AiOutlineMail, AiOutlinePhone, AiOutlineLock } from "react-icons/ai"
+import { AiFillEye, AiFillEyeInvisible, AiOutlineUser, AiOutlineMail, AiOutlinePhone, AiOutlineLock, AiOutlineGoogle } from "react-icons/ai"
+import { useDispatch, useSelector } from 'react-redux'
+import { BiError } from 'react-icons/bi'
+import { createUser, loginUser, loginWithGoogle } from '../../redux/auth/authApi'
+import { TextField } from '@mui/material'
+import { getusercurrent } from '../../redux/user/userApi'
+
+
 const Login = () => {
+
   const [loginData, setLoginData] = useState({})
   const [regData, setRegData] = useState({})
   const [action, setAction] = useState("Login")
   const [showPass, setShowPass] = useState(true)
-  const [loading,setLoading] = useState(false)
-  const navigate = useNavigate();
+
+  const error = useSelector((state) => state.auth.err)
+  const user = useSelector((state) => state.auth.users)
+  const currentUserError = useSelector((state)=>state.user.error)
+  const dispatch = useDispatch()
+
+  const navigate = useNavigate()
+  // collect data from form  
+
   function handleReg(e) {
     setRegData({ ...regData, [e.target.name]: e.target.value })
   }
@@ -21,70 +33,64 @@ const Login = () => {
     e.preventDefault();
     setLoginData({ ...loginData, [e.target.name]: e.target.value })
   }
+
+
   function handleLoginSubmit(e) {
     e.preventDefault()
-    setLoading(true)
-    console.log(regData)
-    axios.post("/user/login", loginData)
-      .then((r) => {
-        if (r.data.status == "success") {
-          localStorage.setItem('uname', r.data.uname)
-          localStorage.setItem('token', r.data.token)
-          try {
-            toast.success(r.data.message)
-            setLoading(false)
-            navigate("/")
-            window.location.reload()
-          } catch (error) {
-            console.log("error in token")
-          }
-        }
-        else if (r.data.status = "Noactive") {
-          setLoading(false)
-          toast.error(r.data.message)
-        }
-        else {
-          setLoading(false)
-          toast.error(r.data.message)
-        }
-      })
+    dispatch(loginUser(loginData))
+    dispatch(getusercurrent())
+
+ 
+    // setTimeout(() => {
+    //   window.location.reload()
+
+    // }, 1000);
 
   }
+
+  useEffect(() => {
+    if (user && action == "Login" && !error && currentUserError ) {
+      toast.success("Login successfully !")
+      navigate("/")
+
+      dispatch(getusercurrent())
+    }
+   
+  }, [user])
+  useEffect(() => {
+
+    if (user && action == "Sign Up") {
+      toast.success("Register successfully !")
+      navigate("/")
+      dispatch(getusercurrent())
+    }
+  }, [user])
+
 
   function handleRegSubmit(e) {
-    e.preventDefault();
-    setLoading(true)
-    console.log("REG", regData)
-    axios.post("/user/register", regData)
-      .then((r) => {
-        if (r.data.status == "success") {
-          try {
-            setLoading(false)
-            toast.success(r.data.message)
-            localStorage.setItem('token', r.data.token)
-            localStorage.setItem('uname', r.data.uname)
+    e.preventDefault()
 
-            navigate("/")
-          } catch (error) {
+    dispatch(createUser(regData))
 
-            console.log("error in token")
-          }
-        }
-        else {
-          setLoading(false)
-          toast.error(r.data.message)
-        }
-      })
   }
+
+  const handleGoogleClick = () => {
+    window.open("http://localhost:5050/users/auth/google/callback", "_self");
+
+    dispatch(loginWithGoogle())
+
+
+  }
+
   const handleShowPass = () => {
     setShowPass(!showPass)
   }
-  return (
-    loading ? <Loader/> :
-    <>
-      <Header />
-      <div className="main-container">
 
+
+  return (
+    <>
+    
+      <div className="main-container">
         <div className="container">
           <div className="header">
             <div className="text">{action}</div>
@@ -105,16 +111,24 @@ const Login = () => {
                   onChange={handleLogin} />
                 {showPass ? <AiFillEye className='eyesize' onClick={handleShowPass} style={{ cursor: 'pointer' }} /> : <AiFillEyeInvisible size="1.4rem" onClick={handleShowPass} style={{ cursor: 'pointer' }} />}
               </div>
-              <div className="forgate-password" >Lost password ? <span onClick={()=>navigate("/login/reset-password/getotp")} >click here</span></div>
+
+              <p style={{ color: '#D8000C', backgroundColor: ' #FFBABA', width: '60%', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '10px' }}>
+                {error && <><BiError size={20} /> {error}</>}
+                {/* {currentUserError && <><BiError size={20} /> {currentUserError}</>} */}
+
+
+              </p>
+              <div className="forgate-password" > <span onClick={() => navigate("/forgot-password")} >Forgot password?</span></div>
+              {/* <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro illum incidunt quibusdam consectetur amet tempora placeat nesciunt pariatur modi adipisci, consequatur cumque qui.</h2> */}
 
               <div className="submit-container">
-                <button type='submit' className="submit" 
-                onClick={() =>{ 
-                 
-                  setAction("Login")
-              }}>Login</button>
-                <button type='submit' className="submit gray" onClick={() =>{
-                  setRegData({email:"",name:"",phone:"",password:"",capssword:""})
+                <button type='submit' className="submit"
+                  onClick={() => {
+
+                    setAction("Login")
+                  }}>Login</button>
+                <button type='submit' className="submit gray" onClick={() => {
+                  setRegData({ email: "", name: "", phone: "", password: "", capssword: "" })
                   setAction("Sign Up")
                 }}>Sign  Up</button>
               </div>
@@ -125,9 +139,10 @@ const Login = () => {
               <div className="input" >
                 <AiOutlineUser />
                 <input type="text" name='name' placeholder='Name'
-                maxLength={20}
-                value={regData.name}
+                  maxLength={20}
+                  value={regData.name}
                   onChange={handleReg} />
+
               </div>
 
               <div className="input" >
@@ -143,7 +158,7 @@ const Login = () => {
                 <input type="number" placeholder='phone'
                   name='phone'
                   value={regData.phone}
-                 onInput={(e)=>e.target.value=e.target.value.slice(0,10)}
+                  onInput={(e) => e.target.value = e.target.value.slice(0, 10)}
                   required
                   onChange={handleReg} />
               </div>
@@ -155,6 +170,7 @@ const Login = () => {
                   value={regData.password}
                   onChange={handleReg} />
               </div>
+
               <div className="input">
                 <AiOutlineLock />
                 <input type={showPass ? "text" : "password"} placeholder='Confirm Password'
@@ -165,34 +181,27 @@ const Login = () => {
                 {/* <input type="checkbox" onClick={handleShowPass} style={{ width: '30px', height: '30px', marginRight: '20px' }} /> */}
                 {showPass ? <AiFillEye size="1.4rem" onClick={handleShowPass} style={{ cursor: 'pointer' }} /> : <AiFillEyeInvisible size="1.4rem" onClick={handleShowPass} style={{ cursor: 'pointer' }} />}
               </div>
+              <p style={{ color: '#D8000C', backgroundColor: ' #FFBABA', width: '60%', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '10px' }}>{error && <><BiError size={20} /> {error}</>}</p>
+
               <div className="submit-container">
                 <button type='submit' className="submit" onClick={() => setAction("Sign Up")}>Sign Up</button>
                 <button type='submit' onSubmit={() => handleLoginSubmit} className="submit gray" onClick={() => {
-                  console.log("login",loginData)
-                  console.log("reg",regData)
-                  setLoginData({email:"",password:""})
+
+                  setLoginData({ email: "", password: "" })
                   setAction("Login")
                 }}>Login</button>
               </div>
+
             </form>
           }
 
-
+          <hr />
+          <div className="google">
+            <button onClick={handleGoogleClick} className='google-btn'><AiOutlineGoogle size={20} />  Signup/Signin with Google</button>
+          </div>
         </div>
-
-
       </div>
 
-
-
-
-
-
-
-
-
-
-      <Footer />
     </>
   )
 }

@@ -1,30 +1,80 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import "./style.css"
-import { BiMenu, BiUserCircle, BiCart } from "react-icons/bi"
-import { NavLink } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
-import { useCart } from "react-use-cart"
+import { Link, scroller } from "react-scroll"
+import { useLocation, useNavigate } from "react-router-dom"
+import { Link as NavLink } from 'react-router-dom'
 import axios from 'axios'
-import logo from "./mrps.png"
-import { UseRefresher } from '../../context/RefreshContextProvider'
+import logo from "./new.png"
+
+
+import Badge from '@mui/material/Badge';
+import { Avatar } from '@mui/material'
+
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Fade from '@mui/material/Fade';
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../../redux/auth/authSlice'
+import { getusercurrent } from '../../redux/user/userApi'
+import { getUserCart } from '../../redux/cart/cartApi'
+
+import { IoBagHandleOutline } from "react-icons/io5";
+
 const Header = () => {
+    const location = useLocation()
+
+    const isHomePage = location.pathname === '/';
+    useEffect(() => {
+
+        const searchParams = new URLSearchParams(location.search);
+        const from = searchParams.get('from');
+        const section = searchParams.get('section');
+
+
+        if (from != "home") {
+            scroller.scrollTo(section, {
+                duration: 400,
+                delay: 0,
+                smooth: 'easeInOutQuart'
+            });
+        }
+        scroller.scrollTo("home", {
+            duration: 400,
+            delay: 0,
+            smooth: 'easeInOutQuart'
+        })
+    }, [location]);
+
+
+
     const [menu, setMenu] = useState(false)
     const [position, setPosition] = useState(window.scrollY)
     const [visible, setVisible] = useState(false)
-    const [cart, setCart] = useState()
-    const { items } = useCart()
-    const navigate = useNavigate()
-    const [refresh,setRefresh] = UseRefresher()
-    useEffect(() => {
-        console.log("refre",refresh)
-        let token = localStorage.getItem("token")
-        token ? axios.get("/cart", { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } })
-            .then((r) => {
-                setCart(r.data)
-            })
-            : ""
 
-    },[refresh])
+    const navigate = useNavigate()
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+        navigate('/profile')
+    };
+
+    const dispatch = useDispatch()
+
+    const user = useSelector((state) => state.user.users)
+    if (user) {
+        localStorage.setItem('user', JSON.stringify(user))
+    }
+    const cart = useSelector((state) => state.cart.cart)
+    useEffect(() => {
+        dispatch(getusercurrent())
+        dispatch(getUserCart())
+
+    }, [])
+
     useEffect(() => {
         const handleScroll = () => {
             let moving = window.scrollY
@@ -39,28 +89,19 @@ const Header = () => {
     const cls = visible ? "visible" : "hidden";
 
     const handleLogout = () => {
-
-        localStorage.removeItem("uname")
-        localStorage.removeItem("token")
-        navigate("/")
-        // window.location.reload()
-
+        dispatch(logout())
+        localStorage.removeItem('user')
+        window.open("http://localhost:5050/users/logout", "_self")
     }
+
 
     const handleMobileLogout = () => {
-        setMenu(!menu)
-        localStorage.removeItem("uname")
-        localStorage.removeItem("token")
-        navigate("/")
-        // window.location.reload()
-
     }
-
     return (
         <>
-            <header id='mynav' className={cls}>
-                <div className='left'>
-                    <img src={logo} alt="" style={{ width: '120px', height: '80px' }} />
+            <header id='mynav' className={`${cls} `}>
+                <div className='left' >
+                    <img src={logo} alt="" style={{ width: '82px', height: '60px' }} onClick={() => navigate("/")} />
                 </div>
                 <div className="mobile-nav">
 
@@ -77,57 +118,109 @@ const Header = () => {
                 <div className="middle">
                     <li>
 
+                        <NavLink to="/">
 
-                        <button className="button6 ">
-                            <span className="btn-txt"> <NavLink to="/">Home</NavLink></span>
-                        </button>
+                            <span className="btn-txt"> Home</span>
+
+                        </NavLink>
+                    </li>
+                    <li>
+                        {
+                            isHomePage ?
+                                <Link to='about'>
+                                    <span className="btn-txt">About</span>
+                                </Link>
+
+                                :
+
+                                <NavLink to="/?from=stones&section=about" >
+                                    <span className="btn-txt">About</span>
+                                </NavLink>
+
+                        }
+                    </li>
+
+                    <li>
+                        {
+                            isHomePage ?
+
+                                <Link to='service'>
+
+                                    <span className="btn-txt">Services</span>
+
+                                </Link>
+
+                                :
+                                <NavLink to="/?from=stones&section=service" >
+                                    <span className="btn-txt">Services</span>
+                                </NavLink>
+                        }
                     </li>
                     <li>
 
+                        <NavLink to="/stones" >
 
-                        <button className="button6 ">
-                            <span className="btn-txt"><a href="#about" >About</a></span>
-                        </button>
-                    </li>
-                    <li>
+                            <span className="btn-txt">Stones</span>
 
-
-
-                        <button className="button6 ">
-                            <span className="btn-txt"><a href="#service" >Service</a></span>
-                        </button>
-                    </li>
-                    <li>
-
-
-                        <button className="button6 ">
-                            <span className="btn-txt"><NavLink to="/stones" >Stones</NavLink></span>
-                        </button>
+                        </NavLink>
                     </li>
                 </div>
 
                 <div className='rights'>
-                    {localStorage.getItem('uname') ?
-                        <li className="menu-title">
-                            <div className='userlogo'><span> {localStorage.getItem('uname').slice(0, 1).toUpperCase()} </span></div>
-                            <div className="drop-con">
-                                <button className="button5">
-                                    <span className="btn-txt"> <NavLink to="/" onClick={handleLogout} style={{ fontSize: '1rem' }}>LOGOUT</NavLink></span>
-                                </button>
+
+                    {user ?
+                        < >
+                            <button className='cartBtn' >
+                                <NavLink to="/cart">
+
+                                    <Badge color="primary" badgeContent={cart ? cart.totalItem : 0}>
+                                        <IoBagHandleOutline size={28} />
+                                    </Badge>
+                                </NavLink>
+                            </button>
+                            <div>
+
+                                <Avatar alt="Remy Sharp" src={user.image}
+                                    id="fade-button"
+                                    aria-controls={open ? 'fade-menu' : undefined}
+                                    aria-haspopup="true"
+                                    aria-expanded={open ? 'true' : undefined}
+                                    onClick={handleClick}
+                                />
+
+                                <Menu
+                                    id="fade-menu"
+                                    MenuListProps={{
+                                        'aria-labelledby': 'fade-button',
+                                    }}
+                                    anchorEl={anchorEl}
+                                    open={open}
+                                    onClose={handleClose}
+                                    TransitionComponent={Fade}
+
+                                >
+                                    {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
+                                    <MenuItem onClick={handleClose}>My account</MenuItem>
+                                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                                </Menu>
+
+
+
                             </div>
-                        </li>
 
-                        : <button className="button5 " id='join-btn' >
-                            <span className="btn-txt"> <NavLink to="/login">JOIN US </NavLink></span>
-                        </button>
+                        </>
+
+                        :
+                        //  <button className="button5 " id='join-btn' >
+                        //     <span className="btn-txt"> <NavLink to="/login">JOIN US </NavLink></span>
+                        // </button>
+                        <NavLink to="/login" style={{ textDecoration: "none" }} >
+
+                            <span className="btn-txt">JOIN NOW</span>
+
+                        </NavLink>
                     }
-                    <button className='cartBtn' >
-                        {localStorage.getItem("token") ?
 
-                            <NavLink to="/cart"><BiCart /><h4>{cart ? cart.length : ""}</h4></NavLink>
-                            : ""
-                        }
-                    </button>
 
                 </div>
 
@@ -138,45 +231,37 @@ const Header = () => {
 
             <div className={`sidebar  ${menu && "showsidebar"} `}>
                 <div className="middle">
-                    <li>
-                        <button className="button6 type1">
-                            <span className="btn-txt">
-                                <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/">Home</NavLink>
-                            </span>
-                        </button>
 
-                    </li>
-
-                    <li>
-                        <button className="button6 type1">
-                            <span className="btn-txt">
-                                <a href="#about" onClick={() => setMenu(!menu)} className='text-light'>About</a>
-                            </span>
-                        </button>
-
-
-                    </li>
-                    <li>
-                        <button className="button6 type1">
-                            <span className="btn-txt">
-                                <a href="#service" onClick={() => setMenu(!menu)} className='text-light'>Service</a>
-
-                            </span>
-                        </button>
+                    <span className="btn-txt">
+                        <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/">Home</NavLink>
+                    </span>
 
 
 
-                    </li>
+                    <span className="btn-txt">
+                        <Link to="about" onClick={() => setMenu(!menu)} className='text-light'>About</Link>
+                    </span>
 
-                    <li>
-                        <button className="button6 type1">
-                            <span className="btn-txt">
-                                <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/stones">Stones</NavLink>
 
-                            </span>
-                        </button>
 
-                    </li>
+
+
+                    <span className="btn-txt">
+                        <Link to="service" onClick={() => setMenu(!menu)} className='text-light'>Service</Link>
+
+                    </span>
+
+
+
+
+
+                    <span className="btn-txt">
+                        <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/stones">Stones</NavLink>
+
+                    </span>
+
+
+
                 </div>
 
                 <hr />
@@ -184,35 +269,34 @@ const Header = () => {
                 <div className='right' style={{ textAlign: 'center' }}>
 
                     {
-                        localStorage.getItem("token") ?
+                        user ?
                             <>
 
-
                                 <li style={{ listStyle: 'none' }}>
-                                    <button className="button6 type1 mb-4" >
-                                        <span className="btn-txt">
-                                            <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/cart" >My Cart</NavLink>
 
-                                        </span>
-                                    </button>
+                                    <span className="btn-txt">
+                                        <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/cart" >My Cart</NavLink>
+
+                                    </span>
+
                                 </li>
                                 <li style={{ listStyle: 'none' }}>
-                                    <button className="button6 type1" >
-                                        <span className="btn-txt">
-                                            <NavLink className="text-light" onClick={handleMobileLogout} to="/" >Logout</NavLink>
 
-                                        </span>
-                                    </button>
+                                    <span className="btn-txt">
+                                        <NavLink className="text-light" onClick={handleMobileLogout} to="/" >Logout</NavLink>
+
+                                    </span>
+
                                 </li>
                             </>
                             :
                             <li>
-                                <button className="button6 type1" >
-                                    <span className="btn-txt">
-                                        <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/login" >Join Now</NavLink>
 
-                                    </span>
-                                </button>
+                                <span className="btn-txt">
+                                    <NavLink className="text-light" onClick={() => setMenu(!menu)} to="/login" >Join Now</NavLink>
+
+                                </span>
+
                             </li>
 
                     }
@@ -222,7 +306,7 @@ const Header = () => {
                     {/* <li>
                         <button className="button6 type1">
                             <span className="btn-txt">
-                                <NavLink className="text-light" onClick={() => setMenu(!menu)} to="signup">Sign Up</NavLink>
+                                <Link className="text-light" onClick={() => setMenu(!menu)} to="signup">Sign Up</Link>
 
                             </span>
                         </button>

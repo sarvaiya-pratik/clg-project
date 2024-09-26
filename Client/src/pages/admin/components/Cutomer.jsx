@@ -3,7 +3,7 @@ import "./style.css"
 import axios from 'axios';
 import { AiFillDelete, AiOutlineSearch } from "react-icons/ai"
 import { toast } from 'react-hot-toast';
-// axios.defaults.baseURL = "http://localhost:4001"
+
 const Cutomer = ({ slider }) => {
 
   const [user, setUser] = useState()
