@@ -18,10 +18,24 @@ import FeedbackRouter from './routers/feedback.route.js'
 import otherRouter from './routers/other.route.js'
 app.use(express.urlencoded({ extended: true }));
 
+const allowedOrigins = ['http://localhost:5173', 'https://clg-project-3c5q.vercel.app'];
+
+
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true
-}))
+}));
+
+// app.use(cors({
+//     origin: 'http://localhost:5173',
+//     credentials: true
+// }))
 // app.use(cors({
 //     origin: 'https://clg-project-3c5q.vercel.app',
 //     credentials: true
@@ -55,6 +69,9 @@ connectPassport()
 
 // ------------------ROUTERS-----------------
 
+app.get('/', (req, res) => {
+    res.send('Server is running!')
+})
 app.use('/users', userRouter)
 app.use('/products', productRouter)
 app.use('/cart', cartRouter)
@@ -72,6 +89,7 @@ app.get('/admin/logout', (req, res) => {
     res.end()
 
 })
+
 
 
 const runServer = async () => {
